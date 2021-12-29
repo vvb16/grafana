@@ -9,6 +9,7 @@ import { DashboardModel } from '../../state/DashboardModel';
 import { SaveDashboardAsButton, SaveDashboardButton } from '../SaveDashboard/SaveDashboardButton';
 import { VariableEditorContainer } from '../../../variables/editor/VariableEditorContainer';
 import { DashboardPermissions } from '../DashboardPermissions/DashboardPermissions';
+import { AccessControlDashboardPermissions } from '../DashboardPermissions/AccessControlDashboardPermissions';
 import { GeneralSettings } from './GeneralSettings';
 import { AnnotationsSettings } from './AnnotationsSettings';
 import { LinksSettings } from './LinksSettings';
@@ -16,6 +17,7 @@ import { VersionsSettings } from './VersionsSettings';
 import { JsonEditorSettings } from './JsonEditorSettings';
 import { GrafanaTheme2, locationUtil } from '@grafana/data';
 import { locationService, reportInteraction } from '@grafana/runtime';
+import { AccessControlAction } from '../../../../types';
 
 export interface Props {
   dashboard: DashboardModel;
@@ -100,12 +102,24 @@ export function DashboardSettings({ dashboard, editview }: Props) {
     }
 
     if (dashboard.id && dashboard.meta.canAdmin) {
-      pages.push({
-        title: 'Permissions',
-        id: 'permissions',
-        icon: 'lock',
-        component: <DashboardPermissions dashboard={dashboard} />,
-      });
+      if (
+        config.featureToggles['accesscontrol'] &&
+        contextSrv.hasPermission(AccessControlAction.DashboardsPermissionsRead)
+      ) {
+        pages.push({
+          title: 'Permissions',
+          id: 'permissions',
+          icon: 'lock',
+          component: <AccessControlDashboardPermissions id={dashboard.id} />,
+        });
+      } else {
+        pages.push({
+          title: 'Permissions',
+          id: 'permissions',
+          icon: 'lock',
+          component: <DashboardPermissions dashboard={dashboard} />,
+        });
+      }
     }
 
     pages.push({
