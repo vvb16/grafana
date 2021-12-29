@@ -45,13 +45,17 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 			Teams:        true,
 			BuiltInRoles: true,
 		},
-		PermissionsToActions: map[string][]string{},
-		ReaderRoleName:       "Dashboard permission reader",
-		WriterRoleName:       "Dashboard permission writer",
-		RoleGroup:            "Dashboards",
-		OnSetUser:            nil,
-		OnSetTeam:            nil,
-		OnSetBuiltInRole:     nil,
+		PermissionsToActions: map[string][]string{
+			"View":  {"dashboards:read"},
+			"Edit":  {"dashboards:read", "dashboards:write", "dashboards:delete"},
+			"Admin": {"dashboards:read", "dashboards:write", "dashboards:delete", "dashboards.permissions:read", "dashboards.permissions:write"},
+		},
+		ReaderRoleName:   "Dashboard permission reader",
+		WriterRoleName:   "Dashboard permission writer",
+		RoleGroup:        "Dashboards",
+		OnSetUser:        nil,
+		OnSetTeam:        nil,
+		OnSetBuiltInRole: nil,
 	}
 
 	return New(options, router, ac, store)
