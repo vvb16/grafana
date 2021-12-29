@@ -47,6 +47,12 @@ export enum AccessControlAction {
   DataSourcesDelete = 'datasources:delete',
   DataSourcesPermissionsRead = 'datasources.permissions:read',
 
+  DashboardsRead = 'dashboards:read',
+  DashboardsWrite = 'dashboards:read',
+  DashboardsDelete = 'dashboards:delete',
+  DashboardsPermissionsRead = 'dashboards.permissions:read',
+  DashboardsPermissionsWrite = 'dashboards.permissions:read',
+
   ActionServerStatsRead = 'server.stats:read',
 }
 
