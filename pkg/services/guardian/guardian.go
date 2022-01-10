@@ -21,7 +21,6 @@ type DashboardGuardian interface {
 	CanEdit() (bool, error)
 	CanView() (bool, error)
 	CanAdmin() (bool, error)
-	HasPermission(permission models.PermissionType) (bool, error)
 	CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error)
 
 	// GetAcl returns ACL.
