@@ -315,18 +315,18 @@ const (
 	ActionTeamsCreate = "teams:create"
 
 	// Dashboard actions
-	ActionDashboardsRead            = "dashboards:read"
-	ActionDashboardsWrite           = "dashboards:write"
-	ActionDashboardsDelete          = "dashboards:delete"
-	ActionDashboardsPermissionRead  = "dashboards.permissions:read"
-	ActionDashboardsPermissionWrite = "dashboards.permissions:write"
+	ActionDashboardsRead             = "dashboards:read"
+	ActionDashboardsWrite            = "dashboards:write"
+	ActionDashboardsDelete           = "dashboards:delete"
+	ActionDashboardsPermissionsRead  = "dashboards.permissions:read"
+	ActionDashboardsPermissionsWrite = "dashboards.permissions:write"
 
 	// Folder actions
-	ActionFoldersRead            = "folders:read"
-	ActionFoldersWrite           = "folders:write"
-	ActionFoldersDelete          = "folders:delete"
-	ActionFoldersPermissionRead  = "folders.permissions:read"
-	ActionFoldersPermissionWrite = "folders.permissions:write"
+	ActionFoldersRead             = "folders:read"
+	ActionFoldersWrite            = "folders:write"
+	ActionFoldersDelete           = "folders:delete"
+	ActionFoldersPermissionsRead  = "folders.permissions:read"
+	ActionFoldersPermissionsWrite = "folders.permissions:write"
 )
 
 const RoleGrafanaAdmin = "Grafana Admin"

@@ -64,7 +64,7 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 		PermissionsToActions: map[string][]string{
 			"View":  {ac.ActionDashboardsRead},
 			"Edit":  {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsDelete},
-			"Admin": {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsWrite, ac.ActionDashboardsPermissionRead, ac.ActionDashboardsPermissionWrite},
+			"Admin": {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsWrite, ac.ActionDashboardsPermissionsRead, ac.ActionDashboardsPermissionsWrite},
 		},
 		ReaderRoleName: "Dashboard permission reader",
 		WriterRoleName: "Dashboard permission writer",
@@ -98,7 +98,7 @@ func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, 
 		PermissionsToActions: map[string][]string{
 			"View":  {ac.ActionFoldersRead},
 			"Edit":  {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete},
-			"Admin": {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersPermissionRead, ac.ActionFoldersPermissionWrite},
+			"Admin": {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite},
 		},
 		ReaderRoleName: "Folder permission reader",
 		WriterRoleName: "Folder permission writer",
