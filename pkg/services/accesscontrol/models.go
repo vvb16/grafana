@@ -320,6 +320,13 @@ const (
 	ActionDashboardsDelete          = "dashboards:delete"
 	ActionDashboardsPermissionRead  = "dashboards.permissions:read"
 	ActionDashboardsPermissionWrite = "dashboards.permissions:write"
+
+	// Folder actions
+	ActionFoldersRead            = "folders:read"
+	ActionFoldersWrite           = "folders:write"
+	ActionFoldersDelete          = "folders:delete"
+	ActionFoldersPermissionRead  = "folders.permissions:read"
+	ActionFoldersPermissionWrite = "folders.permissions:write"
 )
 
 const RoleGrafanaAdmin = "Grafana Admin"
