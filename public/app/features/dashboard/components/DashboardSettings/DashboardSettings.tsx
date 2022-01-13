@@ -102,22 +102,19 @@ export function DashboardSettings({ dashboard, editview }: Props) {
     }
 
     if (dashboard.id && dashboard.meta.canAdmin) {
-      if (
-        config.featureToggles['accesscontrol'] &&
-        contextSrv.hasPermission(AccessControlAction.DashboardsPermissionsRead)
-      ) {
-        pages.push({
-          title: 'Permissions',
-          id: 'permissions',
-          icon: 'lock',
-          component: <AccessControlDashboardPermissions id={dashboard.id} />,
-        });
-      } else {
+      if (!config.featureToggles['accesscontrol']) {
         pages.push({
           title: 'Permissions',
           id: 'permissions',
           icon: 'lock',
           component: <DashboardPermissions dashboard={dashboard} />,
+        });
+      } else if (contextSrv.hasPermission(AccessControlAction.DashboardsPermissionsRead)) {
+        pages.push({
+          title: 'Permissions',
+          id: 'permissions',
+          icon: 'lock',
+          component: <AccessControlDashboardPermissions id={dashboard.id} />,
         });
       }
     }
