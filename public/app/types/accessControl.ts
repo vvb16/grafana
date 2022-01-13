@@ -53,6 +53,12 @@ export enum AccessControlAction {
   DashboardsPermissionsRead = 'dashboards.permissions:read',
   DashboardsPermissionsWrite = 'dashboards.permissions:read',
 
+  FoldersRead = 'folders:read',
+  FoldersWrite = 'folders:read',
+  FoldersDelete = 'folders:delete',
+  FoldersPermissionsRead = 'folders.permissions:read',
+  FoldersPermissionsWrite = 'folders.permissions:read',
+
   ActionServerStatsRead = 'server.stats:read',
 
   ActionTeamsCreate = 'teams:create',
