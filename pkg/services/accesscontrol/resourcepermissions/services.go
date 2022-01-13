@@ -2,23 +2,32 @@ package resourcepermissions
 
 import (
 	"context"
+	"errors"
 	"strconv"
 	"time"
 
 	"github.com/grafana/grafana/pkg/models"
 
 	"github.com/grafana/grafana/pkg/api/routing"
-	"github.com/grafana/grafana/pkg/services/accesscontrol"
+	ac "github.com/grafana/grafana/pkg/services/accesscontrol"
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 )
 
-func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac accesscontrol.AccessControl, store accesscontrol.ResourcePermissionsStore) (*Services, error) {
+func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac ac.AccessControl, store ac.ResourcePermissionsStore) (*Services, error) {
 	dashboardsService, err := provideDashboardService(sql, router, ac, store)
 	if err != nil {
 		return nil, err
 	}
 
-	return &Services{services: map[string]*Service{"dashboards": dashboardsService}}, nil
+	folderService, err := provideFolderService(sql, router, ac, store)
+	if err != nil {
+		return nil, err
+	}
+
+	return &Services{services: map[string]*Service{
+		"folders":    folderService,
+		"dashboards": dashboardsService,
+	}}, nil
 }
 
 type Services struct {
@@ -29,8 +38,11 @@ func (s *Services) GetDashboardService() *Service {
 	return s.services["dashboards"]
 }
 
-func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegister, ac accesscontrol.AccessControl, store accesscontrol.ResourcePermissionsStore) (*Service, error) {
+func (s *Services) GetFolderService() *Service {
+	return s.services["folders"]
+}
 
+func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
 	options := Options{
 		Resource: "dashboards",
 		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
@@ -50,29 +62,50 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 			BuiltInRoles: true,
 		},
 		PermissionsToActions: map[string][]string{
-			"View":  {"dashboards:read"},
-			"Edit":  {"dashboards:read", "dashboards:write", "dashboards:delete"},
-			"Admin": {"dashboards:read", "dashboards:write", "dashboards:delete", "dashboards.permissions:read", "dashboards.permissions:write"},
+			"View":  {ac.ActionDashboardsRead},
+			"Edit":  {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsDelete},
+			"Admin": {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsWrite, ac.ActionDashboardsPermissionRead, ac.ActionDashboardsPermissionWrite},
 		},
 		ReaderRoleName: "Dashboard permission reader",
 		WriterRoleName: "Dashboard permission writer",
 		RoleGroup:      "Dashboards",
-		OnSetUser: func(ctx context.Context, orgID, userID int64, resourceID, permission string) error {
-			item := models.DashboardAcl{OrgID: orgID, UserID: userID}
-			return onDashboardPermissionUpdated(ctx, sql, resourceID, item, permission)
-		},
-		OnSetTeam: func(ctx context.Context, orgID, teamID int64, resourceID, permission string) error {
-			item := models.DashboardAcl{OrgID: orgID, TeamID: teamID}
-			return onDashboardPermissionUpdated(ctx, sql, resourceID, item, permission)
-		},
-		OnSetBuiltInRole: func(ctx context.Context, orgID int64, builtInRole, resourceID, permission string) error {
-			role := models.RoleType(builtInRole)
-			item := models.DashboardAcl{OrgID: orgID, Role: &role}
-			return onDashboardPermissionUpdated(ctx, sql, resourceID, item, permission)
-		},
 	}
 
-	return New(options, router, ac, store)
+	return New(options, router, accesscontrol, store)
+}
+
+func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
+	options := Options{
+		Resource: "folders",
+		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
+			id, err := strconv.ParseInt(resourceID, 10, 64)
+			if err != nil {
+				return err
+			}
+			if dashboard, err := sql.GetDashboard(id, orgID, "", ""); err != nil {
+				return err
+			} else if !dashboard.IsFolder {
+				return errors.New("not found")
+			}
+
+			return nil
+		},
+		Assignments: Assignments{
+			Users:        true,
+			Teams:        true,
+			BuiltInRoles: true,
+		},
+		PermissionsToActions: map[string][]string{
+			"View":  {ac.ActionFoldersRead},
+			"Edit":  {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete},
+			"Admin": {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersPermissionRead, ac.ActionFoldersPermissionWrite},
+		},
+		ReaderRoleName: "Folder permission reader",
+		WriterRoleName: "Folder permission writer",
+		RoleGroup:      "Folders",
+	}
+
+	return New(options, router, accesscontrol, store)
 }
 
 func onDashboardPermissionUpdated(ctx context.Context, store *sqlstore.SQLStore, resourceID string, item models.DashboardAcl, permission string) error {
