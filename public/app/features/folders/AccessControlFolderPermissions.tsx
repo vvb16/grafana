@@ -24,13 +24,13 @@ export type Props = ConnectedProps<typeof connector>;
 
 export const AccessControlFolderPermissions = ({ resourceId, navModel }: Props) => {
   const canListUsers = contextSrv.hasPermission(AccessControlAction.OrgUsersRead);
-  const canSetPermissions = contextSrv.hasPermission(AccessControlAction.DashboardsPermissionsWrite);
+  const canSetPermissions = contextSrv.hasPermission(AccessControlAction.FoldersPermissionsWrite);
 
   return (
     <Page navModel={navModel}>
       <Page.Contents>
         <Permissions
-          resource="dashboards"
+          resource="folder"
           resourceId={resourceId}
           canListUsers={canListUsers}
           canSetPermissions={canSetPermissions}
