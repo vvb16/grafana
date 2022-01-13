@@ -4,12 +4,19 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/grafana/grafana/pkg/services/dashboards"
-
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/accesscontrol"
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 	"github.com/grafana/grafana/pkg/setting"
+)
+
+// TODO: temp location
+const (
+	ActionRead            = "dashboards:read"
+	ActionWrite           = "dashboards:write"
+	ActionDelete          = "dashboards:delete"
+	ActionPermissionRead  = "dashboards.permissions:read"
+	ActionPermissionWrite = "dashboards.permissions:write"
 )
 
 var _ DashboardGuardian = new(AccessControlDashboardGuardian)
@@ -23,8 +30,9 @@ type AccessControlDashboardGuardian struct {
 	dashboardID int64
 	dashboard   *models.Dashboard
 	user        *models.SignedInUser
-	ac          accesscontrol.AccessControl
-	store       *sqlstore.SQLStore
+
+	store *sqlstore.SQLStore
+	ac    accesscontrol.AccessControl
 }
 
 func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
@@ -33,11 +41,11 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 	}
 
 	evaluators := []accesscontrol.Evaluator{
-		accesscontrol.EvalPermission(dashboards.ActionWrite, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(ActionWrite, dashboardScope(a.dashboard.Id)),
 	}
 
 	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(dashboards.ActionWrite, dashboardScope(a.dashboard.FolderId)))
+		evaluators = append(evaluators, accesscontrol.EvalPermission(ActionWrite, dashboardScope(a.dashboard.FolderId)))
 	}
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
@@ -53,22 +61,38 @@ func (a AccessControlDashboardGuardian) CanView() (bool, error) {
 	}
 
 	evaluators := []accesscontrol.Evaluator{
-		accesscontrol.EvalPermission(dashboards.ActionRead, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(ActionRead, dashboardScope(a.dashboard.Id)),
 	}
 
 	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(dashboards.ActionRead, dashboardScope(a.dashboard.FolderId)))
+		evaluators = append(evaluators, accesscontrol.EvalPermission(ActionRead, dashboardScope(a.dashboard.FolderId)))
 	}
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
 }
 
 func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
-	panic("implement me")
-}
+	if err := a.loadDashboard(); err != nil {
+		return false, err
+	}
 
-func (a AccessControlDashboardGuardian) HasPermission(permission models.PermissionType) (bool, error) {
-	panic("implement me")
+	evaluators := []accesscontrol.Evaluator{
+		accesscontrol.EvalAll(
+			accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.Id)),
+			accesscontrol.EvalPermission(ActionPermissionWrite, dashboardScope(a.dashboard.Id)),
+		),
+	}
+
+	if a.dashboard.FolderId != 0 {
+		evaluators = append(evaluators,
+			accesscontrol.EvalAll(
+				accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.FolderId)),
+				accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.FolderId)),
+			),
+		)
+	}
+
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
 }
 
 func (a AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
