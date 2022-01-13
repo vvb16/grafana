@@ -10,15 +10,6 @@ import (
 	"github.com/grafana/grafana/pkg/setting"
 )
 
-// TODO: temp location
-const (
-	ActionRead            = "dashboards:read"
-	ActionWrite           = "dashboards:write"
-	ActionDelete          = "dashboards:delete"
-	ActionPermissionRead  = "dashboards.permissions:read"
-	ActionPermissionWrite = "dashboards.permissions:write"
-)
-
 var _ DashboardGuardian = new(AccessControlDashboardGuardian)
 
 func NewAccessControlDashboardGuardian() *AccessControlDashboardGuardian {
@@ -41,11 +32,11 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 	}
 
 	evaluators := []accesscontrol.Evaluator{
-		accesscontrol.EvalPermission(ActionWrite, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.Id)),
 	}
 
 	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(ActionWrite, dashboardScope(a.dashboard.FolderId)))
+		evaluators = append(evaluators, accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.FolderId)))
 	}
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
@@ -61,11 +52,11 @@ func (a AccessControlDashboardGuardian) CanView() (bool, error) {
 	}
 
 	evaluators := []accesscontrol.Evaluator{
-		accesscontrol.EvalPermission(ActionRead, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead, dashboardScope(a.dashboard.Id)),
 	}
 
 	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(ActionRead, dashboardScope(a.dashboard.FolderId)))
+		evaluators = append(evaluators, accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead, dashboardScope(a.dashboard.FolderId)))
 	}
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
@@ -78,16 +69,16 @@ func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 
 	evaluators := []accesscontrol.Evaluator{
 		accesscontrol.EvalAll(
-			accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.Id)),
-			accesscontrol.EvalPermission(ActionPermissionWrite, dashboardScope(a.dashboard.Id)),
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionRead, dashboardScope(a.dashboard.Id)),
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionWrite, dashboardScope(a.dashboard.Id)),
 		),
 	}
 
 	if a.dashboard.FolderId != 0 {
 		evaluators = append(evaluators,
 			accesscontrol.EvalAll(
-				accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.FolderId)),
-				accesscontrol.EvalPermission(ActionPermissionRead, dashboardScope(a.dashboard.FolderId)),
+				accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionRead, dashboardScope(a.dashboard.FolderId)),
+				accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionWrite, dashboardScope(a.dashboard.FolderId)),
 			),
 		)
 	}

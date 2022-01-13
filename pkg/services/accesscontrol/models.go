@@ -313,6 +313,13 @@ const (
 
 	// Team actions
 	ActionTeamsCreate = "teams:create"
+
+	// Dashboard actions
+	ActionDashboardsRead            = "dashboards:read"
+	ActionDashboardsWrite           = "dashboards:write"
+	ActionDashboardsDelete          = "dashboards:delete"
+	ActionDashboardsPermissionRead  = "dashboards.permissions:read"
+	ActionDashboardsPermissionWrite = "dashboards.permissions:write"
 )
 
 const RoleGrafanaAdmin = "Grafana Admin"
