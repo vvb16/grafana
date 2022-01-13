@@ -54,6 +54,8 @@ export enum AccessControlAction {
   DashboardsPermissionsWrite = 'dashboards.permissions:read',
 
   ActionServerStatsRead = 'server.stats:read',
+
+  ActionTeamsCreate = 'teams:create',
 }
 
 export interface Role {
