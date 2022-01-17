@@ -12,15 +12,22 @@ import (
 
 var _ DashboardGuardian = new(AccessControlDashboardGuardian)
 
-func NewAccessControlDashboardGuardian() *AccessControlDashboardGuardian {
-	return &AccessControlDashboardGuardian{}
+func NewAccessControlDashboardGuardian(ctx context.Context, dashboardId int64, user *models.SignedInUser, store *sqlstore.SQLStore, ac accesscontrol.AccessControl) *AccessControlDashboardGuardian {
+	return &AccessControlDashboardGuardian{
+		ctx:         ctx,
+		dashboardID: dashboardId,
+		user:        user,
+		store:       store,
+		ac:          ac,
+	}
 }
 
 type AccessControlDashboardGuardian struct {
 	ctx         context.Context
 	dashboardID int64
-	dashboard   *models.Dashboard
-	user        *models.SignedInUser
+
+	dashboard *models.Dashboard
+	user      *models.SignedInUser
 
 	store *sqlstore.SQLStore
 	ac    accesscontrol.AccessControl
@@ -67,23 +74,16 @@ func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 		return false, err
 	}
 
-	evaluators := []accesscontrol.Evaluator{
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalAll(
 			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionsRead, dashboardScope(a.dashboard.Id)),
 			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionsWrite, dashboardScope(a.dashboard.Id)),
 		),
-	}
-
-	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators,
-			accesscontrol.EvalAll(
-				accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsRead, folderScope(a.dashboard.FolderId)),
-				accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsWrite, folderScope(a.dashboard.FolderId)),
-			),
-		)
-	}
-
-	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
+		accesscontrol.EvalAll(
+			accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsRead, folderScope(a.dashboard.FolderId)),
+			accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsWrite, folderScope(a.dashboard.FolderId)),
+		),
+	))
 }
 
 func (a AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
