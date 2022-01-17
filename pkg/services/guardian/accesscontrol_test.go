@@ -244,6 +244,102 @@ func TestAccessControlDashboardGuardian_CanSave(t *testing.T) {
 }
 
 func TestAccessControlDashboardGuardian_CanView(t *testing.T) {
+	tests := []accessControlGuardianTestCase{
+		{
+			desc:        "should be able to view with dashboard wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsRead,
+					Scope:  "dashboards:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to view with folder wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionFoldersRead,
+					Scope:  "folders:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to view with dashboard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsRead,
+					Scope:  "dashboards:id:1",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to view with folder scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionFoldersRead,
+					Scope:  "folders:id:0",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should not be able to view with incorrect dashboard scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsRead,
+					Scope:  "dashboards:id:10",
+				},
+			},
+			expected: false,
+		},
+		{
+			desc:        "should not be able to view with incorrect folder scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionFoldersRead,
+					Scope:  "folders:id:10",
+				},
+			},
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
+			store := sqlstore.InitTestDB(t)
+
+			// seed dashboard
+			_, err := store.SaveDashboard(models.SaveDashboardCommand{
+				Dashboard: &simplejson.Json{},
+				UserId:    1,
+				OrgId:     1,
+				FolderId:  0,
+			})
+			require.NoError(t, err)
+
+			guardian := NewAccessControlDashboardGuardian(
+				context.Background(),
+				tt.dashboardID,
+				&models.SignedInUser{OrgId: 1},
+				store,
+				accesscontrolmock.New().WithPermissions(tt.permissions),
+			)
+
+			can, err := guardian.CanView()
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, can)
+
+		})
+	}
 
 }
 
