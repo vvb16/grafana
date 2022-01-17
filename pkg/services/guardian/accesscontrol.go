@@ -38,15 +38,10 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 		return false, err
 	}
 
-	evaluators := []accesscontrol.Evaluator{
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.Id)),
-	}
-
-	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(accesscontrol.ActionFoldersWrite, folderScope(a.dashboard.FolderId)))
-	}
-
-	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
+		accesscontrol.EvalPermission(accesscontrol.ActionFoldersWrite, folderScope(a.dashboard.FolderId)),
+	))
 }
 
 func (a AccessControlDashboardGuardian) CanEdit() (bool, error) {
@@ -58,15 +53,10 @@ func (a AccessControlDashboardGuardian) CanView() (bool, error) {
 		return false, err
 	}
 
-	evaluators := []accesscontrol.Evaluator{
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead, dashboardScope(a.dashboard.Id)),
-	}
-
-	if a.dashboard.FolderId != 0 {
-		evaluators = append(evaluators, accesscontrol.EvalPermission(accesscontrol.ActionFoldersRead, folderScope(a.dashboard.FolderId)))
-	}
-
-	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(evaluators...))
+		accesscontrol.EvalPermission(accesscontrol.ActionFoldersRead, folderScope(a.dashboard.FolderId)),
+	))
 }
 
 func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
