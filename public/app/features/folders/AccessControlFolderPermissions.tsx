@@ -30,7 +30,7 @@ export const AccessControlFolderPermissions = ({ resourceId, navModel }: Props) 
     <Page navModel={navModel}>
       <Page.Contents>
         <Permissions
-          resource="folder"
+          resource="folders"
           resourceId={resourceId}
           canListUsers={canListUsers}
           canSetPermissions={canSetPermissions}
