@@ -330,6 +330,9 @@ const (
 	ActionFoldersDelete           = "folders:delete"
 	ActionFoldersPermissionsRead  = "folders.permissions:read"
 	ActionFoldersPermissionsWrite = "folders.permissions:write"
+
+	// Folder scopes
+	ScopeFoldersAll = "folders:*"
 )
 
 const RoleGrafanaAdmin = "Grafana Admin"
