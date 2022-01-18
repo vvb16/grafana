@@ -208,9 +208,39 @@ func (hs *HTTPServer) declareFixedRoles() error {
 		Grants: teamWriterGrants,
 	}
 
+	dashboardsReaderRole := accesscontrol.RoleRegistration{
+		Role: accesscontrol.RoleDTO{
+			Version:     1,
+			Name:        "fixed:dashboards:reader",
+			DisplayName: "Dashboard reader",
+			Description: "",
+			Group:       "Dashboards",
+			Permissions: []accesscontrol.Permission{
+				{Action: accesscontrol.ActionDashboardsRead, Scope: accesscontrol.ScopeDashboardsAll},
+			},
+		},
+		Grants: []string{"Admin"},
+	}
+
+	dashboardsWriterRole := accesscontrol.RoleRegistration{
+		Role: accesscontrol.RoleDTO{
+			Version:     1,
+			Name:        "fixed:dashboards:writer",
+			DisplayName: "Dashboard writer",
+			Group:       "Dashboards",
+			Description: "",
+			Permissions: accesscontrol.ConcatPermissions(dashboardsReaderRole.Role.Permissions, []accesscontrol.Permission{
+				{Action: accesscontrol.ActionDashboardsWrite, Scope: accesscontrol.ScopeDashboardsAll},
+				{Action: accesscontrol.ActionDashboardsDelete, Scope: accesscontrol.ScopeDashboardsAll},
+			}),
+		},
+		Grants: []string{"Admin"},
+	}
+
 	return hs.AccessControl.DeclareFixedRoles(
 		provisioningWriterRole, datasourcesReaderRole, datasourcesWriterRole, datasourcesIdReaderRole,
 		datasourcesCompatibilityReaderRole, orgReaderRole, orgWriterRole, orgMaintainerRole, teamsWriterRole,
+		dashboardsReaderRole, dashboardsWriterRole,
 	)
 }
 

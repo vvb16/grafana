@@ -321,6 +321,9 @@ const (
 	ActionDashboardsPermissionsRead  = "dashboards.permissions:read"
 	ActionDashboardsPermissionsWrite = "dashboards.permissions:write"
 
+	// Dashboard scopes
+	ScopeDashboardsAll = "dashboards:*"
+
 	// Folder actions
 	ActionFoldersRead             = "folders:read"
 	ActionFoldersWrite            = "folders:write"
