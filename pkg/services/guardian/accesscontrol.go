@@ -92,19 +92,23 @@ func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 }
 
 func (a AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
-	panic("implement me")
+	// not used with access control
+	return false, nil
 }
 
 func (a AccessControlDashboardGuardian) GetAcl() ([]*models.DashboardAclInfoDTO, error) {
-	panic("implement me")
+	// Not used with access control
+	return nil, nil
 }
 
 func (a AccessControlDashboardGuardian) GetACLWithoutDuplicates() ([]*models.DashboardAclInfoDTO, error) {
-	panic("implement me")
+	// not used with access control
+	return nil, nil
 }
 
 func (a AccessControlDashboardGuardian) GetHiddenACL(cfg *setting.Cfg) ([]*models.DashboardAcl, error) {
-	panic("implement me")
+	// not used with access control
+	return nil, nil
 }
 
 func (a *AccessControlDashboardGuardian) loadDashboard() error {
