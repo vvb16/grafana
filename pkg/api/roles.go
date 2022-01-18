@@ -320,3 +320,10 @@ var orgsCreateAccessEvaluator = accesscontrol.EvalAll(
 	accesscontrol.EvalPermission(ActionOrgsRead),
 	accesscontrol.EvalPermission(ActionOrgsCreate),
 )
+
+var (
+	dashboardsReadEvaluator = accesscontrol.EvalAny(
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead),
+		accesscontrol.EvalPermission(accesscontrol.ActionFoldersRead),
+	)
+)
