@@ -346,22 +346,16 @@ func TestAccessControlDashboardGuardian_CanAdmin(t *testing.T) {
 	}
 }
 
-func TestAccessControlDashboardGuardian_CheckPermissionBeforeUpdate(t *testing.T) {
-
-}
-
-func TestAccessControlDashboardGuardian_GetACLWithoutDuplicates(t *testing.T) {
-
+type accessControlGetAclTestCase struct {
+	desc string
 }
 
 func TestAccessControlDashboardGuardian_GetAcl(t *testing.T) {
+	tests := []accessControlGetAclTestCase{}
 
-}
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
 
-func TestAccessControlDashboardGuardian_GetHiddenACL(t *testing.T) {
-
-}
-
-func TestAccessControlDashboardGuardian_HasPermission(t *testing.T) {
-
+		})
+	}
 }

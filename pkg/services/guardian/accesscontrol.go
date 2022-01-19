@@ -4,21 +4,33 @@ import (
 	"context"
 	"strconv"
 
+	"github.com/grafana/grafana/pkg/services/accesscontrol/resourcepermissions"
+
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/accesscontrol"
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 	"github.com/grafana/grafana/pkg/setting"
 )
 
+var permissionMap = map[string]models.PermissionType{
+	"View":  models.PERMISSION_VIEW,
+	"Edit":  models.PERMISSION_EDIT,
+	"Admin": models.PERMISSION_ADMIN,
+}
+
 var _ DashboardGuardian = new(AccessControlDashboardGuardian)
 
-func NewAccessControlDashboardGuardian(ctx context.Context, dashboardId int64, user *models.SignedInUser, store *sqlstore.SQLStore, ac accesscontrol.AccessControl) *AccessControlDashboardGuardian {
+func NewAccessControlDashboardGuardian(
+	ctx context.Context, dashboardId int64, user *models.SignedInUser,
+	store *sqlstore.SQLStore, ac accesscontrol.AccessControl, permissionServices *resourcepermissions.Services,
+) *AccessControlDashboardGuardian {
 	return &AccessControlDashboardGuardian{
-		ctx:         ctx,
-		dashboardID: dashboardId,
-		user:        user,
-		store:       store,
-		ac:          ac,
+		ctx:                ctx,
+		dashboardID:        dashboardId,
+		user:               user,
+		store:              store,
+		ac:                 ac,
+		permissionServices: permissionServices,
 	}
 }
 
@@ -29,8 +41,9 @@ type AccessControlDashboardGuardian struct {
 	dashboard *models.Dashboard
 	user      *models.SignedInUser
 
-	store *sqlstore.SQLStore
-	ac    accesscontrol.AccessControl
+	store              *sqlstore.SQLStore
+	ac                 accesscontrol.AccessControl
+	permissionServices *resourcepermissions.Services
 }
 
 func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
@@ -48,11 +61,11 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 	))
 }
 
-func (a AccessControlDashboardGuardian) CanEdit() (bool, error) {
+func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
 	return a.CanSave()
 }
 
-func (a AccessControlDashboardGuardian) CanView() (bool, error) {
+func (a *AccessControlDashboardGuardian) CanView() (bool, error) {
 	if err := a.loadDashboard(); err != nil {
 		return false, err
 	}
@@ -67,7 +80,7 @@ func (a AccessControlDashboardGuardian) CanView() (bool, error) {
 	))
 }
 
-func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
+func (a *AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 	if err := a.loadDashboard(); err != nil {
 		return false, err
 	}
@@ -91,22 +104,67 @@ func (a AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 	))
 }
 
-func (a AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
+func (a *AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
 	// not used with access control
 	return false, nil
 }
 
-func (a AccessControlDashboardGuardian) GetAcl() ([]*models.DashboardAclInfoDTO, error) {
-	// Not used with access control
-	return nil, nil
+func (a *AccessControlDashboardGuardian) GetAcl() ([]*models.DashboardAclInfoDTO, error) {
+	// translate access control permissions to dashboard acl info
+	if err := a.loadDashboard(); err != nil {
+		return nil, err
+	}
+
+	svc := a.permissionServices.GetDashboardService()
+	if a.dashboard.IsFolder {
+		svc = a.permissionServices.GetFolderService()
+	}
+
+	permissions, err := svc.GetPermissions(a.ctx, a.dashboard.OrgId, strconv.FormatInt(a.dashboard.Id, 10))
+	if err != nil {
+		return nil, err
+	}
+
+	acl := make([]*models.DashboardAclInfoDTO, 0, len(permissions))
+	for _, p := range permissions {
+		var role *models.RoleType
+		if p.BuiltInRole != "" {
+			tmp := models.RoleType(p.BuiltInRole)
+			role = &tmp
+		}
+
+		acl = append(acl, &models.DashboardAclInfoDTO{
+			OrgId:          a.dashboard.OrgId,
+			DashboardId:    a.dashboard.Id,
+			FolderId:       a.dashboard.FolderId,
+			Created:        p.Created,
+			Updated:        p.Updated,
+			UserId:         p.UserId,
+			UserLogin:      p.UserLogin,
+			UserEmail:      p.UserEmail,
+			TeamId:         p.TeamId,
+			TeamEmail:      p.TeamEmail,
+			Team:           p.Team,
+			Role:           role,
+			Permission:     permissionMap[svc.MapActions(p)],
+			PermissionName: permissionMap[svc.MapActions(p)].String(),
+			Uid:            a.dashboard.Uid,
+			Title:          a.dashboard.Title,
+			Slug:           a.dashboard.Slug,
+			IsFolder:       a.dashboard.IsFolder,
+			Url:            a.dashboard.GetUrl(),
+			Inherited:      false,
+		})
+	}
+
+	return acl, nil
 }
 
-func (a AccessControlDashboardGuardian) GetACLWithoutDuplicates() ([]*models.DashboardAclInfoDTO, error) {
-	// not used with access control
-	return nil, nil
+func (a *AccessControlDashboardGuardian) GetACLWithoutDuplicates() ([]*models.DashboardAclInfoDTO, error) {
+	return a.GetAcl()
 }
 
-func (a AccessControlDashboardGuardian) GetHiddenACL(cfg *setting.Cfg) ([]*models.DashboardAcl, error) {
+func (a *AccessControlDashboardGuardian) GetHiddenACL(cfg *setting.Cfg) ([]*models.DashboardAcl, error) {
 	// not used with access control
 	return nil, nil
 }
