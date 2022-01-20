@@ -1,9 +1,11 @@
 package permissions
 
 import (
+	"context"
 	"strings"
 
 	"github.com/grafana/grafana/pkg/models"
+	"github.com/grafana/grafana/pkg/services/accesscontrol"
 	"github.com/grafana/grafana/pkg/services/sqlstore/migrator"
 )
 
@@ -52,7 +54,7 @@ func (d DashboardPermissionFilter) Where() (string, []interface{}) {
 							-- include default permissions -->
 							da.org_id = -1 AND (
 							  (folder.id IS NOT NULL AND folder.has_acl = ` + falseStr + `) OR
-							  (folder.id IS NULL AND d.has_acl = ` + falseStr + `) 
+							  (folder.id IS NULL AND d.has_acl = ` + falseStr + `)
 							)
 						)
 					WHERE
@@ -72,4 +74,22 @@ func (d DashboardPermissionFilter) Where() (string, []interface{}) {
 	params = append(params, d.OrgId, d.PermissionLevel, d.UserId)
 	params = append(params, okRoles...)
 	return sql, params
+}
+
+type AccessControlDashboardPermissionFilter struct {
+	User            *models.SignedInUser
+	PermissionLevel models.PermissionType
+	Dialect         migrator.Dialect
+}
+
+func (f AccessControlDashboardPermissionFilter) Where() (string, []interface{}) {
+	sql := `(`
+	dashSql, params, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "dashboards", "dashboards:read", f.User)
+	sql += dashSql
+	folderSql, folderParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.folder_id", "folders", "folders:read", f.User)
+	sql += " OR " + folderSql
+	tempSQL, tempParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "folders", "folders:read", f.User)
+	sql += " OR " + tempSQL + " )"
+
+	return sql, append(params, append(folderParams, tempParams...)...)
 }
