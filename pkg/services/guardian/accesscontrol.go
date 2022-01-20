@@ -48,8 +48,8 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 	// check permissions to create new dashboard / folder
 	if a.dashboardID == 0 {
 		return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
-			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsCreate),
 			accesscontrol.EvalPermission(accesscontrol.ActionFoldersCreate),
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsCreate),
 		))
 	}
 
