@@ -274,6 +274,17 @@ func (ss *SQLStore) findDashboards(ctx context.Context, query *search.FindPersis
 		},
 	}
 
+	if ss.Cfg.FeatureToggles["accesscontrol"] {
+		filters = []interface{}{
+			permissions.AccessControlDashboardPermissionFilter{
+				User:            query.SignedInUser,
+				PermissionLevel: query.Permission,
+				Dialect:         dialect,
+			},
+		}
+
+	}
+
 	for _, filter := range query.Sort.Filter {
 		filters = append(filters, filter)
 	}
@@ -322,7 +333,6 @@ func (ss *SQLStore) findDashboards(ctx context.Context, query *search.FindPersis
 	}
 
 	sql, params := sb.ToSQL(limit, page)
-
 	err := ss.WithDbSession(ctx, func(dbSession *DBSession) error {
 		return dbSession.SQL(sql, params...).Find(&res)
 	})
