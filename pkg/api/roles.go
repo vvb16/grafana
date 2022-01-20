@@ -213,13 +213,13 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Version:     1,
 			Name:        "fixed:dashboards:reader",
 			DisplayName: "Dashboard reader",
-			Description: "Read all dashboards",
+			Description: "Read dashboards",
 			Group:       "Dashboards",
 			Permissions: []accesscontrol.Permission{
-				{Action: accesscontrol.ActionDashboardsRead, Scope: accesscontrol.ScopeDashboardsAll},
+				{Action: accesscontrol.ActionDashboardsRead},
 			},
 		},
-		Grants: []string{"Admin"},
+		Grants: []string{"Viewer"},
 	}
 
 	// TODO: use scope for folder?
@@ -230,9 +230,11 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			DisplayName: "Dashboard creator",
 			Group:       "Dashboards",
 			Description: "Create dashboards",
-			Permissions: accesscontrol.ConcatPermissions(dashboardsReaderRole.Role.Permissions, []accesscontrol.Permission{
-				{Action: accesscontrol.ActionDashboardsCreate},
-			}),
+			Permissions: accesscontrol.ConcatPermissions(
+				dashboardsReaderRole.Role.Permissions,
+				[]accesscontrol.Permission{
+					{Action: accesscontrol.ActionDashboardsCreate},
+				}),
 		},
 		Grants: []string{"Editor"},
 	}
@@ -245,9 +247,9 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Group:       "Dashboards",
 			Description: "Read,",
 			Permissions: accesscontrol.ConcatPermissions(
-				dashboardsReaderRole.Role.Permissions,
 				dashboardsCreatorRole.Role.Permissions,
 				[]accesscontrol.Permission{
+					{Action: accesscontrol.ActionDashboardsRead, Scope: accesscontrol.ScopeDashboardsAll},
 					{Action: accesscontrol.ActionDashboardsWrite, Scope: accesscontrol.ScopeDashboardsAll},
 					{Action: accesscontrol.ActionDashboardsDelete, Scope: accesscontrol.ScopeDashboardsAll},
 				}),
@@ -260,13 +262,13 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Version:     1,
 			Name:        "fixed:folders:reader",
 			DisplayName: "Folder reader",
-			Description: "",
+			Description: "Read folders",
 			Group:       "Dashboards",
 			Permissions: []accesscontrol.Permission{
-				{Action: accesscontrol.ActionFoldersRead, Scope: accesscontrol.ScopeFoldersAll},
+				{Action: accesscontrol.ActionFoldersRead},
 			},
 		},
-		Grants: []string{"Admin"},
+		Grants: []string{"Viewer"},
 	}
 
 	foldersCreatorRole := accesscontrol.RoleRegistration{
@@ -291,9 +293,9 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Description: "",
 			Group:       "Dashboards",
 			Permissions: accesscontrol.ConcatPermissions(
-				foldersReaderRole.Role.Permissions,
 				foldersCreatorRole.Role.Permissions,
 				[]accesscontrol.Permission{
+					{Action: accesscontrol.ActionFoldersRead, Scope: accesscontrol.ScopeFoldersAll},
 					{Action: accesscontrol.ActionFoldersWrite, Scope: accesscontrol.ScopeFoldersAll},
 					{Action: accesscontrol.ActionFoldersDelete, Scope: accesscontrol.ScopeFoldersAll},
 				}),

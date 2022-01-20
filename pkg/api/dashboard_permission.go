@@ -56,6 +56,7 @@ func (hs *HTTPServer) GetDashboardPermissionList(c *models.ReqContext) response.
 	return response.JSON(200, filteredAcls)
 }
 
+// TODO: fix compatability
 func (hs *HTTPServer) UpdateDashboardPermissions(c *models.ReqContext) response.Response {
 	apiCmd := dtos.UpdateDashboardAclCommand{}
 	if err := web.Bind(c.Req, &apiCmd); err != nil {
