@@ -315,6 +315,7 @@ const (
 	ActionTeamsCreate = "teams:create"
 
 	// Dashboard actions
+	ActionDashboardsCreate           = "dashboards:create"
 	ActionDashboardsRead             = "dashboards:read"
 	ActionDashboardsWrite            = "dashboards:write"
 	ActionDashboardsDelete           = "dashboards:delete"
@@ -325,6 +326,7 @@ const (
 	ScopeDashboardsAll = "dashboards:*"
 
 	// Folder actions
+	ActionFoldersCreate           = "folders:create"
 	ActionFoldersRead             = "folders:read"
 	ActionFoldersWrite            = "folders:write"
 	ActionFoldersDelete           = "folders:delete"
