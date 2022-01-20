@@ -35,18 +35,28 @@ func NewAccessControlDashboardGuardian(
 }
 
 type AccessControlDashboardGuardian struct {
-	ctx         context.Context
-	dashboardID int64
-
-	dashboard *models.Dashboard
-	user      *models.SignedInUser
-
+	ctx                context.Context
+	dashboardID        int64
+	dashboard          *models.Dashboard
+	user               *models.SignedInUser
 	store              *sqlstore.SQLStore
 	ac                 accesscontrol.AccessControl
 	permissionServices *resourcepermissions.Services
 }
 
 func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
+	// check permissions to create new dashboard / folder
+	if a.dashboardID == 0 {
+		return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsCreate),
+			accesscontrol.EvalPermission(accesscontrol.ActionFoldersCreate),
+		))
+	}
+
+	return a.CanEdit()
+}
+
+func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
 	if err := a.loadDashboard(); err != nil {
 		return false, err
 	}
@@ -59,10 +69,6 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.Id)),
 		accesscontrol.EvalPermission(accesscontrol.ActionFoldersWrite, folderScope(a.dashboard.FolderId)),
 	))
-}
-
-func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
-	return a.CanSave()
 }
 
 func (a *AccessControlDashboardGuardian) CanView() (bool, error) {
