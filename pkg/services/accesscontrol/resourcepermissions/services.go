@@ -13,6 +13,13 @@ import (
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 )
 
+var dashboardsView = []string{ac.ActionDashboardsRead}
+var dashboardsEdit = append(dashboardsView, []string{ac.ActionDashboardsWrite, ac.ActionDashboardsDelete}...)
+var dashboardsAdmin = append(dashboardsEdit, []string{ac.ActionDashboardsPermissionsRead, ac.ActionDashboardsPermissionsWrite}...)
+var foldersView = []string{ac.ActionFoldersRead}
+var foldersEdit = append(foldersView, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete}...)
+var foldersAdmin = append(foldersEdit, []string{ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite}...)
+
 func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac ac.AccessControl, store ac.ResourcePermissionsStore) (*Services, error) {
 	dashboardsService, err := provideDashboardService(sql, router, ac, store)
 	if err != nil {
@@ -62,9 +69,9 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 			BuiltInRoles: true,
 		},
 		PermissionsToActions: map[string][]string{
-			"View":  {ac.ActionDashboardsRead},
-			"Edit":  {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsDelete},
-			"Admin": {ac.ActionDashboardsRead, ac.ActionDashboardsWrite, ac.ActionDashboardsWrite, ac.ActionDashboardsPermissionsRead, ac.ActionDashboardsPermissionsWrite},
+			"View":  dashboardsView,
+			"Edit":  dashboardsEdit,
+			"Admin": dashboardsAdmin,
 		},
 		ReaderRoleName: "Dashboard permission reader",
 		WriterRoleName: "Dashboard permission writer",
@@ -75,10 +82,6 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 }
 
 func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
-	view := []string{ac.ActionFoldersRead}
-	edit := append(view, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionDashboardsCreate}...)
-	admin := append(edit, []string{ac.ActionFoldersDelete, ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite}...)
-
 	options := Options{
 		Resource: "folders",
 		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
@@ -100,9 +103,9 @@ func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, 
 			BuiltInRoles: true,
 		},
 		PermissionsToActions: map[string][]string{
-			"View":  view,
-			"Edit":  edit,
-			"Admin": admin,
+			"View":  append(dashboardsView, foldersView...),
+			"Edit":  append(dashboardsEdit, foldersEdit...),
+			"Admin": append(dashboardsAdmin, foldersAdmin...),
 		},
 		ReaderRoleName: "Folder permission reader",
 		WriterRoleName: "Folder permission writer",
