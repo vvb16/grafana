@@ -87,9 +87,11 @@ func (f AccessControlDashboardPermissionFilter) Where() (string, []interface{}) 
 	dashSql, params, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "dashboards", "dashboards:read", f.User)
 	sql += dashSql
 	folderSql, folderParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.folder_id", "folders", "folders:read", f.User)
+	if folderSql != " 1 = 0" {
+		folderSql = "(" + folderSql + " AND " + "NOT dashboard.is_folder)"
+	}
+
 	sql += " OR " + folderSql
 	tempSQL, tempParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "folders", "folders:read", f.User)
-	sql += " OR " + tempSQL + " )"
-
-	return sql, append(params, append(folderParams, tempParams...)...)
+	return sql + " OR " + tempSQL + " )", append(params, append(folderParams, tempParams...)...)
 }
