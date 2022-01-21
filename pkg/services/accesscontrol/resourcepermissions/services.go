@@ -75,6 +75,10 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 }
 
 func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
+	view := []string{ac.ActionFoldersRead}
+	edit := append(view, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionDashboardsCreate}...)
+	admin := append(edit, []string{ac.ActionFoldersDelete, ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite}...)
+
 	options := Options{
 		Resource: "folders",
 		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
@@ -96,9 +100,9 @@ func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, 
 			BuiltInRoles: true,
 		},
 		PermissionsToActions: map[string][]string{
-			"View":  {ac.ActionFoldersRead},
-			"Edit":  {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete},
-			"Admin": {ac.ActionFoldersRead, ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite},
+			"View":  view,
+			"Edit":  edit,
+			"Admin": admin,
 		},
 		ReaderRoleName: "Folder permission reader",
 		WriterRoleName: "Folder permission writer",
