@@ -18,6 +18,22 @@ var permissionMap = map[string]models.PermissionType{
 	"Admin": models.PERMISSION_ADMIN,
 }
 
+/*
+	## RULES
+	* To read dashboard user need to have `dashboards:read` with scope `dashboards:id:1` or `folders:id:1`
+	* To read folder user need to have `folders:read` with scope `folders:id:1`
+	* To create dashboard user need to have `dashboards:create` with scope `folders:id:1` (create dashboards in folder with id 1)
+	* To create folder user need to have `folders:create`
+	* To update dashboard user need to have `dashboards:write` with scope `dashboards:id:1` or `folders:id:1`
+	* To update folder user need to have `folders:write` with scope `folders:id:1`
+	* To delete dashboard user need to have `dashboards:delete` with scope `dashboards:id:1` or `folders:id:1`
+	* To delete folder user need to have `folders:delete` with scope `folders:id:1`
+	* To read dashboard permissions user need to have `dashboards.permissions:read` with scope `dashboards:id:1` or `folders:id:1`
+	* To read folder permissions user need to have `folders.permissions:read` with scope `folders:id:1`
+	* To update dashboard permissions user need to have `dashboards.permissions:write` with scope `dashboards:id:1` or `folders:id:1`
+	* To update folder permissions user need to have `folders.permissions:write` with scope `folders:id:1`
+*/
+
 var _ DashboardGuardian = new(AccessControlDashboardGuardian)
 
 func NewAccessControlDashboardGuardian(
@@ -67,7 +83,7 @@ func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.Id)),
-		accesscontrol.EvalPermission(accesscontrol.ActionFoldersWrite, folderScope(a.dashboard.FolderId)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, folderScope(a.dashboard.FolderId)),
 	))
 }
 
@@ -82,7 +98,7 @@ func (a *AccessControlDashboardGuardian) CanView() (bool, error) {
 
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead, dashboardScope(a.dashboard.Id)),
-		accesscontrol.EvalPermission(accesscontrol.ActionFoldersRead, folderScope(a.dashboard.FolderId)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead, folderScope(a.dashboard.FolderId)),
 	))
 }
 
@@ -104,8 +120,8 @@ func (a *AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionsWrite, dashboardScope(a.dashboard.Id)),
 		),
 		accesscontrol.EvalAll(
-			accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsRead, folderScope(a.dashboard.FolderId)),
-			accesscontrol.EvalPermission(accesscontrol.ActionFoldersPermissionsWrite, folderScope(a.dashboard.FolderId)),
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionsRead, folderScope(a.dashboard.FolderId)),
+			accesscontrol.EvalPermission(accesscontrol.ActionDashboardsPermissionsWrite, folderScope(a.dashboard.FolderId)),
 		),
 	))
 }
