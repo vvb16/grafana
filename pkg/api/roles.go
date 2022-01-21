@@ -231,7 +231,6 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Group:       "Dashboards",
 			Description: "Update dashboards",
 			Permissions: accesscontrol.ConcatPermissions(dashboardsReaderRole.Role.Permissions, []accesscontrol.Permission{
-				{Action: accesscontrol.ActionDashboardsRead, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsWrite, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsDelete, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsCreate, Scope: accesscontrol.ScopeFoldersAll},
@@ -276,7 +275,7 @@ func (hs *HTTPServer) declareFixedRoles() error {
 	return hs.AccessControl.DeclareFixedRoles(
 		provisioningWriterRole, datasourcesReaderRole, datasourcesWriterRole, datasourcesIdReaderRole,
 		datasourcesCompatibilityReaderRole, orgReaderRole, orgWriterRole, orgMaintainerRole, teamsWriterRole,
-		dashboardsWriterRole, foldersReaderRole, foldersReaderWriter,
+		dashboardsReaderRole, dashboardsWriterRole, foldersReaderRole, foldersReaderWriter,
 	)
 }
 
@@ -326,11 +325,4 @@ var orgsAccessEvaluator = accesscontrol.EvalPermission(ActionOrgsRead)
 var orgsCreateAccessEvaluator = accesscontrol.EvalAll(
 	accesscontrol.EvalPermission(ActionOrgsRead),
 	accesscontrol.EvalPermission(ActionOrgsCreate),
-)
-
-var (
-	dashboardsReadEvaluator = accesscontrol.EvalAny(
-		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsRead),
-		accesscontrol.EvalPermission(accesscontrol.ActionFoldersRead),
-	)
 )

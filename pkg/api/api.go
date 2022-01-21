@@ -325,7 +325,7 @@ func (hs *HTTPServer) registerRoutes() {
 
 		// Dashboard
 		apiRoute.Group("/dashboards", func(dashboardRoute routing.RouteRegister) {
-			dashboardRoute.Get("/uid/:uid", authorize(reqSignedIn, dashboardsReadEvaluator), routing.Wrap(hs.GetDashboard))
+			dashboardRoute.Get("/uid/:uid", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsRead)), routing.Wrap(hs.GetDashboard))
 			dashboardRoute.Delete("/uid/:uid", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsDelete)), routing.Wrap(hs.DeleteDashboardByUID))
 
 			if hs.ThumbService != nil {
@@ -337,8 +337,8 @@ func (hs *HTTPServer) registerRoutes() {
 			dashboardRoute.Post("/trim", routing.Wrap(hs.TrimDashboard))
 
 			dashboardRoute.Post("/db", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsCreate)), routing.Wrap(hs.PostDashboard))
-			dashboardRoute.Get("/home", authorize(reqSignedIn, dashboardsReadEvaluator), routing.Wrap(hs.GetHomeDashboard))
-			dashboardRoute.Get("/tags", authorize(reqSignedIn, dashboardsReadEvaluator), GetDashboardTags)
+			dashboardRoute.Get("/home", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsRead)), routing.Wrap(hs.GetHomeDashboard))
+			dashboardRoute.Get("/tags", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsRead)), GetDashboardTags)
 			dashboardRoute.Post("/import", authorize(reqSignedIn, ac.EvalPermission(ac.ActionDashboardsCreate)), routing.Wrap(hs.ImportDashboard))
 
 			dashboardRoute.Group("/id/:dashboardId", func(dashIdRoute routing.RouteRegister) {
@@ -371,7 +371,10 @@ func (hs *HTTPServer) registerRoutes() {
 
 		// Search
 		apiRoute.Get("/search/sorting", routing.Wrap(hs.ListSortOptions))
-		apiRoute.Get("/search/", authorize(reqSignedIn, dashboardsReadEvaluator), routing.Wrap(Search))
+		apiRoute.Get("/search/", authorize(reqSignedIn, ac.EvalAny(
+			ac.EvalPermission(ac.ActionFoldersRead),
+			ac.EvalPermission(ac.ActionDashboardsRead),
+		)), routing.Wrap(Search))
 
 		// metrics
 		apiRoute.Post("/tsdb/query", authorize(reqSignedIn, ac.EvalPermission(ActionDatasourcesQuery)), routing.Wrap(hs.QueryMetrics))
