@@ -537,11 +537,15 @@ func (hs *HTTPServer) buildAdminNavLinks(c *models.ReqContext) []*dtos.NavLink {
 }
 
 func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewData, error) {
-	hasEditPermissionInFoldersQuery := models.HasEditPermissionInFoldersQuery{SignedInUser: c.SignedInUser}
-	if err := bus.Dispatch(c.Req.Context(), &hasEditPermissionInFoldersQuery); err != nil {
-		return nil, err
-	}
-	hasEditPerm := hasEditPermissionInFoldersQuery.Result
+	hasAccess := ac.HasAccess(hs.AccessControl, c)
+
+	hasEditPerm := hasAccess(func(context *models.ReqContext) bool {
+		hasEditPermissionInFoldersQuery := models.HasEditPermissionInFoldersQuery{SignedInUser: c.SignedInUser}
+		if err := bus.Dispatch(c.Req.Context(), &hasEditPermissionInFoldersQuery); err != nil {
+			return false
+		}
+		return hasEditPermissionInFoldersQuery.Result
+	}, ac.EvalAny(ac.EvalPermission(ac.ActionDashboardsCreate), ac.EvalPermission(ac.ActionFoldersCreate)))
 
 	settings, err := hs.getFrontendSettingsMap(c)
 	if err != nil {
