@@ -78,7 +78,7 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 		RoleGroup:      "Dashboards",
 	}
 
-	return New(options, router, accesscontrol, store)
+	return New(options, router, accesscontrol, store, sql)
 }
 
 func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
@@ -112,7 +112,7 @@ func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, 
 		RoleGroup:      "Folders",
 	}
 
-	return New(options, router, accesscontrol, store)
+	return New(options, router, accesscontrol, store, sql)
 }
 
 func onDashboardPermissionUpdated(ctx context.Context, store *sqlstore.SQLStore, resourceID string, item models.DashboardAcl, permission string) error {
