@@ -104,6 +104,7 @@ func (hs *HTTPServer) GetDashboard(c *models.ReqContext) response.Response {
 	canEdit, _ := guardian.CanEdit()
 	canSave, _ := guardian.CanSave()
 	canAdmin, _ := guardian.CanAdmin()
+	canDelete, _ := guardian.CanDelete()
 
 	isStarred, err := isDashboardStarredByUser(c, dash.Id)
 	if err != nil {
@@ -127,6 +128,7 @@ func (hs *HTTPServer) GetDashboard(c *models.ReqContext) response.Response {
 		CanSave:     canSave,
 		CanEdit:     canEdit,
 		CanAdmin:    canAdmin,
+		CanDelete:   canDelete,
 		Created:     dash.Created,
 		Updated:     dash.Updated,
 		UpdatedBy:   updater,
