@@ -4,9 +4,6 @@ import (
 	"context"
 	"errors"
 	"strconv"
-	"time"
-
-	"github.com/grafana/grafana/pkg/models"
 
 	"github.com/grafana/grafana/pkg/api/routing"
 	ac "github.com/grafana/grafana/pkg/services/accesscontrol"
@@ -113,62 +110,4 @@ func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, 
 	}
 
 	return New(options, router, accesscontrol, store, sql)
-}
-
-func onDashboardPermissionUpdated(ctx context.Context, store *sqlstore.SQLStore, resourceID string, item models.DashboardAcl, permission string) error {
-	return store.WithTransactionalDbSession(ctx, func(sess *sqlstore.DBSession) error {
-		dashboardID, err := strconv.ParseInt(resourceID, 10, 64)
-		if err != nil {
-			return err
-		}
-
-		item.DashboardID = dashboardID
-		has, err := sess.Get(&item)
-		if err != nil {
-			return err
-		}
-
-		if permission == "" {
-			rawSQL := `
-				DELETE FROM dashboard_acl WHERE id = ?
-			`
-			if _, err := sess.Exec(rawSQL, item.Id); err != nil {
-				return err
-			}
-			return nil
-		}
-
-		item.Updated = time.Now()
-		item.Permission = translateDashboardPermission(permission)
-		if has {
-			rawSQL := `
-				UPDATE dashboard_acl
-				SET permission = ?, updated = ?
-				WHERE id = ?
-			`
-			if _, err := sess.Exec(rawSQL, item.Permission, item.Updated, item.Id); err != nil {
-				return err
-			}
-
-			return nil
-		}
-
-		item.Created = time.Now()
-		sess.Nullable("user_id", "team_id")
-		if _, err := sess.Insert(&item); err != nil {
-			return err
-		}
-
-		return nil
-	})
-}
-
-func translateDashboardPermission(permission string) models.PermissionType {
-	permissionLevel := models.PERMISSION_VIEW
-	if permission == models.PERMISSION_EDIT.String() {
-		permissionLevel = models.PERMISSION_EDIT
-	} else if permission == models.PERMISSION_ADMIN.String() {
-		permissionLevel = models.PERMISSION_ADMIN
-	}
-	return permissionLevel
 }
