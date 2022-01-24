@@ -18,6 +18,7 @@ export interface FolderState {
   title: string;
   url: string;
   canSave: boolean;
+  canDelete: boolean;
   hasChanged: boolean;
   version: number;
   permissions: DashboardAcl[];
