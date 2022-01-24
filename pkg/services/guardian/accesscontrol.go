@@ -126,6 +126,25 @@ func (a *AccessControlDashboardGuardian) CanAdmin() (bool, error) {
 	))
 }
 
+func (a *AccessControlDashboardGuardian) CanDelete() (bool, error) {
+	if err := a.loadDashboard(); err != nil {
+		return false, err
+	}
+
+	if a.dashboard.IsFolder {
+		return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalPermission(accesscontrol.ActionFoldersDelete, folderScope(a.dashboard.Id)))
+	}
+
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsDelete, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsDelete, folderScope(a.dashboard.FolderId)),
+	))
+}
+
+func (a *AccessControlDashboardGuardian) evaluate(actions ...string) {
+
+}
+
 func (a *AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
 	// not used with access control
 	return false, nil
