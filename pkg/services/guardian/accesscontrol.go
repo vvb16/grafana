@@ -141,10 +141,6 @@ func (a *AccessControlDashboardGuardian) CanDelete() (bool, error) {
 	))
 }
 
-func (a *AccessControlDashboardGuardian) evaluate(actions ...string) {
-
-}
-
 func (a *AccessControlDashboardGuardian) CheckPermissionBeforeUpdate(permission models.PermissionType, updatePermissions []*models.DashboardAcl) (bool, error) {
 	// not used with access control
 	return false, nil

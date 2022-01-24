@@ -244,7 +244,7 @@ func (hs *HTTPServer) deleteDashboard(c *models.ReqContext) response.Response {
 	}
 
 	guardian := guardian.New(c.Req.Context(), dash.Id, c.OrgId, c.SignedInUser)
-	if canSave, err := guardian.CanSave(); err != nil || !canSave {
+	if canDelete, err := guardian.CanDelete(); err != nil || !canDelete {
 		return dashboardGuardianResponse(err)
 	}
 
