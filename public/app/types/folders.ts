@@ -9,6 +9,7 @@ export interface FolderDTO {
   canSave: boolean;
   canEdit: boolean;
   canAdmin: boolean;
+  canDelete: boolean;
 }
 
 export interface FolderState {
