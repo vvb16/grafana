@@ -317,6 +317,7 @@ const (
 	// Dashboard actions
 	ActionDashboardsCreate           = "dashboards:create"
 	ActionDashboardsRead             = "dashboards:read"
+	ActionDashboardsEdit             = "dashboards:edit"
 	ActionDashboardsWrite            = "dashboards:write"
 	ActionDashboardsDelete           = "dashboards:delete"
 	ActionDashboardsPermissionsRead  = "dashboards.permissions:read"
@@ -328,6 +329,7 @@ const (
 	// Folder actions
 	ActionFoldersCreate           = "folders:create"
 	ActionFoldersRead             = "folders:read"
+	ActionFoldersEdit             = "folders:edit"
 	ActionFoldersWrite            = "folders:write"
 	ActionFoldersDelete           = "folders:delete"
 	ActionFoldersPermissionsRead  = "folders.permissions:read"

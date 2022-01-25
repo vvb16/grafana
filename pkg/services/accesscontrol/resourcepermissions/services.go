@@ -11,10 +11,10 @@ import (
 )
 
 var dashboardsView = []string{ac.ActionDashboardsRead}
-var dashboardsEdit = append(dashboardsView, []string{ac.ActionDashboardsWrite, ac.ActionDashboardsDelete}...)
+var dashboardsEdit = append(dashboardsView, []string{ac.ActionDashboardsWrite, ac.ActionDashboardsDelete, ac.ActionDashboardsEdit}...)
 var dashboardsAdmin = append(dashboardsEdit, []string{ac.ActionDashboardsPermissionsRead, ac.ActionDashboardsPermissionsWrite}...)
 var foldersView = []string{ac.ActionFoldersRead}
-var foldersEdit = append(foldersView, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionDashboardsCreate}...)
+var foldersEdit = append(foldersView, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersEdit, ac.ActionDashboardsCreate}...)
 var foldersAdmin = append(foldersEdit, []string{ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite}...)
 
 func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac ac.AccessControl, store ac.ResourcePermissionsStore) (*Services, error) {

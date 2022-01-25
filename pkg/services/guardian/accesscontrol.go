@@ -69,10 +69,6 @@ func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
 		))
 	}
 
-	return a.CanEdit()
-}
-
-func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
 	if err := a.loadDashboard(); err != nil {
 		return false, err
 	}
@@ -84,6 +80,21 @@ func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
 	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, dashboardScope(a.dashboard.Id)),
 		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsWrite, folderScope(a.dashboard.FolderId)),
+	))
+}
+
+func (a *AccessControlDashboardGuardian) CanEdit() (bool, error) {
+	if err := a.loadDashboard(); err != nil {
+		return false, err
+	}
+
+	if a.dashboard.IsFolder {
+		return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalPermission(accesscontrol.ActionFoldersEdit, folderScope(a.dashboardID)))
+	}
+
+	return a.ac.Evaluate(a.ctx, a.user, accesscontrol.EvalAny(
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsEdit, dashboardScope(a.dashboard.Id)),
+		accesscontrol.EvalPermission(accesscontrol.ActionDashboardsEdit, folderScope(a.dashboard.FolderId)),
 	))
 }
 
