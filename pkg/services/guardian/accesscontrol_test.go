@@ -4,6 +4,10 @@ import (
 	"context"
 	"testing"
 
+	"github.com/grafana/grafana/pkg/api/routing"
+	"github.com/grafana/grafana/pkg/extensions/accesscontrol/database"
+	"github.com/grafana/grafana/pkg/services/accesscontrol/resourcepermissions"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -93,30 +97,92 @@ func TestAccessControlDashboardGuardian_CanSave(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			store := sqlstore.InitTestDB(t)
-
-			// seed dashboard
-			_, err := store.SaveDashboard(models.SaveDashboardCommand{
-				Dashboard: &simplejson.Json{},
-				UserId:    1,
-				OrgId:     1,
-				FolderId:  0,
-			})
-			require.NoError(t, err)
-
-			guardian := NewAccessControlDashboardGuardian(
-				context.Background(),
-				tt.dashboardID,
-				&models.SignedInUser{OrgId: 1},
-				store,
-				accesscontrolmock.New().WithPermissions(tt.permissions),
-				nil,
-			)
+			guardian := setupAccessControlGuardianTest(t, tt.dashboardID, tt.permissions)
 
 			can, err := guardian.CanSave()
 			require.NoError(t, err)
 			assert.Equal(t, tt.expected, can)
+		})
+	}
+}
 
+func TestAccessControlDashboardGuardian_CanEdit(t *testing.T) {
+	tests := []accessControlGuardianTestCase{
+		{
+			desc:        "should be able to edit with dashboard wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "dashboards:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to edit with folder wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "folders:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to edit with dashboard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "dashboards:id:1",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to edit with folder scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "folders:id:0",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should not be able to edit with incorrect dashboard scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "dashboards:id:10",
+				},
+			},
+			expected: false,
+		},
+		{
+			desc:        "should not be able to edit with incorrect folder scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsEdit,
+					Scope:  "folders:id:10",
+				},
+			},
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
+			guardian := setupAccessControlGuardianTest(t, tt.dashboardID, tt.permissions)
+
+			can, err := guardian.CanEdit()
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, can)
 		})
 	}
 }
@@ -193,30 +259,11 @@ func TestAccessControlDashboardGuardian_CanView(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			store := sqlstore.InitTestDB(t)
-
-			// seed dashboard
-			_, err := store.SaveDashboard(models.SaveDashboardCommand{
-				Dashboard: &simplejson.Json{},
-				UserId:    1,
-				OrgId:     1,
-				FolderId:  0,
-			})
-			require.NoError(t, err)
-
-			guardian := NewAccessControlDashboardGuardian(
-				context.Background(),
-				tt.dashboardID,
-				&models.SignedInUser{OrgId: 1},
-				store,
-				accesscontrolmock.New().WithPermissions(tt.permissions),
-				nil,
-			)
+			guardian := setupAccessControlGuardianTest(t, tt.dashboardID, tt.permissions)
 
 			can, err := guardian.CanView()
 			require.NoError(t, err)
 			assert.Equal(t, tt.expected, can)
-
 		})
 	}
 
@@ -318,44 +365,111 @@ func TestAccessControlDashboardGuardian_CanAdmin(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			store := sqlstore.InitTestDB(t)
+			guardian := setupAccessControlGuardianTest(t, tt.dashboardID, tt.permissions)
 
-			// seed dashboard
-			_, err := store.SaveDashboard(models.SaveDashboardCommand{
-				Dashboard: &simplejson.Json{},
-				UserId:    1,
-				OrgId:     1,
-				FolderId:  0,
-			})
-			require.NoError(t, err)
-
-			guardian := NewAccessControlDashboardGuardian(
-				context.Background(),
-				tt.dashboardID,
-				&models.SignedInUser{OrgId: 1},
-				store,
-				accesscontrolmock.New().WithPermissions(tt.permissions),
-				nil,
-			)
-
-			can, err := guardian.CanAdmin()
+			can, err := guardian.CanView()
 			require.NoError(t, err)
 			assert.Equal(t, tt.expected, can)
-
 		})
 	}
 }
 
-type accessControlGetAclTestCase struct {
-	desc string
-}
-
-func TestAccessControlDashboardGuardian_GetAcl(t *testing.T) {
-	tests := []accessControlGetAclTestCase{}
+func TestAccessControlDashboardGuardian_CanDelete(t *testing.T) {
+	tests := []accessControlGuardianTestCase{
+		{
+			desc:        "should be able to delete with dashboard wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "dashboards:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to delete with folder wildcard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "folders:*",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to delete with dashboard scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "dashboards:id:1",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should be able to delete with folder scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "folders:id:0",
+				},
+			},
+			expected: true,
+		},
+		{
+			desc:        "should not be able to delete with incorrect dashboard scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "dashboards:id:10",
+				},
+			},
+			expected: false,
+		},
+		{
+			desc:        "should not be able to delete with incorrect folder scope scope",
+			dashboardID: 1,
+			permissions: []*accesscontrol.Permission{
+				{
+					Action: accesscontrol.ActionDashboardsDelete,
+					Scope:  "folders:id:10",
+				},
+			},
+			expected: false,
+		},
+	}
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
+			guardian := setupAccessControlGuardianTest(t, tt.dashboardID, tt.permissions)
 
+			can, err := guardian.CanDelete()
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, can)
 		})
 	}
+}
+
+func setupAccessControlGuardianTest(t *testing.T, dashID int64, permissions []*accesscontrol.Permission) *AccessControlDashboardGuardian {
+	t.Helper()
+	store := sqlstore.InitTestDB(t)
+	// seed dashboard
+	_, err := store.SaveDashboard(models.SaveDashboardCommand{
+		Dashboard: &simplejson.Json{},
+		UserId:    1,
+		OrgId:     1,
+		FolderId:  0,
+	})
+	require.NoError(t, err)
+
+	ac := accesscontrolmock.New().WithPermissions(permissions)
+	services, err := resourcepermissions.ProvideServices(store, routing.NewRouteRegister(), ac, database.ProvideService(store))
+	require.NoError(t, err)
+
+	return NewAccessControlDashboardGuardian(context.Background(), dashID, &models.SignedInUser{OrgId: 1}, store, ac, services)
 }
