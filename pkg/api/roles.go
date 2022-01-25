@@ -231,6 +231,7 @@ func (hs *HTTPServer) declareFixedRoles() error {
 			Group:       "Dashboards",
 			Description: "Update dashboards",
 			Permissions: accesscontrol.ConcatPermissions(dashboardsReaderRole.Role.Permissions, []accesscontrol.Permission{
+				{Action: accesscontrol.ActionDashboardsEdit, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsWrite, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsDelete, Scope: accesscontrol.ScopeDashboardsAll},
 				{Action: accesscontrol.ActionDashboardsCreate, Scope: accesscontrol.ScopeFoldersAll},
@@ -265,6 +266,7 @@ func (hs *HTTPServer) declareFixedRoles() error {
 				foldersReaderRole.Role.Permissions,
 				[]accesscontrol.Permission{
 					{Action: accesscontrol.ActionFoldersCreate},
+					{Action: accesscontrol.ActionFoldersEdit, Scope: accesscontrol.ScopeFoldersAll},
 					{Action: accesscontrol.ActionFoldersWrite, Scope: accesscontrol.ScopeFoldersAll},
 					{Action: accesscontrol.ActionFoldersDelete, Scope: accesscontrol.ScopeFoldersAll},
 				}),
