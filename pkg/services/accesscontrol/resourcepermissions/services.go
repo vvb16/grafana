@@ -17,7 +17,7 @@ var foldersView = []string{ac.ActionFoldersRead}
 var foldersEdit = append(foldersView, []string{ac.ActionFoldersWrite, ac.ActionFoldersDelete, ac.ActionFoldersEdit, ac.ActionDashboardsCreate}...)
 var foldersAdmin = append(foldersEdit, []string{ac.ActionFoldersPermissionsRead, ac.ActionFoldersPermissionsWrite}...)
 
-func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac ac.AccessControl, store ac.ResourcePermissionsStore) (*Services, error) {
+func ProvideServices(sql *sqlstore.SQLStore, router routing.RouteRegister, ac ac.AccessControl, store Store) (*Services, error) {
 	dashboardsService, err := provideDashboardService(sql, router, ac, store)
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ func (s *Services) GetFolderService() *Service {
 	return s.services["folders"]
 }
 
-func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
+func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store Store) (*Service, error) {
 	options := Options{
 		Resource: "dashboards",
 		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
@@ -78,7 +78,7 @@ func provideDashboardService(sql *sqlstore.SQLStore, router routing.RouteRegiste
 	return New(options, router, accesscontrol, store, sql)
 }
 
-func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store ac.ResourcePermissionsStore) (*Service, error) {
+func provideFolderService(sql *sqlstore.SQLStore, router routing.RouteRegister, accesscontrol ac.AccessControl, store Store) (*Service, error) {
 	options := Options{
 		Resource: "folders",
 		ResourceValidator: func(ctx context.Context, orgID int64, resourceID string) error {
