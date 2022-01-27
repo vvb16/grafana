@@ -236,16 +236,11 @@ func (e *AzureResourceGraphDatasource) unmarshalResponse(res *http.Response) (Az
 	}()
 
 	if res.StatusCode/100 != 2 {
+		azlog.Debug("Request failed", "status", res.Status, "body", string(body))
 		type ErrorObject struct {
-			Code    string `json:"code"`
-			Message string `json:"message"`
-			Details []struct {
-				Code                    string `json:"code"`
-				Message                 string `json:"message"`
-				Line                    int    `json:"line,omitempty"`
-				CharacterPositionInLine int    `json:"characterPositionInLine,omitempty"`
-				Token                   string `json:"token,omitempty"`
-			} `json:"details"`
+			Code    string                   `json:"code"`
+			Message string                   `json:"message"`
+			Details []map[string]interface{} `json:"details"`
 		}
 		type errorResponse struct {
 			ErrorObject `json:"error"`
@@ -254,26 +249,16 @@ func (e *AzureResourceGraphDatasource) unmarshalResponse(res *http.Response) (Az
 		er := errorResponse{}
 
 		err = json.Unmarshal(body, &er)
-		if err != nil || er.Code == "" || er.Message == "" {
-			azlog.Debug("Request failed", "status", res.Status, "body", string(body))
-			return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s, body: %s", res.Status, string(body))
+		if err != nil {
+			// return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s, body: %s", res.Status, string(body))
+			return AzureResourceGraphResponse{}, err
+		}
+		if er.Code != "" || er.Message != "" {
+			return AzureResourceGraphResponse{}, fmt.Errorf("2 body: %s", string(body))
 		}
 
 		errString := er.Code + ": " + er.Message + "\nDetails:"
-		for _, d := range er.Details {
-			errString += "\n" + d.Message
-			if d.Line != 0 {
-				errString += ": line " + fmt.Sprint(d.Line)
-			}
-			if d.CharacterPositionInLine != 0 {
-				errString += ", pos " + fmt.Sprint(d.CharacterPositionInLine)
-			}
-			if d.Token != "" {
-				errString += `, "` + string(d.Token) + `"`
-			}
-		}
 
-		azlog.Debug("Request failed", "status", res.Status, "body", string(body))
 		return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s\n%s", res.Status, errString)
 	}
 
