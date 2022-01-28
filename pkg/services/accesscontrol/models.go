@@ -312,9 +312,6 @@ const (
 	ActionLicensingDelete      = "licensing:delete"
 	ActionLicensingReportsRead = "licensing.reports:read"
 
-	// Team actions
-	ActionTeamsCreate = "teams:create"
-
 	// Dashboard actions
 	ActionDashboardsCreate           = "dashboards:create"
 	ActionDashboardsRead             = "dashboards:read"
@@ -338,6 +335,22 @@ const (
 
 	// Folder scopes
 	ScopeFoldersAll = "folders:*"
+
+	// Team related actions
+	ActionTeamsCreate           = "teams:create"
+	ActionTeamsDelete           = "teams:delete"
+	ActionTeamsRead             = "teams:read"
+	ActionTeamsWrite            = "teams:write"
+	ActionTeamsPermissionsRead  = "teams.permissions:read"
+	ActionTeamsPermissionsWrite = "teams.permissions:write"
+
+	// Team related scopes
+	ScopeTeamsAll = "teams:*"
+)
+
+var (
+	// Team scope
+	ScopeTeamsID = Scope("teams", "id", Parameter(":teamId"))
 )
 
 const RoleGrafanaAdmin = "Grafana Admin"
