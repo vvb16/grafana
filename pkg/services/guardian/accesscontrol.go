@@ -4,10 +4,9 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/grafana/grafana/pkg/services/accesscontrol/resourcepermissions"
-
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/accesscontrol"
+	"github.com/grafana/grafana/pkg/services/accesscontrol/resourceservices"
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 	"github.com/grafana/grafana/pkg/setting"
 )
@@ -22,7 +21,7 @@ var _ DashboardGuardian = new(AccessControlDashboardGuardian)
 
 func NewAccessControlDashboardGuardian(
 	ctx context.Context, dashboardId int64, user *models.SignedInUser,
-	store *sqlstore.SQLStore, ac accesscontrol.AccessControl, permissionServices *resourcepermissions.Services,
+	store *sqlstore.SQLStore, ac accesscontrol.AccessControl, permissionServices *resourceservices.ResourceServices,
 ) *AccessControlDashboardGuardian {
 	return &AccessControlDashboardGuardian{
 		ctx:                ctx,
@@ -41,7 +40,7 @@ type AccessControlDashboardGuardian struct {
 	user               *models.SignedInUser
 	store              *sqlstore.SQLStore
 	ac                 accesscontrol.AccessControl
-	permissionServices *resourcepermissions.Services
+	permissionServices *resourceservices.ResourceServices
 }
 
 func (a *AccessControlDashboardGuardian) CanSave() (bool, error) {
