@@ -2,6 +2,7 @@ package azuremonitor
 
 import (
 	"bytes"
+	"strings"
 	"time"
 
 	"context"
@@ -250,14 +251,20 @@ func (e *AzureResourceGraphDatasource) unmarshalResponse(res *http.Response) (Az
 
 		err = json.Unmarshal(body, &er)
 		if err != nil {
-			// return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s, body: %s", res.Status, string(body))
-			return AzureResourceGraphResponse{}, err
+			return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s, body: %s", res.Status, string(body))
 		}
-		if er.Code != "" || er.Message != "" {
-			return AzureResourceGraphResponse{}, fmt.Errorf("2 body: %s", string(body))
+		if er.Code == "" || er.Message == "" {
+			return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s, body: %s", res.Status, string(body))
 		}
 
 		errString := er.Code + ": " + er.Message + "\nDetails:"
+		for _, d := range er.Details {
+			tmp, _ := json.Marshal(d)
+			processed := strings.ReplaceAll(string(tmp), `"`, "")
+			errString += "\n" + string(processed)
+		}
+
+		fmt.Println(errString)
 
 		return AzureResourceGraphResponse{}, fmt.Errorf("request failed, status: %s\n%s", res.Status, errString)
 	}
