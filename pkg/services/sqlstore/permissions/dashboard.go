@@ -79,19 +79,31 @@ func (d DashboardPermissionFilter) Where() (string, []interface{}) {
 type AccessControlDashboardPermissionFilter struct {
 	User            *models.SignedInUser
 	PermissionLevel models.PermissionType
-	Dialect         migrator.Dialect
 }
 
-func (f AccessControlDashboardPermissionFilter) Where() (string, []interface{}) {
-	sql := `(`
-	dashSql, params, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "dashboards", "dashboards:read", f.User)
-	sql += dashSql
-	folderSql, folderParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.folder_id", "folders", "dashboards:read", f.User)
-	if folderSql != " 1 = 0" {
-		folderSql = "(" + folderSql + " AND " + "NOT dashboard.is_folder)"
-	}
+const (
+	folderScopePrefix    = "folders:"
+	dashboardScopePrefix = "dashboards:"
+)
 
-	sql += " OR " + folderSql
-	tempSQL, tempParams, _ := accesscontrol.Filter(context.Background(), f.Dialect, "dashboard.id", "folders", "folders:read", f.User)
-	return sql + " OR " + tempSQL + " )", append(params, append(folderParams, tempParams...)...)
+func (f AccessControlDashboardPermissionFilter) Where() (string, []interface{}) {
+	builder := strings.Builder{}
+
+	builder.WriteString("(((")
+
+	dashSql, params, _ := accesscontrol.Filter(context.Background(), "dashboard.id", "dashboards", "dashboards:read", f.User)
+	builder.WriteString(dashSql)
+
+	builder.WriteString(" OR ")
+
+	folderSql, folderParams, _ := accesscontrol.Filter(context.Background(), "dashboard.folder_id", "folders", "dashboards:read", f.User)
+	builder.WriteString(folderSql)
+
+	builder.WriteString(") AND NOT dashboard.is_folder) OR (")
+
+	folder2Sql, folder2Params, _ := accesscontrol.Filter(context.Background(), "dashboard.id", "folders", "folders:read", f.User)
+	builder.WriteString(folder2Sql)
+	builder.WriteString(" AND dashboard.is_folder))")
+
+	return builder.String(), append(params, append(folderParams, folder2Params...)...)
 }
