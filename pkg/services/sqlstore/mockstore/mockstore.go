@@ -20,6 +20,7 @@ type SQLStoreMock struct {
 	ExpectedDashboards           []*models.Dashboard
 	ExpectedDashboardVersion     *models.DashboardVersion
 	ExpectedDashboardAclInfoList []*models.DashboardAclInfoDTO
+	ExpectedOrg                  *models.Org
 
 	ExpectedError error
 }
@@ -57,7 +58,12 @@ func (m *SQLStoreMock) SearchDashboardSnapshots(query *models.GetDashboardSnapsh
 }
 
 func (m *SQLStoreMock) GetOrgByName(name string) (*models.Org, error) {
-	return nil, m.ExpectedError
+	return m.ExpectedOrg, m.ExpectedError
+}
+
+func (m *SQLStoreMock) GetOrgByNameHandler(ctx context.Context, query *models.GetOrgByNameQuery) error {
+	query.Result = m.ExpectedOrg
+	return m.ExpectedError
 }
 
 func (m *SQLStoreMock) CreateOrgWithMember(name string, userID int64) (models.Org, error) {
