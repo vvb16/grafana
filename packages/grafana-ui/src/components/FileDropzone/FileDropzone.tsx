@@ -3,8 +3,10 @@ import { GrafanaTheme2 } from '@grafana/data';
 import { uniqueId } from 'lodash';
 import React, { ReactNode, useCallback, useState } from 'react';
 import { DropEvent, DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
+
 import { useTheme2 } from '../../themes';
 import { Icon } from '../Icon/Icon';
+
 import { FileListItem } from './FileListItem';
 
 export interface FileDropzoneProps {

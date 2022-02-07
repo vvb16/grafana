@@ -1,6 +1,7 @@
+import { HealthCheckResultDetails } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import { DataSourcePluginMeta, DataSourceSettings, LayoutMode } from '@grafana/data';
 import { GenericDataSourcePlugin } from 'app/features/datasources/settings/PluginSettings';
-import { HealthCheckResultDetails } from '@grafana/runtime/src/utils/DataSourceWithBackend';
 
 export interface DataSourcesState {
   dataSources: DataSourceSettings[];

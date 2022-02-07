@@ -1,11 +1,13 @@
 import React, { createRef } from 'react';
 import { css } from '@emotion/css';
+import SVG from 'react-inlinesvg';
+import { closePopover } from '@grafana/ui/src/utils/closePopover';
+
 import { Button, InlineField, InlineFieldRow, Input, Popover, PopoverController, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
-import SVG from 'react-inlinesvg';
 
 import { MediaType, ResourceFolderName } from '../types';
-import { closePopover } from '@grafana/ui/src/utils/closePopover';
+
 import { ResourcePickerPopover } from './ResourcePickerPopover';
 
 interface Props {

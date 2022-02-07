@@ -1,8 +1,11 @@
-import { DataSourceInstanceSettings } from '@grafana/data';
 import { useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
+
+import { DataSourceInstanceSettings } from '@grafana/data';
+
 import { checkIfLotexSupportsEditingRulesAction } from '../state/actions';
 import { getRulesDataSources } from '../utils/datasource';
+
 import { useUnifiedAlertingSelector } from './useUnifiedAlertingSelector';
 
 export function useRulesSourcesWithRuler(): DataSourceInstanceSettings[] {

@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react';
 import { useAsync } from 'react-use';
+
 import { Role } from 'app/types';
+
 import { RolePicker } from './RolePicker';
 import { fetchTeamRoles, updateTeamRoles } from './api';
 

@@ -1,6 +1,7 @@
-import { InlineField } from '@grafana/ui';
 import React from 'react';
 import { Props as InlineFieldProps } from '@grafana/ui/src/components/Forms/InlineField';
+
+import { InlineField } from '@grafana/ui';
 
 const DEFAULT_LABEL_WIDTH = 18;
 

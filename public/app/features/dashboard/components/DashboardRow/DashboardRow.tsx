@@ -1,14 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Unsubscribable } from 'rxjs';
+
 import { Icon } from '@grafana/ui';
+import appEvents from 'app/core/app_events';
+import { getTemplateSrv, RefreshEvent } from '@grafana/runtime';
+import { selectors } from '@grafana/e2e-selectors';
+
 import { PanelModel } from '../../state/PanelModel';
 import { DashboardModel } from '../../state/DashboardModel';
-import appEvents from 'app/core/app_events';
 import { RowOptionsButton } from '../RowOptions/RowOptionsButton';
-import { getTemplateSrv, RefreshEvent } from '@grafana/runtime';
 import { ShowConfirmModalEvent } from '../../../../types/events';
-import { Unsubscribable } from 'rxjs';
-import { selectors } from '@grafana/e2e-selectors';
 
 export interface DashboardRowProps {
   panel: PanelModel;

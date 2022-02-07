@@ -8,6 +8,7 @@ import {
   CoreApp,
 } from '@grafana/data';
 import React from 'react';
+
 import { SeriesVisibilityChangeMode } from '.';
 
 /** @alpha */

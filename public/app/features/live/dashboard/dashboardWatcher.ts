@@ -1,5 +1,6 @@
+import { Unsubscribable } from 'rxjs';
+
 import { getGrafanaLiveSrv, locationService } from '@grafana/runtime';
-import { getDashboardSrv } from '../../dashboard/services/DashboardSrv';
 import { appEvents, contextSrv } from 'app/core/core';
 import {
   AppEvents,
@@ -10,11 +11,13 @@ import {
   LiveChannelEvent,
   LiveChannelScope,
 } from '@grafana/data';
-import { DashboardChangedModal } from './DashboardChangedModal';
-import { DashboardEvent, DashboardEventAction } from './types';
 import { sessionId } from 'app/features/live';
+
+import { getDashboardSrv } from '../../dashboard/services/DashboardSrv';
 import { ShowModalReactEvent } from '../../../types/events';
-import { Unsubscribable } from 'rxjs';
+
+import { DashboardEvent, DashboardEventAction } from './types';
+import { DashboardChangedModal } from './DashboardChangedModal';
 
 class DashboardWatcher {
   channel?: LiveChannelAddress; // path to the channel

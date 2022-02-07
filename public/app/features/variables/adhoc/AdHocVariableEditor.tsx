@@ -1,16 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
+import { StoreState } from 'app/types';
 import { Alert, InlineFieldRow, VerticalGroup } from '@grafana/ui';
 import { DataSourceRef, SelectableValue } from '@grafana/data';
 
 import { AdHocVariableModel } from '../types';
 import { VariableEditorProps } from '../editor/types';
 import { VariableEditorState } from '../editor/reducer';
-import { AdHocVariableEditorState } from './reducer';
-import { changeVariableDatasource, initAdHocVariableEditor } from './actions';
-import { StoreState } from 'app/types';
 import { VariableSectionHeader } from '../editor/VariableSectionHeader';
 import { VariableSelectField } from '../editor/VariableSelectField';
+
+import { AdHocVariableEditorState } from './reducer';
+import { changeVariableDatasource, initAdHocVariableEditor } from './actions';
 
 const mapStateToProps = (state: StoreState) => ({
   editor: state.templating.editor as VariableEditorState<AdHocVariableEditorState>,

@@ -1,7 +1,7 @@
 import angular from 'angular';
-import coreModule from 'app/angular/core_module';
 import { assign } from 'lodash';
 
+import coreModule from 'app/angular/core_module';
 import { AngularComponent, AngularLoader as AngularLoaderInterface } from '@grafana/runtime';
 import { GrafanaRootScope } from 'app/angular/GrafanaCtrl';
 

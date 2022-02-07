@@ -1,10 +1,11 @@
-import { createRootReducer, recursiveCleanState } from './root';
 import { describe, expect } from '../../../test/lib/common';
 import { reducerTester } from '../../../test/core/redux/reducerTester';
 import { StoreState } from '../../types/store';
 import { Team } from '../../types';
 import { cleanUpAction } from '../actions/cleanUp';
 import { initialTeamsState, teamsLoaded } from '../../features/teams/state/reducers';
+
+import { createRootReducer, recursiveCleanState } from './root';
 
 jest.mock('@grafana/runtime', () => ({
   ...(jest.requireActual('@grafana/runtime') as unknown as object),

@@ -1,7 +1,8 @@
+import { DataSourcePlugin } from '@grafana/data';
+
 import InfluxDatasource from './datasource';
 import { QueryEditor } from './components/QueryEditor';
 import InfluxStartPage from './components/InfluxStartPage';
-import { DataSourcePlugin } from '@grafana/data';
 import ConfigEditor from './components/ConfigEditor';
 import VariableQueryEditor from './components/VariableQueryEditor';
 

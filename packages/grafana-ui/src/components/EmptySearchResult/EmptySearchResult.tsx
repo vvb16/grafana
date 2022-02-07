@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css } from '@emotion/css';
+
 import { useStyles2 } from '../../themes';
 
 export interface Props {

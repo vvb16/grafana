@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import { CollapsableSection, FileUpload } from '@grafana/ui';
 import { getThumbnailURL } from 'app/features/search/components/SearchCard';
 

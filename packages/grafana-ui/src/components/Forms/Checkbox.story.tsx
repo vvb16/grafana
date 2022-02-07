@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react';
+
+import { VerticalGroup } from '../Layout/Layout';
+
 import mdx from './Checkbox.mdx';
 import { Checkbox } from './Checkbox';
-import { VerticalGroup } from '../Layout/Layout';
 import { Field } from './Field';
 
 export default {

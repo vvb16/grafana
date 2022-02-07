@@ -1,9 +1,11 @@
 import React from 'react';
-import { InfoBox, InfoBoxProps } from './InfoBox';
 import { FeatureState, GrafanaTheme } from '@grafana/data';
+import { css } from '@emotion/css';
+
 import { stylesFactory, useStyles } from '../../themes';
 import { Badge, BadgeProps } from '../Badge/Badge';
-import { css } from '@emotion/css';
+
+import { InfoBox, InfoBoxProps } from './InfoBox';
 
 export interface FeatureInfoBoxProps extends Omit<InfoBoxProps, 'title' | 'urlTitle'> {
   title: string;

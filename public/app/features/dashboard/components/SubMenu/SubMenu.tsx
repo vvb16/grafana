@@ -1,15 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect, MapStateToProps } from 'react-redux';
+import { css } from '@emotion/css';
+
+import { AnnotationQuery } from '@grafana/data';
+
 import { StoreState } from '../../../../types';
 import { getSubMenuVariables } from '../../../variables/state/selectors';
 import { VariableModel } from '../../../variables/types';
 import { DashboardModel } from '../../state';
+import { DashboardLink } from '../../state/DashboardModel';
+
 import { DashboardLinks } from './DashboardLinks';
 import { Annotations } from './Annotations';
 import { SubMenuItems } from './SubMenuItems';
-import { DashboardLink } from '../../state/DashboardModel';
-import { AnnotationQuery } from '@grafana/data';
-import { css } from '@emotion/css';
 
 interface OwnProps {
   dashboard: DashboardModel;

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { shuffle } from 'lodash';
+
 import { QueryEditorHelpProps } from '@grafana/data';
+
 import LokiLanguageProvider from '../language_provider';
 import { LokiQuery } from '../types';
 

@@ -1,9 +1,7 @@
 import { cloneDeep, upperFirst } from 'lodash';
-import AzureMonitorDatasource from './azure_monitor/azure_monitor_datasource';
-import AppInsightsDatasource from './app_insights/app_insights_datasource';
-import AzureLogAnalyticsDatasource from './azure_log_analytics/azure_log_analytics_datasource';
-import ResourcePickerData from './resourcePicker/resourcePickerData';
-import { AzureDataSourceJsonData, AzureMonitorQuery, AzureQueryType, DatasourceValidationResult } from './types';
+import { forkJoin, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import {
   DataFrame,
   DataQueryRequest,
@@ -13,11 +11,15 @@ import {
   LoadingState,
   ScopedVars,
 } from '@grafana/data';
-import { forkJoin, Observable, of } from 'rxjs';
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+
+import AzureMonitorDatasource from './azure_monitor/azure_monitor_datasource';
+import AppInsightsDatasource from './app_insights/app_insights_datasource';
+import AzureLogAnalyticsDatasource from './azure_log_analytics/azure_log_analytics_datasource';
+import ResourcePickerData from './resourcePicker/resourcePickerData';
+import { AzureDataSourceJsonData, AzureMonitorQuery, AzureQueryType, DatasourceValidationResult } from './types';
 import InsightsAnalyticsDatasource from './insights_analytics/insights_analytics_datasource';
 import { datasourceMigrations } from './utils/migrateQuery';
-import { map } from 'rxjs/operators';
 import AzureResourceGraphDatasource from './azure_resource_graph/azure_resource_graph_datasource';
 import { getAzureCloud } from './credentials';
 import migrateAnnotation from './utils/migrateAnnotation';

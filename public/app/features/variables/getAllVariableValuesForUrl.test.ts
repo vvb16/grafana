@@ -1,8 +1,10 @@
 import { setTemplateSrv } from '@grafana/runtime';
+
+import { initTemplateSrv } from '../../../test/helpers/initTemplateSrv';
+
 import { variableAdapters } from './adapters';
 import { createQueryVariableAdapter } from './query/adapter';
 import { getVariablesUrlParams } from './getAllVariableValuesForUrl';
-import { initTemplateSrv } from '../../../test/helpers/initTemplateSrv';
 
 describe('getAllVariableValuesForUrl', () => {
   beforeAll(() => {

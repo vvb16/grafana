@@ -1,8 +1,9 @@
 import { FieldColorModeId, FieldConfigProperty, PanelPlugin } from '@grafana/data';
-import { StatusHistoryPanel } from './StatusHistoryPanel';
-import { StatusPanelOptions, StatusFieldConfig, defaultStatusFieldConfig } from './types';
 import { VisibilityMode } from '@grafana/schema';
 import { commonOptionsBuilder } from '@grafana/ui';
+
+import { StatusHistoryPanel } from './StatusHistoryPanel';
+import { StatusPanelOptions, StatusFieldConfig, defaultStatusFieldConfig } from './types';
 import { StatusHistorySuggestionsSupplier } from './suggestions';
 
 export const plugin = new PanelPlugin<StatusPanelOptions, StatusFieldConfig>(StatusHistoryPanel)

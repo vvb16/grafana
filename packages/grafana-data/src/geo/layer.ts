@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
+import { PluggableMap } from 'ol';
+import BaseLayer from 'ol/layer/Base';
+
 import { RegistryItemWithOptions } from '../utils/Registry';
 import { PanelData } from '../types';
 import { GrafanaTheme2 } from '../themes';
 import { PanelOptionsEditorBuilder } from '../utils';
-import { ReactNode } from 'react';
-import { PluggableMap } from 'ol';
-import BaseLayer from 'ol/layer/Base';
 
 /**
  * @alpha

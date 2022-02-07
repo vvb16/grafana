@@ -1,9 +1,10 @@
 /* eslint-disable id-blacklist, no-restricted-imports, @typescript-eslint/ban-types */
 import moment, { MomentInput } from 'moment-timezone';
+import { lowerCase } from 'lodash';
+
 import { DateTimeInput, DateTime, isDateTime } from './moment_wrapper';
 import { DateTimeOptions, getTimeZone } from './common';
 import { parse, isValid } from './datemath';
-import { lowerCase } from 'lodash';
 import { systemDateFormats } from './formats';
 
 /**

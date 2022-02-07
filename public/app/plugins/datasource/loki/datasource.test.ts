@@ -1,5 +1,8 @@
 import { lastValueFrom, of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { getQueryOptions } from 'test/helpers/getQueryOptions';
+import { createFetchResponse } from 'test/helpers/createFetchResponse';
+
 import {
   AbstractLabelOperator,
   AnnotationQueryRequest,
@@ -13,17 +16,16 @@ import {
   toUtc,
 } from '@grafana/data';
 import { BackendSrvRequest, FetchResponse, config } from '@grafana/runtime';
-
-import LokiDatasource, { RangeQueryOptions } from './datasource';
-import { LokiQuery, LokiResponse, LokiResultType } from './types';
-import { getQueryOptions } from 'test/helpers/getQueryOptions';
 import { TemplateSrv } from 'app/features/templating/template_srv';
 import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { backendSrv } from 'app/core/services/backend_srv';
+
 import { CustomVariableModel } from '../../../features/variables/types';
 import { initialCustomVariableModelState } from '../../../features/variables/custom/reducer';
+
+import { LokiQuery, LokiResponse, LokiResultType } from './types';
+import LokiDatasource, { RangeQueryOptions } from './datasource';
 import { makeMockLokiDatasource } from './mocks';
-import { createFetchResponse } from 'test/helpers/createFetchResponse';
 
 jest.mock('@grafana/runtime', () => ({
   // @ts-ignore

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { AppNotification, AppNotificationsState } from 'app/types/';
 
 export const initialState: AppNotificationsState = {

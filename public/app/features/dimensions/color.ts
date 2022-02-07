@@ -1,4 +1,5 @@
 import { DataFrame, Field, getFieldColorModeForField, getScaleCalculator, GrafanaTheme2 } from '@grafana/data';
+
 import { ColorDimensionConfig, DimensionSupplier } from './types';
 import { findField, getLastNotNullFieldValue } from './utils';
 

@@ -1,23 +1,28 @@
 // Libaries
 import React, { PureComponent, FC, ReactNode } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 // Utils & Services
 import { playlistSrv } from 'app/features/playlist/PlaylistSrv';
+
 // Components
-import { DashNavButton } from './DashNavButton';
-import { DashNavTimeControls } from './DashNavTimeControls';
 import { ButtonGroup, ModalsController, ToolbarButton, PageToolbar } from '@grafana/ui';
 import { locationUtil, textUtil } from '@grafana/data';
 // State
 import { updateTimeZoneForSession } from 'app/features/profile/state/reducers';
+
 // Types
-import { DashboardModel } from '../../state';
 import { KioskMode } from 'app/types';
 import { ShareModal } from 'app/features/dashboard/components/ShareModal';
 import { SaveDashboardModalProxy } from 'app/features/dashboard/components/SaveDashboard/SaveDashboardModalProxy';
 import { locationService } from '@grafana/runtime';
 import { toggleKioskMode } from 'app/core/navigation/kiosk';
+
+import { DashboardModel } from '../../state';
 import { getDashboardSrv } from '../../services/DashboardSrv';
+
+import { DashNavTimeControls } from './DashNavTimeControls';
+import { DashNavButton } from './DashNavButton';
 
 const mapDispatchToProps = {
   updateTimeZoneForSession,

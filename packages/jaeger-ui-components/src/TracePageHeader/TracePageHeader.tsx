@@ -20,8 +20,6 @@ import cx from 'classnames';
 import { dateTimeFormat, GrafanaTheme2, TimeZone } from '@grafana/data';
 import { useStyles2 } from '@grafana/ui';
 
-import SpanGraph from './SpanGraph';
-import TracePageSearchBar from './TracePageSearchBar';
 import { autoColor, TUpdateViewRangeTimeFunction, ViewRange, ViewRangeTimeUpdate } from '..';
 import LabeledList from '../common/LabeledList';
 import TraceName from '../common/TraceName';
@@ -30,9 +28,11 @@ import { TNil } from '../types';
 import { Trace } from '../types/trace';
 import { formatDuration } from '../utils/date';
 import { getTraceLinks } from '../model/link-patterns';
-
 import ExternalLinks from '../common/ExternalLinks';
 import { uTxMuted } from '../uberUtilityStyles';
+
+import TracePageSearchBar from './TracePageSearchBar';
+import SpanGraph from './SpanGraph';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

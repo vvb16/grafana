@@ -1,11 +1,13 @@
 import React, { ReactElement, useCallback, useMemo, useState, useRef, useImperativeHandle } from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme2, LinkTarget } from '@grafana/data';
+
 import { useStyles2 } from '../../themes';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../../types';
-import { SubMenu } from './SubMenu';
 import { getFocusStyles } from '../../themes/mixins';
+
+import { SubMenu } from './SubMenu';
 
 /** @internal */
 export type MenuItemElement = HTMLAnchorElement & HTMLButtonElement & HTMLDivElement;

@@ -4,18 +4,19 @@ import { reduxTester } from '../../../../test/core/redux/reduxTester';
 import { getRootReducer, RootReducerType } from '../state/helpers';
 import { toVariableIdentifier, toVariablePayload } from '../state/types';
 import { variableAdapters } from '../adapters';
-import { createDataSourceVariableAdapter } from './adapter';
+import { getMockPlugin } from '../../plugins/__mocks__/pluginMocks';
+import { addVariable, setCurrentVariableValue } from '../state/sharedReducer';
+import { changeVariableEditorExtended } from '../editor/reducer';
+import { datasourceBuilder } from '../shared/testing/builders';
+import { getDataSourceInstanceSetting } from '../shared/testing/helpers';
+
+import { createDataSourceOptions } from './reducer';
 import {
   DataSourceVariableActionDependencies,
   initDataSourceVariableEditor,
   updateDataSourceVariableOptions,
 } from './actions';
-import { getMockPlugin } from '../../plugins/__mocks__/pluginMocks';
-import { createDataSourceOptions } from './reducer';
-import { addVariable, setCurrentVariableValue } from '../state/sharedReducer';
-import { changeVariableEditorExtended } from '../editor/reducer';
-import { datasourceBuilder } from '../shared/testing/builders';
-import { getDataSourceInstanceSetting } from '../shared/testing/helpers';
+import { createDataSourceVariableAdapter } from './adapter';
 
 interface Args {
   sources?: DataSourceInstanceSettings[];

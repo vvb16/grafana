@@ -1,18 +1,21 @@
 import angular from 'angular';
+
 import 'angular-route';
 import 'angular-sanitize';
 import 'angular-bindonce';
 import 'vendor/bootstrap/bootstrap';
 import 'vendor/angular-other/angular-strap';
+import { extend } from 'lodash';
+
 import { config } from 'app/core/config';
 import coreModule, { angularModules } from 'app/angular/core_module';
 import { DashboardLoaderSrv } from 'app/features/dashboard/services/DashboardLoaderSrv';
+import { getTimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { getTemplateSrv } from '@grafana/runtime';
+
 import { registerAngularDirectives } from './angular_wrappers';
 import { initAngularRoutingBridge } from './bridgeReactAngularRouting';
 import { monkeyPatchInjectorWithPreAssignedBindings } from './injectorMonkeyPatch';
-import { extend } from 'lodash';
-import { getTimeSrv } from 'app/features/dashboard/services/TimeSrv';
-import { getTemplateSrv } from '@grafana/runtime';
 import { registerComponents } from './registerComponents';
 
 export class AngularApp {

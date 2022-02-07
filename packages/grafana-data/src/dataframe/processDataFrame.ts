@@ -19,12 +19,13 @@ import {
 } from '../types/index';
 import { isDateTime } from '../datetime/moment_wrapper';
 import { ArrayVector } from '../vector/ArrayVector';
-import { MutableDataFrame } from './MutableDataFrame';
 import { SortedVector } from '../vector/SortedVector';
-import { ArrayDataFrame } from './ArrayDataFrame';
 import { getFieldDisplayName } from '../field/fieldState';
 import { fieldIndexComparer } from '../field/fieldComparers';
 import { vectorToArray } from '../vector/vectorToArray';
+
+import { ArrayDataFrame } from './ArrayDataFrame';
+import { MutableDataFrame } from './MutableDataFrame';
 import { dataFrameFromJSON } from './DataFrameJSON';
 
 function convertTableToDataFrame(table: TableData): DataFrame {

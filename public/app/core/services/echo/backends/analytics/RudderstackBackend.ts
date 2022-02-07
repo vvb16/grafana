@@ -1,4 +1,5 @@
 import $ from 'jquery';
+
 import {
   EchoBackend,
   EchoEventType,
@@ -7,6 +8,7 @@ import {
   isPageviewEvent,
   PageviewEchoEvent,
 } from '@grafana/runtime';
+
 import { User } from '../sentry/types';
 
 export interface RudderstackBackendOptions {

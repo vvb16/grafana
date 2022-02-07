@@ -1,13 +1,15 @@
 import React, { PropsWithChildren } from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme2, SelectableValue, getTimeZoneInfo } from '@grafana/data';
+import { isString } from 'lodash';
+
 import { useTheme2 } from '../../../themes/ThemeContext';
 import { stylesFactory } from '../../../themes/stylesFactory';
 import { Icon } from '../../Icon/Icon';
+
 import { TimeZoneOffset } from './TimeZoneOffset';
 import { TimeZoneDescription } from './TimeZoneDescription';
 import { TimeZoneTitle } from './TimeZoneTitle';
-import { isString } from 'lodash';
 
 interface Props {
   isFocused: boolean;

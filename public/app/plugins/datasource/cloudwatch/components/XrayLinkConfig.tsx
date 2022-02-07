@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/css';
+
 import { Alert, InlineField, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
-
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 import { DataSourcePicker } from '@grafana/runtime';
 

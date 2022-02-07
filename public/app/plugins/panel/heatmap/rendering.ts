@@ -1,11 +1,9 @@
 import { find, isEmpty, isNaN, isNil, isString, map, max, min, toNumber } from 'lodash';
 import $ from 'jquery';
 import * as d3 from 'd3';
+
 import { contextSrv } from 'app/core/core';
 import * as ticksUtils from 'app/core/utils/ticks';
-import { HeatmapTooltip } from './heatmap_tooltip';
-import { mergeZeroBuckets } from './heatmap_data_converter';
-import { getColorScale, getOpacityScale } from './color_scale';
 import {
   dateTimeFormat,
   formattedValueToString,
@@ -18,6 +16,10 @@ import {
 } from '@grafana/data';
 import { graphTimeFormat } from '@grafana/ui';
 import { config } from 'app/core/config';
+
+import { HeatmapTooltip } from './heatmap_tooltip';
+import { mergeZeroBuckets } from './heatmap_data_converter';
+import { getColorScale, getOpacityScale } from './color_scale';
 
 const MIN_CARD_SIZE = 1,
   CARD_PADDING = 1,

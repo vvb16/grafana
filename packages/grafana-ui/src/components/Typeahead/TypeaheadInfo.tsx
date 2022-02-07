@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-
 import { GrafanaTheme, renderMarkdown } from '@grafana/data';
+
 import { useTheme } from '../../themes/ThemeContext';
 import { CompletionItem } from '../../types';
 

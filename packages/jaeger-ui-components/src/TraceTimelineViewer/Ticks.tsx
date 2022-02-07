@@ -18,9 +18,10 @@ import cx from 'classnames';
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 
-import { formatDuration } from './utils';
 import { TNil } from '../types';
 import { autoColor } from '../Theme';
+
+import { formatDuration } from './utils';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

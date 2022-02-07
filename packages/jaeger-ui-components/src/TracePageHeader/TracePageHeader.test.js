@@ -15,12 +15,13 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import SpanGraph from './SpanGraph';
-import TracePageHeader, { HEADER_ITEMS } from './TracePageHeader';
 import LabeledList from '../common/LabeledList';
 import traceGenerator from '../demo/trace-generators';
 import { getTraceName } from '../model/trace-viewer';
 import transformTraceData from '../model/transform-trace-data';
+
+import TracePageHeader, { HEADER_ITEMS } from './TracePageHeader';
+import SpanGraph from './SpanGraph';
 
 describe('<TracePageHeader>', () => {
   const trace = transformTraceData(traceGenerator.trace({}));

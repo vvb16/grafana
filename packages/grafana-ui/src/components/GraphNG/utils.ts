@@ -1,8 +1,9 @@
-import { XYFieldMatchers } from './types';
 import { ArrayVector, DataFrame, FieldConfig, FieldType, outerJoinDataFrames } from '@grafana/data';
+import { AxisPlacement, GraphFieldConfig, ScaleDistribution, ScaleDistributionConfig } from '@grafana/schema';
+
+import { XYFieldMatchers } from './types';
 import { nullToUndefThreshold } from './nullToUndefThreshold';
 import { applyNullInsertThreshold } from './nullInsertThreshold';
-import { AxisPlacement, GraphFieldConfig, ScaleDistribution, ScaleDistributionConfig } from '@grafana/schema';
 import { FIXED_UNIT } from './GraphNG';
 
 // will mutate the DataFrame's fields' values

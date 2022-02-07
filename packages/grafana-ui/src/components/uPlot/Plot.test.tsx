@@ -1,10 +1,11 @@
 import React from 'react';
-import { UPlotChart } from './Plot';
 import { render } from '@testing-library/react';
 import { ArrayVector, dateTime, FieldConfig, FieldType, MutableDataFrame } from '@grafana/data';
 import { GraphFieldConfig, GraphDrawStyle } from '@grafana/schema';
 import uPlot from 'uplot';
 import createMockRaf from 'mock-raf';
+
+import { UPlotChart } from './Plot';
 import { UPlotConfigBuilder } from './config/UPlotConfigBuilder';
 import { preparePlotData } from './utils';
 import { SeriesProps } from './config/UPlotSeriesBuilder';

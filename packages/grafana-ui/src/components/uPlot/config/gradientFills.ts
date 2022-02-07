@@ -9,6 +9,7 @@ import {
 import { ScaleOrientation } from '@grafana/schema';
 import tinycolor from 'tinycolor2';
 import uPlot from 'uplot';
+
 import { getCanvasContext } from '../../../utils/measureText';
 
 function makeDirectionalGradient(direction: GradientDirection, bbox: uPlot.BBox, ctx: CanvasRenderingContext2D) {

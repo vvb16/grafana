@@ -1,8 +1,10 @@
 import { css } from '@emotion/css';
+import React, { FC } from 'react';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { LinkButton, useStyles2 } from '@grafana/ui';
 import { AlertmanagerAlert, AlertState } from 'app/plugins/datasource/alertmanager/types';
-import React, { FC } from 'react';
+
 import { makeAMLink, makeLabelBasedSilenceLink } from '../../utils/misc';
 import { AnnotationDetailsField } from '../AnnotationDetailsField';
 

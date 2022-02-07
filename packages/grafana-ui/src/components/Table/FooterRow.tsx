@@ -1,8 +1,10 @@
 import React from 'react';
 import { ColumnInstance, HeaderGroup } from 'react-table';
 import { selectors } from '@grafana/e2e-selectors';
-import { getTableStyles, TableStyles } from './styles';
+
 import { useStyles2 } from '../../themes';
+
+import { getTableStyles, TableStyles } from './styles';
 import { FooterItem } from './types';
 import { EmptyCell, FooterCell } from './FooterCell';
 

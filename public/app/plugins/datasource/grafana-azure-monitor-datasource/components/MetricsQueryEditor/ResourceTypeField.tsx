@@ -1,9 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
+
 import { Select } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
 
 import { Field } from '../Field';
 import { AzureQueryEditorFieldProps, AzureMonitorOption } from '../../types';
+
 import { setResourceType } from './setQueryValue';
 
 interface NamespaceFieldProps extends AzureQueryEditorFieldProps {

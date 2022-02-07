@@ -1,4 +1,5 @@
 import { RulerRuleGroupDTO } from 'app/types/unified-alerting-dto';
+
 import { getUniqueGroupName } from './actions';
 
 describe('getUniqueGroupName', () => {

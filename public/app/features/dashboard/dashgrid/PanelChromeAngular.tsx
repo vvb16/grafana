@@ -2,19 +2,21 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Subscription } from 'rxjs';
 import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux';
+
 import { AngularComponent, getAngularLoader, locationService } from '@grafana/runtime';
 import { getDefaultTimeRange, LoadingState, PanelData, PanelPlugin } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-
-import { PanelHeader } from './PanelHeader/PanelHeader';
-import { getTimeSrv, TimeSrv } from '../services/TimeSrv';
 import { setPanelAngularComponent } from 'app/features/panel/state/reducers';
 import config from 'app/core/config';
-import { DashboardModel, PanelModel } from '../state';
 import { StoreState } from 'app/types';
 import { PANEL_BORDER } from 'app/core/constants';
-import { isSoloRoute } from '../../../routes/utils';
 import { getPanelStateForModel } from 'app/features/panel/state/selectors';
+
+import { isSoloRoute } from '../../../routes/utils';
+import { DashboardModel, PanelModel } from '../state';
+import { getTimeSrv, TimeSrv } from '../services/TimeSrv';
+
+import { PanelHeader } from './PanelHeader/PanelHeader';
 
 interface OwnProps {
   panel: PanelModel;

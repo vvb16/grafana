@@ -2,17 +2,19 @@ import { GrafanaTheme2, isDateTime, rangeUtil, RawTimeRange, TimeOption, TimeRan
 import { css, cx } from '@emotion/css';
 import React, { memo, useMemo, useState } from 'react';
 import { useMedia } from 'react-use';
+import { selectors } from '@grafana/e2e-selectors';
+
 import { stylesFactory, useTheme2 } from '../../../themes';
 import { CustomScrollbar } from '../../CustomScrollbar/CustomScrollbar';
 import { Icon } from '../../Icon/Icon';
+import { getFocusStyles } from '../../../themes/mixins';
+import { FilterInput } from '../..';
+
 import { mapOptionToTimeRange, mapRangeToTimeOption } from './mapper';
 import { TimePickerTitle } from './TimePickerTitle';
 import { TimeRangeForm } from './TimeRangeForm';
 import { TimeRangeList } from './TimeRangeList';
 import { TimePickerFooter } from './TimePickerFooter';
-import { getFocusStyles } from '../../../themes/mixins';
-import { selectors } from '@grafana/e2e-selectors';
-import { FilterInput } from '../..';
 
 const getStyles = stylesFactory((theme: GrafanaTheme2, isReversed, hideQuickRanges, isContainerTall) => {
   return {

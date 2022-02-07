@@ -1,12 +1,13 @@
-import { SynchronousDataTransformerInfo } from '../../types';
 import { map } from 'rxjs/operators';
 
-import { DataTransformerID } from './ids';
+import { SynchronousDataTransformerInfo } from '../../types';
 import { DataFrame, Field, FieldType } from '../../types/dataFrame';
 import { dateTimeParse } from '../../datetime';
 import { ArrayVector } from '../../vector';
 import { fieldMatchers } from '../matchers';
 import { FieldMatcherID } from '../matchers/ids';
+
+import { DataTransformerID } from './ids';
 
 export interface ConvertFieldTypeTransformerOptions {
   conversions: ConvertFieldTypeOptions[];

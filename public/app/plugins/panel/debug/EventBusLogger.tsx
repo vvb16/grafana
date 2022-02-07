@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import { PartialObserver, Unsubscribable } from 'rxjs';
+
 import { CustomScrollbar } from '@grafana/ui';
 import {
   BusEvent,
@@ -8,7 +10,6 @@ import {
   DataSelectEvent,
   EventBus,
 } from '@grafana/data';
-import { PartialObserver, Unsubscribable } from 'rxjs';
 
 interface Props {
   eventBus: EventBus;

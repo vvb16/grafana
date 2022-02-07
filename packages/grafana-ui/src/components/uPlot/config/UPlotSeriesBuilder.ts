@@ -19,7 +19,9 @@ import {
   PointsConfig,
   VisibilityMode,
 } from '@grafana/schema';
+
 import { PlotConfigBuilder } from '../types';
+
 import { getHueGradientFn, getOpacityGradientFn, getScaleGradientFn } from './gradientFills';
 
 export interface SeriesProps extends LineConfig, BarConfig, FillConfig, PointsConfig {

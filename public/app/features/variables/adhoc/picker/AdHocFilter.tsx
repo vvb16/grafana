@@ -1,6 +1,8 @@
 import React, { PureComponent, ReactNode } from 'react';
+
 import { AdHocVariableFilter } from 'app/features/variables/types';
 import { DataSourceRef, SelectableValue } from '@grafana/data';
+
 import { AdHocFilterBuilder } from './AdHocFilterBuilder';
 import { ConditionSegment } from './ConditionSegment';
 import { REMOVE_FILTER_KEY } from './AdHocFilterKey';

@@ -1,12 +1,15 @@
 // @ts-ignore
 import baron from 'baron';
-import { PanelEvents } from '@grafana/data';
-import { PanelModel } from '../../features/dashboard/state';
-import { PanelCtrl } from './panel_ctrl';
 import { Subscription } from 'rxjs';
+
+import { PanelEvents } from '@grafana/data';
 import { PanelDirectiveReadyEvent, RenderEvent } from 'app/types/events';
 import { coreModule } from 'app/angular/core_module';
 import { RefreshEvent } from '@grafana/runtime';
+
+import { PanelModel } from '../../features/dashboard/state';
+
+import { PanelCtrl } from './panel_ctrl';
 
 const panelTemplate = `
   <ng-transclude class="panel-height-helper"></ng-transclude>

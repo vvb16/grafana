@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/css';
+
 import { CardContainer, LinkButton, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 import { AccessControlAction } from 'app/types';
-import { getServerStats, ServerStat } from './state/apis';
+import { config } from '@grafana/runtime';
+
 import { contextSrv } from '../../core/services/context_srv';
 import { Loader } from '../plugins/admin/components/Loader';
-import { config } from '@grafana/runtime';
+
+import { getServerStats, ServerStat } from './state/apis';
 import { CrawlerStatus } from './CrawlerStatus';
 
 export const ServerStats = () => {

@@ -1,6 +1,7 @@
 import webpack = require('webpack');
 import formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 import clearConsole = require('react-dev-utils/clearConsole');
+
 import { loadWebpackConfig } from '../../../config/webpack.plugin.config';
 
 export interface PluginBundleOptions {

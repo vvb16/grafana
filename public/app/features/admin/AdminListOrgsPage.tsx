@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import useAsyncFn from 'react-use/lib/useAsyncFn';
+
 import { getNavModel } from 'app/core/selectors/navModel';
 import Page from 'app/core/components/Page/Page';
-import { useSelector } from 'react-redux';
 import { StoreState } from 'app/types/store';
 import { LinkButton } from '@grafana/ui';
 import { getBackendSrv } from '@grafana/runtime';
-import { AdminOrgsTable } from './AdminOrgsTable';
-import useAsyncFn from 'react-use/lib/useAsyncFn';
 import { contextSrv } from 'app/core/services/context_srv';
 import { AccessControlAction } from 'app/types';
+
+import { AdminOrgsTable } from './AdminOrgsTable';
 
 const deleteOrg = async (orgId: number) => {
   return await getBackendSrv().delete('/api/orgs/' + orgId);

@@ -8,7 +8,9 @@ import {
   outerJoinDataFrames,
 } from '@grafana/data';
 import { findField } from 'app/features/dimensions';
+
 import { prepareGraphableFields } from '../timeseries/utils';
+
 import { CandlestickOptions, CandlestickFieldMap, VizDisplayMode } from './models.gen';
 
 export interface FieldPickerInfo {

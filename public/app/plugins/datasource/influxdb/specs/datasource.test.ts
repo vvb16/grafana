@@ -1,9 +1,10 @@
 import { lastValueFrom, of } from 'rxjs';
+import { TemplateSrvStub } from 'test/specs/helpers';
+
 import { FetchResponse } from '@grafana/runtime';
+import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
 
 import InfluxDatasource from '../datasource';
-import { TemplateSrvStub } from 'test/specs/helpers';
-import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
 
 //@ts-ignore
 const templateSrv = new TemplateSrvStub();

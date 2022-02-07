@@ -1,12 +1,13 @@
 import React from 'react';
 import { pick } from 'lodash';
+import { EditorHeader, InlineSelect } from '@grafana/experimental';
 
 import { ExploreMode, SelectableValue } from '@grafana/data';
-import { EditorHeader, InlineSelect } from '@grafana/experimental';
 
 import { CloudWatchDatasource } from '../datasource';
 import { CloudWatchQuery, CloudWatchQueryMode } from '../types';
 import { useRegions } from '../hooks';
+
 import MetricsQueryHeader from './MetricsQueryHeader';
 
 interface QueryHeaderProps {

@@ -1,12 +1,11 @@
 import React from 'react';
+import { css } from '@emotion/css';
 
 import { getBackendSrv } from '@grafana/runtime';
 import { UserOrgDTO } from '@grafana/data';
 import { Modal, Button, CustomScrollbar } from '@grafana/ui';
-
 import { contextSrv } from 'app/core/services/context_srv';
 import config from 'app/core/config';
-import { css } from '@emotion/css';
 
 interface Props {
   onDismiss: () => void;

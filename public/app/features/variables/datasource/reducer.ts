@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { DataSourceInstanceSettings } from '@grafana/data';
 
 import { DataSourceVariableModel, initialVariableModelState, VariableOption, VariableRefresh } from '../types';

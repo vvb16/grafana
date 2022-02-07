@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { useQuery } from '../components/QueryEditor/ElasticsearchQueryContext';
 import { BucketAggregation } from '../components/QueryEditor/BucketAggregationsEditor/aggregations';
 import { MetricAggregation } from '../components/QueryEditor/MetricAggregationsEditor/aggregations';

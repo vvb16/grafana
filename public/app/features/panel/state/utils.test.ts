@@ -1,4 +1,5 @@
 import { PanelPluginMeta } from '@grafana/data';
+
 import { filterPluginList } from './util';
 
 describe('panel state utils', () => {

@@ -14,6 +14,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
+
 import UIElementsContext, { UIPopover } from '../uiElementsContext';
 
 import SpanBar from './SpanBar';

@@ -1,4 +1,5 @@
 import { DataSourcePlugin } from '@grafana/data';
+
 import { TestDataDataSource } from './datasource';
 import { TestInfoTab } from './TestInfoTab';
 import { ConfigEditor } from './ConfigEditor';

@@ -1,7 +1,9 @@
 import React, { ComponentProps } from 'react';
 import { render, screen } from '@testing-library/react';
-import { UnconnectedReturnToDashboardButton as ReturnToDashboardButton } from './ReturnToDashboardButton';
+
 import { ExploreId } from 'app/types/explore';
+
+import { UnconnectedReturnToDashboardButton as ReturnToDashboardButton } from './ReturnToDashboardButton';
 
 const createProps = (propsOverride?: Partial<ComponentProps<typeof ReturnToDashboardButton>>) => {
   const defaultProps = {

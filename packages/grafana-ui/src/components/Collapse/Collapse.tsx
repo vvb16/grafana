@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import { css, cx } from '@emotion/css';
+import { GrafanaTheme2 } from '@grafana/data';
 
 import { useStyles2 } from '../../themes/ThemeContext';
 import { Icon } from '../Icon/Icon';
-import { GrafanaTheme2 } from '@grafana/data';
 
 const getStyles = (theme: GrafanaTheme2) => ({
   collapse: css`

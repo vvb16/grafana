@@ -1,13 +1,15 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/css';
+
 import { Button, HorizontalGroup, Modal, stylesFactory, useTheme } from '@grafana/ui';
 import { AppEvents, GrafanaTheme } from '@grafana/data';
 import { FolderInfo } from 'app/types';
 import { FolderPicker } from 'app/core/components/Select/FolderPicker';
 import appEvents from 'app/core/app_events';
+import { moveDashboards } from 'app/features/manage-dashboards/state/actions';
+
 import { DashboardSection, OnMoveItems } from '../types';
 import { getCheckedDashboards } from '../utils';
-import { moveDashboards } from 'app/features/manage-dashboards/state/actions';
 
 interface Props {
   onMoveItems: OnMoveItems;

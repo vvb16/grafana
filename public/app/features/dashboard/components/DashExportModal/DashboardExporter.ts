@@ -1,10 +1,11 @@
 import { defaults, each, sortBy } from 'lodash';
 
 import config from 'app/core/config';
-import { DashboardModel } from '../../state/DashboardModel';
 import { PanelModel } from 'app/features/dashboard/state';
 import { PanelPluginMeta } from '@grafana/data';
 import { getDataSourceSrv } from '@grafana/runtime';
+
+import { DashboardModel } from '../../state/DashboardModel';
 import { VariableOption, VariableRefresh } from '../../../variables/types';
 import { isConstant, isQuery } from '../../../variables/guard';
 import { LibraryElementKind } from '../../../library-panels/types';

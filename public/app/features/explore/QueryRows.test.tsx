@@ -1,13 +1,16 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { configureStore } from 'app/store/configureStore';
 import { Provider } from 'react-redux';
-import { QueryRows } from './QueryRows';
+
+import { configureStore } from 'app/store/configureStore';
 import { ExploreId, ExploreState } from 'app/types';
-import { makeExplorePaneState } from './state/utils';
 import { setDataSourceSrv } from '@grafana/runtime';
+
 import { UserState } from '../profile/state/reducers';
 import { DataQuery } from '../../../../packages/grafana-data/src';
+
+import { QueryRows } from './QueryRows';
+import { makeExplorePaneState } from './state/utils';
 
 function setup(queries: DataQuery[]) {
   const defaultDs = {

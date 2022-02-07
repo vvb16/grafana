@@ -1,14 +1,17 @@
 import { useCallback, useMemo, useReducer } from 'react';
+import { reportInteraction } from '@grafana/runtime/src';
+import { useDebounce } from 'react-use';
+
 import { FolderDTO } from 'app/types';
 import { contextSrv } from 'app/core/services/context_srv';
+
 import { DashboardQuery, DashboardSection, OnDeleteItems, OnMoveItems, OnToggleChecked, SearchLayout } from '../types';
 import { DELETE_ITEMS, MOVE_ITEMS, TOGGLE_ALL_CHECKED, TOGGLE_CHECKED } from '../reducers/actionTypes';
 import { manageDashboardsReducer, manageDashboardsState, ManageDashboardsState } from '../reducers/manageDashboards';
-import { useSearch } from './useSearch';
 import { GENERAL_FOLDER_ID } from '../constants';
+
+import { useSearch } from './useSearch';
 import { useShowDashboardPreviews } from './useShowDashboardPreviews';
-import { reportInteraction } from '@grafana/runtime/src';
-import { useDebounce } from 'react-use';
 
 const hasChecked = (section: DashboardSection) => {
   return section.checked || section.items.some((item) => item.checked);

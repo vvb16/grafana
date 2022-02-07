@@ -1,6 +1,7 @@
 import React, { FormEvent, PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { css } from '@emotion/css';
+
 import { InlineField, InlineFieldRow, VerticalGroup } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 import { DataSourcePicker, getTemplateSrv } from '@grafana/runtime';
@@ -8,8 +9,6 @@ import { DataSourceInstanceSettings, getDataSourceRef, LoadingState, SelectableV
 
 import { SelectionOptionsEditor } from '../editor/SelectionOptionsEditor';
 import { QueryVariableModel, VariableRefresh, VariableSort, VariableWithMultiSupport } from '../types';
-import { QueryVariableEditorState } from './reducer';
-import { changeQueryVariableDataSource, changeQueryVariableQuery, initQueryVariableEditor } from './actions';
 import { VariableEditorState } from '../editor/reducer';
 import { OnPropChangeArguments, VariableEditorProps } from '../editor/types';
 import { StoreState } from '../../../types';
@@ -19,6 +18,9 @@ import { getTimeSrv } from '../../dashboard/services/TimeSrv';
 import { isLegacyQueryEditor, isQueryEditor } from '../guard';
 import { VariableSectionHeader } from '../editor/VariableSectionHeader';
 import { VariableTextField } from '../editor/VariableTextField';
+
+import { changeQueryVariableDataSource, changeQueryVariableQuery, initQueryVariableEditor } from './actions';
+import { QueryVariableEditorState } from './reducer';
 import { QueryVariableRefreshSelect } from './QueryVariableRefreshSelect';
 import { QueryVariableSortSelect } from './QueryVariableSortSelect';
 

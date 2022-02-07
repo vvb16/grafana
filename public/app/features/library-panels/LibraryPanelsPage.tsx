@@ -5,6 +5,7 @@ import { GrafanaRouteComponentProps } from '../../core/navigation/types';
 import { StoreState } from '../../types';
 import { getNavModel } from '../../core/selectors/navModel';
 import Page from '../../core/components/Page/Page';
+
 import { LibraryPanelsSearch } from './components/LibraryPanelsSearch/LibraryPanelsSearch';
 import { LibraryElementDTO } from './types';
 import { OpenLibraryPanelModal } from './components/OpenLibraryPanelModal/OpenLibraryPanelModal';

@@ -1,7 +1,7 @@
 import { lastValueFrom } from 'rxjs';
+
 import { urlUtil } from '@grafana/data';
 import { getBackendSrv } from '@grafana/runtime';
-
 import {
   AlertmanagerAlert,
   AlertManagerCortexConfig,
@@ -16,6 +16,7 @@ import {
   TestReceiversAlert,
   ExternalAlertmanagersResponse,
 } from 'app/plugins/datasource/alertmanager/types';
+
 import { getDatasourceAPIId, GRAFANA_RULES_SOURCE_NAME } from '../utils/datasource';
 
 // "grafana" for grafana-managed, otherwise a datasource name

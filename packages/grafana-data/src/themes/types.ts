@@ -1,4 +1,5 @@
 import { GrafanaTheme } from '../types/theme';
+
 import { ThemeBreakpoints } from './breakpoints';
 import { ThemeComponents } from './createComponents';
 import { ThemeColors } from './createColors';

@@ -1,8 +1,27 @@
-import { getRootReducer, RootReducerType } from './helpers';
+import { DataSourceRef, LoadingState } from '@grafana/data/src';
+import { setDataSourceSrv } from '@grafana/runtime/src';
+
 import { variableAdapters } from '../adapters';
 import { createQueryVariableAdapter } from '../query/adapter';
 import { createConstantVariableAdapter } from '../constant/adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
+import { adHocBuilder, constantBuilder, datasourceBuilder, queryBuilder } from '../shared/testing/builders';
+import { cleanEditorState, initialVariableEditorState } from '../editor/reducer';
+import { cleanPickerState, initialState } from '../pickers/OptionsPicker/reducer';
+import { createAdHocVariableAdapter } from '../adhoc/adapter';
+import { createDataSourceVariableAdapter } from '../datasource/adapter';
+import { TransactionStatus, VariableModel } from '../types';
+import { toAsyncOfResult } from '../../query/state/DashboardQueryRunner/testHelpers';
+import { setVariableQueryRunner } from '../query/VariableQueryRunner';
+import { createDataSourceOptions } from '../datasource/reducer';
+
+import { cleanVariables } from './variablesReducer';
+import {
+  variablesClearTransaction,
+  variablesCompleteTransaction,
+  variablesInitTransaction,
+} from './transactionReducer';
+import { toVariablePayload } from './types';
 import {
   addVariable,
   changeVariableProp,
@@ -11,24 +30,7 @@ import {
   variableStateFetching,
   variableStateNotStarted,
 } from './sharedReducer';
-import { toVariablePayload } from './types';
-import { adHocBuilder, constantBuilder, datasourceBuilder, queryBuilder } from '../shared/testing/builders';
-import { cleanEditorState, initialVariableEditorState } from '../editor/reducer';
-import {
-  variablesClearTransaction,
-  variablesCompleteTransaction,
-  variablesInitTransaction,
-} from './transactionReducer';
-import { cleanPickerState, initialState } from '../pickers/OptionsPicker/reducer';
-import { cleanVariables } from './variablesReducer';
-import { createAdHocVariableAdapter } from '../adhoc/adapter';
-import { createDataSourceVariableAdapter } from '../datasource/adapter';
-import { DataSourceRef, LoadingState } from '@grafana/data/src';
-import { setDataSourceSrv } from '@grafana/runtime/src';
-import { TransactionStatus, VariableModel } from '../types';
-import { toAsyncOfResult } from '../../query/state/DashboardQueryRunner/testHelpers';
-import { setVariableQueryRunner } from '../query/VariableQueryRunner';
-import { createDataSourceOptions } from '../datasource/reducer';
+import { getRootReducer, RootReducerType } from './helpers';
 import { initVariablesTransaction } from './actions';
 
 variableAdapters.setInit(() => [

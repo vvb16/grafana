@@ -1,10 +1,13 @@
-import { SelectableValue } from '@grafana/data';
 import { Validate } from 'react-hook-form';
-import { MatcherOperator, Route } from 'app/plugins/datasource/alertmanager/types';
-import { FormAmRoute } from '../types/amroutes';
-import { parseInterval, timeOptions } from './time';
 import { isUndefined, omitBy } from 'lodash';
+
+import { SelectableValue } from '@grafana/data';
+import { MatcherOperator, Route } from 'app/plugins/datasource/alertmanager/types';
+
+import { FormAmRoute } from '../types/amroutes';
 import { MatcherFieldValue } from '../types/silence-form';
+
+import { parseInterval, timeOptions } from './time';
 import { matcherToMatcherField, parseMatcher } from './alertmanager';
 import { GRAFANA_RULES_SOURCE_NAME } from './datasource';
 

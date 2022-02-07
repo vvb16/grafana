@@ -13,7 +13,9 @@
 // limitations under the License.
 
 import * as React from 'react';
+
 import { UIDropdown, UIMenu, UIMenuItem } from '..';
+
 import NewWindowIcon from './NewWindowIcon';
 
 type Link = {

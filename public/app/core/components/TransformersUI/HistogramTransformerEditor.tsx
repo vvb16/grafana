@@ -1,10 +1,10 @@
 import React, { FormEvent, useCallback } from 'react';
-import { DataTransformerID, standardTransformers, TransformerRegistryItem, TransformerUIProps } from '@grafana/data';
-
 import {
   HistogramTransformerOptions,
   histogramFieldInfo,
 } from '@grafana/data/src/transformations/transformers/histogram';
+
+import { DataTransformerID, standardTransformers, TransformerRegistryItem, TransformerUIProps } from '@grafana/data';
 import { InlineField, InlineFieldRow, InlineSwitch, Input } from '@grafana/ui';
 
 export const HistogramTransformerEditor: React.FC<TransformerUIProps<HistogramTransformerOptions>> = ({

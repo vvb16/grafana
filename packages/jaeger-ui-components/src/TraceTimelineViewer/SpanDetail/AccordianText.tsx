@@ -20,11 +20,12 @@ import IoIosArrowRight from 'react-icons/lib/io/ios-arrow-right';
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 
-import TextList from './TextList';
 import { TNil } from '../../types';
-import { getStyles as getAccordianKeyValuesStyles } from './AccordianKeyValues';
 import { autoColor } from '../../Theme';
 import { uAlignIcon } from '../../uberUtilityStyles';
+
+import { getStyles as getAccordianKeyValuesStyles } from './AccordianKeyValues';
+import TextList from './TextList';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

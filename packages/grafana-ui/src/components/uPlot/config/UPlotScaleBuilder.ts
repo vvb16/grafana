@@ -1,7 +1,8 @@
 import uPlot, { Scale, Range } from 'uplot';
-import { PlotConfigBuilder } from '../types';
 import { ScaleOrientation, ScaleDirection, ScaleDistribution } from '@grafana/schema';
 import { isBooleanUnit } from '@grafana/data';
+
+import { PlotConfigBuilder } from '../types';
 
 export interface ScaleProps {
   scaleKey: string;

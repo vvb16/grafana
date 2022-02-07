@@ -1,5 +1,7 @@
 import React, { FormEvent, PureComponent } from 'react';
 import { isEqual } from 'lodash';
+import { MapDispatchToProps, MapStateToProps } from 'react-redux';
+
 import { AppEvents, LoadingState, SelectableValue, VariableType } from '@grafana/data';
 import { Button, Icon, InlineFieldRow, VerticalGroup } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
@@ -8,19 +10,19 @@ import { variableAdapters } from '../adapters';
 import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
 import { VariableHide, VariableModel } from '../types';
 import { appEvents } from '../../../core/core';
-import { VariableValuesPreview } from './VariableValuesPreview';
-import { changeVariableName, onEditorUpdate, variableEditorMount, variableEditorUnMount } from './actions';
-import { MapDispatchToProps, MapStateToProps } from 'react-redux';
 import { StoreState } from '../../../types';
-import { VariableEditorState } from './reducer';
 import { getVariable } from '../state/selectors';
 import { connectWithStore } from '../../../core/utils/connectWithReduxStore';
-import { OnPropChangeArguments } from './types';
 import { changeVariableProp, changeVariableType } from '../state/sharedReducer';
 import { updateOptions } from '../state/actions';
+import { hasOptions } from '../guard';
+
+import { VariableValuesPreview } from './VariableValuesPreview';
+import { changeVariableName, onEditorUpdate, variableEditorMount, variableEditorUnMount } from './actions';
+import { VariableEditorState } from './reducer';
+import { OnPropChangeArguments } from './types';
 import { VariableTextField } from './VariableTextField';
 import { VariableSectionHeader } from './VariableSectionHeader';
-import { hasOptions } from '../guard';
 import { VariableTypeSelect } from './VariableTypeSelect';
 import { VariableHideSelect } from './VariableHideSelect';
 

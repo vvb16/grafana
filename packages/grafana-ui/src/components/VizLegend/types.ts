@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { DataFrameFieldIndex, DisplayValue } from '@grafana/data';
 import { LegendDisplayMode, LegendPlacement } from '@grafana/schema';
 

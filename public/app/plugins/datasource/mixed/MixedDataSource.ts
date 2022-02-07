@@ -1,3 +1,8 @@
+import { cloneDeep, groupBy } from 'lodash';
+import { forkJoin, from, Observable, of, OperatorFunction } from 'rxjs';
+import { catchError, map, mergeAll, mergeMap, reduce, toArray } from 'rxjs/operators';
+
+import { getDataSourceSrv, toDataQueryError } from '@grafana/runtime';
 import {
   DataQuery,
   DataQueryRequest,
@@ -6,10 +11,6 @@ import {
   DataSourceInstanceSettings,
   LoadingState,
 } from '@grafana/data';
-import { getDataSourceSrv, toDataQueryError } from '@grafana/runtime';
-import { cloneDeep, groupBy } from 'lodash';
-import { forkJoin, from, Observable, of, OperatorFunction } from 'rxjs';
-import { catchError, map, mergeAll, mergeMap, reduce, toArray } from 'rxjs/operators';
 
 export const MIXED_DATASOURCE_NAME = '-- Mixed --';
 

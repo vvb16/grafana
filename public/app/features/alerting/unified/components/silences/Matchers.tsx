@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react';
+import { css } from '@emotion/css';
+
 import { GrafanaTheme } from '@grafana/data';
 import { useStyles } from '@grafana/ui';
-import { css } from '@emotion/css';
 import { Matcher } from 'app/plugins/datasource/alertmanager/types';
+
 import { AlertLabel } from '../AlertLabel';
 import { matcherToOperator } from '../../utils/alertmanager';
 

@@ -1,6 +1,7 @@
+import React, { FC } from 'react';
+
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
 import { contextSrv } from 'app/core/services/context_srv';
-import React, { FC } from 'react';
 import { CallToActionCard } from '@grafana/ui';
 
 export const NoRulesSplash: FC = () => {

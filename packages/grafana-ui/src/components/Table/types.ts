@@ -1,8 +1,9 @@
 import { CellProps, Column, Row } from 'react-table';
 import { Field, KeyValue, SelectableValue } from '@grafana/data';
-import { TableStyles } from './styles';
 import { FC } from 'react';
 import { Property } from 'csstype';
+
+import { TableStyles } from './styles';
 
 export { TableFieldOptions, TableCellDisplayMode, FieldTextAlignment } from '@grafana/schema';
 

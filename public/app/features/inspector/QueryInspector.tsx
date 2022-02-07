@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react';
+import { css } from '@emotion/css';
+import { Subscription } from 'rxjs';
+
 import { Button, ClipboardButton, JSONFormatter, LoadingPlaceholder } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 import { AppEvents, DataFrame } from '@grafana/data';
-
 import appEvents from 'app/core/app_events';
 import { PanelModel } from 'app/features/dashboard/state';
-import { getPanelInspectorStyles } from './styles';
 import { supportsDataQuery } from 'app/features/dashboard/components/PanelEditor/utils';
 import { config, RefreshEvent } from '@grafana/runtime';
-import { css } from '@emotion/css';
-import { Subscription } from 'rxjs';
 import { backendSrv } from 'app/core/services/backend_srv';
+
+import { getPanelInspectorStyles } from './styles';
 
 interface DsQuery {
   isLoading: boolean;

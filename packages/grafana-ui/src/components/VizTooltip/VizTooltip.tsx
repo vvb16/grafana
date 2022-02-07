@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { Portal } from '../Portal/Portal';
 import { Dimensions, TimeZone } from '@grafana/data';
-import { FlotPosition } from '../Graph/types';
-import { VizTooltipContainer } from './VizTooltipContainer';
-import { useStyles } from '../../themes';
 import { TooltipDisplayMode } from '@grafana/schema';
+
+import { Portal } from '../Portal/Portal';
+import { FlotPosition } from '../Graph/types';
+import { useStyles } from '../../themes';
+
+import { VizTooltipContainer } from './VizTooltipContainer';
 
 // Describes active dimensions user interacts with
 // It's a key-value pair where:

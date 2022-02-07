@@ -1,25 +1,27 @@
 import { Matcher, render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { BackendSrv, locationService, setBackendSrv, setDataSourceSrv } from '@grafana/runtime';
-import { configureStore } from 'app/store/configureStore';
-import RuleEditor from './RuleEditor';
 import { Route, Router } from 'react-router-dom';
 import React from 'react';
 import { byLabelText, byRole, byTestId, byText } from 'testing-library-selector';
+import userEvent from '@testing-library/user-event';
+import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+
+import { BackendSrv, locationService, setBackendSrv, setDataSourceSrv } from '@grafana/runtime';
+import { configureStore } from 'app/store/configureStore';
 import { selectOptionInTest } from '@grafana/ui';
 import { contextSrv } from 'app/core/services/context_srv';
-import { mockDataSource, MockDataSourceSrv } from './mocks';
-import userEvent from '@testing-library/user-event';
 import { DataSourceInstanceSettings } from '@grafana/data';
-import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+import { DashboardSearchHit } from 'app/features/search/types';
+import * as api from 'app/features/manage-dashboards/state/actions';
+import { GrafanaAlertStateDecision } from 'app/types/unified-alerting-dto';
+
+import RuleEditor from './RuleEditor';
+import { mockDataSource, MockDataSourceSrv } from './mocks';
 import { getAllDataSources } from './utils/config';
 import { fetchRulerRules, fetchRulerRulesGroup, fetchRulerRulesNamespace, setRulerRuleGroup } from './api/ruler';
 import { DataSourceType, GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
-import { DashboardSearchHit } from 'app/features/search/types';
 import { getDefaultQueries } from './utils/rule-form';
 import { ExpressionEditorProps } from './components/rule-editor/ExpressionEditor';
-import * as api from 'app/features/manage-dashboards/state/actions';
-import { GrafanaAlertStateDecision } from 'app/types/unified-alerting-dto';
 
 jest.mock('./components/rule-editor/ExpressionEditor', () => ({
   // eslint-disable-next-line react/display-name

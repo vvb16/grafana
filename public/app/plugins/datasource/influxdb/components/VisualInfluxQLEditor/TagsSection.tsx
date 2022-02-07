@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { SelectableValue } from '@grafana/data';
-import { Seg } from './Seg';
+
 import { InfluxQueryTag } from '../../types';
+
+import { Seg } from './Seg';
 import { toSelectableValue } from './toSelectableValue';
 import { adjustOperatorIfNeeded, getCondition, getOperator } from './tagUtils';
 import { AddButton } from './AddButton';

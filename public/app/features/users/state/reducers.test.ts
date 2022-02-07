@@ -1,7 +1,8 @@
 import { reducerTester } from '../../../../test/core/redux/reducerTester';
 import { UsersState } from '../../../types';
-import { initialState, inviteesLoaded, setUsersSearchQuery, usersLoaded, usersReducer } from './reducers';
 import { getMockInvitees, getMockUsers } from '../__mocks__/userMocks';
+
+import { initialState, inviteesLoaded, setUsersSearchQuery, usersLoaded, usersReducer } from './reducers';
 
 describe('usersReducer', () => {
   describe('when usersLoaded is dispatched', () => {

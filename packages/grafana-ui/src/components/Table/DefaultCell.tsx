@@ -1,11 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 import { DisplayValue, Field, formattedValueToString } from '@grafana/data';
+import tinycolor from 'tinycolor2';
+
+import { getTextColorForBackground, getCellLinks } from '../../utils';
 
 import { TableCellDisplayMode, TableCellProps } from './types';
-import tinycolor from 'tinycolor2';
 import { TableStyles } from './styles';
 import { FilterActions } from './FilterActions';
-import { getTextColorForBackground, getCellLinks } from '../../utils';
 
 export const DefaultCell: FC<TableCellProps> = (props) => {
   const { field, cell, tableStyles, row, cellProps } = props;

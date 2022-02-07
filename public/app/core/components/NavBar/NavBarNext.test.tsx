@@ -2,9 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+
 import { locationService } from '@grafana/runtime';
 import { configureStore } from 'app/store/configureStore';
+
 import TestProvider from '../../../../test/helpers/TestProvider';
+
 import { NavBarNext } from './NavBarNext';
 
 jest.mock('app/core/services/context_srv', () => ({

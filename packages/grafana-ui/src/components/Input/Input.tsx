@@ -1,10 +1,11 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css, cx } from '@emotion/css';
+import useMeasure from 'react-use/lib/useMeasure';
+
 import { getFocusStyle, sharedInputStyle } from '../Forms/commonStyles';
 import { stylesFactory, useTheme2 } from '../../themes';
 import { Spinner } from '../Spinner/Spinner';
-import useMeasure from 'react-use/lib/useMeasure';
 
 export interface Props extends Omit<HTMLProps<HTMLInputElement>, 'prefix' | 'size'> {
   /** Sets the width to a multiple of 8px. Should only be used with inline forms. Setting width of the container is preferred in other cases.*/

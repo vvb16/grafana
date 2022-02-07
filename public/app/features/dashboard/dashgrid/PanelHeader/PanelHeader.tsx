@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { css, cx } from '@emotion/css';
+
 import { DataLink, GrafanaTheme2, PanelData } from '@grafana/data';
 import { Icon, useStyles2 } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
-
-import PanelHeaderCorner from './PanelHeaderCorner';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
 import { PanelModel } from 'app/features/dashboard/state/PanelModel';
 import { getPanelLinksSupplier } from 'app/features/panel/panellinks/linkSuppliers';
+
+import PanelHeaderCorner from './PanelHeaderCorner';
 import { PanelHeaderNotices } from './PanelHeaderNotices';
 import { PanelHeaderMenuTrigger } from './PanelHeaderMenuTrigger';
 import { PanelHeaderLoadingIndicator } from './PanelHeaderLoadingIndicator';

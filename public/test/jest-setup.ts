@@ -1,8 +1,11 @@
-import { configure } from 'enzyme';
-import { EventBusSrv } from '@grafana/data';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import $ from 'jquery';
+import { configure } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import angular from 'angular';
 import 'mutationobserver-shim';
+
+import { EventBusSrv } from '@grafana/data';
+
 import './mocks/workers';
 
 const testAppEvents = new EventBusSrv();
@@ -26,7 +29,6 @@ Object.defineProperty(global, 'matchMedia', {
 
 import '../vendor/flot/jquery.flot';
 import '../vendor/flot/jquery.flot.time';
-import angular from 'angular';
 
 angular.module('grafana', ['ngRoute']);
 angular.module('grafana.services', ['ngRoute', '$strap.directives']);

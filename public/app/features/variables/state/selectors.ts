@@ -1,7 +1,8 @@
+import memoizeOne from 'memoize-one';
+
 import { StoreState } from '../../../types';
 import { VariableModel } from '../types';
 import { getState } from '../../../store/store';
-import memoizeOne from 'memoize-one';
 
 export const getVariable = <T extends VariableModel = VariableModel>(
   id: string,

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { css } from '@emotion/css';
+
 import { Collapse } from '@grafana/ui';
 import {
   AbsoluteTimeRange,
@@ -12,10 +13,12 @@ import {
 } from '@grafana/data';
 import { ExploreId, ExploreItemState } from 'app/types/explore';
 import { StoreState } from 'app/types';
+
+import { getTimeZone } from '../profile/state/selectors';
+
 import { splitOpen } from './state/main';
 import { addResultsToCache, clearCache } from './state/query';
 import { updateTimeRange } from './state/time';
-import { getTimeZone } from '../profile/state/selectors';
 import { LiveLogsWithTheme } from './LiveLogs';
 import { Logs } from './Logs';
 import { LogsCrossFadeTransition } from './utils/LogsCrossFadeTransition';

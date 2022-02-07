@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { GrafanaTheme2, MappingType, SpecialValueMatch, SelectableValue, ValueMappingResult } from '@grafana/data';
 import { Draggable } from 'react-beautiful-dnd';
 import { css } from '@emotion/css';
+
+import { GrafanaTheme2, MappingType, SpecialValueMatch, SelectableValue, ValueMappingResult } from '@grafana/data';
 import { useStyles2, Icon, Select, HorizontalGroup, ColorPicker, IconButton, LinkButton, Input } from '@grafana/ui';
 
 export interface ValueMappingEditRowModel {

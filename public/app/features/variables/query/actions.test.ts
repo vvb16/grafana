@@ -1,7 +1,9 @@
+import { expect } from 'test/lib/common';
+
 import { DataSourceRef, getDefaultTimeRange, LoadingState } from '@grafana/data';
+import { setDataSourceSrv } from '@grafana/runtime';
 
 import { variableAdapters } from '../adapters';
-import { createQueryVariableAdapter } from './adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
 import { getRootReducer, RootReducerType } from '../state/helpers';
 import { QueryVariableModel, VariableHide, VariableRefresh, VariableSort } from '../types';
@@ -15,6 +17,22 @@ import {
   variableStateFetching,
 } from '../state/sharedReducer';
 import {
+  addVariableEditorError,
+  changeVariableEditorExtended,
+  removeVariableEditorError,
+  setIdInEditor,
+} from '../editor/reducer';
+import { LegacyVariableQueryEditor } from '../editor/LegacyVariableQueryEditor';
+import { updateOptions } from '../state/actions';
+import { notifyApp } from '../../../core/reducers/appNotification';
+import { silenceConsoleOutput } from '../../../../test/core/utils/silenceConsoleOutput';
+import { getTimeSrv, setTimeSrv, TimeSrv } from '../../dashboard/services/TimeSrv';
+import { variablesInitTransaction } from '../state/transactionReducer';
+import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
+
+import { setVariableQueryRunner, VariableQueryRunner } from './VariableQueryRunner';
+import { updateVariableOptions } from './reducer';
+import {
   changeQueryVariableDataSource,
   changeQueryVariableQuery,
   flattenQuery,
@@ -22,23 +40,7 @@ import {
   initQueryVariableEditor,
   updateQueryVariableOptions,
 } from './actions';
-import { updateVariableOptions } from './reducer';
-import {
-  addVariableEditorError,
-  changeVariableEditorExtended,
-  removeVariableEditorError,
-  setIdInEditor,
-} from '../editor/reducer';
-import { LegacyVariableQueryEditor } from '../editor/LegacyVariableQueryEditor';
-import { expect } from 'test/lib/common';
-import { updateOptions } from '../state/actions';
-import { notifyApp } from '../../../core/reducers/appNotification';
-import { silenceConsoleOutput } from '../../../../test/core/utils/silenceConsoleOutput';
-import { getTimeSrv, setTimeSrv, TimeSrv } from '../../dashboard/services/TimeSrv';
-import { setVariableQueryRunner, VariableQueryRunner } from './VariableQueryRunner';
-import { setDataSourceSrv } from '@grafana/runtime';
-import { variablesInitTransaction } from '../state/transactionReducer';
-import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
+import { createQueryVariableAdapter } from './adapter';
 
 const mocks: Record<string, any> = {
   datasource: {

@@ -1,9 +1,15 @@
 import { debounce, trim } from 'lodash';
+
 import { StoreState, ThunkDispatch, ThunkResult } from 'app/types';
+
 import { VariableOption, VariableWithMultiSupport, VariableWithOptions } from '../../types';
 import { variableAdapters } from '../../adapters';
 import { getVariable } from '../../state/selectors';
 import { NavigationKey } from '../types';
+import { changeVariableProp, setCurrentVariableValue } from '../../state/sharedReducer';
+import { toVariablePayload, VariableIdentifier } from '../../state/types';
+import { containsSearchFilter, getCurrentText } from '../../utils';
+
 import {
   hideOptions,
   moveOptionsHighlight,
@@ -14,9 +20,6 @@ import {
   updateOptionsFromSearch,
   updateSearchQuery,
 } from './reducer';
-import { changeVariableProp, setCurrentVariableValue } from '../../state/sharedReducer';
-import { toVariablePayload, VariableIdentifier } from '../../state/types';
-import { containsSearchFilter, getCurrentText } from '../../utils';
 
 export const navigateOptions = (key: NavigationKey, clearOthers: boolean): ThunkResult<void> => {
   return async (dispatch, getState) => {

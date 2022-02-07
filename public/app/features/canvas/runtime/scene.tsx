@@ -24,10 +24,11 @@ import {
   getTextDimensionFromData,
   getScalarDimensionFromData,
 } from 'app/features/dimensions/utils';
+import { LayerActionID } from 'app/plugins/panel/canvas/types';
+
 import { ElementState } from './element';
 import { RootElement } from './root';
 import { GroupState } from './group';
-import { LayerActionID } from 'app/plugins/panel/canvas/types';
 
 export interface SelectionParams {
   targets: Array<HTMLElement | SVGElement>;

@@ -1,6 +1,7 @@
+import { MutableDataFrame } from '@grafana/data';
+
 import { transformResponse, transformToZipkin } from './transforms';
 import { traceFrameFields, zipkinResponse } from './testData';
-import { MutableDataFrame } from '@grafana/data';
 
 describe('transformResponse', () => {
   it('transforms response', () => {

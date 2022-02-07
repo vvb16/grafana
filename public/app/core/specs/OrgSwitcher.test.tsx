@@ -1,7 +1,9 @@
 import React from 'react';
-import { OrgSwitcher } from '../components/OrgSwitcher';
 import { shallow } from 'enzyme';
+
 import { OrgRole } from '@grafana/data';
+
+import { OrgSwitcher } from '../components/OrgSwitcher';
 
 const postMock = jest.fn().mockImplementation(jest.fn());
 

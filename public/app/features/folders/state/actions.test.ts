@@ -1,11 +1,13 @@
 import { Observable, of, throwError } from 'rxjs';
 import { thunkTester } from 'test/core/thunk/thunkTester';
-import { checkFolderPermissions } from './actions';
-import { setCanViewFolderPermissions } from './reducers';
+
 import { backendSrv } from 'app/core/services/backend_srv';
 import { notifyApp } from 'app/core/actions';
 import { createWarningNotification } from 'app/core/copy/appNotification';
 import { FetchResponse } from '@grafana/runtime';
+
+import { setCanViewFolderPermissions } from './reducers';
+import { checkFolderPermissions } from './actions';
 
 describe('folder actions', () => {
   let fetchSpy: jest.SpyInstance<Observable<FetchResponse<unknown>>>;

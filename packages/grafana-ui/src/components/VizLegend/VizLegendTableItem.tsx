@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
 import { css, cx } from '@emotion/css';
-import { VizLegendSeriesIcon } from './VizLegendSeriesIcon';
-import { VizLegendItem } from './types';
+import { formattedValueToString, GrafanaTheme2 } from '@grafana/data';
+
 import { useStyles2 } from '../../themes/ThemeContext';
 import { styleMixins } from '../../themes';
-import { formattedValueToString, GrafanaTheme2 } from '@grafana/data';
+
+import { VizLegendSeriesIcon } from './VizLegendSeriesIcon';
+import { VizLegendItem } from './types';
 
 export interface Props {
   key?: React.Key;

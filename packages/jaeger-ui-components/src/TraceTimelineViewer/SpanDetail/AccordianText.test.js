@@ -14,6 +14,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
+
 import AccordianText from './AccordianText';
 import TextList from './TextList';
 

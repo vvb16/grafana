@@ -1,11 +1,14 @@
 import React, { ComponentType } from 'react';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
-import { config, locationService, navigationLogger } from '@grafana/runtime';
 import { Provider } from 'react-redux';
+
+import { config, locationService, navigationLogger } from '@grafana/runtime';
 import { store } from 'app/store/store';
 import { ErrorBoundaryAlert, GlobalStyles, ModalRoot, ModalsProvider } from '@grafana/ui';
-import { GrafanaApp } from './app';
 import { getAppRoutes } from 'app/routes/routes';
+import { SearchWrapper } from 'app/features/search';
+
+import { GrafanaApp } from './app';
 import { ConfigContext, ThemeProvider } from './core/utils/ConfigProvider';
 import { RouteDescriptor } from './core/navigation/types';
 import { contextSrv } from './core/services/context_srv';
@@ -13,7 +16,6 @@ import { NavBar } from './core/components/NavBar/NavBar';
 import { NavBarNext } from './core/components/NavBar/NavBarNext';
 import { GrafanaRoute } from './core/navigation/GrafanaRoute';
 import { AppNotificationList } from './core/components/AppNotifications/AppNotificationList';
-import { SearchWrapper } from 'app/features/search';
 import { LiveConnectionWarning } from './features/live/LiveConnectionWarning';
 import { AngularRoot } from './angular/AngularRoot';
 import { I18nProvider } from './core/localisation';

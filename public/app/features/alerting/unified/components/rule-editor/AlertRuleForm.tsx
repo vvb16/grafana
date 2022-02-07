@@ -1,28 +1,28 @@
 import React, { FC, useMemo, useState } from 'react';
+import { css } from '@emotion/css';
+import { useForm, FormProvider } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { GrafanaTheme2, AppEvents } from '@grafana/data';
 import { PageToolbar, Button, useStyles2, CustomScrollbar, Spinner, ConfirmModal } from '@grafana/ui';
-import { css } from '@emotion/css';
-
-import { AlertTypeStep } from './AlertTypeStep';
-import { DetailsStep } from './DetailsStep';
-import { QueryStep } from './QueryStep';
-import { useForm, FormProvider } from 'react-hook-form';
+import { RuleWithLocation } from 'app/types/unified-alerting';
+import { useCleanup } from 'app/core/hooks/useCleanup';
+import { useQueryParams } from 'app/core/hooks/useQueryParams';
+import { appEvents } from 'app/core/core';
 
 import { RuleFormType, RuleFormValues } from '../../types/rule-form';
 import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
 import { initialAsyncRequestState } from '../../utils/redux';
 import { deleteRuleAction, saveRuleFormAction } from '../../state/actions';
-import { RuleWithLocation } from 'app/types/unified-alerting';
-import { useDispatch } from 'react-redux';
-import { useCleanup } from 'app/core/hooks/useCleanup';
 import { rulerRuleToFormValues, getDefaultFormValues, getDefaultQueries } from '../../utils/rule-form';
-import { Link } from 'react-router-dom';
-import { useQueryParams } from 'app/core/hooks/useQueryParams';
+import * as ruleId from '../../utils/rule-id';
 
-import { appEvents } from 'app/core/core';
+import { AlertTypeStep } from './AlertTypeStep';
+import { DetailsStep } from './DetailsStep';
+import { QueryStep } from './QueryStep';
 import { CloudConditionsStep } from './CloudConditionsStep';
 import { GrafanaConditionsStep } from './GrafanaConditionsStep';
-import * as ruleId from '../../utils/rule-id';
 
 type Props = {
   existing?: RuleWithLocation;

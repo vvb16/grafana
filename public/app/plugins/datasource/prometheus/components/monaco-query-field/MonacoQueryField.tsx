@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import { useTheme2, ReactMonacoEditor, Monaco, monacoTypes } from '@grafana/ui';
-import { GrafanaTheme2 } from '@grafana/data';
 import { css } from '@emotion/css';
 import { useLatest } from 'react-use';
 import { promLanguageDefinition } from 'monaco-promql';
+
+import { GrafanaTheme2 } from '@grafana/data';
+import { useTheme2, ReactMonacoEditor, Monaco, monacoTypes } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { getCompletionProvider, getSuggestOptions } from './monaco-completion-provider';
 import { Props } from './MonacoQueryFieldProps';
 import { getOverrideServices } from './getOverrideServices';

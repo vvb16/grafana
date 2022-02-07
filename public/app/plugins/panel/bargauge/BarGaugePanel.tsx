@@ -1,4 +1,7 @@
 import React, { PureComponent } from 'react';
+import { DataLinksContextMenuApi } from '@grafana/ui/src/components/DataLinks/DataLinksContextMenu';
+import { isNumber } from 'lodash';
+
 import {
   DisplayValueAlignmentFactors,
   FieldDisplay,
@@ -11,11 +14,9 @@ import {
   VizOrientation,
 } from '@grafana/data';
 import { BarGauge, DataLinksContextMenu, VizRepeater, VizRepeaterRenderValueProps } from '@grafana/ui';
-
 import { config } from 'app/core/config';
+
 import { BarGaugeOptions } from './types';
-import { DataLinksContextMenuApi } from '@grafana/ui/src/components/DataLinks/DataLinksContextMenu';
-import { isNumber } from 'lodash';
 
 export class BarGaugePanel extends PureComponent<PanelProps<BarGaugeOptions>> {
   renderComponent = (

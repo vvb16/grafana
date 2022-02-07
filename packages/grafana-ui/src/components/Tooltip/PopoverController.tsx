@@ -1,5 +1,6 @@
 import React from 'react';
 import { Placement } from '@popperjs/core';
+
 import { PopoverContent } from './Tooltip';
 
 // This API allows popovers to update Popper's position when e.g. popover content changes

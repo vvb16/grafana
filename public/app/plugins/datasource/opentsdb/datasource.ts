@@ -15,6 +15,7 @@ import {
 } from 'lodash';
 import { lastValueFrom, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
 import { FetchResponse, getBackendSrv } from '@grafana/runtime';
 import {
   AnnotationEvent,
@@ -24,8 +25,8 @@ import {
   dateMath,
   ScopedVars,
 } from '@grafana/data';
-
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+
 import { OpenTsdbOptions, OpenTsdbQuery } from './types';
 
 export default class OpenTsDatasource extends DataSourceApi<OpenTsdbQuery, OpenTsdbOptions> {

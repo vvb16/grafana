@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+
 import { PanelProps } from '@grafana/data';
-import { PanelOptions } from './models.gen';
 import { ElementState } from 'app/features/canvas/runtime/element';
 import { iconItem } from 'app/features/canvas/elements/icon';
 import {
@@ -16,6 +16,8 @@ import {
   ScaleDimensionConfig,
   TextDimensionConfig,
 } from 'app/features/dimensions';
+
+import { PanelOptions } from './models.gen';
 
 interface Props extends PanelProps<PanelOptions> {}
 

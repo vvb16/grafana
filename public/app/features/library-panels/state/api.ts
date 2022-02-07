@@ -1,3 +1,5 @@
+import { lastValueFrom } from 'rxjs';
+
 import {
   LibraryElementConnectionDTO,
   LibraryElementDTO,
@@ -7,7 +9,6 @@ import {
 } from '../types';
 import { DashboardSearchHit } from '../../search/types';
 import { getBackendSrv } from '../../../core/services/backend_srv';
-import { lastValueFrom } from 'rxjs';
 
 export interface GetLibraryPanelsOptions {
   searchString?: string;

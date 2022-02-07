@@ -3,13 +3,14 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { GraphSeriesValue } from '@grafana/data';
-
-import { Graph, GraphProps } from './Graph';
-import { VizLegendItem } from '../VizLegend/types';
 import { LegendDisplayMode, LegendPlacement } from '@grafana/schema';
+
+import { VizLegendItem } from '../VizLegend/types';
 import { VizLegend } from '../VizLegend/VizLegend';
 import { CustomScrollbar } from '../CustomScrollbar/CustomScrollbar';
 import { stylesFactory } from '../../themes';
+
+import { Graph, GraphProps } from './Graph';
 
 export interface GraphWithLegendProps extends GraphProps {
   legendDisplayMode: LegendDisplayMode;

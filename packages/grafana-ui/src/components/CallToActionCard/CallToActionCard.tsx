@@ -1,7 +1,8 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-import { useStyles2 } from '../../themes/ThemeContext';
 import { GrafanaTheme2 } from '@grafana/data';
+
+import { useStyles2 } from '../../themes/ThemeContext';
 
 export interface CallToActionCardProps {
   message?: string | JSX.Element;

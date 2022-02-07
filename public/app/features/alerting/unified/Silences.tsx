@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useCallback } from 'react';
-import { Alert, LoadingPlaceholder, withErrorBoundary } from '@grafana/ui';
-
 import { useDispatch } from 'react-redux';
 import { Redirect, Route, RouteChildrenProps, Switch, useLocation } from 'react-router-dom';
+
+import { Alert, LoadingPlaceholder, withErrorBoundary } from '@grafana/ui';
+import { Silence } from 'app/plugins/datasource/alertmanager/types';
+
 import { AlertingPageWrapper } from './components/AlertingPageWrapper';
 import SilencesTable from './components/silences/SilencesTable';
 import { useAlertManagerSourceName } from './hooks/useAlertManagerSourceName';
@@ -12,7 +14,6 @@ import { SILENCES_POLL_INTERVAL_MS } from './utils/constants';
 import { AsyncRequestState, initialAsyncRequestState } from './utils/redux';
 import SilencesEditor from './components/silences/SilencesEditor';
 import { AlertManagerPicker } from './components/AlertManagerPicker';
-import { Silence } from 'app/plugins/datasource/alertmanager/types';
 
 const Silences: FC = () => {
   const [alertManagerSourceName, setAlertManagerSourceName] = useAlertManagerSourceName();

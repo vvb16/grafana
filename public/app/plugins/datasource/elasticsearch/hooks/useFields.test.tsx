@@ -1,14 +1,17 @@
 import React, { PropsWithChildren } from 'react';
-import { ElasticDatasource } from '../datasource';
 import { from } from 'rxjs';
-import { ElasticsearchProvider } from '../components/QueryEditor/ElasticsearchQueryContext';
+import { renderHook } from '@testing-library/react-hooks';
+
 import { getDefaultTimeRange } from '@grafana/data';
+
+import { ElasticDatasource } from '../datasource';
+import { ElasticsearchProvider } from '../components/QueryEditor/ElasticsearchQueryContext';
 import { ElasticsearchQuery } from '../types';
 import { defaultBucketAgg, defaultMetricAgg } from '../query_def';
-import { renderHook } from '@testing-library/react-hooks';
-import { useFields } from './useFields';
 import { MetricAggregationType } from '../components/QueryEditor/MetricAggregationsEditor/aggregations';
 import { BucketAggregationType } from '../components/QueryEditor/BucketAggregationsEditor/aggregations';
+
+import { useFields } from './useFields';
 
 describe('useFields hook', () => {
   // TODO: If we move the field type to the configuration objects as described in the hook's source

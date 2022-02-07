@@ -17,12 +17,14 @@ import {
   ScaleDirection,
   ScaleOrientation,
 } from '@grafana/schema';
+import { isEqual } from 'lodash';
+
 import { UPlotConfigBuilder } from '../uPlot/config/UPlotConfigBuilder';
 import { UPlotChart } from '../uPlot/Plot';
 import { Themeable2 } from '../../types';
 import { preparePlotData } from '../uPlot/utils';
+
 import { preparePlotFrame } from './utils';
-import { isEqual } from 'lodash';
 
 export interface SparklineProps extends Themeable2 {
   width: number;

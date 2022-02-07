@@ -1,12 +1,14 @@
 import React from 'react';
 import { EditorField, EditorFieldGroup, EditorRow, EditorRows } from '@grafana/experimental';
+
 import { Select, Switch } from '@grafana/ui';
+import { SelectableValue } from '@grafana/data';
+
 import { Dimensions } from '..';
 import { CloudWatchDatasource } from '../../datasource';
 import { useDimensionKeys, useMetrics, useNamespaces } from '../../hooks';
 import { CloudWatchMetricsQuery } from '../../types';
 import { appendTemplateVariables, toOption } from '../../utils/utils';
-import { SelectableValue } from '@grafana/data';
 
 export type Props = {
   query: CloudWatchMetricsQuery;

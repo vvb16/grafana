@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
+import { useFormContext } from 'react-hook-form';
+
 import { GrafanaTheme } from '@grafana/data';
 import { Field, Input, InputControl, Select, useStyles } from '@grafana/ui';
-import { useFormContext } from 'react-hook-form';
+
 import { RuleFormType, RuleFormValues } from '../../types/rule-form';
 import { timeOptions } from '../../utils/time';
+
 import { RuleEditorSection } from './RuleEditorSection';
 import { PreviewRule } from './PreviewRule';
 

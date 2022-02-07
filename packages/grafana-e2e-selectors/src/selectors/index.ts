@@ -1,6 +1,7 @@
+import { E2ESelectors } from '../types';
+
 import { Pages } from './pages';
 import { Components } from './components';
-import { E2ESelectors } from '../types';
 
 /**
  * Exposes selectors in package for easy use in e2e tests and in production code

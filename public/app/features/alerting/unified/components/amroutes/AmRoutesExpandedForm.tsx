@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { css, cx } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import {
   Button,
@@ -15,6 +16,7 @@ import {
   Switch,
   useStyles2,
 } from '@grafana/ui';
+
 import { AmRouteReceiver, FormAmRoute } from '../../types/amroutes';
 import {
   emptyArrayFieldMatcher,
@@ -25,9 +27,10 @@ import {
   stringsToSelectableValues,
 } from '../../utils/amroutes';
 import { timeOptions } from '../../utils/time';
-import { getFormStyles } from './formStyles';
 import { matcherFieldOptions } from '../../utils/alertmanager';
 import { useMuteTimingOptions } from '../../hooks/useMuteTimingOptions';
+
+import { getFormStyles } from './formStyles';
 
 export interface AmRoutesExpandedFormProps {
   onCancel: () => void;

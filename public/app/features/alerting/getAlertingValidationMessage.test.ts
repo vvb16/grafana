@@ -8,6 +8,7 @@ import {
 } from '@grafana/data';
 
 import { ElasticsearchQuery } from '../../plugins/datasource/elasticsearch/types';
+
 import { getAlertingValidationMessage } from './getAlertingValidationMessage';
 
 describe('getAlertingValidationMessage', () => {

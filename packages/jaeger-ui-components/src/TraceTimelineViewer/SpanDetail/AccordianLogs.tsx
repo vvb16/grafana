@@ -20,12 +20,13 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { useStyles2 } from '@grafana/ui';
 
-import AccordianKeyValues from './AccordianKeyValues';
 import { formatDuration } from '../utils';
 import { TNil } from '../../types';
 import { TraceLog, TraceKeyValuePair, TraceLink } from '../../types/trace';
 import { autoColor } from '../../Theme';
 import { uAlignIcon, ubMb1 } from '../../uberUtilityStyles';
+
+import AccordianKeyValues from './AccordianKeyValues';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

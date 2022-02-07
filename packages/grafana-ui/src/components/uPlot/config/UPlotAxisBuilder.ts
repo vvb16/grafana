@@ -1,8 +1,10 @@
 import { dateTimeFormat, GrafanaTheme2, isBooleanUnit, systemDateFormats, TimeZone } from '@grafana/data';
 import uPlot, { Axis } from 'uplot';
+import { AxisPlacement } from '@grafana/schema';
+
 import { PlotConfigBuilder } from '../types';
 import { measureText } from '../../../utils/measureText';
-import { AxisPlacement } from '@grafana/schema';
+
 import { optMinMax } from './UPlotScaleBuilder';
 
 export interface AxisProps {

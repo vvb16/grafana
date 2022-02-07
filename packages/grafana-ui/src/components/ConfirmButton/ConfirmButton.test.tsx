@@ -1,7 +1,9 @@
 import React from 'react';
-import { ConfirmButton } from './ConfirmButton';
 import { mount, ShallowWrapper } from 'enzyme';
+
 import { Button } from '../Button';
+
+import { ConfirmButton } from './ConfirmButton';
 
 describe('ConfirmButton', () => {
   let wrapper: any;

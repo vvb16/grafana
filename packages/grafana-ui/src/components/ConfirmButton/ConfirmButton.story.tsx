@@ -1,9 +1,12 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ConfirmButton } from '@grafana/ui';
-import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { action } from '@storybook/addon-actions';
+
+import { ConfirmButton } from '@grafana/ui';
+
+import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { Button } from '../Button';
+
 import { DeleteButton } from './DeleteButton';
 import { Props } from './ConfirmButton';
 import mdx from './ConfirmButton.mdx';

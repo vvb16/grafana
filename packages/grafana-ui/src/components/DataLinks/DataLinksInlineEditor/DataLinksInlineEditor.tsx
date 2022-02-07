@@ -1,10 +1,12 @@
 import { DataFrame, DataLink, GrafanaTheme2, VariableSuggestion } from '@grafana/data';
 import React, { useState } from 'react';
 import { css } from '@emotion/css';
-import { Button } from '../../Button/Button';
 import { cloneDeep } from 'lodash';
+
+import { Button } from '../../Button/Button';
 import { Modal } from '../../Modal/Modal';
 import { stylesFactory, useTheme2 } from '../../../themes';
+
 import { DataLinksListItem } from './DataLinksListItem';
 import { DataLinkEditorModalContent } from './DataLinkEditorModalContent';
 

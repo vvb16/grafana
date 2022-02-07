@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { renderMarkdown } from '@grafana/data';
 import { HorizontalGroup, Pagination, VerticalGroup } from '@grafana/ui';
-
 import Page from 'app/core/components/Page/Page';
+import { OrgUser, OrgRole, StoreState } from 'app/types';
+import { getNavModel } from 'app/core/selectors/navModel';
+
 import UsersActionBar from './UsersActionBar';
 import UsersTable from './UsersTable';
 import InviteesTable from './InviteesTable';
-import { OrgUser, OrgRole, StoreState } from 'app/types';
 import { loadInvitees, loadUsers, removeUser, updateUser } from './state/actions';
-import { getNavModel } from 'app/core/selectors/navModel';
 import { getInvitees, getUsers, getUsersSearchQuery, getUsersSearchPage } from './state/selectors';
 import { setUsersSearchQuery, setUsersSearchPage } from './state/reducers';
 

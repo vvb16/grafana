@@ -1,4 +1,5 @@
 import { ComponentType } from 'react';
+
 import { LoadingState } from '@grafana/data';
 
 import { initialVariableModelState, SystemVariable, VariableHide } from '../types';

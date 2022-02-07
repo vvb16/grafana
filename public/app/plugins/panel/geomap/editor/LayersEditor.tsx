@@ -1,14 +1,16 @@
 import React from 'react';
+import { DropResult } from 'react-beautiful-dnd';
+
 import { Container } from '@grafana/ui';
 import { StandardEditorProps } from '@grafana/data';
-import { DropResult } from 'react-beautiful-dnd';
+import { AddLayerButton } from 'app/core/components/Layers/AddLayerButton';
+import { LayerDragDropList } from 'app/core/components/Layers/LayerDragDropList';
 
 import { GeomapPanelOptions, MapLayerState } from '../types';
 import { GeomapInstanceState } from '../GeomapPanel';
 import { geomapLayerRegistry } from '../layers/registry';
+
 import { dataLayerFilter } from './layerEditor';
-import { AddLayerButton } from 'app/core/components/Layers/AddLayerButton';
-import { LayerDragDropList } from 'app/core/components/Layers/LayerDragDropList';
 
 type LayersEditorProps = StandardEditorProps<any, any, GeomapPanelOptions, GeomapInstanceState>;
 

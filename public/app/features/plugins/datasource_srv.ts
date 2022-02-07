@@ -1,5 +1,6 @@
 // Services & Utils
-import { importDataSourcePlugin } from './plugin_loader';
+import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import {
   GetDataSourceListFilters,
   DataSourceSrv as DataSourceService,
@@ -24,10 +25,12 @@ import {
   ExpressionDatasourceUID,
   instanceSettings as expressionInstanceSettings,
 } from 'app/features/expressions/ExpressionDatasource';
-import { DataSourceVariableModel } from '../variables/types';
-import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
 import appEvents from 'app/core/app_events';
 import config from 'app/core/config';
+
+import { DataSourceVariableModel } from '../variables/types';
+
+import { importDataSourcePlugin } from './plugin_loader';
 
 export class DatasourceSrv implements DataSourceService {
   private datasources: Record<string, DataSourceApi> = {}; // UID

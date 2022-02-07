@@ -237,7 +237,6 @@ import { NoOptionsMessage } from './Forms/Legacy/Select/NoOptionsMessage';
 import { Input, LegacyInputStatus } from './Forms/Legacy/Input/Input';
 import { FormField } from './FormField/FormField';
 import { SecretFormField } from './SecretFormField/SecretFormField';
-
 import { Switch } from './Forms/Legacy/Switch/Switch';
 
 const LegacyForms = {

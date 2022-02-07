@@ -1,4 +1,5 @@
 import { DataSourcePlugin } from '@grafana/data';
+
 import Datasource from './datasource';
 import { ConfigEditor } from './components/ConfigEditor';
 import AzureMonitorQueryEditor from './components/QueryEditor';

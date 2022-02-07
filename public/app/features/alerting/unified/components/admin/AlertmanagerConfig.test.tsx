@@ -1,35 +1,38 @@
 import React from 'react';
 import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
-import { getAllDataSources } from '../../utils/config';
-import {
-  fetchAlertManagerConfig,
-  deleteAlertManagerConfig,
-  updateAlertManagerConfig,
-  fetchStatus,
-} from '../../api/alertmanager';
-import { configureStore } from 'app/store/configureStore';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
-import AlertmanagerConfig from './AlertmanagerConfig';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { ALERTMANAGER_NAME_LOCAL_STORAGE_KEY, ALERTMANAGER_NAME_QUERY_KEY } from '../../utils/constants';
 import { render, waitFor } from '@testing-library/react';
 import { byLabelText, byRole, byTestId } from 'testing-library-selector';
+import userEvent from '@testing-library/user-event';
+
+import { contextSrv } from 'app/core/services/context_srv';
+import store from 'app/core/store';
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
+import { configureStore } from 'app/store/configureStore';
+import {
+  AlertManagerCortexConfig,
+  AlertManagerDataSourceJsonData,
+  AlertManagerImplementation,
+} from 'app/plugins/datasource/alertmanager/types';
+
+import { DataSourceType } from '../../utils/datasource';
 import {
   mockDataSource,
   MockDataSourceSrv,
   someCloudAlertManagerConfig,
   someCloudAlertManagerStatus,
 } from '../../mocks';
-import { DataSourceType } from '../../utils/datasource';
-import { contextSrv } from 'app/core/services/context_srv';
-import store from 'app/core/store';
-import userEvent from '@testing-library/user-event';
+import { ALERTMANAGER_NAME_LOCAL_STORAGE_KEY, ALERTMANAGER_NAME_QUERY_KEY } from '../../utils/constants';
 import {
-  AlertManagerCortexConfig,
-  AlertManagerDataSourceJsonData,
-  AlertManagerImplementation,
-} from 'app/plugins/datasource/alertmanager/types';
+  fetchAlertManagerConfig,
+  deleteAlertManagerConfig,
+  updateAlertManagerConfig,
+  fetchStatus,
+} from '../../api/alertmanager';
+import { getAllDataSources } from '../../utils/config';
+
+import AlertmanagerConfig from './AlertmanagerConfig';
 
 jest.mock('../../api/alertmanager');
 jest.mock('../../api/grafana');

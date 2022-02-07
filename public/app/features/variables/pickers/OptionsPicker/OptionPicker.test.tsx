@@ -2,12 +2,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import { selectors } from '@grafana/e2e-selectors';
 import { LoadingState } from '@grafana/data';
 
 import { VariablePickerProps } from '../types';
 import { QueryVariableModel, VariableWithMultiSupport, VariableWithOptions } from '../../types';
 import { queryBuilder } from '../../shared/testing/builders';
+
 import { optionPickerFactory } from './OptionsPicker';
 import { initialState, OptionsPickerState } from './reducer';
 

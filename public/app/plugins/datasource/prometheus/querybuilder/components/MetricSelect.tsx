@@ -1,9 +1,11 @@
-import { Select } from '@grafana/ui';
 import React, { useState } from 'react';
-import { PromVisualQuery } from '../types';
-import { SelectableValue, toOption } from '@grafana/data';
 import { EditorField, EditorFieldGroup } from '@grafana/experimental';
 import { css } from '@emotion/css';
+
+import { SelectableValue, toOption } from '@grafana/data';
+import { Select } from '@grafana/ui';
+
+import { PromVisualQuery } from '../types';
 
 export interface Props {
   query: PromVisualQuery;

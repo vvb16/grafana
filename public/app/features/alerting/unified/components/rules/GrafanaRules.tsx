@@ -1,12 +1,15 @@
 import { css } from '@emotion/css';
+import React, { FC } from 'react';
+
 import { GrafanaTheme } from '@grafana/data';
 import { LoadingPlaceholder, useStyles } from '@grafana/ui';
-import React, { FC } from 'react';
-import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
-import { RulesGroup } from './RulesGroup';
-import { GRAFANA_RULES_SOURCE_NAME } from '../../utils/datasource';
 import { CombinedRuleNamespace } from 'app/types/unified-alerting';
+
+import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
+import { GRAFANA_RULES_SOURCE_NAME } from '../../utils/datasource';
 import { initialAsyncRequestState } from '../../utils/redux';
+
+import { RulesGroup } from './RulesGroup';
 
 interface Props {
   namespaces: CombinedRuleNamespace[];

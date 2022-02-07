@@ -1,11 +1,13 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState, useRef } from 'react';
 import { css, cx } from '@emotion/css';
+import { useLocalStorage } from 'react-use';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Counter, Icon, useStyles2 } from '@grafana/ui';
-import { PANEL_EDITOR_UI_STATE_STORAGE_KEY } from './state/reducers';
-import { useLocalStorage } from 'react-use';
 import { selectors } from '@grafana/e2e-selectors';
 import { useQueryParams } from 'app/core/hooks/useQueryParams';
+
+import { PANEL_EDITOR_UI_STATE_STORAGE_KEY } from './state/reducers';
 
 export interface OptionsPaneCategoryProps {
   id: string;

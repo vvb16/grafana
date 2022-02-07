@@ -1,4 +1,5 @@
 import { map, each, isUndefined } from 'lodash';
+
 import coreModule from 'app/angular/core_module';
 import { textUtil } from '@grafana/data';
 

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import { Icon, ModalsController } from '@grafana/ui';
 
 import { RowOptionsModal } from './RowOptionsModal';

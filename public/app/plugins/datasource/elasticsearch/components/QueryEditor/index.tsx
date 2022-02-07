@@ -1,16 +1,19 @@
 import React from 'react';
+import { css } from '@emotion/css';
+
 import { getDefaultTimeRange, GrafanaTheme2, QueryEditorProps } from '@grafana/data';
+import { InlineField, InlineLabel, Input, QueryField, useStyles2 } from '@grafana/ui';
+
 import { ElasticDatasource } from '../../datasource';
 import { ElasticsearchOptions, ElasticsearchQuery } from '../../types';
+import { useDispatch } from '../../hooks/useStatelessReducer';
+import { useNextId } from '../../hooks/useNextId';
+
 import { ElasticsearchProvider } from './ElasticsearchQueryContext';
-import { InlineField, InlineLabel, Input, QueryField, useStyles2 } from '@grafana/ui';
 import { changeAliasPattern, changeQuery } from './state';
 import { MetricAggregationsEditor } from './MetricAggregationsEditor';
 import { BucketAggregationsEditor } from './BucketAggregationsEditor';
-import { useDispatch } from '../../hooks/useStatelessReducer';
-import { useNextId } from '../../hooks/useNextId';
 import { metricAggregationConfig } from './MetricAggregationsEditor/utils';
-import { css } from '@emotion/css';
 
 export type ElasticQueryEditorProps = QueryEditorProps<ElasticDatasource, ElasticsearchQuery, ElasticsearchOptions>;
 

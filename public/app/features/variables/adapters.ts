@@ -1,5 +1,6 @@
 import { ComponentType } from 'react';
 import { Reducer } from 'redux';
+
 import { Registry, UrlQueryValue, VariableType } from '@grafana/data';
 
 import { VariableModel, VariableOption } from './types';

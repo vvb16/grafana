@@ -1,7 +1,8 @@
 import React from 'react';
+import { css } from '@emotion/css';
+
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
-import { css } from '@emotion/css';
 
 export const EmptyQueryListBanner = () => {
   const styles = useStyles2(getStyles);

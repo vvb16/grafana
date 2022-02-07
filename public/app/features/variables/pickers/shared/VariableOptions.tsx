@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
+import { css, cx } from '@emotion/css';
+
 import { Tooltip } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 
 import { VariableOption } from '../../types';
-import { css, cx } from '@emotion/css';
 
 export interface Props extends React.HTMLProps<HTMLUListElement> {
   multi: boolean;

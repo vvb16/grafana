@@ -1,3 +1,6 @@
+import { partition, groupBy } from 'lodash';
+import { descending, deviation } from 'd3';
+
 import {
   ArrayDataFrame,
   ArrayVector,
@@ -19,8 +22,7 @@ import {
   CoreApp,
 } from '@grafana/data';
 import { FetchResponse, getDataSourceSrv, getTemplateSrv } from '@grafana/runtime';
-import { partition, groupBy } from 'lodash';
-import { descending, deviation } from 'd3';
+
 import {
   ExemplarTraceIdDestination,
   isExemplarData,

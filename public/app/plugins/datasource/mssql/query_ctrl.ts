@@ -1,6 +1,8 @@
-import { QueryCtrl } from 'app/plugins/sdk';
 import { auto } from 'angular';
+
+import { QueryCtrl } from 'app/plugins/sdk';
 import { PanelEvents, QueryResultMeta } from '@grafana/data';
+
 import { MssqlQuery } from './types';
 
 const defaultQuery = `SELECT

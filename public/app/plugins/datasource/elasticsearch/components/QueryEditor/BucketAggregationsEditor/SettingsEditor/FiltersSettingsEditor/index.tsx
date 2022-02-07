@@ -1,13 +1,16 @@
-import { InlineField, Input, QueryField } from '@grafana/ui';
 import { css } from '@emotion/css';
 import React, { useEffect, useRef } from 'react';
+import { uniqueId } from 'lodash';
+
+import { InlineField, Input, QueryField } from '@grafana/ui';
+
 import { AddRemove } from '../../../../AddRemove';
 import { useDispatch, useStatelessReducer } from '../../../../../hooks/useStatelessReducer';
 import { Filters } from '../../aggregations';
 import { changeBucketAggregationSetting } from '../../state/actions';
+
 import { addFilter, changeFilter, removeFilter } from './state/actions';
 import { reducer as filtersReducer } from './state/reducer';
-import { uniqueId } from 'lodash';
 
 interface Props {
   bucketAgg: Filters;

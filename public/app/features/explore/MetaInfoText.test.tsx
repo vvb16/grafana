@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
+
 import { MetaInfoText, MetaItemProps } from './MetaInfoText';
 describe('MetaInfoText', () => {
   it('should render component', () => {

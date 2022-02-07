@@ -1,8 +1,10 @@
-import { DataTransformerID } from './ids';
+import { map } from 'rxjs/operators';
+
 import { DataTransformerInfo } from '../../types/transformations';
 import { DataFrame, Field } from '../../types/dataFrame';
 import { getFieldDisplayName } from '../../field/fieldState';
-import { map } from 'rxjs/operators';
+
+import { DataTransformerID } from './ids';
 
 export interface RenameFieldsTransformerOptions {
   renameByName: Record<string, string>;

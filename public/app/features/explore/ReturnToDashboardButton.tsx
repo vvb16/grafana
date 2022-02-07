@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { ButtonGroup, ButtonSelect, Icon, ToolbarButton, Tooltip } from '@grafana/ui';
 import { DataQuery, urlUtil } from '@grafana/data';
-
-import kbn from '../../core/utils/kbn';
 import config from 'app/core/config';
-import { getDashboardSrv } from '../dashboard/services/DashboardSrv';
 import { StoreState } from 'app/types';
 import { ExploreId } from 'app/types/explore';
-import { setDashboardQueriesToUpdateOnLoad } from '../dashboard/state/reducers';
-import { isSplit } from './state/selectors';
 import { locationService } from '@grafana/runtime';
 import { contextSrv } from 'app/core/services/context_srv';
+
+import { setDashboardQueriesToUpdateOnLoad } from '../dashboard/state/reducers';
+import { getDashboardSrv } from '../dashboard/services/DashboardSrv';
+import kbn from '../../core/utils/kbn';
+
+import { isSplit } from './state/selectors';
 
 function mapStateToProps(state: StoreState, { exploreId }: { exploreId: ExploreId }) {
   const explore = state.explore;

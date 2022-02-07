@@ -1,10 +1,11 @@
 import React from 'react';
-import { useTheme2, stylesFactory } from '../../../themes';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css } from '@emotion/css';
+import { StringSelector } from '@grafana/e2e-selectors';
+
+import { useTheme2, stylesFactory } from '../../../themes';
 import { getPropertiesForButtonSize } from '../commonStyles';
 import { getFocusStyles, getMouseFocusStyles } from '../../../themes/mixins';
-import { StringSelector } from '@grafana/e2e-selectors';
 
 export type RadioButtonSize = 'sm' | 'md';
 

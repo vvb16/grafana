@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import InsightsConfig, { Props } from './InsightsConfig';
+
 import { Button, LegacyForms } from '@grafana/ui';
+
+import InsightsConfig, { Props } from './InsightsConfig';
 const { Input } = LegacyForms;
 
 const setup = (propOverrides?: object) => {

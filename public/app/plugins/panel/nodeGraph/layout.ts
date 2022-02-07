@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { EdgeDatum, EdgeDatumLayout, NodeDatum } from './types';
-import { Field } from '@grafana/data';
-import { useNodeLimit } from './useNodeLimit';
 import useMountedState from 'react-use/lib/useMountedState';
+import { useUnmount } from 'react-use';
+
+import { Field } from '@grafana/data';
+
+import { EdgeDatum, EdgeDatumLayout, NodeDatum } from './types';
+import { useNodeLimit } from './useNodeLimit';
 import { graphBounds } from './utils';
 import { createWorker } from './createLayoutWorker';
-import { useUnmount } from 'react-use';
 
 export interface Config {
   linkDistance: number;

@@ -5,8 +5,10 @@ import { uniqBy } from 'lodash';
 // Types
 import { TooltipDisplayMode } from '@grafana/schema';
 import { TimeRange, GraphSeriesXY, TimeZone, createDimension } from '@grafana/data';
-import { FlotPosition, FlotItem } from './types';
+
 import { VizTooltipProps, VizTooltipContentProps, ActiveDimensions, VizTooltip } from '../VizTooltip';
+
+import { FlotPosition, FlotItem } from './types';
 import { GraphTooltip } from './GraphTooltip/GraphTooltip';
 import { GraphContextMenu, GraphContextMenuProps, ContextDimensions } from './GraphContextMenu';
 import { GraphDimensions } from './GraphTooltip/types';

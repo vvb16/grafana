@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAsyncFn } from 'react-use';
+
 import { AppEvents } from '@grafana/data';
 import appEvents from 'app/core/app_events';
 import { deleteDashboard } from 'app/features/manage-dashboards/state/actions';

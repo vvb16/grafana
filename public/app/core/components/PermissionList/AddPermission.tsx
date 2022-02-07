@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from '@emotion/css';
+
 import config from 'app/core/config';
 import { UserPicker } from 'app/core/components/Select/UserPicker';
 import { TeamPicker } from 'app/core/components/Select/TeamPicker';
@@ -14,6 +15,7 @@ import {
   NewDashboardAclItem,
   OrgRole,
 } from 'app/types/acl';
+
 import { CloseButton } from '../CloseButton/CloseButton';
 
 export interface Props {

@@ -1,11 +1,13 @@
 import React from 'react';
-import { PromVisualQuery } from '../types';
-import { useTheme2 } from '@grafana/ui';
-import { GrafanaTheme2 } from '@grafana/data';
-import { promQueryModeller } from '../PromQueryModeller';
 import { css, cx } from '@emotion/css';
 import { EditorField, EditorFieldGroup } from '@grafana/experimental';
 import Prism from 'prismjs';
+
+import { useTheme2 } from '@grafana/ui';
+import { GrafanaTheme2 } from '@grafana/data';
+
+import { promQueryModeller } from '../PromQueryModeller';
+import { PromVisualQuery } from '../types';
 import { promqlGrammar } from '../../promql';
 
 export interface Props {

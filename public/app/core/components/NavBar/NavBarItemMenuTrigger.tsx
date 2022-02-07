@@ -1,7 +1,5 @@
 import React, { ReactElement, useState } from 'react';
 import { css, cx } from '@emotion/css';
-import { Icon, IconName, Link, useTheme2 } from '@grafana/ui';
-import { GrafanaTheme2, NavModelItem } from '@grafana/data';
 import { MenuTriggerProps } from '@react-types/menu';
 import { useMenuTriggerState } from '@react-stately/menu';
 import { useMenuTrigger } from '@react-aria/menu';
@@ -10,6 +8,9 @@ import { useButton } from '@react-aria/button';
 import { useDialog } from '@react-aria/dialog';
 import { DismissButton, useOverlay } from '@react-aria/overlays';
 import { FocusScope } from '@react-aria/focus';
+
+import { GrafanaTheme2, NavModelItem } from '@grafana/data';
+import { Icon, IconName, Link, useTheme2 } from '@grafana/ui';
 
 import { NavBarItemMenuContext } from './context';
 import { NavFeatureHighlight } from './NavFeatureHighlight';

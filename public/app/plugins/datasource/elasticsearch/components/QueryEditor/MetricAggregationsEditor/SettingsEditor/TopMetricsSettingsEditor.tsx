@@ -1,12 +1,14 @@
-import { AsyncMultiSelect, InlineField, SegmentAsync, Select } from '@grafana/ui';
 import React, { FunctionComponent } from 'react';
+import { css } from '@emotion/css';
+
+import { AsyncMultiSelect, InlineField, SegmentAsync, Select } from '@grafana/ui';
+import { SelectableValue } from '@grafana/data';
+
 import { useDispatch } from '../../../../hooks/useStatelessReducer';
 import { useFields } from '../../../../hooks/useFields';
 import { TopMetrics } from '../aggregations';
 import { changeMetricSetting } from '../state/actions';
 import { orderOptions } from '../../BucketAggregationsEditor/utils';
-import { css } from '@emotion/css';
-import { SelectableValue } from '@grafana/data';
 
 interface Props {
   metric: TopMetrics;

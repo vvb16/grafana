@@ -1,6 +1,5 @@
 // TODO: migrate tests below to the builder
 
-import { UPlotConfigBuilder } from './UPlotConfigBuilder';
 import {
   GraphGradientMode,
   AxisPlacement,
@@ -12,6 +11,8 @@ import {
   ScaleDistribution,
 } from '@grafana/schema';
 import { createTheme, ThresholdsMode } from '@grafana/data';
+
+import { UPlotConfigBuilder } from './UPlotConfigBuilder';
 
 describe('UPlotConfigBuilder', () => {
   const darkTheme = createTheme();

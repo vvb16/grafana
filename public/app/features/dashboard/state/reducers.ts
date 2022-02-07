@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import {
   DashboardAclDTO,
   DashboardInitError,
@@ -8,9 +9,10 @@ import {
 } from 'app/types';
 import { AngularComponent } from '@grafana/runtime';
 import { processAclItems } from 'app/core/utils/acl';
+import { PanelPlugin } from '@grafana/data';
+
 import { DashboardModel } from './DashboardModel';
 import { PanelModel } from './PanelModel';
-import { PanelPlugin } from '@grafana/data';
 
 export const initialState: DashboardState = {
   initPhase: DashboardInitPhase.NotStarted,

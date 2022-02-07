@@ -1,5 +1,7 @@
 import { isString } from 'lodash';
+
 import { PanelPlugin } from '@grafana/data';
+
 import { NewsPanel } from './NewsPanel';
 import { PanelOptions, defaultPanelOptions } from './models.gen';
 import { DEFAULT_FEED_URL, PROXY_PREFIX } from './constants';

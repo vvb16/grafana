@@ -1,12 +1,13 @@
 import React, { ChangeEvent, FocusEvent, KeyboardEvent, ReactElement, useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { Input } from '@grafana/ui';
 
 import { TextBoxVariableModel } from '../types';
 import { toVariablePayload } from '../state/types';
 import { changeVariableProp } from '../state/sharedReducer';
 import { VariablePickerProps } from '../pickers/types';
-import { Input } from '@grafana/ui';
 import { variableAdapters } from '../adapters';
-import { useDispatch } from 'react-redux';
 
 export interface Props extends VariablePickerProps<TextBoxVariableModel> {}
 

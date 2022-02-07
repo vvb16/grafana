@@ -1,7 +1,8 @@
-import { toFixed, getValueFormat, scaledUnits, formattedValueToString } from './valueFormats';
 import { DecimalCount } from '../types/displayValue';
 import { TimeZone } from '../types';
 import { dateTime } from '../datetime';
+
+import { toFixed, getValueFormat, scaledUnits, formattedValueToString } from './valueFormats';
 
 interface ValueFormatTest {
   id: string;

@@ -6,10 +6,6 @@ import { map, mergeMap } from 'rxjs/operators';
 // Services & Utils
 import { getTemplateSrv } from '@grafana/runtime';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
-import { preProcessPanelData, runRequest } from './runRequest';
-import { isSharedDashboardQuery, runSharedRequest } from '../../../plugins/datasource/dashboard';
-
-// Types
 import {
   applyFieldOverrides,
   compareArrayValues,
@@ -33,11 +29,18 @@ import {
   toDataFrame,
   transformDataFrame,
 } from '@grafana/data';
-import { getDashboardQueryRunner } from './DashboardQueryRunner/DashboardQueryRunner';
-import { mergePanelAndDashData } from './mergePanelAndDashData';
-import { PanelModel } from '../../dashboard/state';
 import { isStreamingDataFrame } from 'app/features/live/data/utils';
 import { StreamingDataFrame } from 'app/features/live/data/StreamingDataFrame';
+
+import { isSharedDashboardQuery, runSharedRequest } from '../../../plugins/datasource/dashboard';
+import { PanelModel } from '../../dashboard/state';
+
+import { preProcessPanelData, runRequest } from './runRequest';
+
+// Types
+
+import { getDashboardQueryRunner } from './DashboardQueryRunner/DashboardQueryRunner';
+import { mergePanelAndDashData } from './mergePanelAndDashData';
 
 export interface QueryRunnerOptions<
   TQuery extends DataQuery = DataQuery,

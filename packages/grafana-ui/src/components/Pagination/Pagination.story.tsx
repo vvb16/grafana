@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
+
 import { Pagination } from '@grafana/ui';
+
+import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
+
 import mdx from './Pagination.mdx';
 import { Props } from './Pagination';
 

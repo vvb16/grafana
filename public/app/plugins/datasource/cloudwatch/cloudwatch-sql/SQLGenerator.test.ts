@@ -1,4 +1,5 @@
 import { TemplateSrv } from 'app/features/templating/template_srv';
+
 import { QueryEditorExpressionType } from '../expressions';
 import { SQLExpression } from '../types';
 import {
@@ -15,6 +16,7 @@ import {
   createFunction,
   createProperty,
 } from '../__mocks__/sqlUtils';
+
 import SQLGenerator from './SQLGenerator';
 
 describe('SQLGenerator', () => {

@@ -1,5 +1,6 @@
-import { BackendSrvRequest } from '@grafana/runtime';
 import { omitBy } from 'lodash';
+
+import { BackendSrvRequest } from '@grafana/runtime';
 import { deprecationWarning } from '@grafana/data';
 
 export const parseInitFromOptions = (options: BackendSrvRequest): RequestInit => {

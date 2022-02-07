@@ -1,4 +1,5 @@
 import { useAsync } from 'react-use';
+
 import { CatalogPlugin } from '../types';
 import { loadPlugin } from '../../utils';
 

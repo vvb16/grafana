@@ -2,6 +2,8 @@
 import { omit } from 'lodash';
 
 // Services & Utils
+import { serializeStateToUrlParam } from '@grafana/data/src/utils/url';
+
 import { DataQuery, DataSourceApi, dateTimeFormat, ExploreUrlState, urlUtil } from '@grafana/data';
 import { dispatch } from 'app/store/store';
 import { notifyApp } from 'app/core/actions';
@@ -9,20 +11,21 @@ import { createErrorNotification, createWarningNotification } from 'app/core/cop
 
 // Types
 import { RichHistoryQuery } from 'app/types/explore';
-import { serializeStateToUrlParam } from '@grafana/data/src/utils/url';
 import { getDataSourceSrv } from '@grafana/runtime';
-import { getRichHistoryStorage } from '../history/richHistoryStorageProvider';
-import {
-  RichHistoryServiceError,
-  RichHistoryStorageWarning,
-  RichHistoryStorageWarningDetails,
-} from '../history/RichHistoryStorage';
 import {
   filterQueriesByDataSource,
   filterQueriesBySearchFilter,
   filterQueriesByTime,
   sortQueries,
 } from 'app/core/history/richHistoryLocalStorageUtils';
+
+import { getRichHistoryStorage } from '../history/richHistoryStorageProvider';
+import {
+  RichHistoryServiceError,
+  RichHistoryStorageWarning,
+  RichHistoryStorageWarningDetails,
+} from '../history/RichHistoryStorage';
+
 import { SortOrder } from './richHistoryTypes';
 
 export { SortOrder };

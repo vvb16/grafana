@@ -1,6 +1,7 @@
 // Libraries
 import { cloneDeep, defaultsDeep, isArray, isEqual, keys } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+
 // Utils
 import { getTemplateSrv, RefreshEvent } from '@grafana/runtime';
 import { getNextRefIdChar } from 'app/core/utils/query';
@@ -22,23 +23,25 @@ import {
   DataSourceRef,
 } from '@grafana/data';
 import config from 'app/core/config';
-import { PanelQueryRunner } from '../../query/state/PanelQueryRunner';
 import {
   PanelOptionsChangedEvent,
   PanelQueriesChangedEvent,
   PanelTransformationsChangedEvent,
   RenderEvent,
 } from 'app/types/events';
+import { QueryGroupOptions } from 'app/types';
+
+import { PanelQueryRunner } from '../../query/state/PanelQueryRunner';
 import { getTimeSrv } from '../services/TimeSrv';
 import { getVariablesUrlParams } from '../../variables/getAllVariableValuesForUrl';
+import { PanelModelLibraryPanel } from '../../library-panels/types';
+
 import {
   filterFieldConfigOverrides,
   getPanelOptionsWithDefaults,
   isStandardFieldProp,
   restoreCustomOverrideRules,
 } from './getPanelOptionsWithDefaults';
-import { QueryGroupOptions } from 'app/types';
-import { PanelModelLibraryPanel } from '../../library-panels/types';
 
 export interface GridPos {
   x: number;

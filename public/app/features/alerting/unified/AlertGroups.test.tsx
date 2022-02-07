@@ -1,16 +1,18 @@
 import React from 'react';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
 import { render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { fetchAlertGroups } from './api/alertmanager';
 import { byRole, byTestId, byText } from 'testing-library-selector';
-import { configureStore } from 'app/store/configureStore';
 import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+import userEvent from '@testing-library/user-event';
+
+import { configureStore } from 'app/store/configureStore';
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
+
+import { fetchAlertGroups } from './api/alertmanager';
 import AlertGroups from './AlertGroups';
 import { mockAlertGroup, mockAlertmanagerAlert, mockDataSource, MockDataSourceSrv } from './mocks';
 import { DataSourceType } from './utils/datasource';
-import userEvent from '@testing-library/user-event';
 
 jest.mock('./api/alertmanager');
 

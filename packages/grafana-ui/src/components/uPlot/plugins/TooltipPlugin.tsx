@@ -14,6 +14,7 @@ import {
   TimeZone,
 } from '@grafana/data';
 import { TooltipDisplayMode, SortOrder } from '@grafana/schema';
+
 import { useTheme2 } from '../../../themes/ThemeContext';
 import { Portal } from '../../Portal/Portal';
 import { SeriesTable, SeriesTableRowProps, VizTooltipContainer } from '../../VizTooltip';

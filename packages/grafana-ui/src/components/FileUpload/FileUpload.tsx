@@ -1,6 +1,7 @@
 import React, { FC, FormEvent, useCallback, useState } from 'react';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css, cx } from '@emotion/css';
+
 import { Icon } from '../index';
 import { stylesFactory, useTheme2 } from '../../themes';
 import { ComponentSize } from '../../types/size';

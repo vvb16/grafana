@@ -1,5 +1,8 @@
 import React from 'react';
 import { XYFieldMatchers } from '@grafana/ui/src/components/GraphNG/types';
+import { PlotTooltipInterpolator } from '@grafana/ui/src/components/uPlot/types';
+import uPlot from 'uplot';
+
 import {
   ArrayVector,
   DataFrame,
@@ -29,12 +32,12 @@ import {
   UPlotConfigPrepFn,
   VizLegendItem,
 } from '@grafana/ui';
-import { getConfig, TimelineCoreOptions } from './timeline';
 import { VizLegendOptions, AxisPlacement, ScaleDirection, ScaleOrientation } from '@grafana/schema';
-import { TimelineFieldConfig, TimelineOptions } from './types';
-import { PlotTooltipInterpolator } from '@grafana/ui/src/components/uPlot/types';
+
 import { preparePlotData } from '../../../../../packages/grafana-ui/src/components/uPlot/utils';
-import uPlot from 'uplot';
+
+import { getConfig, TimelineCoreOptions } from './timeline';
+import { TimelineFieldConfig, TimelineOptions } from './types';
 
 const defaultConfig: TimelineFieldConfig = {
   lineWidth: 0,

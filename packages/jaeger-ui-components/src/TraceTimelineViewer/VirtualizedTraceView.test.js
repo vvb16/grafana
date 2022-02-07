@@ -14,13 +14,14 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
+import traceGenerator from '../demo/trace-generators';
+import transformTraceData from '../model/transform-trace-data';
+
 import ListView from './ListView';
 import SpanBarRow from './SpanBarRow';
 import DetailState from './SpanDetail/DetailState';
 import SpanDetailRow from './SpanDetailRow';
 import VirtualizedTraceView, { DEFAULT_HEIGHTS } from './VirtualizedTraceView';
-import traceGenerator from '../demo/trace-generators';
-import transformTraceData from '../model/transform-trace-data';
 import SpanTreeOffset from './SpanTreeOffset';
 
 jest.mock('./SpanTreeOffset');

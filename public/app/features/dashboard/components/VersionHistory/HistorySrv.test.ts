@@ -1,6 +1,7 @@
+import { DashboardModel } from '../../state/DashboardModel';
+
 import { restore, versions } from './__mocks__/dashboardHistoryMocks';
 import { HistorySrv } from './HistorySrv';
-import { DashboardModel } from '../../state/DashboardModel';
 
 const getMock = jest.fn().mockResolvedValue({});
 const postMock = jest.fn().mockResolvedValue({});

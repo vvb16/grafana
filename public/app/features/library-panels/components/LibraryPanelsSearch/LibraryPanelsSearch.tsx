@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react';
+import { css } from '@emotion/css';
+
 import { HorizontalGroup, useStyles2, VerticalGroup, FilterInput } from '@grafana/ui';
 import { GrafanaTheme2, PanelPluginMeta, SelectableValue } from '@grafana/data';
-import { css } from '@emotion/css';
+
 import { SortPicker } from '../../../../core/components/Select/SortPicker';
 import { PanelTypeFilter } from '../../../../core/components/PanelTypeFilter/PanelTypeFilter';
 import { LibraryPanelsView } from '../LibraryPanelsView/LibraryPanelsView';
@@ -9,6 +11,7 @@ import { DEFAULT_PER_PAGE_PAGINATION } from '../../../../core/constants';
 import { LibraryElementDTO } from '../../types';
 import { FolderFilter } from '../../../../core/components/FolderFilter/FolderFilter';
 import { FolderInfo } from '../../../../types';
+
 import {
   folderFilterChanged,
   initialLibraryPanelsSearchState,

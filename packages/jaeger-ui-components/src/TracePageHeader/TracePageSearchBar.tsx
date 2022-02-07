@@ -17,15 +17,16 @@ import cx from 'classnames';
 import IoAndroidLocate from 'react-icons/lib/io/android-locate';
 import { css } from '@emotion/css';
 import { useStyles2 } from '@grafana/ui';
+import { memo } from 'react';
 
-import * as markers from './TracePageSearchBar.markers';
 import UiFindInput from '../common/UiFindInput';
 import { TNil } from '../types';
-
 import { UIButton, UIInputGroup } from '../uiElementsContext';
 import { ubFlexAuto, ubJustifyEnd } from '../uberUtilityStyles';
+
+import * as markers from './TracePageSearchBar.markers';
+
 // eslint-disable-next-line no-duplicate-imports
-import { memo } from 'react';
 
 export const getStyles = () => {
   return {

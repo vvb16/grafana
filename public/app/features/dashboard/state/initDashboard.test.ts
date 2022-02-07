@@ -1,18 +1,17 @@
 import { Subject } from 'rxjs';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { locationService, setEchoSrv } from '@grafana/runtime';
 
-import { initDashboard, InitDashboardArgs } from './initDashboard';
+import { locationService, setEchoSrv } from '@grafana/runtime';
 import { DashboardInitPhase, DashboardRoutes } from 'app/types';
 import { getBackendSrv } from 'app/core/services/backend_srv';
-import { dashboardInitCompleted, dashboardInitFetching, dashboardInitServices } from './reducers';
-import { Echo } from '../../../core/services/echo/Echo';
 import { variableAdapters } from 'app/features/variables/adapters';
 import { createConstantVariableAdapter } from 'app/features/variables/constant/adapter';
 import { constantBuilder } from 'app/features/variables/shared/testing/builders';
-import { variablesInitTransaction } from '../../variables/state/transactionReducer';
 import { keybindingSrv } from 'app/core/services/keybindingSrv';
+
+import { variablesInitTransaction } from '../../variables/state/transactionReducer';
+import { Echo } from '../../../core/services/echo/Echo';
 import { getTimeSrv, setTimeSrv } from '../services/TimeSrv';
 import { DashboardLoaderSrv, setDashboardLoaderSrv } from '../services/DashboardLoaderSrv';
 import { getDashboardSrv, setDashboardSrv } from '../services/DashboardSrv';
@@ -22,6 +21,9 @@ import {
 } from '../../query/state/DashboardQueryRunner/DashboardQueryRunner';
 import { emptyResult } from '../../query/state/DashboardQueryRunner/utils';
 import { TransactionStatus } from '../../variables/types';
+
+import { dashboardInitCompleted, dashboardInitFetching, dashboardInitServices } from './reducers';
+import { initDashboard, InitDashboardArgs } from './initDashboard';
 
 jest.mock('app/core/services/backend_srv');
 jest.mock('app/features/dashboard/services/TimeSrv', () => {

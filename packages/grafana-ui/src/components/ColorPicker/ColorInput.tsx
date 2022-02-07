@@ -1,12 +1,13 @@
 import React from 'react';
 import tinycolor from 'tinycolor2';
 import { debounce } from 'lodash';
-
-import { ColorPickerProps } from './ColorPickerPopover';
-import { Input } from '../Input/Input';
-import { useStyles2 } from '../../themes';
 import { GrafanaTheme2 } from '@grafana/data';
 import { cx, css } from '@emotion/css';
+
+import { Input } from '../Input/Input';
+import { useStyles2 } from '../../themes';
+
+import { ColorPickerProps } from './ColorPickerPopover';
 
 interface ColorInputState {
   previousColor: string;

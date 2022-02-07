@@ -1,8 +1,9 @@
 import { omit } from 'lodash';
 import React, { InputHTMLAttributes, FunctionComponent } from 'react';
+import { css, cx } from '@emotion/css';
+
 import { FormField } from '../FormField/FormField';
 import { Button } from '../Button/Button';
-import { css, cx } from '@emotion/css';
 import { PopoverContent } from '../Tooltip/Tooltip';
 
 export interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onReset'> {

@@ -14,6 +14,7 @@ import {
   FALLBACK_COLOR,
   TextDisplayOptions,
 } from '@grafana/data';
+
 import { Themeable } from '../../types';
 import { calculateFontSize } from '../../utils/measureText';
 

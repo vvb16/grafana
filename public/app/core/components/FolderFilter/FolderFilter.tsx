@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { css } from '@emotion/css';
 import debounce from 'debounce-promise';
+
 import { AsyncMultiSelect, Icon, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2, SelectableValue } from '@grafana/data';
-
 import { FolderInfo, PermissionLevelString } from 'app/types';
 import { getBackendSrv } from 'app/core/services/backend_srv';
 

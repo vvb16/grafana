@@ -1,8 +1,10 @@
-import { durationToMilliseconds, parseDuration } from '@grafana/data';
-import { Alert } from '@grafana/ui';
 import { isEmpty } from 'lodash';
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
+
+import { Alert } from '@grafana/ui';
+import { durationToMilliseconds, parseDuration } from '@grafana/data';
+
 import { RuleFormValues } from '../../types/rule-form';
 
 // a warning that will be shown if a problematic yet technically valid combination of "evaluate every" and "evaluate for" is enetered

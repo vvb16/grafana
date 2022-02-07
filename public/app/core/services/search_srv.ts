@@ -1,10 +1,12 @@
 import { clone, keys, sortBy, take, values } from 'lodash';
+
 import impressionSrv from 'app/core/services/impression_srv';
 import store from 'app/core/store';
 import { contextSrv } from 'app/core/services/context_srv';
 import { hasFilters } from 'app/features/search/utils';
 import { SECTION_STORAGE_KEY } from 'app/features/search/constants';
 import { DashboardSection, DashboardSearchItemType, DashboardSearchHit, SearchLayout } from 'app/features/search/types';
+
 import { backendSrv } from './backend_srv';
 
 interface Sections {

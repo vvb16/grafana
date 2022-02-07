@@ -1,10 +1,11 @@
 import { FieldType, locationUtil, toDataFrame, VariableOrigin } from '@grafana/data';
 import { setTemplateSrv } from '@grafana/runtime';
-import { getDataFrameVars, LinkSrv } from '../link_srv';
 import { getTimeSrv, setTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { TemplateSrv } from 'app/features/templating/template_srv';
 import { variableAdapters } from 'app/features/variables/adapters';
 import { createQueryVariableAdapter } from 'app/features/variables/query/adapter';
+
+import { getDataFrameVars, LinkSrv } from '../link_srv';
 import { updateConfig } from '../../../../core/config';
 import { initTemplateSrv } from '../../../../../test/helpers/initTemplateSrv';
 

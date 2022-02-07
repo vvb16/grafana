@@ -1,15 +1,17 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { css } from '@emotion/css';
-import { useTheme2 } from '@grafana/ui';
-import { GrafanaTheme2, NavModelItem } from '@grafana/data';
 import { useMenuItem } from '@react-aria/menu';
 import { useFocus, useKeyboard } from '@react-aria/interactions';
 import { TreeState } from '@react-stately/tree';
 import { mergeProps } from '@react-aria/utils';
 import { Node } from '@react-types/shared';
 
-import { useNavBarItemMenuContext } from './context';
+import { GrafanaTheme2, NavModelItem } from '@grafana/data';
+import { useTheme2 } from '@grafana/ui';
+
 import { UpgradeBox } from '../Upgrade/UpgradeBox';
+
+import { useNavBarItemMenuContext } from './context';
 
 export interface NavBarItemMenuItemProps {
   item: Node<NavModelItem>;

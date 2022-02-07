@@ -1,13 +1,39 @@
 import { AnyAction } from 'redux';
 
-import { getTemplatingRootReducer, TemplatingReducerType } from './helpers';
+import { TemplatingState } from 'app/features/variables/state/reducers';
+import * as runtime from '@grafana/runtime';
+import { LoadingState } from '@grafana/data';
+
 import { variableAdapters } from '../adapters';
 import { createQueryVariableAdapter } from '../query/adapter';
 import { createCustomVariableAdapter } from '../custom/adapter';
 import { createTextBoxVariableAdapter } from '../textbox/adapter';
 import { createConstantVariableAdapter } from '../constant/adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
-import { TemplatingState } from 'app/features/variables/state/reducers';
+import {
+  constantBuilder,
+  customBuilder,
+  datasourceBuilder,
+  queryBuilder,
+  textboxBuilder,
+} from '../shared/testing/builders';
+import { changeVariableName } from '../editor/actions';
+import {
+  changeVariableNameFailed,
+  changeVariableNameSucceeded,
+  cleanEditorState,
+  setIdInEditor,
+} from '../editor/reducer';
+import { cleanPickerState } from '../pickers/OptionsPicker/reducer';
+import { ConstantVariableModel, VariableRefresh } from '../types';
+import { updateVariableOptions } from '../query/reducer';
+import { setVariableQueryRunner, VariableQueryRunner } from '../query/VariableQueryRunner';
+import { toAsyncOfResult } from '../../query/state/DashboardQueryRunner/testHelpers';
+import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE, NEW_VARIABLE_ID } from '../constants';
+
+import { cleanVariables } from './variablesReducer';
+import { variablesClearTransaction, variablesInitTransaction } from './transactionReducer';
+import { toVariableIdentifier, toVariablePayload } from './types';
 import {
   cancelVariables,
   changeVariableMultiValue,
@@ -27,31 +53,7 @@ import {
   variableStateFetching,
   variableStateNotStarted,
 } from './sharedReducer';
-import { toVariableIdentifier, toVariablePayload } from './types';
-import {
-  constantBuilder,
-  customBuilder,
-  datasourceBuilder,
-  queryBuilder,
-  textboxBuilder,
-} from '../shared/testing/builders';
-import { changeVariableName } from '../editor/actions';
-import {
-  changeVariableNameFailed,
-  changeVariableNameSucceeded,
-  cleanEditorState,
-  setIdInEditor,
-} from '../editor/reducer';
-import { variablesClearTransaction, variablesInitTransaction } from './transactionReducer';
-import { cleanPickerState } from '../pickers/OptionsPicker/reducer';
-import { cleanVariables } from './variablesReducer';
-import { ConstantVariableModel, VariableRefresh } from '../types';
-import { updateVariableOptions } from '../query/reducer';
-import { setVariableQueryRunner, VariableQueryRunner } from '../query/VariableQueryRunner';
-import * as runtime from '@grafana/runtime';
-import { LoadingState } from '@grafana/data';
-import { toAsyncOfResult } from '../../query/state/DashboardQueryRunner/testHelpers';
-import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE, NEW_VARIABLE_ID } from '../constants';
+import { getTemplatingRootReducer, TemplatingReducerType } from './helpers';
 
 variableAdapters.setInit(() => [
   createQueryVariableAdapter(),

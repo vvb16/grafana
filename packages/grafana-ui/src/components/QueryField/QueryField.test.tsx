@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { QueryField } from './QueryField';
 import { Editor } from 'slate';
+
+import { QueryField } from './QueryField';
 
 describe('<QueryField />', () => {
   it('should render with null initial value', () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+
 import { DataSourceSettings, NavModel, LayoutModes } from '@grafana/data';
 
 import { DataSourcesListPage, Props } from './DataSourcesListPage';

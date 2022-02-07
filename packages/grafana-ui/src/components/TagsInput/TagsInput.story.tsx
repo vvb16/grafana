@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { TagsInput, Props } from './TagsInput';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { StoryExample } from '../../utils/storybook/StoryExample';
 import { VerticalGroup } from '../Layout/Layout';
+
+import { TagsInput, Props } from './TagsInput';
 import mdx from './TagsInput.mdx';
 
 export default {

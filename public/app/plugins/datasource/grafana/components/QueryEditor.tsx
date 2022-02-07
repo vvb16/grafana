@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import { InlineField, Select, Alert, Input, InlineFieldRow } from '@grafana/ui';
 import {
   QueryEditorProps,
@@ -8,9 +9,10 @@ import {
   DataQueryRequest,
   DataFrame,
 } from '@grafana/data';
+import { getBackendSrv, getDataSourceSrv } from '@grafana/runtime';
+
 import { GrafanaDatasource } from '../datasource';
 import { defaultQuery, GrafanaQuery, GrafanaQueryType } from '../types';
-import { getBackendSrv, getDataSourceSrv } from '@grafana/runtime';
 
 type Props = QueryEditorProps<GrafanaDatasource, GrafanaQuery>;
 

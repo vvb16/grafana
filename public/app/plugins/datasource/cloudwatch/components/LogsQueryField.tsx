@@ -1,6 +1,10 @@
 // Libraries
 import React, { ReactNode } from 'react';
 import { intersectionBy, debounce, unionBy } from 'lodash';
+import { Editor, Node, Plugin } from 'slate';
+import { LanguageMap, languages as prismLanguages } from 'prismjs';
+import { css } from '@emotion/css';
+import { InputActionMeta } from '@grafana/ui/src/components/Select/types';
 
 import {
   BracesPlugin,
@@ -14,22 +18,20 @@ import {
 
 // Utils & Services
 // dom also includes Element polyfills
-import { Editor, Node, Plugin } from 'slate';
-import syntax from '../syntax';
 
 // Types
 import { AbsoluteTimeRange, QueryEditorProps, SelectableValue } from '@grafana/data';
-import { CloudWatchJsonData, CloudWatchLogsQuery, CloudWatchQuery } from '../types';
-import { CloudWatchDatasource } from '../datasource';
-import { LanguageMap, languages as prismLanguages } from 'prismjs';
-import { CloudWatchLanguageProvider } from '../language_provider';
-import { css } from '@emotion/css';
 import { ExploreId } from 'app/types';
 import { dispatch } from 'app/store/store';
 import { notifyApp } from 'app/core/actions';
 import { createErrorNotification } from 'app/core/copy/appNotification';
-import { InputActionMeta } from '@grafana/ui/src/components/Select/types';
+
+import { CloudWatchLanguageProvider } from '../language_provider';
+import { CloudWatchDatasource } from '../datasource';
+import { CloudWatchJsonData, CloudWatchLogsQuery, CloudWatchQuery } from '../types';
+import syntax from '../syntax';
 import { getStatsGroups } from '../utils/query/getStatsGroups';
+
 import QueryHeader from './QueryHeader';
 
 export interface CloudWatchLogsQueryFieldProps

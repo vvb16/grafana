@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
+import { uniqueId } from 'lodash';
+
 import { InlineField, Select, Input } from '@grafana/ui';
+import { SelectableValue } from '@grafana/data';
+
 import { Terms } from '../aggregations';
 import { useDispatch } from '../../../../hooks/useStatelessReducer';
-import { inlineFieldProps } from '.';
 import { bucketAggregationConfig, orderByOptions, orderOptions, sizeOptions } from '../utils';
 import { useCreatableSelectPersistedBehaviour } from '../../../hooks/useCreatableSelectPersistedBehaviour';
 import { changeBucketAggregationSetting } from '../state/actions';
 import { useQuery } from '../../ElasticsearchQueryContext';
-import { SelectableValue } from '@grafana/data';
 import { describeMetric } from '../../../../utils';
 import {
   ExtendedStatMetaType,
@@ -16,7 +18,8 @@ import {
   MetricAggregation,
   Percentiles,
 } from '../../MetricAggregationsEditor/aggregations';
-import { uniqueId } from 'lodash';
+
+import { inlineFieldProps } from '.';
 
 interface Props {
   bucketAgg: Terms;

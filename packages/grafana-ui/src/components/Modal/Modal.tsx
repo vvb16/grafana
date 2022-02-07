@@ -7,6 +7,7 @@ import { useTheme2 } from '../../themes';
 import { IconName } from '../../types';
 import { IconButton } from '../IconButton/IconButton';
 import { HorizontalGroup } from '../Layout/Layout';
+
 import { getModalStyles } from './getModalStyles';
 import { ModalHeader } from './ModalHeader';
 

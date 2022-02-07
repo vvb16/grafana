@@ -1,4 +1,7 @@
 import { CircularDataFrame, FieldCache, FieldType, MutableDataFrame } from '@grafana/data';
+import { setTemplateSrv } from '@grafana/runtime';
+import { TemplateSrv } from 'app/features/templating/template_srv';
+
 import {
   LokiStreamResult,
   LokiTailResponse,
@@ -8,8 +11,6 @@ import {
   LokiMatrixResult,
 } from './types';
 import * as ResultTransformer from './result_transformer';
-import { setTemplateSrv } from '@grafana/runtime';
-import { TemplateSrv } from 'app/features/templating/template_srv';
 
 const streamResult: LokiStreamResult[] = [
   {

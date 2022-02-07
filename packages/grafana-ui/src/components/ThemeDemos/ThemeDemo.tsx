@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
 import { css, cx } from '@emotion/css';
+import { GrafanaTheme2, ThemeRichColor } from '@grafana/data';
+
 import { useTheme2 } from '../../themes/ThemeContext';
 import { Icon } from '../Icon/Icon';
 import { HorizontalGroup, VerticalGroup } from '../Layout/Layout';
-import { GrafanaTheme2, ThemeRichColor } from '@grafana/data';
 import { CollapsableSection } from '../Collapse/CollapsableSection';
 import { Field } from '../Forms/Field';
 import { Input } from '../Input/Input';

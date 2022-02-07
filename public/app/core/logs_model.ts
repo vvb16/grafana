@@ -1,7 +1,9 @@
 import { size } from 'lodash';
+import { SIPrefix } from '@grafana/data/src/valueFormats/symbolFormatters';
+import { Observable, throwError, timeout } from 'rxjs';
+
 import { BarAlignment, GraphDrawStyle, StackingMode } from '@grafana/schema';
 import { ansicolor, colors } from '@grafana/ui';
-
 import {
   AbsoluteTimeRange,
   DataFrame,
@@ -38,8 +40,6 @@ import {
   toUtc,
 } from '@grafana/data';
 import { getThemeColor } from 'app/core/utils/colors';
-import { SIPrefix } from '@grafana/data/src/valueFormats/symbolFormatters';
-import { Observable, throwError, timeout } from 'rxjs';
 
 export const LIMIT_LABEL = 'Line limit';
 export const COMMON_LABELS = 'Common labels';

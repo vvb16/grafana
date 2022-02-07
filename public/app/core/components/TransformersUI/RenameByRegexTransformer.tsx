@@ -1,4 +1,7 @@
 import React from 'react';
+import { css } from '@emotion/css';
+import { RenameByRegexTransformerOptions } from '@grafana/data/src/transformations/transformers/renameByRegex';
+
 import {
   DataTransformerID,
   standardTransformers,
@@ -7,8 +10,6 @@ import {
   stringToJsRegex,
 } from '@grafana/data';
 import { Field, Input } from '@grafana/ui';
-import { css } from '@emotion/css';
-import { RenameByRegexTransformerOptions } from '@grafana/data/src/transformations/transformers/renameByRegex';
 
 interface RenameByRegexTransformerEditorProps extends TransformerUIProps<RenameByRegexTransformerOptions> {}
 

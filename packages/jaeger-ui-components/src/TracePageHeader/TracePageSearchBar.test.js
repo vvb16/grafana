@@ -15,9 +15,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import UiFindInput from '../common/UiFindInput';
+
 import * as markers from './TracePageSearchBar.markers';
 import TracePageSearchBar, { getStyles } from './TracePageSearchBar';
-import UiFindInput from '../common/UiFindInput';
 
 const defaultProps = {
   forwardedRef: React.createRef(),

@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { saveAs } from 'file-saver';
+
 import { getBackendSrv } from 'app/core/services/backend_srv';
 import { Button, Field, Modal, Switch } from '@grafana/ui';
 import { DashboardExporter } from 'app/features/dashboard/components/DashExportModal';
 import { appEvents } from 'app/core/core';
 import { ShowModalReactEvent } from 'app/types/events';
-import { ViewJsonModal } from './ViewJsonModal';
 import { config } from '@grafana/runtime';
+
+import { ViewJsonModal } from './ViewJsonModal';
 import { ShareModalTabProps } from './types';
 
 interface Props extends ShareModalTabProps {}

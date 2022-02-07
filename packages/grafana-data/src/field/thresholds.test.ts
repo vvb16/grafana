@@ -1,7 +1,8 @@
 import { ThresholdsConfig, ThresholdsMode, FieldConfig, Threshold, Field, FieldType } from '../types';
+import { ArrayVector } from '../vector/ArrayVector';
+
 import { sortThresholds, getActiveThreshold, getActiveThresholdForValue } from './thresholds';
 import { validateFieldConfig } from './fieldOverrides';
-import { ArrayVector } from '../vector/ArrayVector';
 
 describe('thresholds', () => {
   test('sort thresholds', () => {

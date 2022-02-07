@@ -3,6 +3,7 @@ import ansicolor from 'ansicolor';
 import React, { PureComponent } from 'react';
 // @ts-ignore
 import Highlighter from 'react-highlight-words';
+
 import { withTheme2 } from '../../themes';
 import { Themeable2 } from '../../types';
 

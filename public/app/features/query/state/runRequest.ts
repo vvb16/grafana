@@ -2,7 +2,10 @@
 import { from, merge, Observable, of, timer } from 'rxjs';
 import { isString, map as isArray } from 'lodash';
 import { catchError, map, mapTo, share, takeUntil, tap } from 'rxjs/operators';
+
 // Utils & Services
+import { isExpressionReference } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import { backendSrv } from 'app/core/services/backend_srv';
 // Types
 import {
@@ -21,11 +24,11 @@ import {
   toDataFrame,
 } from '@grafana/data';
 import { toDataQueryError } from '@grafana/runtime';
-import { emitDataRequestEvent } from './queryAnalytics';
 import { dataSource as expressionDatasource } from 'app/features/expressions/ExpressionDatasource';
 import { ExpressionQuery } from 'app/features/expressions/types';
+
+import { emitDataRequestEvent } from './queryAnalytics';
 import { cancelNetworkRequestsOnUnsubscribe } from './processing/canceler';
-import { isExpressionReference } from '@grafana/runtime/src/utils/DataSourceWithBackend';
 
 type MapOfResponsePackets = { [str: string]: DataQueryResponse };
 

@@ -1,14 +1,17 @@
+import React, { FC, Fragment, useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { ConfirmModal, useStyles2 } from '@grafana/ui';
 import { AlertManagerCortexConfig } from 'app/plugins/datasource/alertmanager/types';
-import React, { FC, Fragment, useMemo, useState } from 'react';
+
 import { getAlertTableStyles } from '../../styles/table';
 import { CollapseToggle } from '../CollapseToggle';
 import { DetailsField } from '../DetailsField';
 import { ActionIcon } from '../rules/ActionIcon';
-import { ReceiversSection } from './ReceiversSection';
 import { makeAMLink } from '../../utils/misc';
-import { useDispatch } from 'react-redux';
 import { deleteTemplateAction } from '../../state/actions';
+
+import { ReceiversSection } from './ReceiversSection';
 
 interface Props {
   config: AlertManagerCortexConfig;

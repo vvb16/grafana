@@ -1,9 +1,12 @@
+import { of } from 'rxjs';
+
 import { DataQuery, DefaultTimeZone, EventBusExtended, serializeStateToUrlParam, toUtc } from '@grafana/data';
 import { ExploreId, StoreState, ThunkDispatch } from 'app/types';
-import { refreshExplore } from './explorePane';
 import { setDataSourceSrv } from '@grafana/runtime';
+
 import { configureStore } from '../../../store/configureStore';
-import { of } from 'rxjs';
+
+import { refreshExplore } from './explorePane';
 
 jest.mock('../../dashboard/services/TimeSrv', () => ({
   getTimeSrv: jest.fn().mockReturnValue({

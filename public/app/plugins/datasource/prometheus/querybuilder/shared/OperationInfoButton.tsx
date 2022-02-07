@@ -1,10 +1,12 @@
 import { css } from '@emotion/css';
-import { GrafanaTheme2, renderMarkdown } from '@grafana/data';
 import { FlexItem } from '@grafana/experimental';
-import { Button, Portal, useStyles2 } from '@grafana/ui';
 import React, { useState } from 'react';
 import { usePopper } from 'react-popper';
 import { useToggle } from 'react-use';
+
+import { Button, Portal, useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2, renderMarkdown } from '@grafana/data';
+
 import { QueryBuilderOperation, QueryBuilderOperationDef } from './types';
 
 export interface Props {

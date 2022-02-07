@@ -1,10 +1,11 @@
 import React, { FC, useCallback, useState } from 'react';
 import debounce from 'debounce-promise';
+import { useAsync } from 'react-use';
+
 import { SelectableValue, StandardEditorProps } from '@grafana/data';
 import { DashboardSearchHit } from 'app/features/search/types';
 import { backendSrv } from 'app/core/services/backend_srv';
 import { AsyncSelect } from '@grafana/ui';
-import { useAsync } from 'react-use';
 
 export interface DashboardPickerOptions {
   placeholder?: string;

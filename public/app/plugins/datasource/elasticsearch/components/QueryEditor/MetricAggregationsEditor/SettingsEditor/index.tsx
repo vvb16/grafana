@@ -1,5 +1,8 @@
-import { InlineField, Input, InlineSwitch, Select } from '@grafana/ui';
 import React, { ComponentProps, useRef, useState } from 'react';
+import { uniqueId } from 'lodash';
+
+import { InlineField, Input, InlineSwitch, Select } from '@grafana/ui';
+
 import { extendedStats } from '../../../../query_def';
 import { useDispatch } from '../../../../hooks/useStatelessReducer';
 import { changeMetricMeta, changeMetricSetting } from '../state/actions';
@@ -9,15 +12,15 @@ import {
   isMetricAggregationWithMissingSupport,
   ExtendedStat,
 } from '../aggregations';
+import { SettingsEditorContainer } from '../../SettingsEditorContainer';
+import { metricAggregationConfig } from '../utils';
+import { useQuery } from '../../ElasticsearchQueryContext';
+
 import { BucketScriptSettingsEditor } from './BucketScriptSettingsEditor';
 import { SettingField } from './SettingField';
-import { SettingsEditorContainer } from '../../SettingsEditorContainer';
 import { useDescription } from './useDescription';
 import { MovingAverageSettingsEditor } from './MovingAverageSettingsEditor';
 import { TopMetricsSettingsEditor } from './TopMetricsSettingsEditor';
-import { uniqueId } from 'lodash';
-import { metricAggregationConfig } from '../utils';
-import { useQuery } from '../../ElasticsearchQueryContext';
 
 // TODO: Move this somewhere and share it with BucketsAggregation Editor
 const inlineFieldProps: Partial<ComponentProps<typeof InlineField>> = {

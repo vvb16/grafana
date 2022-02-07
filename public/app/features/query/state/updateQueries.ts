@@ -1,5 +1,6 @@
-import { DataQuery, DataSourceInstanceSettings, getDataSourceRef } from '@grafana/data';
 import { isExpressionReference } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
+import { DataQuery, DataSourceInstanceSettings, getDataSourceRef } from '@grafana/data';
 
 export function updateQueries(
   newSettings: DataSourceInstanceSettings,

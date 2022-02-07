@@ -1,5 +1,7 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { css, cx } from '@emotion/css';
+import { getSelectStyles } from '@grafana/ui/src/components/Select/getSelectStyles';
+
 import {
   Button,
   Checkbox,
@@ -13,7 +15,6 @@ import {
   useTheme2,
 } from '@grafana/ui';
 import { GrafanaTheme2, SelectableValue } from '@grafana/data';
-import { getSelectStyles } from '@grafana/ui/src/components/Select/getSelectStyles';
 import { OrgRole, Role } from 'app/types';
 
 type BuiltInRoles = Record<string, Role[]>;

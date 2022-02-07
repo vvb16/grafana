@@ -1,11 +1,13 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
 import { isString } from 'lodash';
+import { GrafanaTheme2 } from '@grafana/data';
+
 import { Tooltip } from '../Tooltip/Tooltip';
 import { JSONFormatter } from '../JSONFormatter/JSONFormatter';
 import { useStyles2 } from '../../themes';
+
 import { TableCellProps } from './types';
-import { GrafanaTheme2 } from '@grafana/data';
 
 export function JSONViewCell(props: TableCellProps): JSX.Element {
   const { cell, tableStyles, cellProps } = props;

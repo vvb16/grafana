@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+
 import Page from 'app/core/components/Page/Page';
 import { Button, Form, Field, Input, FieldSet, Label, Tooltip, Icon } from '@grafana/ui';
 import { NavModel } from '@grafana/data';
 import { getBackendSrv, locationService } from '@grafana/runtime';
-import { connect } from 'react-redux';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { StoreState } from 'app/types';
 

@@ -3,6 +3,9 @@ import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-lib
 import userEvent from '@testing-library/user-event';
 
 import { getTheme } from '@grafana/ui';
+
+import PromQlLanguageProvider from '../language_provider';
+
 import {
   buildSelector,
   facetLabels,
@@ -10,7 +13,6 @@ import {
   UnthemedPrometheusMetricsBrowser,
   BrowserProps,
 } from './PrometheusMetricsBrowser';
-import PromQlLanguageProvider from '../language_provider';
 
 describe('buildSelector()', () => {
   it('returns an empty selector for no labels', () => {

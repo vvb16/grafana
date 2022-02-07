@@ -1,8 +1,11 @@
-import { AlertmanagerAlert } from 'app/plugins/datasource/alertmanager/types';
 import React, { FC, useState } from 'react';
-import { CollapseToggle } from '../CollapseToggle';
+
+import { AlertmanagerAlert } from 'app/plugins/datasource/alertmanager/types';
 import { intervalToAbbreviatedDurationString } from '@grafana/data';
+
+import { CollapseToggle } from '../CollapseToggle';
 import { AlertLabels } from '../AlertLabels';
+
 import { AmAlertStateTag } from './AmAlertStateTag';
 
 interface Props {

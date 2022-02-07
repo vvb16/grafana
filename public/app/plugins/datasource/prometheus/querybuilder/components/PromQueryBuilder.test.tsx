@@ -1,12 +1,14 @@
 import React from 'react';
 import { render, screen, getByRole, getByText } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PromQueryBuilder } from './PromQueryBuilder';
+
 import { PrometheusDatasource } from '../../datasource';
 import { EmptyLanguageProviderMock } from '../../language_provider.mock';
 import PromQlLanguageProvider from '../../language_provider';
 import { PromVisualQuery } from '../types';
 import { getLabelSelects } from '../testUtils';
+
+import { PromQueryBuilder } from './PromQueryBuilder';
 
 const defaultQuery: PromVisualQuery = {
   metric: 'random_metric',

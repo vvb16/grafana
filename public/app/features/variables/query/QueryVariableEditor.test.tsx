@@ -1,16 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DataSourceApi } from '@grafana/data';
 
-import { Props, QueryVariableEditorUnConnected } from './QueryVariableEditor';
-import { initialQueryVariableModelState } from './reducer';
+import { DataSourceApi } from '@grafana/data';
+import { mockDataSource } from 'app/features/alerting/unified/mocks';
+import { DataSourceType } from 'app/features/alerting/unified/utils/datasource';
+
 import { initialVariableEditorState } from '../editor/reducer';
 import { describe, expect } from '../../../../test/lib/common';
 import { LegacyVariableQueryEditor } from '../editor/LegacyVariableQueryEditor';
-import { mockDataSource } from 'app/features/alerting/unified/mocks';
-import { DataSourceType } from 'app/features/alerting/unified/utils/datasource';
 import { NEW_VARIABLE_ID } from '../constants';
+
+import { initialQueryVariableModelState } from './reducer';
+import { Props, QueryVariableEditorUnConnected } from './QueryVariableEditor';
 
 const setupTestContext = (options: Partial<Props>) => {
   const defaults: Props = {

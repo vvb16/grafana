@@ -1,6 +1,8 @@
-import { migrateVariablesDatasourceNameToRef } from './actions';
-import { adHocBuilder, queryBuilder } from '../shared/testing/builders';
 import { DataSourceRef } from '@grafana/data/src';
+
+import { adHocBuilder, queryBuilder } from '../shared/testing/builders';
+
+import { migrateVariablesDatasourceNameToRef } from './actions';
 import { changeVariableProp } from './sharedReducer';
 import { toVariablePayload } from './types';
 

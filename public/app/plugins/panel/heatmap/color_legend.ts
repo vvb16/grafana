@@ -1,12 +1,14 @@
 import { find, isEmpty, isNil, sortBy, uniq } from 'lodash';
 import $ from 'jquery';
 import * as d3 from 'd3';
+
 import { contextSrv } from 'app/core/core';
 import { tickStep } from 'app/core/utils/ticks';
-import { getColorScale, getOpacityScale } from './color_scale';
 import coreModule from 'app/angular/core_module';
 import { PanelEvents, getColorForTheme } from '@grafana/data';
 import { config } from 'app/core/config';
+
+import { getColorScale, getOpacityScale } from './color_scale';
 
 const LEGEND_HEIGHT_PX = 6;
 const LEGEND_WIDTH_PX = 100;

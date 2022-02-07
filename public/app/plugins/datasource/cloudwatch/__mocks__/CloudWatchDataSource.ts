@@ -1,11 +1,13 @@
+import { of } from 'rxjs';
+
 import { dateTime } from '@grafana/data';
 import { setBackendSrv } from '@grafana/runtime';
-import { TemplateSrvMock } from '../../../../features/templating/template_srv.mock';
 import { initialCustomVariableModelState } from 'app/features/variables/custom/reducer';
 import { CustomVariableModel } from 'app/features/variables/types';
-import { of } from 'rxjs';
-import { CloudWatchDatasource } from '../datasource';
 import { TemplateSrv } from 'app/features/templating/template_srv';
+
+import { CloudWatchDatasource } from '../datasource';
+import { TemplateSrvMock } from '../../../../features/templating/template_srv.mock';
 
 export function setupMockedDataSource({ data = [], variables }: { data?: any; variables?: any } = {}) {
   let templateService = new TemplateSrvMock({

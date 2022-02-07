@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
+
 import { ManifestInfo } from './types';
 
 const MANIFEST_FILE = 'MANIFEST.txt';

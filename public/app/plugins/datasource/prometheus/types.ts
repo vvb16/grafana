@@ -1,4 +1,5 @@
 import { DataQuery, DataSourceJsonData, QueryResultMeta, ScopedVars } from '@grafana/data';
+
 import { QueryEditorMode } from './querybuilder/shared/types';
 import { PromVisualQuery } from './querybuilder/types';
 

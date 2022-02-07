@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
+import { defaults } from 'lodash';
 
 import { DataFrame, DataTransformerInfo, Field, FieldType, NullValueMode, Vector } from '../../types';
-import { DataTransformerID } from './ids';
 import { doStandardCalcs, fieldReducers, ReducerID } from '../fieldReducer';
 import { getFieldMatcher } from '../matchers';
 import { FieldMatcherID } from '../matchers/ids';
@@ -9,10 +9,11 @@ import { RowVector } from '../../vector/RowVector';
 import { ArrayVector, BinaryOperationVector, ConstantVector } from '../../vector';
 import { AsNumberVector } from '../../vector/AsNumberVector';
 import { getTimeField } from '../../dataframe/processDataFrame';
-import { defaults } from 'lodash';
 import { BinaryOperationID, binaryOperators } from '../../utils/binaryOperators';
-import { ensureColumnsTransformer } from './ensureColumns';
 import { getFieldDisplayName } from '../../field';
+
+import { ensureColumnsTransformer } from './ensureColumns';
+import { DataTransformerID } from './ids';
 import { noopTransformer } from './noop';
 
 export enum CalculateFieldMode {

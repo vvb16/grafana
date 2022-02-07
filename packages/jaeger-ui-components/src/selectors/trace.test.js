@@ -14,6 +14,9 @@
 
 import { values as _values } from 'lodash';
 
+import traceGenerator from '../demo/trace-generators';
+import { numberSortComparator } from '../utils/sort';
+
 import { followsFromRef } from './trace.fixture';
 import {
   getSpanId,
@@ -25,8 +28,6 @@ import {
   getSpanTimestamp,
 } from './span';
 import * as traceSelectors from './trace';
-import traceGenerator from '../demo/trace-generators';
-import { numberSortComparator } from '../utils/sort';
 
 const generatedTrace = traceGenerator.trace({ numberOfSpans: 45 });
 

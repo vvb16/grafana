@@ -1,5 +1,7 @@
 import { concat, find, flattenDeep, forEach, get, map } from 'lodash';
+
 import { AnnotationEvent, dateTime, TimeSeries } from '@grafana/data';
+
 import { AzureLogsTableData, AzureLogsVariable } from '../types';
 import { AzureLogAnalyticsMetadata } from '../types/logAnalyticsMetadata';
 

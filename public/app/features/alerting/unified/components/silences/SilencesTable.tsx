@@ -1,21 +1,24 @@
 import React, { FC, useMemo } from 'react';
+import { css } from '@emotion/css';
+import { useDispatch } from 'react-redux';
+
 import { GrafanaTheme2, dateMath } from '@grafana/data';
 import { Icon, useStyles2, Link, Button } from '@grafana/ui';
-import { css } from '@emotion/css';
 import { AlertmanagerAlert, Silence, SilenceState } from 'app/plugins/datasource/alertmanager/types';
-import { NoSilencesSplash } from './NoSilencesCTA';
-import { getSilenceFiltersFromUrlParams, makeAMLink } from '../../utils/misc';
 import { contextSrv } from 'app/core/services/context_srv';
 import { useQueryParams } from 'app/core/hooks/useQueryParams';
-import { SilencesFilter } from './SilencesFilter';
+
+import { getSilenceFiltersFromUrlParams, makeAMLink } from '../../utils/misc';
 import { parseMatchers } from '../../utils/alertmanager';
 import { DynamicTable, DynamicTableColumnProps, DynamicTableItemProps } from '../DynamicTable';
-import { SilenceStateTag } from './SilenceStateTag';
-import { Matchers } from './Matchers';
 import { ActionButton } from '../rules/ActionButton';
 import { ActionIcon } from '../rules/ActionIcon';
-import { useDispatch } from 'react-redux';
 import { expireSilenceAction } from '../../state/actions';
+
+import { Matchers } from './Matchers';
+import { SilenceStateTag } from './SilenceStateTag';
+import { NoSilencesSplash } from './NoSilencesCTA';
+import { SilencesFilter } from './SilencesFilter';
 import { SilenceDetails } from './SilenceDetails';
 
 export interface SilenceTableItem extends Silence {

@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { PanelChrome } from './PanelChrome';
-import { PanelChromeAngular } from './PanelChromeAngular';
-import { DashboardModel, PanelModel } from '../state';
+
 import { StoreState } from 'app/types';
 import { PanelPlugin } from '@grafana/data';
+
+import { DashboardModel, PanelModel } from '../state';
 import { cleanUpPanelState, setPanelInstanceState } from '../../panel/state/reducers';
 import { initPanelState } from '../../panel/state/actions';
+
+import { PanelChromeAngular } from './PanelChromeAngular';
+import { PanelChrome } from './PanelChrome';
 import { LazyLoader } from './LazyLoader';
 
 export interface OwnProps {

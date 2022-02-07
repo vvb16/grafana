@@ -1,5 +1,6 @@
 import { StoreState } from 'app/types';
 import { PanelPlugin } from '@grafana/data';
+
 import { getPanelPluginNotFound } from '../../panel/components/PanelPluginError';
 
 export const getPanelPluginWithFallback =

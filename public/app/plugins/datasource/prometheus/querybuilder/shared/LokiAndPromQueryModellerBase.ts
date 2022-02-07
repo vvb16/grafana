@@ -1,4 +1,5 @@
 import { Registry } from '@grafana/data';
+
 import {
   QueryBuilderLabelFilter,
   QueryBuilderOperation,

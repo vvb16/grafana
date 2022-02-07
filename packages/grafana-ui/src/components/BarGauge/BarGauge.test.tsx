@@ -10,6 +10,7 @@ import {
   getDisplayProcessor,
   createTheme,
 } from '@grafana/data';
+
 import {
   BarGauge,
   Props,

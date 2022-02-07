@@ -1,7 +1,9 @@
-import { coreModule } from './core_module';
+import { ILocationService } from 'angular';
+
 import { RouteProvider } from '../core/navigation/patch/RouteProvider';
 import { RouteParamsProvider } from '../core/navigation/patch/RouteParamsProvider';
-import { ILocationService } from 'angular';
+
+import { coreModule } from './core_module';
 import { AngularLocationWrapper } from './AngularLocationWrapper';
 
 // Neutralizing Angular’s location tampering

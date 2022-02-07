@@ -1,6 +1,7 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
+
 import { Icon } from '../Icon/Icon';
 import { Alert, AlertVariant } from '../Alert/Alert';
 import { stylesFactory, useStyles2 } from '../../themes';

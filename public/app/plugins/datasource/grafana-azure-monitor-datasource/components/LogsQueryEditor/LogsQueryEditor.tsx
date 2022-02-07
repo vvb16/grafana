@@ -1,7 +1,10 @@
 import React from 'react';
+
+import { Alert, InlineFieldRow } from '@grafana/ui';
+
 import { AzureMonitorErrorish, AzureMonitorOption, AzureMonitorQuery } from '../../types';
 import Datasource from '../../datasource';
-import { Alert, InlineFieldRow } from '@grafana/ui';
+
 import QueryField from './QueryField';
 import FormatAsField from './FormatAsField';
 import ResourceField from './ResourceField';

@@ -5,30 +5,30 @@ import './time_regions_form';
 import './annotation_tooltip';
 import './event_editor';
 
-import template from './template';
 import { defaults, find, without } from 'lodash';
-
-import { DataProcessor } from './data_processor';
-import { axesEditorComponent } from './axes_editor';
-import config from 'app/core/config';
-import TimeSeries from 'app/core/time_series2';
-import { DataFrame, FieldConfigProperty, getColorForTheme, PanelEvents, PanelPlugin } from '@grafana/data';
-
-import { GraphContextMenuCtrl } from './GraphContextMenuCtrl';
-import { graphPanelMigrationHandler } from './GraphMigrations';
-import { DataWarning, GraphFieldConfig, GraphPanelOptions } from './types';
-
 import { auto } from 'angular';
+
+import { DataFrame, FieldConfigProperty, getColorForTheme, PanelEvents, PanelPlugin } from '@grafana/data';
+import TimeSeries from 'app/core/time_series2';
+import config from 'app/core/config';
 import { getLocationSrv } from '@grafana/runtime';
-import { getDataTimeRange } from './utils';
 import { changePanelPlugin } from 'app/features/panel/state/actions';
 import { dispatch } from 'app/store/store';
 import { ThresholdMapper } from 'app/features/alerting/state/ThresholdMapper';
-import { appEvents } from '../../../core/core';
-import { ZoomOutEvent } from '../../../types/events';
 import { MetricsPanelCtrl } from 'app/angular/panel/metrics_panel_ctrl';
+
+import { ZoomOutEvent } from '../../../types/events';
+import { appEvents } from '../../../core/core';
 import { loadSnapshotData } from '../../../features/dashboard/utils/loadSnapshotData';
 import { annotationsFromDataFrames } from '../../../features/query/state/DashboardQueryRunner/utils';
+
+import { DataWarning, GraphFieldConfig, GraphPanelOptions } from './types';
+import { GraphContextMenuCtrl } from './GraphContextMenuCtrl';
+import { graphPanelMigrationHandler } from './GraphMigrations';
+import { getDataTimeRange } from './utils';
+import { axesEditorComponent } from './axes_editor';
+import { DataProcessor } from './data_processor';
+import template from './template';
 
 export class GraphCtrl extends MetricsPanelCtrl {
   static template = template;

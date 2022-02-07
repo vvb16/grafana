@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Story } from '@storybook/react';
+
 import mdx from './RadioButtonGroup.mdx';
 import { RadioButtonGroup } from './RadioButtonGroup';
-import { Story } from '@storybook/react';
 
 export default {
   title: 'Forms/RadioButtonGroup',

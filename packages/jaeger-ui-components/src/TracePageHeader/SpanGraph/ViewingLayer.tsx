@@ -18,11 +18,12 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { withTheme2, stylesFactory } from '@grafana/ui';
 
-import GraphTicks from './GraphTicks';
-import Scrubber from './Scrubber';
 import { TUpdateViewRangeTimeFunction, UIButton, ViewRange, ViewRangeTimeUpdate, TNil } from '../..';
 import { autoColor } from '../../Theme';
 import DraggableManager, { DraggableBounds, DraggingUpdate, EUpdateTypes } from '../../utils/DraggableManager';
+
+import Scrubber from './Scrubber';
+import GraphTicks from './GraphTicks';
 
 export const getStyles = stylesFactory((theme: GrafanaTheme2) => {
   // Need this cause emotion will merge emotion generated classes into single className if used with cx from emotion

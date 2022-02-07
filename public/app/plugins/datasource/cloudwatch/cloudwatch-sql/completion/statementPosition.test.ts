@@ -1,4 +1,5 @@
 import { monacoTypes } from '@grafana/ui';
+
 import MonacoMock from '../../__mocks__/monarch/Monaco';
 import TextModel from '../../__mocks__/monarch/TextModel';
 import {
@@ -9,8 +10,9 @@ import {
 } from '../../__mocks__/cloudwatch-sql-test-data';
 import { linkedTokenBuilder } from '../../monarch/linkedTokenBuilder';
 import { StatementPosition } from '../../monarch/types';
-import { getStatementPosition } from './statementPosition';
 import cloudWatchSqlLanguageDefinition from '../definition';
+
+import { getStatementPosition } from './statementPosition';
 import { SQLTokenTypes } from './types';
 
 describe('statementPosition', () => {

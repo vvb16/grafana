@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
-import { ColorDimensionEditor } from 'app/features/dimensions/editors/ColorDimensionEditor';
-import { TextDimensionEditor } from 'app/features/dimensions/editors/TextDimensionEditor';
-import { ColorDimensionConfig, TextDimensionConfig } from 'app/features/dimensions/types';
-
-import { CanvasElementItem, CanvasElementProps } from '../element';
 import { css } from '@emotion/css';
+
+import { ColorDimensionConfig, TextDimensionConfig } from 'app/features/dimensions/types';
+import { TextDimensionEditor } from 'app/features/dimensions/editors/TextDimensionEditor';
+import { ColorDimensionEditor } from 'app/features/dimensions/editors/ColorDimensionEditor';
 import { stylesFactory } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 import { config } from 'app/core/config';
 import { DimensionContext } from 'app/features/dimensions/context';
+
+import { CanvasElementItem, CanvasElementProps } from '../element';
 
 export enum Align {
   Left = 'left',

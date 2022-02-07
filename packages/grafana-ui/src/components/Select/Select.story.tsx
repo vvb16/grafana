@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { withCenteredStory, withHorizontallyCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { SelectableValue } from '@grafana/data';
-import { Icon, Select, AsyncSelect, MultiSelect, AsyncMultiSelect } from '@grafana/ui';
-import { getAvailableIcons, IconName } from '../../types';
-import { SelectCommonProps } from './types';
 import { Meta, Story } from '@storybook/react';
-import { generateOptions } from './mockOptions';
-import mdx from './Select.mdx';
 import { auto } from '@popperjs/core';
 import { action } from '@storybook/addon-actions';
+
+import { Icon, Select, AsyncSelect, MultiSelect, AsyncMultiSelect } from '@grafana/ui';
+
+import { withCenteredStory, withHorizontallyCenteredStory } from '../../utils/storybook/withCenteredStory';
+import { getAvailableIcons, IconName } from '../../types';
+
+import { SelectCommonProps } from './types';
+import { generateOptions } from './mockOptions';
+import mdx from './Select.mdx';
 
 export default {
   title: 'Forms/Select',

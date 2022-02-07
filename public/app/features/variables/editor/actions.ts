@@ -1,5 +1,17 @@
-import { ThunkResult } from '../../../types';
+import { cloneDeep } from 'lodash';
+
+import { VariableType } from '@grafana/data';
+
+import { variableAdapters } from '../adapters';
+import { AddVariable, toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
 import { getEditorVariables, getNewVariableIndex, getVariable, getVariables } from '../state/selectors';
+import { ThunkResult } from '../../../types';
+import { addVariable, removeVariable } from '../state/sharedReducer';
+import { updateOptions } from '../state/actions';
+import { VariableModel } from '../types';
+import { initInspect } from '../inspect/reducer';
+import { createUsagesNetwork, transformUsagesToNetwork } from '../inspect/utils';
+
 import {
   changeVariableNameFailed,
   changeVariableNameSucceeded,
@@ -8,15 +20,6 @@ import {
   variableEditorMounted,
   variableEditorUnMounted,
 } from './reducer';
-import { variableAdapters } from '../adapters';
-import { AddVariable, toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
-import { cloneDeep } from 'lodash';
-import { VariableType } from '@grafana/data';
-import { addVariable, removeVariable } from '../state/sharedReducer';
-import { updateOptions } from '../state/actions';
-import { VariableModel } from '../types';
-import { initInspect } from '../inspect/reducer';
-import { createUsagesNetwork, transformUsagesToNetwork } from '../inspect/utils';
 
 export const variableEditorMount = (identifier: VariableIdentifier): ThunkResult<void> => {
   return async (dispatch) => {

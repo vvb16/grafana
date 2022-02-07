@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react';
 // Types
 import { InlineFormLabel, LegacyForms, Select } from '@grafana/ui';
 import { CoreApp, SelectableValue } from '@grafana/data';
+
 import { PromQuery } from '../types';
 
 import PromQueryField from './PromQueryField';

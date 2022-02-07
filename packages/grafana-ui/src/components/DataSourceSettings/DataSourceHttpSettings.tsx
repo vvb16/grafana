@@ -2,10 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { css, cx } from '@emotion/css';
 import { DataSourceSettings, SelectableValue } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-import { BasicAuthSettings } from './BasicAuthSettings';
-import { HttpProxySettings } from './HttpProxySettings';
-import { TLSAuthSettings } from './TLSAuthSettings';
-import { CustomHeadersSettings } from './CustomHeadersSettings';
+
 import { Select } from '../Select/Select';
 import { Input } from '../Forms/Legacy/Input/Input';
 import { Switch } from '../Forms/Legacy/Switch/Switch';
@@ -13,8 +10,13 @@ import { Icon } from '../Icon/Icon';
 import { FormField } from '../FormField/FormField';
 import { InlineFormLabel } from '../FormLabel/FormLabel';
 import { TagsInput } from '../TagsInput/TagsInput';
-import { SigV4AuthSettings } from './SigV4AuthSettings';
 import { useTheme } from '../../themes';
+
+import { SigV4AuthSettings } from './SigV4AuthSettings';
+import { CustomHeadersSettings } from './CustomHeadersSettings';
+import { TLSAuthSettings } from './TLSAuthSettings';
+import { HttpProxySettings } from './HttpProxySettings';
+import { BasicAuthSettings } from './BasicAuthSettings';
 import { HttpSettingsProps } from './types';
 
 const ACCESS_OPTIONS: Array<SelectableValue<string>> = [

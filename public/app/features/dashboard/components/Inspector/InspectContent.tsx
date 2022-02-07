@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { DataSourceApi, PanelData, PanelPlugin } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CustomScrollbar, Drawer, TabContent } from '@grafana/ui';
@@ -11,8 +12,10 @@ import { InspectStatsTab } from 'app/features/inspector/InspectStatsTab';
 import { InspectErrorTab } from 'app/features/inspector/InspectErrorTab';
 import { InspectDataTab } from 'app/features/inspector/InspectDataTab';
 import { InspectTab } from 'app/features/inspector/types';
+
 import { DashboardModel, PanelModel } from '../../state';
 import { GetDataOptions } from '../../../query/state/PanelQueryRunner';
+
 import { InspectActionsTab } from './PanelInspectActions';
 
 interface Props {

@@ -1,10 +1,11 @@
 import React from 'react';
+import { css, cx } from '@emotion/css';
+import { GrafanaTheme2, colorManipulator } from '@grafana/data';
+
 import { Icon, getSvgSize } from '../Icon/Icon';
 import { IconName, IconSize, IconType } from '../../types/icon';
 import { stylesFactory } from '../../themes/stylesFactory';
-import { css, cx } from '@emotion/css';
 import { useTheme2 } from '../../themes/ThemeContext';
-import { GrafanaTheme2, colorManipulator } from '@grafana/data';
 import { PopoverContent, Tooltip } from '../Tooltip/Tooltip';
 import { TooltipPlacement } from '../Tooltip/PopoverController';
 import { getFocusStyles, getMouseFocusStyles } from '../../themes/mixins';

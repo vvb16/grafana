@@ -1,10 +1,17 @@
 import { cloneDeep } from 'lodash';
+
 import { StoreState, ThunkResult } from 'app/types';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
+import { AdHocVariableFilter, AdHocVariableModel } from 'app/features/variables/types';
+import { DataSourceRef, getDataSourceRef } from '@grafana/data';
+
 import { changeVariableEditorExtended } from '../editor/reducer';
 import { addVariable, changeVariableProp } from '../state/sharedReducer';
 import { getNewVariableIndex, getVariable } from '../state/selectors';
 import { AddVariable, toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
+import { variableUpdated } from '../state/actions';
+import { isAdHoc } from '../guard';
+
 import {
   AdHocVariabelFilterUpdate,
   filterAdded,
@@ -13,10 +20,6 @@ import {
   filterUpdated,
   initialAdHocVariableModelState,
 } from './reducer';
-import { AdHocVariableFilter, AdHocVariableModel } from 'app/features/variables/types';
-import { variableUpdated } from '../state/actions';
-import { isAdHoc } from '../guard';
-import { DataSourceRef, getDataSourceRef } from '@grafana/data';
 
 export interface AdHocTableOptions {
   datasource: DataSourceRef;

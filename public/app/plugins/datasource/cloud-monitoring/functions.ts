@@ -1,7 +1,9 @@
 import { chunk, flatten, initial, startCase, uniqBy } from 'lodash';
+
+import { TemplateSrv, getTemplateSrv } from '@grafana/runtime';
+
 import { ALIGNMENTS, AGGREGATIONS, SYSTEM_LABELS } from './constants';
 import CloudMonitoringDatasource from './datasource';
-import { TemplateSrv, getTemplateSrv } from '@grafana/runtime';
 import { MetricDescriptor, ValueTypes, MetricKind, AlignmentTypes, PreprocessorType, Filter } from './types';
 
 const templateSrv: TemplateSrv = getTemplateSrv();

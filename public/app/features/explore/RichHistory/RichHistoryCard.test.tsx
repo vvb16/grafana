@@ -1,8 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RichHistoryCard, Props } from './RichHistoryCard';
-import { ExploreId } from '../../../types/explore';
+
 import { DataSourceApi, DataQuery } from '@grafana/data';
+
+import { ExploreId } from '../../../types/explore';
+
+import { RichHistoryCard, Props } from './RichHistoryCard';
 
 const setup = (propOverrides?: Partial<Props>) => {
   const props: Props = {

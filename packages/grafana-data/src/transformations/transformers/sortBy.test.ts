@@ -1,10 +1,12 @@
+import { DataTransformerConfig } from '@grafana/data';
+
 import { toDataFrame } from '../../dataframe/processDataFrame';
-import { sortByTransformer, SortByTransformerOptions } from './sortBy';
 import { mockTransformationsRegistry } from '../../utils/tests/mockTransformationsRegistry';
 import { transformDataFrame } from '../transformDataFrame';
 import { Field, FieldType } from '../../types';
+
+import { sortByTransformer, SortByTransformerOptions } from './sortBy';
 import { DataTransformerID } from './ids';
-import { DataTransformerConfig } from '@grafana/data';
 
 const testFrame = toDataFrame({
   name: 'A',

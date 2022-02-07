@@ -1,13 +1,16 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { ElasticsearchProvider } from '../ElasticsearchQueryContext';
-import { MetricEditor } from './MetricEditor';
 import React, { ReactNode, PropsWithChildren } from 'react';
-import { ElasticDatasource } from '../../../datasource';
-import { getDefaultTimeRange } from '@grafana/data';
-import { ElasticsearchQuery } from '../../../types';
-import { Average, UniqueCount } from './aggregations';
-import { defaultBucketAgg, defaultMetricAgg } from '../../../query_def';
 import { from } from 'rxjs';
+
+import { getDefaultTimeRange } from '@grafana/data';
+
+import { ElasticsearchProvider } from '../ElasticsearchQueryContext';
+import { ElasticDatasource } from '../../../datasource';
+import { ElasticsearchQuery } from '../../../types';
+import { defaultBucketAgg, defaultMetricAgg } from '../../../query_def';
+
+import { Average, UniqueCount } from './aggregations';
+import { MetricEditor } from './MetricEditor';
 
 describe('Metric Editor', () => {
   it('Should display a "None" option for "field" if the metric supports inline script', async () => {

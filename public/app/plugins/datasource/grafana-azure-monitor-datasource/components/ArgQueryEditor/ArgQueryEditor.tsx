@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
+
+import { InlineFieldRow } from '@grafana/ui';
+
 import { AzureMonitorErrorish, AzureMonitorOption, AzureMonitorQuery } from '../../types';
 import Datasource from '../../datasource';
-import { InlineFieldRow } from '@grafana/ui';
 import SubscriptionField from '../SubscriptionField';
+
 import QueryField from './QueryField';
 
 interface LogsQueryEditorProps {

@@ -1,4 +1,3 @@
-import { BarChartOptionsEX, prepareBarChartDisplayValues, preparePlotConfigBuilder } from './utils';
 import {
   LegendDisplayMode,
   TooltipDisplayMode,
@@ -17,6 +16,8 @@ import {
   MutableDataFrame,
   VizOrientation,
 } from '@grafana/data';
+
+import { BarChartOptionsEX, prepareBarChartDisplayValues, preparePlotConfigBuilder } from './utils';
 import { BarChartFieldConfig } from './models.gen';
 
 function mockDataFrame() {

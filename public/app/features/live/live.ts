@@ -1,14 +1,15 @@
-import { BackendSrv, GrafanaLiveSrv, toDataQueryResponse } from '@grafana/runtime';
-import { CentrifugeSrv, StreamingDataQueryResponse } from './centrifuge/service';
-
-import { DataFrame, toLiveChannelId } from '@grafana/data';
-import { StreamingDataFrame } from './data/StreamingDataFrame';
-import { isStreamingResponseData, StreamingResponseDataType } from './data/utils';
 import { from, map, of, switchMap } from 'rxjs';
 import {
   standardStreamOptionsProvider,
   toStreamingDataResponse,
 } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
+import { BackendSrv, GrafanaLiveSrv, toDataQueryResponse } from '@grafana/runtime';
+import { DataFrame, toLiveChannelId } from '@grafana/data';
+
+import { CentrifugeSrv, StreamingDataQueryResponse } from './centrifuge/service';
+import { StreamingDataFrame } from './data/StreamingDataFrame';
+import { isStreamingResponseData, StreamingResponseDataType } from './data/utils';
 
 type GrafanaLiveServiceDeps = {
   centrifugeSrv: CentrifugeSrv;

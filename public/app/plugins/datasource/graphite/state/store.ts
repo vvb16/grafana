@@ -1,9 +1,16 @@
+import { Action, Dispatch } from 'redux';
+import { AnyAction } from '@reduxjs/toolkit';
+
+import { getTemplateSrv } from '@grafana/runtime';
+import { DataQuery, TimeRange } from '@grafana/data';
+
 import GraphiteQuery, { GraphiteTarget } from '../graphite_query';
 import { GraphiteSegment, GraphiteTagOperator } from '../types';
 import { GraphiteDatasource } from '../datasource';
 import { TemplateSrv } from '../../../../features/templating/template_srv';
+import { FuncDefs } from '../gfunc';
+
 import { actions } from './actions';
-import { getTemplateSrv } from '@grafana/runtime';
 import {
   addSeriesByTagFunc,
   buildSegments,
@@ -16,10 +23,6 @@ import {
   smartlyHandleNewAliasByNode,
   spliceSegments,
 } from './helpers';
-import { Action, Dispatch } from 'redux';
-import { FuncDefs } from '../gfunc';
-import { AnyAction } from '@reduxjs/toolkit';
-import { DataQuery, TimeRange } from '@grafana/data';
 
 export type GraphiteQueryEditorState = {
   // external dependencies

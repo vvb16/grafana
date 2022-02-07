@@ -1,3 +1,5 @@
+import { Geometry } from 'ol/geom';
+
 import {
   FrameGeometrySource,
   FrameGeometrySourceMode,
@@ -9,7 +11,7 @@ import {
   getFieldDisplayName,
   FieldType,
 } from '@grafana/data';
-import { Geometry } from 'ol/geom';
+
 import { getGazetteer, Gazetteer } from '../gazetteer/gazetteer';
 import { getGeoFieldFromGazetteer, pointFieldFromGeohash, pointFieldFromLonLat } from '../format/utils';
 

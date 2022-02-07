@@ -1,8 +1,11 @@
 import React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { CoreApp } from '@grafana/data';
 import { noop } from 'lodash';
+
+import { CoreApp } from '@grafana/data';
+
 import { LokiDatasource } from '../datasource';
+
 import { testIds as alertingTestIds } from './LokiQueryEditorForAlerting';
 import { testIds as regularTestIds } from './LokiQueryEditor';
 import { testIds as exploreTestIds } from './LokiExploreQueryEditor';

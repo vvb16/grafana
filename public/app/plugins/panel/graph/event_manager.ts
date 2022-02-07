@@ -1,5 +1,6 @@
 import { each, filter, keys } from 'lodash';
 import tinycolor from 'tinycolor2';
+
 import {
   ALERTING_COLOR,
   DEFAULT_ANNOTATION_COLOR,
@@ -9,7 +10,6 @@ import {
   REGION_FILL_ALPHA,
 } from '@grafana/ui';
 import { MetricsPanelCtrl } from 'app/angular/panel/metrics_panel_ctrl';
-
 import { AnnotationEvent } from '@grafana/data';
 
 export class EventManager {

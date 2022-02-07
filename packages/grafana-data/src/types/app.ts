@@ -1,4 +1,5 @@
 import { ComponentClass } from 'react';
+
 import { KeyValue } from './data';
 import { NavModel } from './navModel';
 import { PluginMeta, GrafanaPlugin, PluginIncludeType } from './plugin';

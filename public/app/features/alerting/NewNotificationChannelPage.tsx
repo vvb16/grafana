@@ -1,8 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { config } from '@grafana/runtime';
 import { Form } from '@grafana/ui';
 import Page from 'app/core/components/Page/Page';
+import { getNavModel } from 'app/core/selectors/navModel';
+
+import { NotificationChannelDTO, StoreState } from '../../types';
+
 import { NotificationChannelForm } from './components/NotificationChannelForm';
 import {
   defaultValues,
@@ -10,9 +15,7 @@ import {
   transformSubmitData,
   transformTestData,
 } from './utils/notificationChannels';
-import { getNavModel } from 'app/core/selectors/navModel';
 import { createNotificationChannel, loadNotificationTypes, testNotificationChannel } from './state/actions';
-import { NotificationChannelDTO, StoreState } from '../../types';
 import { resetSecureField } from './state/reducers';
 
 class NewNotificationChannelPage extends PureComponent<Props> {

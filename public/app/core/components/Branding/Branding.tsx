@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { css, cx } from '@emotion/css';
+
 import { useTheme2, styleMixins } from '@grafana/ui';
 import { colorManipulator } from '@grafana/data';
 

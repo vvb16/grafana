@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useMemo } from 'react';
+import { HttpSettingsBaseProps } from '@grafana/ui/src/components/DataSourceSettings/types';
+
 import { InlineFormLabel, Input } from '@grafana/ui';
 import { config } from '@grafana/runtime';
+
 import { KnownAzureClouds, AzureCredentials } from './AzureCredentials';
 import { getCredentials, updateCredentials } from './AzureCredentialsConfig';
 import { AzureCredentialsForm } from './AzureCredentialsForm';
-import { HttpSettingsBaseProps } from '@grafana/ui/src/components/DataSourceSettings/types';
 
 export const AzureAuthSettings: FunctionComponent<HttpSettingsBaseProps> = (props: HttpSettingsBaseProps) => {
   const { dataSourceConfig, onChange } = props;

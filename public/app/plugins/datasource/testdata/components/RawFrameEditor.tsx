@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Alert, CodeEditor } from '@grafana/ui';
-import { EditorProps } from '../QueryEditor';
 import { isArray } from 'lodash';
+
+import { Alert, CodeEditor } from '@grafana/ui';
 import { toDataQueryResponse } from '@grafana/runtime';
 import { dataFrameToJSON, toDataFrame, toDataFrameDTO } from '@grafana/data';
+
+import { EditorProps } from '../QueryEditor';
 
 export const RawFrameEditor = ({ onChange, query }: EditorProps) => {
   const [error, setError] = useState<string>();

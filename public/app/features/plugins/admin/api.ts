@@ -1,5 +1,6 @@
 import { getBackendSrv } from '@grafana/runtime';
 import { PluginError, PluginMeta, renderMarkdown } from '@grafana/data';
+
 import { API_ROOT, GCOM_API_ROOT } from './constants';
 import { LocalPlugin, RemotePlugin, CatalogPluginDetails, Version, PluginVersion } from './types';
 import { isLocalPluginVisible, isRemotePluginVisible } from './helpers';

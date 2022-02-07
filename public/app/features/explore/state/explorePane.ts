@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import { isEqual } from 'lodash';
+import { createAction, PayloadAction } from '@reduxjs/toolkit';
 
 import {
   DEFAULT_RANGE,
@@ -10,6 +11,22 @@ import {
   getTimeRangeFromUrl,
 } from 'app/core/utils/explore';
 import { ExploreGraphStyle, ExploreId, ExploreItemState } from 'app/types/explore';
+import {
+  EventBusExtended,
+  DataQuery,
+  ExploreUrlState,
+  TimeRange,
+  HistoryItem,
+  DataSourceApi,
+  ExplorePanelsState,
+  PreferredVisualisationType,
+} from '@grafana/data';
+import { ThunkResult } from 'app/types';
+import { getFiscalYearStartMonth, getTimeZone } from 'app/features/profile/state/selectors';
+import { getDataSourceSrv } from '@grafana/runtime';
+
+import { getRichHistory } from '../../../core/utils/richHistory';
+
 import { queryReducer, runQueries, setQueriesAction } from './query';
 import { datasourceReducer } from './datasource';
 import { timeReducer, updateTime } from './time';
@@ -21,22 +38,8 @@ import {
   getUrlStateFromPaneState,
   storeGraphStyle,
 } from './utils';
-import { createAction, PayloadAction } from '@reduxjs/toolkit';
-import {
-  EventBusExtended,
-  DataQuery,
-  ExploreUrlState,
-  TimeRange,
-  HistoryItem,
-  DataSourceApi,
-  ExplorePanelsState,
-  PreferredVisualisationType,
-} from '@grafana/data';
 // Types
-import { ThunkResult } from 'app/types';
-import { getFiscalYearStartMonth, getTimeZone } from 'app/features/profile/state/selectors';
-import { getDataSourceSrv } from '@grafana/runtime';
-import { getRichHistory } from '../../../core/utils/richHistory';
+
 import { richHistoryUpdatedAction, stateSave } from './main';
 
 //

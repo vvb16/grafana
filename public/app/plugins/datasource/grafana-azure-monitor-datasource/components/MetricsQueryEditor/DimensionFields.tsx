@@ -1,8 +1,10 @@
 import React, { useMemo } from 'react';
+
 import { Button, Select, Input, HorizontalGroup, VerticalGroup, InlineLabel } from '@grafana/ui';
 
 import { Field } from '../Field';
 import { AzureMetricDimension, AzureMonitorOption, AzureQueryEditorFieldProps } from '../../types';
+
 import { appendDimensionFilter, removeDimensionFilter, setDimensionFilterValue } from './setQueryValue';
 
 interface DimensionFieldsProps extends AzureQueryEditorFieldProps {

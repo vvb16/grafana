@@ -1,9 +1,10 @@
-import { getDisplayProcessor, getRawDisplayProcessor } from './displayProcessor';
 import { DisplayProcessor, DisplayValue } from '../types/displayValue';
 import { MappingType, ValueMapping } from '../types/valueMapping';
 import { FieldConfig, FieldType, ThresholdsMode } from '../types';
 import { systemDateFormats } from '../datetime';
 import { createTheme } from '../themes';
+
+import { getDisplayProcessor, getRawDisplayProcessor } from './displayProcessor';
 
 function getDisplayProcessorFromConfig(config: FieldConfig) {
   return getDisplayProcessor({

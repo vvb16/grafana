@@ -1,5 +1,8 @@
 import React, { ChangeEvent, FormEvent, PureComponent } from 'react';
+
 import { InlineFieldRow, VerticalGroup } from '@grafana/ui';
+import { SelectableValue } from '@grafana/data';
+import { selectors } from '@grafana/e2e-selectors';
 
 import { IntervalVariableModel } from '../types';
 import { VariableEditorProps } from '../editor/types';
@@ -7,8 +10,6 @@ import { VariableSectionHeader } from '../editor/VariableSectionHeader';
 import { VariableTextField } from '../editor/VariableTextField';
 import { VariableSwitchField } from '../editor/VariableSwitchField';
 import { VariableSelectField } from '../editor/VariableSelectField';
-import { SelectableValue } from '@grafana/data';
-import { selectors } from '@grafana/e2e-selectors';
 
 export interface Props extends VariableEditorProps<IntervalVariableModel> {}
 

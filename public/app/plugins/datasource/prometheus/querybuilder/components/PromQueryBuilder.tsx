@@ -1,16 +1,19 @@
 import React from 'react';
-import { MetricSelect } from './MetricSelect';
+import { EditorRows, EditorRow } from '@grafana/experimental';
+
+import { DataSourceApi, SelectableValue } from '@grafana/data';
+
 import { PromVisualQuery } from '../types';
 import { LabelFilters } from '../shared/LabelFilters';
 import { OperationList } from '../shared/OperationList';
-import { EditorRows, EditorRow } from '@grafana/experimental';
 import { PrometheusDatasource } from '../../datasource';
-import { NestedQueryList } from './NestedQueryList';
 import { promQueryModeller } from '../PromQueryModeller';
 import { QueryBuilderLabelFilter } from '../shared/types';
-import { QueryPreview } from './QueryPreview';
-import { DataSourceApi, SelectableValue } from '@grafana/data';
 import { OperationsEditorRow } from '../shared/OperationsEditorRow';
+
+import { QueryPreview } from './QueryPreview';
+import { NestedQueryList } from './NestedQueryList';
+import { MetricSelect } from './MetricSelect';
 
 export interface Props {
   query: PromVisualQuery;

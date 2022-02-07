@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
+
 import { TabsBar, Tab, TabContent, Counter as TabCounter } from '@grafana/ui';
+
+import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
+import { DashboardStoryCanvas } from '../../utils/storybook/DashboardStoryCanvas';
+
 import mdx from './TabsBar.mdx';
 import { CounterProps } from './Counter';
-import { DashboardStoryCanvas } from '../../utils/storybook/DashboardStoryCanvas';
 
 export default {
   title: 'Layout/Tabs',

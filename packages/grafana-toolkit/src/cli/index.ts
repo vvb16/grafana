@@ -1,6 +1,7 @@
 // @ts-ignore
 import chalk from 'chalk';
 import { program } from 'commander';
+
 import { execTask } from './utils/execTask';
 import { startTask } from './tasks/core.start';
 import { changelogTask } from './tasks/changelog';

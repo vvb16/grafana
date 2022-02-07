@@ -1,12 +1,15 @@
 import React from 'react';
-import { LokiVisualQuery } from '../types';
-import { LokiDatasource } from '../../datasource';
+import { EditorRow, EditorRows } from '@grafana/experimental';
+
 import { LabelFilters } from 'app/plugins/datasource/prometheus/querybuilder/shared/LabelFilters';
 import { OperationList } from 'app/plugins/datasource/prometheus/querybuilder/shared/OperationList';
 import { QueryBuilderLabelFilter } from 'app/plugins/datasource/prometheus/querybuilder/shared/types';
-import { lokiQueryModeller } from '../LokiQueryModeller';
 import { DataSourceApi, SelectableValue } from '@grafana/data';
-import { EditorRow, EditorRows } from '@grafana/experimental';
+
+import { LokiVisualQuery } from '../types';
+import { LokiDatasource } from '../../datasource';
+import { lokiQueryModeller } from '../LokiQueryModeller';
+
 import { QueryPreview } from './QueryPreview';
 
 export interface Props {

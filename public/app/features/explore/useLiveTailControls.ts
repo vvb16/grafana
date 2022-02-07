@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { RefreshPicker } from '@grafana/ui';
+
+import { ExploreId } from '../../types';
 
 import { changeRefreshInterval } from './state/time';
 import { setPausedStateAction, runQueries } from './state/query';
-import { ExploreId } from '../../types';
 
 /**
  * Hook that gives you all the functions needed to control the live tailing.

@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import { debounce } from 'lodash';
+
 import { AsyncSelect } from '@grafana/ui';
 import { AppEvents, SelectableValue } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-
-import appEvents from '../../app_events';
 import { contextSrv } from 'app/core/services/context_srv';
 import { createFolder, getFolderById, searchFolders } from 'app/features/manage-dashboards/state/actions';
+
+import appEvents from '../../app_events';
 import { PermissionLevelString } from '../../../types';
 
 export interface Props {

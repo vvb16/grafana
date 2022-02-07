@@ -1,5 +1,6 @@
-import { appNotificationsReducer, clearAppNotification, notifyApp } from './appNotification';
 import { AppNotificationSeverity, AppNotificationTimeout } from 'app/types/';
+
+import { appNotificationsReducer, clearAppNotification, notifyApp } from './appNotification';
 
 describe('clear alert', () => {
   it('should filter alert', () => {

@@ -20,6 +20,7 @@ import { getConfigValue } from '../utils/config/get-config';
 import { TraceKeyValuePair, TraceSpan, Trace, TraceResponse } from '../types/trace';
 // @ts-ignore
 import TreeNode from '../utils/TreeNode';
+
 import { getTraceName } from './trace-viewer';
 
 // exported for tests

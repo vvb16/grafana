@@ -1,10 +1,12 @@
 import React, { MouseEvent, memo } from 'react';
 import cx from 'classnames';
-import { Field, getFieldColorModeForField, GrafanaTheme2 } from '@grafana/data';
-import { useStyles2, useTheme2 } from '@grafana/ui';
-import { NodeDatum } from './types';
 import { css } from '@emotion/css';
 import tinycolor from 'tinycolor2';
+
+import { Field, getFieldColorModeForField, GrafanaTheme2 } from '@grafana/data';
+import { useStyles2, useTheme2 } from '@grafana/ui';
+
+import { NodeDatum } from './types';
 import { statToString } from './utils';
 
 const nodeR = 40;

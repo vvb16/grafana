@@ -1,9 +1,10 @@
 import React, { FC, ReactNode, useRef, useState } from 'react';
 import { uniqueId } from 'lodash';
 import { css, cx } from '@emotion/css';
+import { GrafanaTheme2 } from '@grafana/data';
+
 import { useStyles2 } from '../../themes';
 import { Icon, Spinner } from '..';
-import { GrafanaTheme2 } from '@grafana/data';
 import { getFocusStyles } from '../../themes/mixins';
 
 export interface Props {

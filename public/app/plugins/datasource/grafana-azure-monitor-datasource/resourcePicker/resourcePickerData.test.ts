@@ -5,6 +5,7 @@ import {
 } from '../__mocks__/argResourcePickerResponse';
 import { createMockInstanceSetttings } from '../__mocks__/instanceSettings';
 import { ResourceRowType } from '../components/ResourcePicker/types';
+
 import ResourcePickerData from './resourcePickerData';
 
 const instanceSettings = createMockInstanceSetttings();

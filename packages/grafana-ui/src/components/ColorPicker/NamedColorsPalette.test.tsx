@@ -1,7 +1,8 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { NamedColorsPalette } from './NamedColorsPalette';
 import { createTheme } from '@grafana/data';
+
+import { NamedColorsPalette } from './NamedColorsPalette';
 import { ColorSwatch } from './ColorSwatch';
 
 describe('NamedColorsPalette', () => {

@@ -13,8 +13,6 @@ import {
   getFieldDisplayName,
   getDisplayProcessor,
 } from '@grafana/data';
-
-import { UPlotConfigBuilder, UPlotConfigPrepFn } from '../uPlot/config/UPlotConfigBuilder';
 import {
   AxisPlacement,
   GraphDrawStyle,
@@ -26,8 +24,10 @@ import {
   VizLegendOptions,
   StackingMode,
 } from '@grafana/schema';
-import { collectStackingGroups, orderIdsByCalcs, preparePlotData } from '../uPlot/utils';
 import uPlot from 'uplot';
+
+import { UPlotConfigBuilder, UPlotConfigPrepFn } from '../uPlot/config/UPlotConfigBuilder';
+import { collectStackingGroups, orderIdsByCalcs, preparePlotData } from '../uPlot/utils';
 import { buildScaleKey } from '../GraphNG/utils';
 
 const defaultFormatter = (v: any) => (v == null ? '-' : v.toFixed(1));

@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { css } from '@emotion/css';
+import { useDispatch } from 'react-redux';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Alert, Button, ConfirmModal, TextArea, HorizontalGroup, Field, Form, useStyles2 } from '@grafana/ui';
+
 import { useAlertManagerSourceName } from '../../hooks/useAlertManagerSourceName';
 import { AlertManagerPicker } from '../AlertManagerPicker';
 import { GRAFANA_RULES_SOURCE_NAME, isVanillaPrometheusAlertManagerDataSource } from '../../utils/datasource';
-import { useDispatch } from 'react-redux';
 import {
   deleteAlertManagerConfigAction,
   fetchAlertManagerConfigAction,

@@ -1,16 +1,19 @@
-import { GrafanaTheme2 } from '@grafana/data';
-import { useStyles2 } from '@grafana/ui';
 import React, { FC, useMemo } from 'react';
 import { css, cx } from '@emotion/css';
-import { RuleDetails } from './RuleDetails';
-import { isCloudRulesSource } from '../../utils/datasource';
-import { useHasRuler } from '../../hooks/useHasRuler';
+
+import { useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2 } from '@grafana/data';
 import { CombinedRule } from 'app/types/unified-alerting';
+
+import { useHasRuler } from '../../hooks/useHasRuler';
+import { isCloudRulesSource } from '../../utils/datasource';
 import { Annotation } from '../../utils/constants';
-import { RuleState } from './RuleState';
-import { RuleHealth } from './RuleHealth';
 import { DynamicTable, DynamicTableColumnProps, DynamicTableItemProps } from '../DynamicTable';
 import { DynamicTableWithGuidelines } from '../DynamicTableWithGuidelines';
+
+import { RuleHealth } from './RuleHealth';
+import { RuleDetails } from './RuleDetails';
+import { RuleState } from './RuleState';
 
 type RuleTableColumnProps = DynamicTableColumnProps<CombinedRule>;
 type RuleTableItemProps = DynamicTableItemProps<CombinedRule>;

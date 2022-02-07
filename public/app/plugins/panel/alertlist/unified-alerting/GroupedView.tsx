@@ -1,10 +1,12 @@
 import React, { FC, useMemo } from 'react';
+
 import { useStyles2 } from '@grafana/ui';
 import { AlertLabel } from 'app/features/alerting/unified/components/AlertLabel';
+import { PromRuleWithLocation } from 'app/types/unified-alerting';
+
 import { AlertInstances } from '../AlertInstances';
 import { GroupedRules, UnifiedAlertListOptions } from '../types';
 import { getStyles } from '../UnifiedAlertList';
-import { PromRuleWithLocation } from 'app/types/unified-alerting';
 
 type GroupedModeProps = {
   rules: PromRuleWithLocation[];

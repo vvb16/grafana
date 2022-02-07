@@ -2,6 +2,7 @@ import { DataFrame, ensureTimeField, Field, FieldType } from '@grafana/data';
 import { StackingMode, VizLegendOptions } from '@grafana/schema';
 import { orderBy } from 'lodash';
 import uPlot, { AlignedData, Options, PaddingSide } from 'uplot';
+
 import { attachDebugger } from '../../utils';
 import { createLogger } from '../../utils/logger';
 

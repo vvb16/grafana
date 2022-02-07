@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
+
 import { SelectableValue, toOption } from '@grafana/data';
 import { Select } from '@grafana/ui';
-import React, { useState } from 'react';
+
 import { PrometheusDatasource } from '../../datasource';
 import { promQueryModeller } from '../PromQueryModeller';
 import { QueryBuilderOperationParamEditorProps } from '../shared/types';

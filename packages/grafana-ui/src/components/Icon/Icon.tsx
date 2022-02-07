@@ -1,10 +1,12 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme } from '@grafana/data';
+import SVG from 'react-inlinesvg';
+
 import { stylesFactory } from '../../themes/stylesFactory';
 import { useTheme } from '../../themes/ThemeContext';
 import { IconName, IconType, IconSize } from '../../types/icon';
-import SVG from 'react-inlinesvg';
+
 import { cacheInitialized, initIconCache, iconRoot } from './iconBundle';
 
 const alwaysMonoIcons: IconName[] = ['grafana', 'favorite', 'heart-break', 'heart', 'panel-add', 'library-panel'];

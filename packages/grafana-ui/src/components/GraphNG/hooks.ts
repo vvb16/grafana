@@ -1,6 +1,7 @@
 import { DataFrame, DataFrameFieldIndex, Field } from '@grafana/data';
-import { XYFieldMatchers } from './types';
 import React, { useCallback, useContext } from 'react';
+
+import { XYFieldMatchers } from './types';
 
 /** @alpha */
 interface GraphNGContextType {

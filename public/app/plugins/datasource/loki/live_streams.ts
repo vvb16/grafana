@@ -1,8 +1,10 @@
-import { DataFrame, FieldType, parseLabels, KeyValue, CircularDataFrame } from '@grafana/data';
 import { Observable, throwError, timer } from 'rxjs';
 import { webSocket } from 'rxjs/webSocket';
-import { LokiTailResponse } from './types';
 import { finalize, map, retryWhen, mergeMap } from 'rxjs/operators';
+
+import { DataFrame, FieldType, parseLabels, KeyValue, CircularDataFrame } from '@grafana/data';
+
+import { LokiTailResponse } from './types';
 import { appendResponseToBufferedData } from './result_transformer';
 
 /**

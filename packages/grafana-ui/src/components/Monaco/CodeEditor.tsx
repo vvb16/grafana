@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { ReactMonacoEditorLazy } from './ReactMonacoEditorLazy';
 import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
 import { selectors } from '@grafana/e2e-selectors';
 import { GrafanaTheme2, monacoLanguageRegistry } from '@grafana/data';
@@ -8,6 +7,7 @@ import { GrafanaTheme2, monacoLanguageRegistry } from '@grafana/data';
 import { withTheme2 } from '../../themes';
 import { Themeable2 } from '../../types';
 
+import { ReactMonacoEditorLazy } from './ReactMonacoEditorLazy';
 import { CodeEditorProps, Monaco, MonacoEditor as MonacoEditorType, MonacoOptions } from './types';
 import { registerSuggestions } from './suggestions';
 

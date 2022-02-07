@@ -2,12 +2,13 @@ import { getPanelPluginNotFound } from 'app/features/panel/components/PanelPlugi
 import { PanelModel } from 'app/features/dashboard/state/PanelModel';
 import { loadPanelPlugin } from 'app/features/plugins/admin/state/actions';
 import { ThunkResult } from 'app/types';
-import { panelModelAndPluginReady } from './reducers';
 import { LibraryElementDTO } from 'app/features/library-panels/types';
 import { toPanelModelLibraryPanel } from 'app/features/library-panels/utils';
 import { PanelOptionsChangedEvent, PanelQueriesChangedEvent } from 'app/types/events';
 import { DataTransformerConfig, FieldConfigSource } from '@grafana/data';
 import { getPanelOptionsWithDefaults } from 'app/features/dashboard/state/getPanelOptionsWithDefaults';
+
+import { panelModelAndPluginReady } from './reducers';
 
 export function initPanelState(panel: PanelModel): ThunkResult<void> {
   return async (dispatch, getStore) => {

@@ -1,5 +1,4 @@
 import { cloneDeep, isNumber, omit } from 'lodash';
-
 import { OptionsWithTextFormatting } from '@grafana/schema';
 import {
   convertOldAngularValueMappings,

@@ -1,5 +1,6 @@
-import { GraphiteDatasource } from './datasource';
 import { DataSourcePlugin } from '@grafana/data';
+
+import { GraphiteDatasource } from './datasource';
 import { ConfigEditor } from './configuration/ConfigEditor';
 import { MetricTankMetaInspector } from './components/MetricTankMetaInspector';
 import { GraphiteQueryEditor } from './components/GraphiteQueryEditor';

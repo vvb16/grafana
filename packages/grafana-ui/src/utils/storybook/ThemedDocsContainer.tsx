@@ -3,6 +3,7 @@
 import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 import { useDarkMode } from 'storybook-dark-mode';
+
 import { GrafanaLight, GrafanaDark } from '../../../.storybook/storybookTheme';
 
 type Props = {

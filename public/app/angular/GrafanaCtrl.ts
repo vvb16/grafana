@@ -4,6 +4,8 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 // Utils and servies
+import { IRootScopeService, IAngularEvent, auto } from 'angular';
+
 import { colors } from '@grafana/ui';
 import { setLegacyAngularInjector, setAppEvents, setAngularLoader } from '@grafana/runtime';
 import config from 'app/core/config';
@@ -13,11 +15,11 @@ import { AngularLoader } from 'app/angular/services/AngularLoader';
 
 // Types
 import { CoreEvents, AppEventEmitter, AppEventConsumer } from 'app/types';
-import { UtilSrv } from './services/UtilSrv';
 import { ContextSrv } from 'app/core/services/context_srv';
-import { IRootScopeService, IAngularEvent, auto } from 'angular';
 import { AppEvent } from '@grafana/data';
 import { initGrafanaLive } from 'app/features/live';
+
+import { UtilSrv } from './services/UtilSrv';
 
 export type GrafanaRootScope = IRootScopeService & AppEventEmitter & AppEventConsumer & { colors: string[] };
 

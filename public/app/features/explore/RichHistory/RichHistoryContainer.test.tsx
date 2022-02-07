@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import { Resizable } from 're-resizable';
 
 import { ExploreId } from '../../../types/explore';
+
 import { RichHistoryContainer, Props } from './RichHistoryContainer';
 import { Tabs } from './RichHistory';
 

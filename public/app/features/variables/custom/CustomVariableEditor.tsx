@@ -1,12 +1,14 @@
 import React, { FormEvent, PureComponent } from 'react';
-import { CustomVariableModel, VariableWithMultiSupport } from '../types';
-import { SelectionOptionsEditor } from '../editor/SelectionOptionsEditor';
-import { OnPropChangeArguments, VariableEditorProps } from '../editor/types';
-import { connectWithStore } from 'app/core/utils/connectWithReduxStore';
 import { MapDispatchToProps, MapStateToProps } from 'react-redux';
+
+import { connectWithStore } from 'app/core/utils/connectWithReduxStore';
 import { VerticalGroup } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 import { StoreState } from 'app/types';
+
+import { OnPropChangeArguments, VariableEditorProps } from '../editor/types';
+import { SelectionOptionsEditor } from '../editor/SelectionOptionsEditor';
+import { CustomVariableModel, VariableWithMultiSupport } from '../types';
 import { changeVariableMultiValue } from '../state/actions';
 import { VariableSectionHeader } from '../editor/VariableSectionHeader';
 import { VariableTextAreaField } from '../editor/VariableTextAreaField';

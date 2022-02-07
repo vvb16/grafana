@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import { createAction } from '@reduxjs/toolkit';
+
 import { PanelPluginMeta, SelectableValue } from '@grafana/data';
 
 import { FolderInfo } from '../../../../types';

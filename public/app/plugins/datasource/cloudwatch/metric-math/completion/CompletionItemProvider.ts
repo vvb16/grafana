@@ -1,4 +1,6 @@
 import type { Monaco, monacoTypes } from '@grafana/ui';
+import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
+
 import { TRIGGER_SUGGEST } from '../../monarch/commands';
 import { SuggestionKind, CompletionItemPriority, StatementPosition } from '../../monarch/types';
 import { LinkedToken } from '../../monarch/LinkedToken';
@@ -10,9 +12,9 @@ import {
   METRIC_MATH_STATISTIC_KEYWORD_STRINGS,
 } from '../language';
 import { CompletionItemProvider } from '../../monarch/CompletionItemProvider';
-import { MetricMathTokenTypes } from './types';
 import { CloudWatchDatasource } from '../../datasource';
-import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
+
+import { MetricMathTokenTypes } from './types';
 import { getStatementPosition } from './statementPosition';
 import { getSuggestionKinds } from './suggestionKind';
 

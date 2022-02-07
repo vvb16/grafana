@@ -15,46 +15,42 @@ import {
   stylesFactory,
   ToolbarButton,
 } from '@grafana/ui';
-
 import config from 'app/core/config';
 import { appEvents } from 'app/core/core';
-import { calculatePanelSize } from './utils';
-
-import { PanelEditorTabs } from './PanelEditorTabs';
-import { DashNavTimeControls } from '../DashNav/DashNavTimeControls';
-import { OptionsPane } from './OptionsPane';
 import { SubMenuItems } from 'app/features/dashboard/components/SubMenu/SubMenuItems';
 import { SplitPaneWrapper } from 'app/core/components/SplitPaneWrapper/SplitPaneWrapper';
-import { SaveDashboardModalProxy } from '../SaveDashboard/SaveDashboardModalProxy';
-import { DashboardPanel } from '../../dashgrid/DashboardPanel';
-
-import { discardPanelChanges, initPanelEditor, updatePanelEditorUIState } from './state/actions';
-
 import { updateTimeZoneForSession } from 'app/features/profile/state/reducers';
-import { toggleTableView } from './state/reducers';
-
-import { getPanelEditorTabs } from './state/selectors';
 import { getVariables } from 'app/features/variables/state/selectors';
-
 import { StoreState } from 'app/types';
-import { DisplayMode, displayModes, PanelEditorTab } from './types';
-import { DashboardModel, PanelModel } from '../../state';
-import { VisualizationButton } from './VisualizationButton';
 import { PanelOptionsChangedEvent, ShowModalReactEvent } from 'app/types/events';
 import { locationService } from '@grafana/runtime';
-import { UnlinkModal } from '../../../library-panels/components/UnlinkModal/UnlinkModal';
 import { SaveLibraryPanelModal } from 'app/features/library-panels/components/SaveLibraryPanelModal/SaveLibraryPanelModal';
-import { isPanelModelLibraryPanel } from '../../../library-panels/guard';
-import { getLibraryPanelConnectedDashboards } from '../../../library-panels/state/api';
+import { PanelModelWithLibraryPanel } from 'app/features/library-panels/types';
+import { getPanelStateForModel } from 'app/features/panel/state/selectors';
+
+import { notifyApp } from '../../../../core/actions';
 import {
   createPanelLibraryErrorNotification,
   createPanelLibrarySuccessNotification,
   saveAndRefreshLibraryPanel,
 } from '../../../library-panels/utils';
-import { notifyApp } from '../../../../core/actions';
+import { getLibraryPanelConnectedDashboards } from '../../../library-panels/state/api';
+import { isPanelModelLibraryPanel } from '../../../library-panels/guard';
+import { UnlinkModal } from '../../../library-panels/components/UnlinkModal/UnlinkModal';
+import { DashboardModel, PanelModel } from '../../state';
+import { DashboardPanel } from '../../dashgrid/DashboardPanel';
+import { SaveDashboardModalProxy } from '../SaveDashboard/SaveDashboardModalProxy';
+import { DashNavTimeControls } from '../DashNav/DashNavTimeControls';
+
 import { PanelEditorTableView } from './PanelEditorTableView';
-import { PanelModelWithLibraryPanel } from 'app/features/library-panels/types';
-import { getPanelStateForModel } from 'app/features/panel/state/selectors';
+import { VisualizationButton } from './VisualizationButton';
+import { DisplayMode, displayModes, PanelEditorTab } from './types';
+import { getPanelEditorTabs } from './state/selectors';
+import { discardPanelChanges, initPanelEditor, updatePanelEditorUIState } from './state/actions';
+import { toggleTableView } from './state/reducers';
+import { OptionsPane } from './OptionsPane';
+import { PanelEditorTabs } from './PanelEditorTabs';
+import { calculatePanelSize } from './utils';
 
 interface OwnProps {
   dashboard: DashboardModel;

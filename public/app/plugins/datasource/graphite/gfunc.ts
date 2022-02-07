@@ -1,4 +1,5 @@
 import { assign, each, filter, forEach, get, includes, isString, last, map, toString, isFinite } from 'lodash';
+
 import { isVersionGtOrEq } from 'app/core/utils/version';
 import { InterpolateFunction } from '@grafana/data';
 

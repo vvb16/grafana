@@ -1,3 +1,6 @@
+import React, { useCallback, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   DataFrame,
   DataFrameView,
@@ -25,9 +28,9 @@ import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 import { getTimeZone } from 'app/features/profile/state/selectors';
 import { StoreState } from 'app/types';
 import { ExploreId } from 'app/types/explore';
-import React, { useCallback, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { changePanelState } from '../state/explorePane';
+
 import { createSpanLinkFactory } from './createSpanLink';
 import { UIElements } from './uiElements';
 import { useChildrenState } from './useChildrenState';

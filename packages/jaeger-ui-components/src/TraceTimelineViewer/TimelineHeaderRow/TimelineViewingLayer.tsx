@@ -15,6 +15,7 @@
 import * as React from 'react';
 import { css, cx } from '@emotion/css';
 import { stylesFactory } from '@grafana/ui';
+
 import { TUpdateViewRangeTimeFunction, ViewRangeTime, ViewRangeTimeUpdate } from '../types';
 import { TNil } from '../../types';
 import DraggableManager, { DraggableBounds, DraggingUpdate } from '../../utils/DraggableManager';

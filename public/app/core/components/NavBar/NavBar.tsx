@@ -3,14 +3,17 @@ import { connect, ConnectedProps } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { css, cx } from '@emotion/css';
 import { cloneDeep } from 'lodash';
+
 import { GrafanaTheme2, NavModelItem, NavSection } from '@grafana/data';
 import { Icon, IconName, useTheme2 } from '@grafana/ui';
 import { locationService } from '@grafana/runtime';
 import { Branding } from 'app/core/components/Branding/Branding';
 import config from 'app/core/config';
 import { StoreState, KioskMode } from 'app/types';
-import { enrichConfigItems, getActiveItem, isMatchOrChildMatch, isSearchActive, SEARCH_ITEM_ID } from './utils';
+
 import { OrgSwitcher } from '../OrgSwitcher';
+
+import { enrichConfigItems, getActiveItem, isMatchOrChildMatch, isSearchActive, SEARCH_ITEM_ID } from './utils';
 import NavBarItem from './NavBarItem';
 import { NavBarSection } from './NavBarSection';
 import { NavBarMenu } from './NavBarMenu';

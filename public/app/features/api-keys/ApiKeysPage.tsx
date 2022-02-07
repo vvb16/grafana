@@ -1,24 +1,26 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 // Utils
 import { ApiKey, NewApiKey, StoreState } from 'app/types';
 import { getNavModel } from 'app/core/selectors/navModel';
-import { getApiKeys, getApiKeysCount, getIncludeExpired, getIncludeExpiredDisabled } from './state/selectors';
-import { addApiKey, deleteApiKey, loadApiKeys, toggleIncludeExpired } from './state/actions';
 import Page from 'app/core/components/Page/Page';
-import { ApiKeysAddedModal } from './ApiKeysAddedModal';
 import config from 'app/core/config';
 import appEvents from 'app/core/app_events';
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
 import { InlineField, InlineSwitch, VerticalGroup } from '@grafana/ui';
 import { rangeUtil } from '@grafana/data';
 import { getTimeZone } from 'app/features/profile/state/selectors';
+import { ShowModalReactEvent } from 'app/types/events';
+
+import { getApiKeys, getApiKeysCount, getIncludeExpired, getIncludeExpiredDisabled } from './state/selectors';
+import { addApiKey, deleteApiKey, loadApiKeys, toggleIncludeExpired } from './state/actions';
+import { ApiKeysAddedModal } from './ApiKeysAddedModal';
 import { setSearchQuery } from './state/reducers';
 import { ApiKeysForm } from './ApiKeysForm';
 import { ApiKeysActionBar } from './ApiKeysActionBar';
 import { ApiKeysTable } from './ApiKeysTable';
 import { ApiKeysController } from './ApiKeysController';
-import { ShowModalReactEvent } from 'app/types/events';
 
 function mapStateToProps(state: StoreState) {
   return {

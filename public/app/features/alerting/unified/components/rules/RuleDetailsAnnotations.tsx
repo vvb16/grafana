@@ -1,6 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/css';
+
 import { useStyles2 } from '@grafana/ui';
+
 import { AnnotationDetailsField } from '../AnnotationDetailsField';
 
 type Props = {

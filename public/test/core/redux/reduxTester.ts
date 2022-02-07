@@ -9,10 +9,10 @@ import {
   CombinedState,
   PreloadedState,
 } from '@reduxjs/toolkit';
+import { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 
 import { StoreState } from '../../../app/types';
 import { setStore } from '../../../app/store/store';
-import { NoInfer } from '@reduxjs/toolkit/dist/tsHelpers';
 
 export interface ReduxTesterGiven<State> {
   givenRootReducer: (rootReducer: Reducer<State>) => ReduxTesterWhen<State>;

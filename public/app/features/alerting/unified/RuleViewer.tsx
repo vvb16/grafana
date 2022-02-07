@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useObservable } from 'react-use';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme2, LoadingState, PanelData } from '@grafana/data';
 import {
   withErrorBoundary,
@@ -11,6 +12,9 @@ import {
   Icon,
 } from '@grafana/ui';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
+
+import { AlertQuery } from '../../../types/unified-alerting-dto';
+
 import { AlertingQueryRunner } from './state/AlertingQueryRunner';
 import { useCombinedRule } from './hooks/useCombinedRule';
 import { alertRuleToQueries } from './utils/query';
@@ -27,7 +31,6 @@ import { AlertLabels } from './components/AlertLabels';
 import { RuleDetailsExpression } from './components/rules/RuleDetailsExpression';
 import { RuleDetailsAnnotations } from './components/rules/RuleDetailsAnnotations';
 import * as ruleId from './utils/rule-id';
-import { AlertQuery } from '../../../types/unified-alerting-dto';
 
 type RuleViewerProps = GrafanaRouteComponentProps<{ id?: string; sourceName?: string }>;
 

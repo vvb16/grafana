@@ -1,8 +1,10 @@
 import React, { createRef, FC } from 'react';
 import { VirtualElement } from '@popperjs/core';
+
+import { closePopover } from '../../utils/closePopover';
+
 import { Popover } from './Popover';
 import { PopoverController, UsingPopperProps } from './PopoverController';
-import { closePopover } from '../../utils/closePopover';
 
 export interface TooltipProps extends UsingPopperProps {
   theme?: 'info' | 'error' | 'info-alt';

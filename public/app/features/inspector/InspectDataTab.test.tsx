@@ -1,7 +1,9 @@
 import React, { ComponentProps } from 'react';
-import { FieldType, DataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { FieldType, DataFrame } from '@grafana/data';
+
 import { InspectDataTab } from './InspectDataTab';
 
 const createProps = (propsOverride?: Partial<ComponentProps<typeof InspectDataTab>>) => {

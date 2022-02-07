@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react';
+import { css } from '@emotion/css';
 
-import { ColorPickerPopover, ColorPickerProps } from './ColorPickerPopover';
 import { PopoverContentProps } from '../Tooltip/Tooltip';
 import { Switch } from '../Forms/Legacy/Switch/Switch';
-import { css } from '@emotion/css';
 import { withTheme2, useStyles } from '../../themes';
 import { Button } from '../Button';
+
+import { ColorPickerPopover, ColorPickerProps } from './ColorPickerPopover';
 
 export interface SeriesColorPickerPopoverProps extends ColorPickerProps, PopoverContentProps {
   yaxis?: number;

@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useMemo, useReducer } from 'react';
+
 import { Button, Modal, useStyles } from '@grafana/ui';
 import { LoadingState } from '@grafana/data';
 
 import { LibraryElementDTO } from '../../types';
 import { asyncDispatcher } from '../LibraryPanelsView/actions';
+import { getModalStyles } from '../../styles';
+
 import { deleteLibraryPanelModalReducer, initialDeleteLibraryPanelModalState } from './reducer';
 import { getConnectedDashboards } from './actions';
-import { getModalStyles } from '../../styles';
 
 interface Props {
   libraryPanel: LibraryElementDTO;

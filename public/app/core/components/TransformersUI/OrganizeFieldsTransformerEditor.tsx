@@ -1,6 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import { css } from '@emotion/css';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
+import { OrganizeFieldsTransformerOptions } from '@grafana/data/src/transformations/transformers/organize';
+import { createOrderFieldsComparer } from '@grafana/data/src/transformations/transformers/order';
+
 import {
   DataTransformerID,
   GrafanaTheme,
@@ -10,8 +13,6 @@ import {
 } from '@grafana/data';
 import { stylesFactory, useTheme, Input, IconButton, Icon, FieldValidationMessage } from '@grafana/ui';
 
-import { OrganizeFieldsTransformerOptions } from '@grafana/data/src/transformations/transformers/organize';
-import { createOrderFieldsComparer } from '@grafana/data/src/transformations/transformers/order';
 import { useAllFieldNamesFromDataFrames } from './utils';
 
 interface OrganizeFieldsTransformerEditorProps extends TransformerUIProps<OrganizeFieldsTransformerOptions> {}

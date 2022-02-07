@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { GrafanaAnnotationQuery, GrafanaAnnotationType, GrafanaQueryType } from '../types';
+
 import AnnotationQueryEditor from './AnnotationQueryEditor';
 
 describe('AnnotationQueryEditor', () => {

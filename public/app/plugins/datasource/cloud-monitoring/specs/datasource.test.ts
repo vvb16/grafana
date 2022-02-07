@@ -1,14 +1,15 @@
 import { of, throwError } from 'rxjs';
-import { DataSourceInstanceSettings, toUtc } from '@grafana/data';
+import { createFetchResponse } from 'test/helpers/createFetchResponse';
 
-import CloudMonitoringDataSource from '../datasource';
+import { DataSourceInstanceSettings, toUtc } from '@grafana/data';
 import { TemplateSrv } from 'app/features/templating/template_srv';
-import { CloudMonitoringOptions } from '../types';
 import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
 import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+
+import { CloudMonitoringOptions } from '../types';
+import CloudMonitoringDataSource from '../datasource';
 import { CustomVariableModel } from '../../../../features/variables/types';
 import { initialCustomVariableModelState } from '../../../../features/variables/custom/reducer';
-import { createFetchResponse } from 'test/helpers/createFetchResponse';
 
 jest.mock('@grafana/runtime', () => ({
   ...(jest.requireActual('@grafana/runtime') as unknown as object),

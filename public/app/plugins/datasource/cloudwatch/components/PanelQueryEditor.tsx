@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react';
+
 import { QueryEditorProps, ExploreMode } from '@grafana/data';
+
 import { CloudWatchJsonData, CloudWatchQuery } from '../types';
 import { CloudWatchDatasource } from '../datasource';
+
 import { MetricsQueryEditor } from './MetricsQueryEditor';
 import LogsQueryEditor from './LogsQueryEditor';
 

@@ -14,14 +14,14 @@
 
 import * as React from 'react';
 import { css } from '@emotion/css';
-
-import renderIntoCanvas from './render-into-canvas';
-import { getRgbColorByKey } from '../../utils/color-generator';
-import { TNil } from '../../types';
-
-import { autoColor } from '../../Theme';
 import { withTheme2, stylesFactory } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
+
+import { getRgbColorByKey } from '../../utils/color-generator';
+import { TNil } from '../../types';
+import { autoColor } from '../../Theme';
+
+import renderIntoCanvas from './render-into-canvas';
 
 const getStyles = stylesFactory((theme: GrafanaTheme2) => {
   return {

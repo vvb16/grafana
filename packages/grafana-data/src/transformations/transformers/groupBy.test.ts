@@ -1,12 +1,14 @@
+import { DataTransformerConfig } from '@grafana/data';
+
 import { toDataFrame } from '../../dataframe/processDataFrame';
-import { GroupByOperationID, groupByTransformer, GroupByTransformerOptions } from './groupBy';
 import { mockTransformationsRegistry } from '../../utils/tests/mockTransformationsRegistry';
 import { transformDataFrame } from '../transformDataFrame';
 import { Field, FieldType } from '../../types';
-import { DataTransformerID } from './ids';
 import { ArrayVector } from '../../vector';
 import { ReducerID } from '../fieldReducer';
-import { DataTransformerConfig } from '@grafana/data';
+
+import { DataTransformerID } from './ids';
+import { GroupByOperationID, groupByTransformer, GroupByTransformerOptions } from './groupBy';
 
 describe('GroupBy transformer', () => {
   beforeAll(() => {

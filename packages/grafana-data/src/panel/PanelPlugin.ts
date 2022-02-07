@@ -1,3 +1,6 @@
+import { ComponentClass, ComponentType } from 'react';
+import { set } from 'lodash';
+
 import {
   FieldConfigSource,
   GrafanaPlugin,
@@ -11,10 +14,9 @@ import {
   VisualizationSuggestionsSupplier,
 } from '../types';
 import { FieldConfigEditorBuilder, PanelOptionsEditorBuilder } from '../utils/OptionsUIBuilders';
-import { ComponentClass, ComponentType } from 'react';
-import { set } from 'lodash';
 import { deprecationWarning } from '../utils';
 import { FieldConfigOptionsRegistry, StandardEditorContext } from '../field';
+
 import { createFieldConfigRegistry } from './registryFactories';
 
 /** @beta */

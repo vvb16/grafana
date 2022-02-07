@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme } from '@grafana/data';
+
 import { useStyles } from '../../themes/ThemeContext';
 
 const getStyles = (theme: GrafanaTheme) => ({

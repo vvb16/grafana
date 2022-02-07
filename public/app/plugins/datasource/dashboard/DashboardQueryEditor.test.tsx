@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import { getDefaultTimeRange, LoadingState } from '@grafana/data';
-import { SHARED_DASHBOARD_QUERY } from './types';
-import { DashboardQueryEditor } from './DashboardQueryEditor';
 import { getDashboardSrv } from 'app/features/dashboard/services/DashboardSrv';
 import { DashboardModel } from 'app/features/dashboard/state';
+
+import { SHARED_DASHBOARD_QUERY } from './types';
+import { DashboardQueryEditor } from './DashboardQueryEditor';
 
 jest.mock('app/core/config', () => ({
   ...(jest.requireActual('app/core/config') as unknown as object),

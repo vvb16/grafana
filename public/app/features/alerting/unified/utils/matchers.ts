@@ -1,9 +1,12 @@
+import { uniqBy } from 'lodash';
+
 import { Matcher, MatcherOperator } from 'app/plugins/datasource/alertmanager/types';
 import { Labels } from '@grafana/data';
-import { parseMatcher } from './alertmanager';
-import { uniqBy } from 'lodash';
-import { MatcherFieldValue } from '../types/silence-form';
 import { CombinedRule } from 'app/types/unified-alerting';
+
+import { MatcherFieldValue } from '../types/silence-form';
+
+import { parseMatcher } from './alertmanager';
 
 // Parses a list of entries like like "['foo=bar', 'baz=~bad*']" into SilenceMatcher[]
 export function parseQueryParamMatchers(matcherPairs: string[]): Matcher[] {

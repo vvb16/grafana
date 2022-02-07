@@ -1,13 +1,16 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { GrafanaTheme } from '@grafana/data';
 import { ToolbarButton, ButtonGroup, useStyles } from '@grafana/ui';
 import { StoreState } from 'app/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPanelEditorUIState, toggleVizPicker } from './state/reducers';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { PanelModel } from '../../state';
 import { getPanelPluginWithFallback } from '../../state/selectors';
+
+import { setPanelEditorUIState, toggleVizPicker } from './state/reducers';
 
 type Props = {
   panel: PanelModel;

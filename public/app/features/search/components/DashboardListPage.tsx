@@ -1,14 +1,17 @@
 import React, { FC, memo } from 'react';
 import { useAsync } from 'react-use';
 import { connect, MapStateToProps } from 'react-redux';
+
 import { NavModel, locationUtil } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
 import { FolderDTO, StoreState } from 'app/types';
 import { getNavModel } from 'app/core/selectors/navModel';
 import Page from 'app/core/components/Page/Page';
+
 import { loadFolderPage } from '../loaders';
-import ManageDashboards from './ManageDashboards';
 import { GrafanaRouteComponentProps } from '../../../core/navigation/types';
+
+import ManageDashboards from './ManageDashboards';
 
 export interface DashboardListPageRouteParams {
   uid?: string;

@@ -24,7 +24,6 @@ import {
   toPromLikeQuery,
 } from './language_utils';
 import PromqlSyntax, { FUNCTIONS, RATE_RANGES } from './promql';
-
 import { PrometheusDatasource } from './datasource';
 import { PromMetricsMetadata, PromQuery } from './types';
 

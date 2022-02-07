@@ -1,6 +1,8 @@
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+
 import { SelectableValue } from '@grafana/data';
 import { Alert, InlineField, Input, Select } from '@grafana/ui';
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+
 import { AzureMonitorQuery, AzureQueryType } from '../../types';
 import LogsQueryEditor from '../LogsQueryEditor';
 import DataSource from '../../datasource';

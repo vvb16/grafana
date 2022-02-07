@@ -1,11 +1,12 @@
-import { GraphiteDatasource } from './datasource';
 import { isArray } from 'lodash';
+import { of } from 'rxjs';
+import { createFetchResponse } from 'test/helpers/createFetchResponse';
 
 import { TemplateSrv } from 'app/features/templating/template_srv';
 import { AbstractLabelMatcher, AbstractLabelOperator, dateTime, getFrameDisplayName } from '@grafana/data';
 import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
-import { of } from 'rxjs';
-import { createFetchResponse } from 'test/helpers/createFetchResponse';
+
+import { GraphiteDatasource } from './datasource';
 import { DEFAULT_GRAPHITE_VERSION } from './versions';
 import { fromString } from './configuration/parseLokiLabelMappings';
 

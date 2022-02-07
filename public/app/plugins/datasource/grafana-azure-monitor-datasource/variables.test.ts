@@ -1,5 +1,7 @@
-import { DataQueryRequest, DataQueryResponseData, toDataFrame } from '@grafana/data';
 import { from } from 'rxjs';
+
+import { DataQueryRequest, DataQueryResponseData, toDataFrame } from '@grafana/data';
+
 import { AzureMonitorQuery, AzureQueryType } from './types';
 import { VariableSupport } from './variables';
 import createMockDatasource from './__mocks__/datasource';

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { cx, css } from '@emotion/css';
+
 import { stylesFactory } from '../../themes';
 import { Icon } from '../Icon/Icon';
 

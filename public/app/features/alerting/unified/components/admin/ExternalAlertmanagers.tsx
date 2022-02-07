@@ -1,16 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Button, ConfirmModal, HorizontalGroup, Icon, Tooltip, useStyles2 } from '@grafana/ui';
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
-import { AddAlertManagerModal } from './AddAlertManagerModal';
+
 import {
   addExternalAlertmanagersAction,
   fetchExternalAlertmanagersAction,
   fetchExternalAlertmanagersConfigAction,
 } from '../../state/actions';
 import { useExternalAmSelector } from '../../hooks/useExternalAmSelector';
+
+import { AddAlertManagerModal } from './AddAlertManagerModal';
 
 export const ExternalAlertmanagers = () => {
   const styles = useStyles2(getStyles);

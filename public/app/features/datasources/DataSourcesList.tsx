@@ -2,9 +2,10 @@
 import React, { FC } from 'react';
 
 // Types
+import { css } from '@emotion/css';
+
 import { DataSourceSettings, LayoutMode } from '@grafana/data';
 import { Card, Tag, useStyles } from '@grafana/ui';
-import { css } from '@emotion/css';
 
 export interface Props {
   dataSources: DataSourceSettings[];

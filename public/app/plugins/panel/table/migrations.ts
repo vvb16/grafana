@@ -1,3 +1,6 @@
+import { ReduceTransformerOptions } from '@grafana/data/src/transformations/transformers/reduce';
+import { omitBy, isNil, isNumber, defaultTo } from 'lodash';
+
 import {
   PanelModel,
   FieldMatcherID,
@@ -6,8 +9,7 @@ import {
   ThresholdsConfig,
   FieldConfig,
 } from '@grafana/data';
-import { ReduceTransformerOptions } from '@grafana/data/src/transformations/transformers/reduce';
-import { omitBy, isNil, isNumber, defaultTo } from 'lodash';
+
 import { PanelOptions } from './models.gen';
 
 /**

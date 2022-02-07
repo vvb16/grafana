@@ -1,7 +1,8 @@
 import { extend } from 'lodash';
+import Drop from 'tether-drop';
+
 import coreModule from 'app/angular/core_module';
 // @ts-ignore
-import Drop from 'tether-drop';
 import { GrafanaRootScope } from 'app/angular/GrafanaCtrl';
 
 /** @ngInject */

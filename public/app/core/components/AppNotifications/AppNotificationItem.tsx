@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { AppNotification } from 'app/types';
 import { Alert } from '@grafana/ui';
 

@@ -1,5 +1,6 @@
 import { from, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+
 import {
   DataQuery,
   DataQueryRequest,

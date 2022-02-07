@@ -1,11 +1,13 @@
-import { CSVHeaderStyle, readCSV, toCSV } from './csv';
+import fs from 'fs';
+
 import { getDataFrameRow, toDataFrameDTO } from '../dataframe/processDataFrame';
 
 // Test with local CSV files
-import fs from 'fs';
 import { MutableDataFrame } from '../dataframe';
 import { getDisplayProcessor } from '../field';
 import { createTheme } from '../themes';
+
+import { CSVHeaderStyle, readCSV, toCSV } from './csv';
 
 describe('read csv', () => {
   it('should get X and y', () => {

@@ -1,11 +1,12 @@
 import { variableAdapters } from '../adapters';
-import { updateCustomVariableOptions } from './actions';
-import { createCustomVariableAdapter } from './adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
 import { getRootReducer, RootReducerType } from '../state/helpers';
 import { CustomVariableModel, initialVariableModelState, VariableOption } from '../types';
 import { toVariablePayload } from '../state/types';
 import { addVariable, setCurrentVariableValue } from '../state/sharedReducer';
+
+import { createCustomVariableAdapter } from './adapter';
+import { updateCustomVariableOptions } from './actions';
 import { createCustomOptionsFromQuery } from './reducer';
 
 describe('custom actions', () => {

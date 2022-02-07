@@ -15,6 +15,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import * as copy from 'copy-to-clipboard';
+
 import { UIButton, UITooltip } from '../uiElementsContext';
 
 import CopyIcon from './CopyIcon';

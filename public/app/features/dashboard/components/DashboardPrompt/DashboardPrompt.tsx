@@ -1,18 +1,20 @@
-import { locationService } from '@grafana/runtime';
-import { appEvents } from 'app/core/core';
-import { contextSrv } from 'app/core/services/context_srv';
 import React, { useEffect, useState } from 'react';
 import { Prompt } from 'react-router-dom';
-import { DashboardModel } from '../../state/DashboardModel';
 import { each, filter, find } from 'lodash';
 import angular from 'angular';
-import { UnsavedChangesModal } from '../SaveDashboard/UnsavedChangesModal';
 import * as H from 'history';
+import { useDispatch } from 'react-redux';
+
 import { SaveLibraryPanelModal } from 'app/features/library-panels/components/SaveLibraryPanelModal/SaveLibraryPanelModal';
 import { PanelModelWithLibraryPanel } from 'app/features/library-panels/types';
-import { useDispatch } from 'react-redux';
-import { discardPanelChanges, exitPanelEditor } from '../PanelEditor/state/actions';
+import { contextSrv } from 'app/core/services/context_srv';
+import { appEvents } from 'app/core/core';
+import { locationService } from '@grafana/runtime';
 import { DashboardSavedEvent } from 'app/types/events';
+
+import { UnsavedChangesModal } from '../SaveDashboard/UnsavedChangesModal';
+import { DashboardModel } from '../../state/DashboardModel';
+import { discardPanelChanges, exitPanelEditor } from '../PanelEditor/state/actions';
 
 export interface Props {
   dashboard: DashboardModel;

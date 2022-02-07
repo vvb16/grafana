@@ -1,10 +1,16 @@
 import { DataSourceInstanceSettings, DataSourcePluginMeta } from '@grafana/data';
+import { VariableModel } from 'app/features/variables/types';
+import { locationService } from '@grafana/runtime';
 
 import { variableAdapters } from '../adapters';
-import { createAdHocVariableAdapter } from './adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
 import { getRootReducer, RootReducerType } from '../state/helpers';
 import { toVariableIdentifier, toVariablePayload } from '../state/types';
+import { addVariable, changeVariableProp } from '../state/sharedReducer';
+import { changeVariableEditorExtended, setIdInEditor } from '../editor/reducer';
+import { adHocBuilder } from '../shared/testing/builders';
+
+import { filterAdded, filterRemoved, filtersRestored, filterUpdated } from './reducer';
 import {
   addFilter,
   AdHocTableOptions,
@@ -15,12 +21,7 @@ import {
   removeFilter,
   setFiltersFromUrl,
 } from './actions';
-import { filterAdded, filterRemoved, filtersRestored, filterUpdated } from './reducer';
-import { addVariable, changeVariableProp } from '../state/sharedReducer';
-import { VariableModel } from 'app/features/variables/types';
-import { changeVariableEditorExtended, setIdInEditor } from '../editor/reducer';
-import { adHocBuilder } from '../shared/testing/builders';
-import { locationService } from '@grafana/runtime';
+import { createAdHocVariableAdapter } from './adapter';
 
 const getList = jest.fn().mockReturnValue([]);
 const getDatasource = jest.fn().mockResolvedValue({});

@@ -1,8 +1,9 @@
-import { DataTransformerID } from './ids';
 import { toDataFrame } from '../../dataframe/processDataFrame';
 import { FieldType } from '../../types/dataFrame';
 import { mockTransformationsRegistry } from '../../utils/tests/mockTransformationsRegistry';
 import { transformDataFrame } from '../transformDataFrame';
+
+import { DataTransformerID } from './ids';
 import { ensureColumnsTransformer } from './ensureColumns';
 import { seriesToColumnsTransformer } from './seriesToColumns';
 

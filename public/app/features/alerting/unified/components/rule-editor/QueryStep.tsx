@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
+
 import { Field, InputControl } from '@grafana/ui';
+
+import { RuleFormType, RuleFormValues } from '../../types/rule-form';
+
 import { ExpressionEditor } from './ExpressionEditor';
 import { RuleEditorSection } from './RuleEditorSection';
-import { RuleFormType, RuleFormValues } from '../../types/rule-form';
 import { QueryEditor } from './QueryEditor';
 
 export const QueryStep: FC = () => {

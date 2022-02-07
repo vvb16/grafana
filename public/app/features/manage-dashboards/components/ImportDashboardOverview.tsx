@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+
 import { dateTimeFormat } from '@grafana/data';
 import { Form, Legend } from '@grafana/ui';
-import { connect, ConnectedProps } from 'react-redux';
-import { ImportDashboardForm } from './ImportDashboardForm';
-import { clearLoadedDashboard, importDashboard } from '../state/actions';
-import { DashboardSource, ImportDashboardDTO } from '../state/reducers';
 import { StoreState } from 'app/types';
 import { locationService } from '@grafana/runtime';
+
+import { clearLoadedDashboard, importDashboard } from '../state/actions';
+import { DashboardSource, ImportDashboardDTO } from '../state/reducers';
+
+import { ImportDashboardForm } from './ImportDashboardForm';
 
 const mapStateToProps = (state: StoreState) => {
   const searchObj = locationService.getSearchObject();

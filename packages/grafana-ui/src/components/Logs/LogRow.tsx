@@ -11,9 +11,12 @@ import {
   escapeUnescapedString,
   GrafanaTheme2,
 } from '@grafana/data';
+import { cx, css } from '@emotion/css';
+
 import { Icon } from '../Icon/Icon';
 import { Tooltip } from '../Tooltip/Tooltip';
-import { cx, css } from '@emotion/css';
+import { Themeable2 } from '../../types/theme';
+import { styleMixins, withTheme2 } from '../../themes/index';
 
 import {
   LogRowContextRows,
@@ -22,8 +25,6 @@ import {
   LogRowContextProvider,
   RowContextOptions,
 } from './LogRowContextProvider';
-import { Themeable2 } from '../../types/theme';
-import { styleMixins, withTheme2 } from '../../themes/index';
 import { getLogRowStyles } from './getLogRowStyles';
 
 //Components

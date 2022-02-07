@@ -1,5 +1,7 @@
 import React, { ChangeEvent, PureComponent } from 'react';
+
 import { Button, InlineField, InlineFieldRow, Input } from '@grafana/ui';
+
 import { CSVWave } from '../types';
 import { defaultCSVWaveQuery } from '../constants';
 

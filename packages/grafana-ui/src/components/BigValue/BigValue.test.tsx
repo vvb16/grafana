@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BigValue, Props, BigValueColorMode, BigValueGraphMode } from './BigValue';
 import { createTheme } from '@grafana/data';
+
+import { BigValue, Props, BigValueColorMode, BigValueGraphMode } from './BigValue';
 
 function getProps(propOverrides?: Partial<Props>): Props {
   const props: Props = {

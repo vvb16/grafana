@@ -1,6 +1,7 @@
 import { sortedUniq } from 'lodash';
 import { lastValueFrom } from 'rxjs';
 import Prism, { Grammar } from 'prismjs';
+
 import { AbsoluteTimeRange, HistoryItem, LanguageProvider } from '@grafana/data';
 import { CompletionItemGroup, SearchFunctionType, Token, TypeaheadInput, TypeaheadOutput } from '@grafana/ui';
 

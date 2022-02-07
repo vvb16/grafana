@@ -1,5 +1,6 @@
 import React, { createRef } from 'react';
 import uPlot, { AlignedData, Options } from 'uplot';
+
 import { DEFAULT_PLOT_CONFIG, pluginLog } from './utils';
 import { PlotProps } from './types';
 

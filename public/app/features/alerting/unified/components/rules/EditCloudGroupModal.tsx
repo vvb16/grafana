@@ -1,14 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
-import { CombinedRuleGroup, CombinedRuleNamespace } from 'app/types/unified-alerting';
-import { Modal, Button, Form, Field, Input, useStyles2 } from '@grafana/ui';
-import { durationValidationPattern } from '../../utils/time';
 import { css } from '@emotion/css';
 import { useDispatch } from 'react-redux';
+
+import { CombinedRuleGroup, CombinedRuleNamespace } from 'app/types/unified-alerting';
+import { Modal, Button, Form, Field, Input, useStyles2 } from '@grafana/ui';
+import { useCleanup } from 'app/core/hooks/useCleanup';
+
+import { durationValidationPattern } from '../../utils/time';
 import { updateLotexNamespaceAndGroupAction } from '../../state/actions';
 import { getRulesSourceName } from '../../utils/datasource';
 import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
 import { initialAsyncRequestState } from '../../utils/redux';
-import { useCleanup } from 'app/core/hooks/useCleanup';
 
 interface Props {
   namespace: CombinedRuleNamespace;

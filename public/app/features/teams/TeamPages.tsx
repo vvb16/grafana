@@ -1,22 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { includes } from 'lodash';
+
 import config from 'app/core/config';
 import Page from 'app/core/components/Page/Page';
-import TeamMembers from './TeamMembers';
-import TeamPermissions from './TeamPermissions';
-import TeamSettings from './TeamSettings';
-import TeamGroupSync from './TeamGroupSync';
 import { AccessControlAction, StoreState } from 'app/types';
-import { loadTeam, loadTeamMembers } from './state/actions';
-import { getTeam, getTeamMembers, isSignedInUserTeamAdmin } from './state/selectors';
-import { getTeamLoadingNav } from './state/navModel';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { contextSrv } from 'app/core/services/context_srv';
 import { NavModel } from '@grafana/data';
 import { featureEnabled } from '@grafana/runtime';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
 import { UpgradeBox } from 'app/core/components/Upgrade/UpgradeBox';
+
+import TeamMembers from './TeamMembers';
+import TeamPermissions from './TeamPermissions';
+import TeamSettings from './TeamSettings';
+import TeamGroupSync from './TeamGroupSync';
+import { loadTeam, loadTeamMembers } from './state/actions';
+import { getTeam, getTeamMembers, isSignedInUserTeamAdmin } from './state/selectors';
+import { getTeamLoadingNav } from './state/navModel';
 
 interface TeamPageRouteParams {
   id: string;

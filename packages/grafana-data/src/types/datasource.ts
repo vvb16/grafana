@@ -1,5 +1,8 @@
 import { Observable } from 'rxjs';
 import { ComponentType } from 'react';
+
+import { makeClassES5Compatible } from '../utils/makeClassES5Compatible';
+
 import { GrafanaPlugin, PluginMeta } from './plugin';
 import { PanelData } from './panel';
 import { LogRowModel } from './logs';
@@ -10,8 +13,8 @@ import { RawTimeRange, TimeRange } from './time';
 import { ScopedVars } from './ScopedVars';
 import { CoreApp } from './app';
 import { CustomVariableSupport, DataSourceVariableSupport, StandardVariableSupport } from './variables';
-import { makeClassES5Compatible } from '../utils/makeClassES5Compatible';
 import { DataQuery } from './query';
+
 import { DataSourceRef, WithAccessControlMetadata } from '.';
 
 export interface DataSourcePluginOptionsEditorProps<JSONData = DataSourceJsonData, SecureJSONData = {}> {

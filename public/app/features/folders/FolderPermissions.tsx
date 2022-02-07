@@ -1,11 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import Page from 'app/core/components/Page/Page';
 import { Tooltip, Icon, Button } from '@grafana/ui';
 import { SlideDown } from 'app/core/components/Animations/SlideDown';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { StoreState } from 'app/types';
 import { DashboardAcl, PermissionLevel, NewDashboardAclItem } from 'app/types/acl';
+import PermissionList from 'app/core/components/PermissionList/PermissionList';
+import AddPermission from 'app/core/components/PermissionList/AddPermission';
+import PermissionsInfo from 'app/core/components/PermissionList/PermissionsInfo';
+import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
+
+import { getLoadingNav } from './state/navModel';
 import {
   getFolderByUid,
   getFolderPermissions,
@@ -13,11 +20,6 @@ import {
   removeFolderPermission,
   addFolderPermission,
 } from './state/actions';
-import { getLoadingNav } from './state/navModel';
-import PermissionList from 'app/core/components/PermissionList/PermissionList';
-import AddPermission from 'app/core/components/PermissionList/AddPermission';
-import PermissionsInfo from 'app/core/components/PermissionList/PermissionsInfo';
-import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
 
 export interface OwnProps extends GrafanaRouteComponentProps<{ uid: string }> {}
 

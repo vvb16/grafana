@@ -12,6 +12,7 @@ import {
   ScopedVar,
   ScopedVars,
 } from '@grafana/data';
+
 import { getLinkSrv } from './link_srv';
 
 interface SeriesVars {

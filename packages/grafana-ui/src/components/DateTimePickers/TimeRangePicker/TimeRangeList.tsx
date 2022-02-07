@@ -1,9 +1,11 @@
 import React, { ReactNode } from 'react';
 import { css } from '@emotion/css';
 import { TimeOption } from '@grafana/data';
+
+import { stylesFactory } from '../../../themes';
+
 import { TimePickerTitle } from './TimePickerTitle';
 import { TimeRangeOption } from './TimeRangeOption';
-import { stylesFactory } from '../../../themes';
 
 const getStyles = stylesFactory(() => {
   return {

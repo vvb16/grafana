@@ -3,6 +3,7 @@ import React from 'react';
 
 // Types
 import { InlineFormLabel } from '@grafana/ui';
+
 import { LokiQueryField } from './LokiQueryField';
 import { LokiOptionFields } from './LokiOptionFields';
 import { LokiQueryEditorProps } from './types';

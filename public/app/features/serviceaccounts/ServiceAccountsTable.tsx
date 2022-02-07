@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
+
 import { AccessControlAction, Role, OrgServiceAccount } from 'app/types';
-import { OrgRolePicker } from '../admin/OrgRolePicker';
 import { Button, ConfirmModal } from '@grafana/ui';
 import { OrgRole } from '@grafana/data';
 import { contextSrv } from 'app/core/core';
 import { UserRolePicker } from 'app/core/components/RolePicker/UserRolePicker';
 import { fetchBuiltinRoles, fetchRoleOptions } from 'app/core/components/RolePicker/api';
+
+import { OrgRolePicker } from '../admin/OrgRolePicker';
 
 export interface Props {
   serviceAccounts: OrgServiceAccount[];

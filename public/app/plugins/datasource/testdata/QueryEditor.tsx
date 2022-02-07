@@ -1,14 +1,11 @@
-// Libraries
 import React, { ChangeEvent, FormEvent, useMemo } from 'react';
 import { useAsync } from 'react-use';
 
-// Components
 import { selectors as editorSelectors } from '@grafana/e2e-selectors';
 import { InlineField, InlineFieldRow, InlineSwitch, Input, Select, TextArea } from '@grafana/ui';
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
-import { RandomWalkEditor, StreamingClientEditor } from './components';
 
-// Types
+import { RandomWalkEditor, StreamingClientEditor } from './components';
 import { TestDataDataSource } from './datasource';
 import { CSVWave, NodesQuery, TestDataQuery, USAQuery } from './types';
 import { PredictablePulseEditor } from './components/PredictablePulseEditor';

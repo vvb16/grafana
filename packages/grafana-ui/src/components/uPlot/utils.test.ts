@@ -1,6 +1,7 @@
-import { orderIdsByCalcs, preparePlotData, timeFormatToTemplate } from './utils';
 import { FieldType, MutableDataFrame } from '@grafana/data';
 import { StackingMode } from '@grafana/schema';
+
+import { orderIdsByCalcs, preparePlotData, timeFormatToTemplate } from './utils';
 
 describe('timeFormatToTemplate', () => {
   it.each`

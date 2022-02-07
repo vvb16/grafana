@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+
 import { JobInfo, WorkflowInfo, CoverageInfo, TestResultsInfo } from './types';
 import { getBuildNumber, getCiFolder } from './env';
 

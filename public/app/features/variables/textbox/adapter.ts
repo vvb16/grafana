@@ -1,14 +1,15 @@
 import { cloneDeep } from 'lodash';
 
 import { TextBoxVariableModel } from '../types';
-import { initialTextBoxVariableModelState, textBoxVariableReducer } from './reducer';
 import { dispatch } from '../../../store/store';
 import { setOptionAsCurrent } from '../state/actions';
 import { VariableAdapter } from '../adapters';
+import { toVariableIdentifier } from '../state/types';
+
+import { initialTextBoxVariableModelState, textBoxVariableReducer } from './reducer';
 import { TextBoxVariablePicker } from './TextBoxVariablePicker';
 import { TextBoxVariableEditor } from './TextBoxVariableEditor';
 import { setTextBoxVariableOptionsFromUrl, updateTextBoxVariableOptions } from './actions';
-import { toVariableIdentifier } from '../state/types';
 
 export const createTextBoxVariableAdapter = (): VariableAdapter<TextBoxVariableModel> => {
   return {

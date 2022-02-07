@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavModelItem } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { NavModelItem } from '@grafana/data';
+
 import { NavBarMenu } from './NavBarMenu';
 
 describe('NavBarMenu', () => {

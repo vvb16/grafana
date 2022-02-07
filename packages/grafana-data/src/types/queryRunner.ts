@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+
 import { DataQuery, DataSourceRef } from './query';
 import { DataSourceApi } from './datasource';
 import { PanelData } from './panel';

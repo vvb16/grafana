@@ -1,8 +1,9 @@
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
-import { ColorPickerPopover } from './ColorPickerPopover';
 import { createTheme } from '@grafana/data';
 import userEvent from '@testing-library/user-event';
+
+import { ColorPickerPopover } from './ColorPickerPopover';
 
 describe('ColorPickerPopover', () => {
   const theme = createTheme();

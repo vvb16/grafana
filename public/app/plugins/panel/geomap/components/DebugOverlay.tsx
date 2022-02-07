@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Map } from 'ol';
 import { transform } from 'ol/proj';
-import { stylesFactory } from '@grafana/ui';
-import { GrafanaTheme } from '@grafana/data';
 import { css } from '@emotion/css';
-import { config } from 'app/core/config';
 import tinycolor from 'tinycolor2';
 import { Coordinate } from 'ol/coordinate';
+
+import { stylesFactory } from '@grafana/ui';
+import { GrafanaTheme } from '@grafana/data';
+import { config } from 'app/core/config';
 
 interface Props {
   map: Map;

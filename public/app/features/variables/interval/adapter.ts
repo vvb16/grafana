@@ -1,13 +1,15 @@
 import { cloneDeep } from 'lodash';
+
 import { IntervalVariableModel } from '../types';
 import { dispatch } from '../../../store/store';
 import { setOptionAsCurrent, setOptionFromUrl } from '../state/actions';
 import { VariableAdapter } from '../adapters';
-import { initialIntervalVariableModelState, intervalVariableReducer } from './reducer';
 import { toVariableIdentifier } from '../state/types';
+import { optionPickerFactory } from '../pickers';
+
+import { initialIntervalVariableModelState, intervalVariableReducer } from './reducer';
 import { IntervalVariableEditor } from './IntervalVariableEditor';
 import { updateAutoValue, updateIntervalVariableOptions } from './actions';
-import { optionPickerFactory } from '../pickers';
 
 export const createIntervalVariableAdapter = (): VariableAdapter<IntervalVariableModel> => {
   return {

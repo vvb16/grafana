@@ -1,6 +1,5 @@
 import { toString, isEmpty } from 'lodash';
 
-import { getDisplayProcessor } from './displayProcessor';
 import {
   DataFrame,
   DisplayValue,
@@ -21,6 +20,8 @@ import { ScopedVars } from '../types/ScopedVars';
 import { getTimeField } from '../dataframe/processDataFrame';
 import { getFieldMatcher } from '../transformations';
 import { FieldMatcherID } from '../transformations/matchers/ids';
+
+import { getDisplayProcessor } from './displayProcessor';
 import { getFieldDisplayName } from './fieldState';
 
 /**

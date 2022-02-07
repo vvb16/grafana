@@ -1,5 +1,7 @@
-import { Alert, CodeEditor, Select } from '@grafana/ui';
 import React from 'react';
+
+import { Alert, CodeEditor, Select } from '@grafana/ui';
+
 import { AzureMonitorOption, AzureMonitorQuery } from '../../types';
 import { Field } from '../Field';
 import { Space } from '../Space';

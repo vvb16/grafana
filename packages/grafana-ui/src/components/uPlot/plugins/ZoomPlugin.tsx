@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
+
 import { UPlotConfigBuilder } from '../config/UPlotConfigBuilder';
 import { pluginLog } from '../utils';
 import { PlotSelection } from '../types';

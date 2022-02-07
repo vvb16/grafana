@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
+
 import { CodeEditor, Monaco } from '@grafana/ui';
+
 import { CloudWatchDatasource } from '../datasource';
 import language from '../cloudwatch-sql/definition';
 import { TRIGGER_SUGGEST } from '../monarch/commands';

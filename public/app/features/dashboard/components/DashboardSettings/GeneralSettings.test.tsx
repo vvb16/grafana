@@ -1,12 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { selectOptionInTest } from '@grafana/ui';
-
 import { byRole } from 'testing-library-selector';
-import { GeneralSettingsUnconnected as GeneralSettings, Props } from './GeneralSettings';
-import { DashboardModel } from '../../state';
+
+import { selectOptionInTest } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
+
+import { DashboardModel } from '../../state';
+
+import { GeneralSettingsUnconnected as GeneralSettings, Props } from './GeneralSettings';
 
 const setupTestContext = (options: Partial<Props>) => {
   const defaults: Props = {

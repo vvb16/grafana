@@ -1,16 +1,19 @@
 import React, { FC, useEffect } from 'react';
 import { css } from '@emotion/css';
-import { IconName, Tab, TabContent, TabsBar, useForceUpdate, useStyles2 } from '@grafana/ui';
-import { TransformationsEditor } from '../TransformationsEditor/TransformationsEditor';
-import { DashboardModel, PanelModel } from '../../state';
-import { PanelEditorTab, PanelEditorTabId } from './types';
 import { Subscription } from 'rxjs';
+
+import { IconName, Tab, TabContent, TabsBar, useForceUpdate, useStyles2 } from '@grafana/ui';
 import { PanelQueriesChangedEvent, PanelTransformationsChangedEvent } from 'app/types/events';
-import { PanelEditorQueries } from './PanelEditorQueries';
 import { GrafanaTheme2 } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import AlertTabIndex from 'app/features/alerting/AlertTabIndex';
 import { PanelAlertTab } from 'app/features/alerting/unified/PanelAlertTab';
+
+import { DashboardModel, PanelModel } from '../../state';
+import { TransformationsEditor } from '../TransformationsEditor/TransformationsEditor';
+
+import { PanelEditorTab, PanelEditorTabId } from './types';
+import { PanelEditorQueries } from './PanelEditorQueries';
 
 interface PanelEditorTabsProps {
   panel: PanelModel;

@@ -1,13 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { sortBy } from 'lodash';
 import { useDispatch } from 'react-redux';
-import { GrafanaTheme2, PanelProps } from '@grafana/data';
-import { CustomScrollbar, LoadingPlaceholder, useStyles2 } from '@grafana/ui';
 import { css } from '@emotion/css';
 
+import { CustomScrollbar, LoadingPlaceholder, useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2, PanelProps } from '@grafana/data';
 import alertDef from 'app/features/alerting/state/alertDef';
-import { GroupMode, SortOrder, UnifiedAlertListOptions } from './types';
-
 import { flattenRules, getFirstActiveAt } from 'app/features/alerting/unified/utils/rules';
 import { PromRuleWithLocation } from 'app/types/unified-alerting';
 import { fetchAllPromRulesAction } from 'app/features/alerting/unified/state/actions';
@@ -21,6 +19,8 @@ import { getDashboardSrv } from 'app/features/dashboard/services/DashboardSrv';
 import { Annotation, RULE_LIST_POLL_INTERVAL_MS } from 'app/features/alerting/unified/utils/constants';
 import { PromAlertingRuleState } from 'app/types/unified-alerting-dto';
 import { labelsMatchMatchers, parseMatchers } from 'app/features/alerting/unified/utils/alertmanager';
+
+import { GroupMode, SortOrder, UnifiedAlertListOptions } from './types';
 import UngroupedModeView from './unified-alerting/UngroupedView';
 import GroupedModeView from './unified-alerting/GroupedView';
 

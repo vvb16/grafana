@@ -1,10 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
+
 import { Select } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
 
 import { Field } from '../Field';
 import TimegrainConverter from '../../time_grain_converter';
 import { AzureQueryEditorFieldProps, AzureMonitorOption } from '../../types';
+
 import { setTimeGrain } from './setQueryValue';
 
 interface TimeGrainFieldProps extends AzureQueryEditorFieldProps {

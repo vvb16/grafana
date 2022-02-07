@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { AppEvents } from '@grafana/data';
 import { Button, HorizontalGroup, ConfirmModal } from '@grafana/ui';
 import appEvents from 'app/core/app_events';

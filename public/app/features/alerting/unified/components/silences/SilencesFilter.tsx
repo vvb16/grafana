@@ -1,12 +1,14 @@
 import React, { FormEvent, useState } from 'react';
 import { css } from '@emotion/css';
+import { debounce, uniqueId } from 'lodash';
+
 import { Label, Icon, Input, Tooltip, RadioButtonGroup, useStyles2, Button, Field } from '@grafana/ui';
 import { GrafanaTheme2, SelectableValue } from '@grafana/data';
 import { useQueryParams } from 'app/core/hooks/useQueryParams';
-import { getSilenceFiltersFromUrlParams } from '../../utils/misc';
 import { SilenceState } from 'app/plugins/datasource/alertmanager/types';
+
+import { getSilenceFiltersFromUrlParams } from '../../utils/misc';
 import { parseMatchers } from '../../utils/alertmanager';
-import { debounce, uniqueId } from 'lodash';
 
 const stateOptions: SelectableValue[] = Object.entries(SilenceState).map(([key, value]) => ({
   label: key,

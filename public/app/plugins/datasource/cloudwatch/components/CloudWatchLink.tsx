@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { CloudWatchLogsQuery } from '../types';
 import { PanelData } from '@grafana/data';
 import { Icon } from '@grafana/ui';
+
+import { CloudWatchLogsQuery } from '../types';
 import { encodeUrl, AwsUrl } from '../aws_url';
 import { CloudWatchDatasource } from '../datasource';
 

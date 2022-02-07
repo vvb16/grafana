@@ -17,15 +17,16 @@ import IoIosArrowDown from 'react-icons/lib/io/ios-arrow-down';
 import IoIosArrowRight from 'react-icons/lib/io/ios-arrow-right';
 import { css } from '@emotion/css';
 import cx from 'classnames';
+import { useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2 } from '@grafana/data';
 
-import * as markers from './AccordianKeyValues.markers';
-import KeyValuesTable from './KeyValuesTable';
 import { TNil } from '../../types';
 import { TraceKeyValuePair, TraceLink } from '../../types/trace';
 import { autoColor } from '../../Theme';
 import { uAlignIcon, uTxEllipsis } from '../../uberUtilityStyles';
-import { useStyles2 } from '@grafana/ui';
-import { GrafanaTheme2 } from '@grafana/data';
+
+import KeyValuesTable from './KeyValuesTable';
+import * as markers from './AccordianKeyValues.markers';
 
 export const getStyles = (theme: GrafanaTheme2) => {
   return {

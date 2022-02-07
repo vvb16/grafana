@@ -1,5 +1,6 @@
-import { GraphDrawStyle, StackingMode } from '@grafana/schema';
 import { lastValueFrom } from 'rxjs';
+
+import { GraphDrawStyle, StackingMode } from '@grafana/schema';
 import {
   ArrayVector,
   DataFrame,
@@ -11,6 +12,8 @@ import {
   TimeRange,
   toDataFrame,
 } from '@grafana/data';
+import { ExplorePanelData } from 'app/types';
+import TableModel from 'app/core/table_model';
 
 import {
   decorateWithFrameTypeMetadata,
@@ -18,8 +21,6 @@ import {
   decorateWithLogsResult,
   decorateWithTableResult,
 } from './decorators';
-import { ExplorePanelData } from 'app/types';
-import TableModel from 'app/core/table_model';
 
 jest.mock('@grafana/data', () => ({
   ...(jest.requireActual('@grafana/data') as any),

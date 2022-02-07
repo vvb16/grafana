@@ -12,11 +12,11 @@ import {
   DataFrameSchema,
   DataFrameData,
 } from '@grafana/data';
+import { liveTimer } from 'app/features/dashboard/dashgrid/liveTimer';
+import { StreamingDataFrame } from 'app/features/live/data/StreamingDataFrame';
 
 import { TestDataQuery, StreamingQuery } from './types';
 import { getRandomLine } from './LogIpsum';
-import { liveTimer } from 'app/features/dashboard/dashgrid/liveTimer';
-import { StreamingDataFrame } from 'app/features/live/data/StreamingDataFrame';
 
 export const defaultStreamQuery: StreamingQuery = {
   type: 'signal',

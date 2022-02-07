@@ -11,12 +11,14 @@ import {
   FieldColorSeriesByMode,
   getFieldColorMode,
 } from '@grafana/data';
-import { Select } from '../Select/Select';
-import { ColorValueEditor } from './color';
-import { useStyles2, useTheme2 } from '../../themes/ThemeContext';
 import { css } from '@emotion/css';
+
+import { useStyles2, useTheme2 } from '../../themes/ThemeContext';
+import { Select } from '../Select/Select';
 import { Field } from '../Forms/Field';
 import { RadioButtonGroup } from '../Forms/RadioButtonGroup/RadioButtonGroup';
+
+import { ColorValueEditor } from './color';
 
 export const FieldColorEditor: React.FC<FieldConfigEditorProps<FieldColor | undefined, FieldColorConfigSettings>> = ({
   value,

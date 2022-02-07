@@ -1,5 +1,6 @@
 import angular from 'angular';
 import { castArray, isEqual } from 'lodash';
+
 import {
   DataQuery,
   getDataSourceRef,
@@ -9,7 +10,40 @@ import {
   UrlQueryMap,
   UrlQueryValue,
 } from '@grafana/data';
+import { notifyApp } from 'app/core/actions';
+import { contextSrv } from 'app/core/services/context_srv';
+import { getTimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { DashboardModel } from 'app/features/dashboard/state';
+import { store } from 'app/store/store';
+import { locationService } from '@grafana/runtime';
 
+import {
+  ensureStringValues,
+  ExtendedUrlQueryMap,
+  getCurrentText,
+  getVariableRefresh,
+  hasOngoingTransaction,
+} from '../utils';
+import { getDatasourceSrv } from '../../plugins/datasource_srv';
+import { cleanEditorState } from '../editor/reducer';
+import { cleanPickerState } from '../pickers/OptionsPicker/reducer';
+import { getBackendSrv } from '../../../core/services/backend_srv';
+import { createErrorNotification } from '../../../core/copy/appNotification';
+import {
+  hasCurrent,
+  hasLegacyVariableSupport,
+  hasOptions,
+  hasStandardVariableSupport,
+  isAdHoc,
+  isConstant,
+  isMulti,
+  isQuery,
+} from '../guard';
+import { alignCurrentWithMulti } from '../shared/multiOptions';
+import { getTemplateSrv, TemplateSrv } from '../../templating/template_srv';
+import { Graph } from '../../../core/utils/dag';
+import { variableAdapters } from '../adapters';
+import { AppNotification, StoreState, ThunkResult } from '../../../types';
 import {
   DashboardVariableModel,
   initialVariableModelState,
@@ -28,11 +62,17 @@ import {
   VariableWithMultiSupport,
   VariableWithOptions,
 } from '../types';
-import { AppNotification, StoreState, ThunkResult } from '../../../types';
-import { getVariable, getVariables } from './selectors';
-import { variableAdapters } from '../adapters';
-import { Graph } from '../../../core/utils/dag';
-import { notifyApp } from 'app/core/actions';
+import { appEvents } from '../../../core/core';
+import { getAllAffectedPanelIdsForVariableChange } from '../inspect/utils';
+import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
+
+import { cleanVariables } from './variablesReducer';
+import {
+  variablesClearTransaction,
+  variablesCompleteTransaction,
+  variablesInitTransaction,
+} from './transactionReducer';
+import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from './types';
 import {
   addVariable,
   changeVariableProp,
@@ -42,45 +82,7 @@ import {
   variableStateFetching,
   variableStateNotStarted,
 } from './sharedReducer';
-import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from './types';
-import { contextSrv } from 'app/core/services/context_srv';
-import { getTemplateSrv, TemplateSrv } from '../../templating/template_srv';
-import { alignCurrentWithMulti } from '../shared/multiOptions';
-import {
-  hasCurrent,
-  hasLegacyVariableSupport,
-  hasOptions,
-  hasStandardVariableSupport,
-  isAdHoc,
-  isConstant,
-  isMulti,
-  isQuery,
-} from '../guard';
-import { getTimeSrv } from 'app/features/dashboard/services/TimeSrv';
-import { DashboardModel } from 'app/features/dashboard/state';
-import { createErrorNotification } from '../../../core/copy/appNotification';
-import {
-  variablesClearTransaction,
-  variablesCompleteTransaction,
-  variablesInitTransaction,
-} from './transactionReducer';
-import { getBackendSrv } from '../../../core/services/backend_srv';
-import { cleanVariables } from './variablesReducer';
-import {
-  ensureStringValues,
-  ExtendedUrlQueryMap,
-  getCurrentText,
-  getVariableRefresh,
-  hasOngoingTransaction,
-} from '../utils';
-import { store } from 'app/store/store';
-import { getDatasourceSrv } from '../../plugins/datasource_srv';
-import { cleanEditorState } from '../editor/reducer';
-import { cleanPickerState } from '../pickers/OptionsPicker/reducer';
-import { locationService } from '@grafana/runtime';
-import { appEvents } from '../../../core/core';
-import { getAllAffectedPanelIdsForVariableChange } from '../inspect/utils';
-import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
+import { getVariable, getVariables } from './selectors';
 
 // process flow queryVariable
 // thunk => processVariables

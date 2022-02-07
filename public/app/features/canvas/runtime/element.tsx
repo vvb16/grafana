@@ -11,8 +11,9 @@ import {
 } from 'app/features/canvas';
 import { DimensionContext } from 'app/features/dimensions';
 import { notFoundItem } from 'app/features/canvas/elements/notFound';
-import { GroupState } from './group';
 import { LayerElement } from 'app/core/components/Layers/types';
+
+import { GroupState } from './group';
 import { Scene } from './scene';
 
 let counter = 0;

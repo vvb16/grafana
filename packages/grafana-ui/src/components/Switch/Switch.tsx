@@ -2,6 +2,7 @@ import React, { HTMLProps, useRef } from 'react';
 import { css, cx } from '@emotion/css';
 import { uniqueId } from 'lodash';
 import { GrafanaTheme2, deprecationWarning } from '@grafana/data';
+
 import { stylesFactory, useTheme2 } from '../../themes';
 import { getFocusStyles, getMouseFocusStyles } from '../../themes/mixins';
 

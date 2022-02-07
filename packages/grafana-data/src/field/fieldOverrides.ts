@@ -1,3 +1,5 @@
+import { isNumber, set, unset, get, cloneDeep } from 'lodash';
+
 import {
   ApplyFieldOverrideOptions,
   DataFrame,
@@ -20,19 +22,19 @@ import {
 } from '../types';
 import { fieldMatchers, reduceField, ReducerID } from '../transformations';
 import { FieldMatcher } from '../types/transformations';
-import { isNumber, set, unset, get, cloneDeep } from 'lodash';
-import { getDisplayProcessor, getRawDisplayProcessor } from './displayProcessor';
 import { guessFieldTypeForField } from '../dataframe';
-import { standardFieldConfigEditorRegistry } from './standardFieldConfigEditorRegistry';
-import { FieldConfigOptionsRegistry } from './FieldConfigOptionsRegistry';
 import { DataLinkBuiltInVars, locationUtil } from '../utils';
 import { formattedValueToString } from '../valueFormats';
-import { getFieldDisplayValuesProxy } from './getFieldDisplayValuesProxy';
-import { getFrameDisplayName } from './fieldState';
 import { getTimeField } from '../dataframe/processDataFrame';
 import { mapInternalLinkToExplore } from '../utils/dataLinks';
-import { getTemplateProxyForField } from './templateProxies';
 import { asHexString } from '../themes/colorManipulator';
+
+import { getDisplayProcessor, getRawDisplayProcessor } from './displayProcessor';
+import { standardFieldConfigEditorRegistry } from './standardFieldConfigEditorRegistry';
+import { FieldConfigOptionsRegistry } from './FieldConfigOptionsRegistry';
+import { getFieldDisplayValuesProxy } from './getFieldDisplayValuesProxy';
+import { getFrameDisplayName } from './fieldState';
+import { getTemplateProxyForField } from './templateProxies';
 
 interface OverrideProps {
   match: FieldMatcher;

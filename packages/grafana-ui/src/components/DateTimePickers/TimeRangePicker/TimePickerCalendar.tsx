@@ -1,12 +1,14 @@
 import React, { FormEvent, memo } from 'react';
 import { css } from '@emotion/css';
 import { DateTime, GrafanaTheme2, TimeZone } from '@grafana/data';
-import { useTheme2 } from '../../../themes';
-import { Header } from './CalendarHeader';
 import { selectors } from '@grafana/e2e-selectors';
 import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
 import { OverlayContainer, useOverlay } from '@react-aria/overlays';
+
+import { useTheme2 } from '../../../themes';
+
+import { Header } from './CalendarHeader';
 import { Body } from './CalendarBody';
 import { Footer } from './CalendarFooter';
 

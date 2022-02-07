@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { css } from '@emotion/css';
+import { FilterItem, TableSortByFieldState } from '@grafana/ui/src/components/Table/types';
+
 import { Select, Table } from '@grafana/ui';
 import {
   DataFrame,
@@ -8,15 +11,15 @@ import {
   PanelProps,
   SelectableValue,
 } from '@grafana/data';
-import { PanelOptions } from './models.gen';
-import { css } from '@emotion/css';
 import { config } from 'app/core/config';
-import { FilterItem, TableSortByFieldState } from '@grafana/ui/src/components/Table/types';
+import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
+
 import { dispatch } from '../../../store/store';
 import { applyFilterFromTable } from '../../../features/variables/adhoc/actions';
 import { getDashboardSrv } from '../../../features/dashboard/services/DashboardSrv';
+
+import { PanelOptions } from './models.gen';
 import { getFooterCells } from './footer';
-import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 
 interface Props extends PanelProps<PanelOptions> {}
 

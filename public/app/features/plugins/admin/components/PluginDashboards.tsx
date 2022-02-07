@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import { extend } from 'lodash';
 
 import { PluginDashboard } from 'app/types';

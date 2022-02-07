@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { PanelProps } from '@grafana/data';
 
 import { DebugPanelOptions, DebugMode } from './types';

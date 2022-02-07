@@ -1,5 +1,6 @@
-import { AngularLocationWrapper } from './AngularLocationWrapper';
 import { HistoryWrapper, locationService, setLocationService } from '@grafana/runtime';
+
+import { AngularLocationWrapper } from './AngularLocationWrapper';
 
 describe('AngularLocationWrapper', () => {
   const { location } = window;

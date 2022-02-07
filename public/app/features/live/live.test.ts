@@ -1,7 +1,9 @@
+import { Subject } from 'rxjs';
+
+import { DataQueryResponse, FieldType, LiveChannelScope } from '@grafana/data';
+
 import { GrafanaLiveService } from './live';
 import { StreamingDataQueryResponse } from './centrifuge/service';
-import { Subject } from 'rxjs';
-import { DataQueryResponse, FieldType, LiveChannelScope } from '@grafana/data';
 import { StreamingDataFrame } from './data/StreamingDataFrame';
 import { StreamingResponseDataType } from './data/utils';
 

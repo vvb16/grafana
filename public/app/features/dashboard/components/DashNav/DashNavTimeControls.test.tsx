@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { DashNavTimeControls } from './DashNavTimeControls';
+
 import { DashboardModel } from '../../state/DashboardModel';
 import { getDashboardModel } from '../../../../../test/helpers/getDashboardModel';
+
+import { DashNavTimeControls } from './DashNavTimeControls';
 
 describe('DashNavTimeControls', () => {
   let dashboardModel: DashboardModel;

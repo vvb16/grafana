@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'enzyme';
+
 import { CallToActionCard } from './CallToActionCard';
 
 describe('CallToActionCard', () => {

@@ -1,10 +1,11 @@
 import { PanelPlugin } from '@grafana/data';
+import { IconConfig, iconItem } from 'app/features/canvas/elements/icon';
+import { CanvasElementOptions } from 'app/features/canvas';
+
+import { optionBuilder } from '../canvas/editor/options';
 
 import { IconPanel } from './IconPanel';
 import { defaultPanelOptions, PanelOptions } from './models.gen';
-import { IconConfig, iconItem } from 'app/features/canvas/elements/icon';
-import { optionBuilder } from '../canvas/editor/options';
-import { CanvasElementOptions } from 'app/features/canvas';
 
 export const plugin = new PanelPlugin<PanelOptions>(IconPanel)
   .setNoPadding() // extend to panel edges

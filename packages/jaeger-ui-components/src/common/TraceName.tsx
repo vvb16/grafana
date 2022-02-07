@@ -18,11 +18,12 @@ import cx from 'classnames';
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 
-import BreakableText from './BreakableText';
-import LoadingIndicator from './LoadingIndicator';
 import { fetchedState, FALLBACK_TRACE_NAME } from '../constants';
 import { FetchedState, TNil } from '../types';
 import { ApiError } from '../types/api-error';
+
+import LoadingIndicator from './LoadingIndicator';
+import BreakableText from './BreakableText';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

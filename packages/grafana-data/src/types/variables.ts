@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { Observable } from 'rxjs';
-import { DataQuery } from './query';
 
+import { DataQuery } from './query';
 import {
   DataQueryRequest,
   DataQueryResponse,

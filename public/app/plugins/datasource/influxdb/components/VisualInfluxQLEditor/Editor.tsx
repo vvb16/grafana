@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import { InfluxQuery, InfluxQueryTag } from '../../types';
+import { css } from '@emotion/css';
+
 import { getTemplateSrv } from '@grafana/runtime';
+import { InlineLabel, SegmentSection, useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2 } from '@grafana/data';
+
+import { InfluxQuery, InfluxQueryTag } from '../../types';
 import InfluxDatasource from '../../datasource';
-import { FromSection } from './FromSection';
-import { TagsSection } from './TagsSection';
-import { PartListSection } from './PartListSection';
-import { OrderByTimeSection } from './OrderByTimeSection';
-import { InputSection } from './InputSection';
 import {
   getAllMeasurementsForTags,
   getAllPolicies,
@@ -23,13 +23,16 @@ import {
   changeSelectPart,
   changeGroupByPart,
 } from '../../queryUtils';
-import { FormatAsSection } from './FormatAsSection';
 import { DEFAULT_RESULT_FORMAT } from '../constants';
-import { getNewSelectPartOptions, getNewGroupByPartOptions, makePartList } from './partListUtils';
-import { InlineLabel, SegmentSection, useStyles2 } from '@grafana/ui';
-import { GrafanaTheme2 } from '@grafana/data';
-import { css } from '@emotion/css';
 import { useUniqueId } from '../useUniqueId';
+
+import { FromSection } from './FromSection';
+import { TagsSection } from './TagsSection';
+import { PartListSection } from './PartListSection';
+import { OrderByTimeSection } from './OrderByTimeSection';
+import { InputSection } from './InputSection';
+import { FormatAsSection } from './FormatAsSection';
+import { getNewSelectPartOptions, getNewGroupByPartOptions, makePartList } from './partListUtils';
 
 type Props = {
   query: InfluxQuery;

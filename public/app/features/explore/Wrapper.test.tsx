@@ -1,9 +1,13 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Wrapper from './Wrapper';
-import { configureStore } from '../../store/configureStore';
 import { Provider } from 'react-redux';
-import { locationService, setDataSourceSrv, setEchoSrv } from '@grafana/runtime';
+import { from, Observable } from 'rxjs';
+import { fromPairs } from 'lodash';
+import { EnhancedStore } from '@reduxjs/toolkit';
+import userEvent from '@testing-library/user-event';
+import { Route, Router } from 'react-router-dom';
+
+import { selectors } from '@grafana/e2e-selectors';
 import {
   ArrayDataFrame,
   DataQueryResponse,
@@ -14,19 +18,17 @@ import {
   ScopedVars,
   serializeStateToUrlParam,
 } from '@grafana/data';
-import { selectors } from '@grafana/e2e-selectors';
-
-import { from, Observable } from 'rxjs';
-import { LokiDatasource } from '../../plugins/datasource/loki/datasource';
-import { LokiQuery } from '../../plugins/datasource/loki/types';
-import { fromPairs } from 'lodash';
-import { EnhancedStore } from '@reduxjs/toolkit';
-import userEvent from '@testing-library/user-event';
-import { splitOpen } from './state/main';
-import { Route, Router } from 'react-router-dom';
+import { locationService, setDataSourceSrv, setEchoSrv } from '@grafana/runtime';
 import { GrafanaRoute } from 'app/core/navigation/GrafanaRoute';
-import { initialUserState } from '../profile/state/reducers';
 import { Echo } from 'app/core/services/echo/Echo';
+
+import { LokiQuery } from '../../plugins/datasource/loki/types';
+import { LokiDatasource } from '../../plugins/datasource/loki/datasource';
+import { initialUserState } from '../profile/state/reducers';
+import { configureStore } from '../../store/configureStore';
+
+import { splitOpen } from './state/main';
+import Wrapper from './Wrapper';
 
 type Mock = jest.Mock;
 

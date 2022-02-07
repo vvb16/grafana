@@ -4,9 +4,19 @@ import { compose } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import memoizeOne from 'memoize-one';
+import { FILTER_FOR_OPERATOR, FILTER_OUT_OPERATOR, FilterItem } from '@grafana/ui/src/components/Table/types';
+import { Unsubscribable } from 'rxjs';
+
 import { selectors } from '@grafana/e2e-selectors';
 import { Collapse, CustomScrollbar, ErrorBoundaryAlert, Themeable2, withTheme2 } from '@grafana/ui';
 import { AbsoluteTimeRange, DataQuery, GrafanaTheme2, LoadingState, RawTimeRange } from '@grafana/data';
+import { ExploreGraphStyle, ExploreId, ExploreItemState } from 'app/types/explore';
+import { StoreState } from 'app/types';
+import appEvents from 'app/core/app_events';
+import { AbsoluteTimeEvent } from 'app/types/events';
+import { getNodeGraphDataFrames } from 'app/plugins/panel/nodeGraph/utils';
+
+import { getTimeZone } from '../profile/state/selectors';
 
 import LogsContainer from './LogsContainer';
 import { QueryRows } from './QueryRows';
@@ -17,23 +27,15 @@ import { splitOpen } from './state/main';
 import { changeSize, changeGraphStyle } from './state/explorePane';
 import { makeAbsoluteTime, updateTimeRange } from './state/time';
 import { addQueryRow, loadLogsVolumeData, modifyQueries, scanStart, scanStopAction, setQueries } from './state/query';
-import { ExploreGraphStyle, ExploreId, ExploreItemState } from 'app/types/explore';
-import { StoreState } from 'app/types';
 import { ExploreToolbar } from './ExploreToolbar';
 import { NoDataSourceCallToAction } from './NoDataSourceCallToAction';
-import { getTimeZone } from '../profile/state/selectors';
 import { SecondaryActions } from './SecondaryActions';
-import { FILTER_FOR_OPERATOR, FILTER_OUT_OPERATOR, FilterItem } from '@grafana/ui/src/components/Table/types';
 import { NodeGraphContainer } from './NodeGraphContainer';
 import { ResponseErrorContainer } from './ResponseErrorContainer';
 import { TraceViewContainer } from './TraceView/TraceViewContainer';
 import { ExploreGraph } from './ExploreGraph';
 import { LogsVolumePanel } from './LogsVolumePanel';
 import { ExploreGraphLabel } from './ExploreGraphLabel';
-import appEvents from 'app/core/app_events';
-import { AbsoluteTimeEvent } from 'app/types/events';
-import { Unsubscribable } from 'rxjs';
-import { getNodeGraphDataFrames } from 'app/plugins/panel/nodeGraph/utils';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

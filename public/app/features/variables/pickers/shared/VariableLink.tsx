@@ -1,5 +1,6 @@
 import React, { FC, MouseEvent, useCallback } from 'react';
 import { css } from '@emotion/css';
+
 import { Icon, Tooltip, useStyles } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 import { GrafanaTheme } from '@grafana/data';

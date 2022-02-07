@@ -1,16 +1,19 @@
-import { CombinedRuleGroup, CombinedRuleNamespace } from 'app/types/unified-alerting';
 import React, { FC, useState, useEffect } from 'react';
+import { css } from '@emotion/css';
+
+import { CombinedRuleGroup, CombinedRuleNamespace } from 'app/types/unified-alerting';
 import { HorizontalGroup, Icon, Spinner, Tooltip, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
-import { css } from '@emotion/css';
+import kbn from 'app/core/utils/kbn';
+
 import { isGrafanaRulerRule } from '../../utils/rules';
 import { CollapseToggle } from '../CollapseToggle';
-import { RulesTable } from './RulesTable';
 import { GRAFANA_RULES_SOURCE_NAME, isCloudRulesSource } from '../../utils/datasource';
-import { ActionIcon } from './ActionIcon';
 import { useHasRuler } from '../../hooks/useHasRuler';
-import kbn from 'app/core/utils/kbn';
 import { useFolder } from '../../hooks/useFolder';
+
+import { RulesTable } from './RulesTable';
+import { ActionIcon } from './ActionIcon';
 import { RuleStats } from './RuleStats';
 import { EditCloudGroupModal } from './EditCloudGroupModal';
 

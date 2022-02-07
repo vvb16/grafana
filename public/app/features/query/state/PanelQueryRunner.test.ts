@@ -1,11 +1,14 @@
 const applyFieldOverridesMock = jest.fn(); // needs to be first in this file
 
 import { Subject } from 'rxjs';
+
 // Importing this way to be able to spy on grafana/data
 import * as grafanaData from '@grafana/data';
-import { DashboardModel } from '../../dashboard/state/index';
 import { setDataSourceSrv, setEchoSrv } from '@grafana/runtime';
+
+import { DashboardModel } from '../../dashboard/state/index';
 import { Echo } from '../../../core/services/echo/Echo';
+
 import { emptyResult } from './DashboardQueryRunner/utils';
 import {
   createDashboardQueryRunner,

@@ -19,10 +19,12 @@ import React from 'react';
 import { compose, onlyUpdateForKeys, withProps, withState } from 'recompose';
 import { GrafanaTheme2 } from '@grafana/data';
 import { useStyles2 } from '@grafana/ui';
+
 import { autoColor } from '../Theme';
 import { TraceSpan } from '../types/trace';
 import { TNil } from '../types';
 import { UIPopover } from '../uiElementsContext';
+
 import AccordianLogs from './SpanDetail/AccordianLogs';
 import { ViewedBoundsFunctionType } from './utils';
 

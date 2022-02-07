@@ -1,12 +1,11 @@
 // Libraries
 import React, { PureComponent } from 'react';
 import { cloneDeep, extend } from 'lodash';
+import { css } from '@emotion/css';
 
 import { Button } from '@grafana/ui';
 import { PluginMeta, AppPlugin, deprecationWarning } from '@grafana/data';
 import { AngularComponent, getAngularLoader, getBackendSrv } from '@grafana/runtime';
-
-import { css } from '@emotion/css';
 
 interface Props {
   app: AppPlugin;

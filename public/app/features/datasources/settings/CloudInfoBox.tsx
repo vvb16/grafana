@@ -1,8 +1,9 @@
+import React, { FC } from 'react';
+import { GrafanaEdition } from '@grafana/data/src/types/config';
+
 import { DataSourceSettings } from '@grafana/data';
 import { Alert } from '@grafana/ui';
-import React, { FC } from 'react';
 import { config } from 'app/core/config';
-import { GrafanaEdition } from '@grafana/data/src/types/config';
 import { LocalStorageValueProvider } from 'app/core/components/LocalStorageValueProvider';
 
 const LOCAL_STORAGE_KEY = 'datasources.settings.cloudInfoBox.isDismissed';

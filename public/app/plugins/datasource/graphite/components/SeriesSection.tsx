@@ -1,8 +1,11 @@
 import React from 'react';
+
+import { SegmentSection } from '@grafana/ui';
+
 import { GraphiteQueryEditorState } from '../state/store';
+
 import { TagsSection } from './TagsSection';
 import { MetricsSection } from './MetricsSection';
-import { SegmentSection } from '@grafana/ui';
 
 type Props = {
   state: GraphiteQueryEditorState;

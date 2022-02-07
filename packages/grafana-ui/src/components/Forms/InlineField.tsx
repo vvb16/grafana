@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import { cx, css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
+
 import { useTheme2 } from '../../themes';
-import { InlineLabel } from './InlineLabel';
 import { PopoverContent } from '../Tooltip/Tooltip';
-import { FieldProps } from './Field';
 import { getChildId } from '../../utils/reactUtils';
+
+import { InlineLabel } from './InlineLabel';
+import { FieldProps } from './Field';
 import { FieldValidationMessage } from './FieldValidationMessage';
 
 export interface Props extends Omit<FieldProps, 'css' | 'horizontal' | 'description' | 'error'> {

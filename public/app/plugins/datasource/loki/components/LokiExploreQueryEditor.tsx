@@ -3,8 +3,10 @@ import React, { memo } from 'react';
 
 // Types
 import { QueryEditorProps } from '@grafana/data';
+
 import { LokiDatasource } from '../datasource';
 import { LokiQuery, LokiOptions } from '../types';
+
 import { LokiQueryField } from './LokiQueryField';
 import { LokiOptionFields } from './LokiOptionFields';
 

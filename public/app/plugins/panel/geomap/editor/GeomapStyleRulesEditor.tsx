@@ -1,11 +1,13 @@
 import React, { FC, useCallback } from 'react';
+
 import { Button, useTheme2 } from '@grafana/ui';
 import { StandardEditorProps, StandardEditorsRegistryItem } from '@grafana/data';
 
 import { FeatureStyleConfig } from '../types';
 import { DEFAULT_STYLE_RULE } from '../layers/data/geojsonLayer';
-import { StyleRuleEditor, StyleRuleEditorSettings } from './StyleRuleEditor';
 import { defaultStyleConfig } from '../style/types';
+
+import { StyleRuleEditor, StyleRuleEditorSettings } from './StyleRuleEditor';
 
 export const GeomapStyleRulesEditor: FC<StandardEditorProps<FeatureStyleConfig[], any, any>> = (props) => {
   const { value, onChange, context, item } = props;

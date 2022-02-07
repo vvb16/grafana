@@ -1,6 +1,6 @@
 import { clone, filter, find, identity, isArray, keys, map, uniq, values as _values } from 'lodash';
+
 import flatten from 'app/core/utils/flatten';
-import * as queryDef from './query_def';
 import TableModel from 'app/core/table_model';
 import {
   DataQueryResponse,
@@ -10,6 +10,8 @@ import {
   MutableDataFrame,
   PreferredVisualisationType,
 } from '@grafana/data';
+
+import * as queryDef from './query_def';
 import { ElasticsearchAggregation, ElasticsearchQuery } from './types';
 import {
   ExtendedStatMetaType,

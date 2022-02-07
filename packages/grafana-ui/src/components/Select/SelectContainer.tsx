@@ -1,12 +1,13 @@
 import React from 'react';
+import { css, cx } from '@emotion/css';
+import { GrafanaTheme2 } from '@grafana/data';
+import { components, ContainerProps as BaseContainerProps, GroupBase } from 'react-select';
+
 import { useTheme2 } from '../../themes/ThemeContext';
 import { sharedInputStyle } from '../Forms/commonStyles';
 import { getInputStyles } from '../Input/Input';
-import { css, cx } from '@emotion/css';
 import { stylesFactory } from '../../themes';
-import { GrafanaTheme2 } from '@grafana/data';
 import { focusCss } from '../../themes/mixins';
-import { components, ContainerProps as BaseContainerProps, GroupBase } from 'react-select';
 
 // isFocus prop is actually available, but its not in the types for the version we have.
 export interface SelectContainerProps<Option, isMulti extends boolean, Group extends GroupBase<Option>>

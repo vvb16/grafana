@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
-import { LegendProps, SeriesVisibilityChangeBehavior, VizLegendItem } from './types';
 import { LegendDisplayMode } from '@grafana/schema';
+import { DataHoverClearEvent, DataHoverEvent } from '@grafana/data';
+
+import { SeriesVisibilityChangeMode, usePanelContext } from '../PanelChrome';
+
+import { LegendProps, SeriesVisibilityChangeBehavior, VizLegendItem } from './types';
 import { VizLegendTable } from './VizLegendTable';
 import { VizLegendList } from './VizLegendList';
-import { DataHoverClearEvent, DataHoverEvent } from '@grafana/data';
-import { SeriesVisibilityChangeMode, usePanelContext } from '../PanelChrome';
 import { mapMouseEventToMode } from './utils';
 
 /**

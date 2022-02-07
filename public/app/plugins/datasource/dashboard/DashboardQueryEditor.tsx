@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
-import { LegacyForms, VerticalGroup } from '@grafana/ui';
-import { DataQuery, PanelData, SelectableValue } from '@grafana/data';
 import { css } from '@emotion/css';
 
-import { DashboardQuery, ResultInfo, SHARED_DASHBOARD_QUERY } from './types';
+import { DataQuery, PanelData, SelectableValue } from '@grafana/data';
+import { LegacyForms, VerticalGroup } from '@grafana/ui';
 import config from 'app/core/config';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 import { PanelModel } from 'app/features/dashboard/state';
 import { getDashboardSrv } from 'app/features/dashboard/services/DashboardSrv';
 import { filterPanelDataToQuery } from 'app/features/query/components/QueryEditorRow';
+
+import { DashboardQuery, ResultInfo, SHARED_DASHBOARD_QUERY } from './types';
 import { DashboardQueryRow } from './DashboardQueryRow';
 
 const { Select } = LegacyForms;

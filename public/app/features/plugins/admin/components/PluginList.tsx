@@ -1,9 +1,12 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
+import { useLocation } from 'react-router-dom';
+
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
-import { useLocation } from 'react-router-dom';
+
 import { CatalogPlugin, PluginListDisplayMode } from '../types';
+
 import { PluginListItem } from './PluginListItem';
 
 interface Props {

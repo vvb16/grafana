@@ -2,12 +2,11 @@
 import React, { PureComponent } from 'react';
 
 // Types
-import { InputDatasource, describeDataFrame } from './InputDatasource';
-import { InputQuery, InputOptions } from './types';
-
 import { Select, TableInputCSV, LinkButton, Icon, InlineField } from '@grafana/ui';
 import { DataFrame, toCSV, SelectableValue, MutableDataFrame, QueryEditorProps } from '@grafana/data';
 
+import { InputDatasource, describeDataFrame } from './InputDatasource';
+import { InputQuery, InputOptions } from './types';
 import { dataFrameToCSV } from './utils';
 
 type Props = QueryEditorProps<InputDatasource, InputQuery, InputOptions>;

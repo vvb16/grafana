@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { NavModel } from '@grafana/data';
 import { getNavModel } from 'app/core/selectors/navModel';
 import Page from 'app/core/components/Page/Page';
-import { ServiceAccountProfile } from './ServiceAccountProfile';
 import { StoreState, ServiceAccountDTO } from 'app/types';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
+
+import { ServiceAccountProfile } from './ServiceAccountProfile';
 import { loadServiceAccount } from './state/actions';
 
 interface OwnProps extends GrafanaRouteComponentProps<{ id: string }> {

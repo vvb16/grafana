@@ -1,19 +1,21 @@
+import { defaultsDeep } from 'lodash';
+
+import { EventBus } from '../events';
+import { Registry } from '../utils';
+import { StandardEditorProps } from '../field';
+
 import { DataQueryError, DataQueryRequest, DataQueryTimings } from './datasource';
 import { PluginMeta } from './plugin';
 import { ScopedVars } from './ScopedVars';
 import { LoadingState, PreferredVisualisationType } from './data';
 import { DataFrame, FieldType } from './dataFrame';
 import { AbsoluteTimeRange, TimeRange, TimeZone } from './time';
-import { EventBus } from '../events';
 import { FieldConfigSource } from './fieldOverrides';
-import { Registry } from '../utils';
-import { StandardEditorProps } from '../field';
 import { OptionsEditorItem } from './OptionsUIRegistryBuilder';
 import { OptionEditorConfig } from './options';
 import { AlertStateInfo } from './alerts';
 import { PanelModel } from './dashboard';
 import { DataTransformerConfig } from './transformations';
-import { defaultsDeep } from 'lodash';
 
 export type InterpolateFunction = (value: string, scopedVars?: ScopedVars, format?: string | Function) => string;
 

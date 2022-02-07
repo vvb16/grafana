@@ -14,13 +14,14 @@ import {
 
 import { Themeable2 } from '../../types/theme';
 import { withTheme2 } from '../../themes/index';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { Icon } from '../Icon/Icon';
+
 import { getLogRowStyles } from './getLogRowStyles';
 import { getAllFields } from './logParser';
 
 //Components
 import { LogDetailsRow } from './LogDetailsRow';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { Icon } from '../Icon/Icon';
 
 export interface Props extends Themeable2 {
   row: LogRowModel;

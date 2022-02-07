@@ -1,11 +1,13 @@
-import { stylesFactory } from '../../themes';
 import { GrafanaTheme2 } from '@grafana/data';
-import { getLabelStyles } from './Label';
-import { getLegendStyles } from './Legend';
-import { getFieldValidationMessageStyles } from './FieldValidationMessage';
+
+import { stylesFactory } from '../../themes';
 import { getButtonStyles, ButtonVariant } from '../Button';
 import { ComponentSize } from '../../types/size';
 import { getInputStyles } from '../Input/Input';
+
+import { getLabelStyles } from './Label';
+import { getLegendStyles } from './Legend';
+import { getFieldValidationMessageStyles } from './FieldValidationMessage';
 import { getCheckboxStyles } from './Checkbox';
 
 /** @deprecated */

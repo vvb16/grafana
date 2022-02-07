@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useAsync } from 'react-use';
+
 import { getBackendSrv } from '@grafana/runtime';
 import { NavModel } from '@grafana/data';
-
 import { StoreState } from 'app/types';
 import { getNavModel } from 'app/core/selectors/navModel';
 import Page from 'app/core/components/Page/Page';

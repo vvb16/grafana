@@ -1,11 +1,13 @@
 import React, { useCallback } from 'react';
 import { css, cx } from '@emotion/css';
+import { GrafanaTheme } from '@grafana/data';
+import { selectors } from '@grafana/e2e-selectors';
+
+import { useStyles } from '../../themes';
+
 import { VizLegendSeriesIcon } from './VizLegendSeriesIcon';
 import { VizLegendItem } from './types';
 import { VizLegendStatsList } from './VizLegendStatsList';
-import { useStyles } from '../../themes';
-import { GrafanaTheme } from '@grafana/data';
-import { selectors } from '@grafana/e2e-selectors';
 
 export interface Props<T> {
   item: VizLegendItem<T>;

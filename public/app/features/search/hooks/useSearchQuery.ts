@@ -1,7 +1,9 @@
 import { FormEvent, useCallback, useReducer } from 'react';
 import { debounce } from 'lodash';
+
 import { SelectableValue } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
+
 import { defaultQuery, defaultQueryParams, queryReducer } from '../reducers/searchQueryReducer';
 import {
   ADD_TAG,

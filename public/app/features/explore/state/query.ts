@@ -1,5 +1,8 @@
 import { mergeMap, throttleTime } from 'rxjs/operators';
 import { identity, Observable, of, SubscriptionLike, Unsubscribable } from 'rxjs';
+import { AnyAction, createAction, PayloadAction } from '@reduxjs/toolkit';
+import deepEqual from 'fast-deep-equal';
+
 import {
   AbsoluteTimeRange,
   DataQuery,
@@ -16,7 +19,6 @@ import {
   QueryFixAction,
   toLegacyResponseData,
 } from '@grafana/data';
-
 import {
   buildQueryTransaction,
   ensureQueries,
@@ -32,21 +34,21 @@ import { ExploreItemState, ExplorePanelData, ThunkDispatch, ThunkResult } from '
 import { ExploreId, ExploreState, QueryOptions } from 'app/types/explore';
 import { getTimeZone } from 'app/features/profile/state/selectors';
 import { getShiftedTimeRange } from 'app/core/utils/timePicker';
+
 import { notifyApp } from '../../../core/actions';
 import { runRequest } from '../../query/state/runRequest';
 import { decorateData } from '../utils/decorators';
 import { createErrorNotification } from '../../../core/copy/appNotification';
+
 import {
   richHistoryStorageFullAction,
   richHistoryLimitExceededAction,
   richHistoryUpdatedAction,
   stateSave,
 } from './main';
-import { AnyAction, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { updateTime } from './time';
 import { historyUpdatedAction } from './history';
 import { createCacheKey, getResultsFromCache } from './utils';
-import deepEqual from 'fast-deep-equal';
 
 //
 // Actions and Payloads

@@ -1,9 +1,10 @@
 import React, { forwardRef, HTMLAttributes, useCallback } from 'react';
 import { cx, css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
+import Highlighter from 'react-highlight-words';
+
 import { useTheme2 } from '../../themes';
 // @ts-ignore
-import Highlighter from 'react-highlight-words';
 import { PartialHighlighter } from '../Typeahead/PartialHighlighter';
 import { HighlightPart } from '../../types';
 

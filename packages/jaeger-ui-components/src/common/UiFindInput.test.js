@@ -17,8 +17,9 @@ import { shallow } from 'enzyme';
 // eslint-disable-next-line lodash/import-scope
 import _ from 'lodash';
 
-import UiFindInput from './UiFindInput';
 import { UIInput } from '../uiElementsContext';
+
+import UiFindInput from './UiFindInput';
 
 const debounceMock = jest.spyOn(_, 'debounce').mockImplementation((func) => {
   return Object.assign(func, { cancel: jest.fn(), flush: jest.fn() });

@@ -1,12 +1,14 @@
-import { FrameGeometrySourceMode, MapLayerOptions, MapLayerRegistryItem, PluginState } from '@grafana/data';
-import { DEFAULT_BASEMAP_CONFIG, geomapLayerRegistry } from '../layers/registry';
 import { NestedPanelOptions, NestedValueAccess } from '@grafana/data/src/utils/OptionsUIBuilders';
-import { defaultMarkersConfig } from '../layers/data/markersLayer';
-import { hasAlphaPanels } from 'app/core/config';
-import { MapLayerState } from '../types';
 import { get as lodashGet } from 'lodash';
+
+import { FrameGeometrySourceMode, MapLayerOptions, MapLayerRegistryItem, PluginState } from '@grafana/data';
+import { hasAlphaPanels } from 'app/core/config';
 import { setOptionImmutably } from 'app/features/dashboard/components/PanelEditor/utils';
 import { addLocationFields } from 'app/features/geo/editor/locationEditor';
+
+import { DEFAULT_BASEMAP_CONFIG, geomapLayerRegistry } from '../layers/registry';
+import { defaultMarkersConfig } from '../layers/data/markersLayer';
+import { MapLayerState } from '../types';
 
 export interface LayerEditorOptions {
   state: MapLayerState;

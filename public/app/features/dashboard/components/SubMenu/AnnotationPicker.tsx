@@ -1,10 +1,12 @@
-import { AnnotationQuery, EventBus, GrafanaTheme2 } from '@grafana/data';
 import React, { useEffect, useState } from 'react';
-import { getDashboardQueryRunner } from '../../../query/state/DashboardQueryRunner/DashboardQueryRunner';
-import { AnnotationQueryFinished, AnnotationQueryStarted } from '../../../../types/events';
-import { InlineField, InlineSwitch, useStyles2 } from '@grafana/ui';
 import { LoadingIndicator } from '@grafana/ui/src/components/PanelChrome/LoadingIndicator';
 import { css } from '@emotion/css';
+
+import { AnnotationQuery, EventBus, GrafanaTheme2 } from '@grafana/data';
+import { InlineField, InlineSwitch, useStyles2 } from '@grafana/ui';
+
+import { getDashboardQueryRunner } from '../../../query/state/DashboardQueryRunner/DashboardQueryRunner';
+import { AnnotationQueryFinished, AnnotationQueryStarted } from '../../../../types/events';
 
 export interface AnnotationPickerProps {
   events: EventBus;

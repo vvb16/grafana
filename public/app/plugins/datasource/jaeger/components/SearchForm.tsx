@@ -1,10 +1,13 @@
 import { css } from '@emotion/css';
+import React, { useEffect, useState } from 'react';
+
 import { SelectableValue } from '@grafana/data';
 import { InlineField, InlineFieldRow, Input, Select } from '@grafana/ui';
-import React, { useEffect, useState } from 'react';
+
 import { JaegerDatasource } from '../datasource';
 import { JaegerQuery } from '../types';
 import { transformToLogfmt } from '../util';
+
 import { AdvancedOptions } from './AdvancedOptions';
 
 type Props = {

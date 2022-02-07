@@ -1,13 +1,21 @@
-import { configureStore } from 'app/store/configureStore';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import Receivers from './Receivers';
 import React from 'react';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
 import { act, render, waitFor } from '@testing-library/react';
-import { getAllDataSources } from './utils/config';
 import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
-import { updateAlertManagerConfig, fetchAlertManagerConfig, fetchStatus, testReceivers } from './api/alertmanager';
+import { byLabelText, byPlaceholderText, byRole, byTestId, byText } from 'testing-library-selector';
+import userEvent from '@testing-library/user-event';
+
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
+import { configureStore } from 'app/store/configureStore';
+import store from 'app/core/store';
+import { contextSrv } from 'app/core/services/context_srv';
+import { selectOptionInTest } from '@grafana/ui';
+import { AlertManagerDataSourceJsonData, AlertManagerImplementation } from 'app/plugins/datasource/alertmanager/types';
+
+import { grafanaNotifiersMock } from './mocks/grafana-notifiers';
+import { fetchNotifiers } from './api/grafana';
+import { DataSourceType, GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
 import {
   mockDataSource,
   MockDataSourceSrv,
@@ -15,16 +23,10 @@ import {
   someCloudAlertManagerStatus,
   someGrafanaAlertManagerConfig,
 } from './mocks';
-import { DataSourceType, GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
-import { fetchNotifiers } from './api/grafana';
-import { grafanaNotifiersMock } from './mocks/grafana-notifiers';
-import { byLabelText, byPlaceholderText, byRole, byTestId, byText } from 'testing-library-selector';
-import userEvent from '@testing-library/user-event';
+import { updateAlertManagerConfig, fetchAlertManagerConfig, fetchStatus, testReceivers } from './api/alertmanager';
+import { getAllDataSources } from './utils/config';
 import { ALERTMANAGER_NAME_LOCAL_STORAGE_KEY, ALERTMANAGER_NAME_QUERY_KEY } from './utils/constants';
-import store from 'app/core/store';
-import { contextSrv } from 'app/core/services/context_srv';
-import { selectOptionInTest } from '@grafana/ui';
-import { AlertManagerDataSourceJsonData, AlertManagerImplementation } from 'app/plugins/datasource/alertmanager/types';
+import Receivers from './Receivers';
 
 jest.mock('./api/alertmanager');
 jest.mock('./api/grafana');

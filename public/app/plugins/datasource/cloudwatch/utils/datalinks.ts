@@ -1,7 +1,8 @@
 import { DataFrame, DataLink, DataQueryRequest, DataQueryResponse, ScopedVars, TimeRange } from '@grafana/data';
+import { getDataSourceSrv } from '@grafana/runtime';
+
 import { CloudWatchLogsQuery, CloudWatchQuery } from '../types';
 import { AwsUrl, encodeUrl } from '../aws_url';
-import { getDataSourceSrv } from '@grafana/runtime';
 
 type ReplaceFn = (
   target?: string,

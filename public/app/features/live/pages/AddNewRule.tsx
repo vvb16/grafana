@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import { Input, Field, Button, ValuePicker, HorizontalGroup } from '@grafana/ui';
 import { DataSourcePicker, getBackendSrv } from '@grafana/runtime';
 import { AppEvents, DataSourceRef, LiveChannelScope, SelectableValue } from '@grafana/data';
 import appEvents from 'app/core/app_events';
+
 import { Rule } from './types';
 
 interface Props {

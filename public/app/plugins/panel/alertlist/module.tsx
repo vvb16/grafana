@@ -1,17 +1,20 @@
 import React from 'react';
+
 import { PanelPlugin } from '@grafana/data';
 import { TagsInput } from '@grafana/ui';
-import { AlertList } from './AlertList';
-import { UnifiedAlertList } from './UnifiedAlertList';
-import { AlertListOptions, GroupMode, ShowOption, SortOrder, UnifiedAlertListOptions } from './types';
-import { alertListPanelMigrationHandler } from './AlertListMigrationHandler';
 import { config, DataSourcePicker } from '@grafana/runtime';
 import { RuleFolderPicker } from 'app/features/alerting/unified/components/rule-editor/RuleFolderPicker';
+
 import {
   ALL_FOLDER,
   GENERAL_FOLDER,
   ReadonlyFolderPicker,
 } from '../../../core/components/Select/ReadonlyFolderPicker/ReadonlyFolderPicker';
+
+import { AlertList } from './AlertList';
+import { UnifiedAlertList } from './UnifiedAlertList';
+import { AlertListOptions, GroupMode, ShowOption, SortOrder, UnifiedAlertListOptions } from './types';
+import { alertListPanelMigrationHandler } from './AlertListMigrationHandler';
 import { AlertListSuggestionsSupplier } from './suggestions';
 import { GroupBy } from './GroupByWithLoading';
 

@@ -1,7 +1,6 @@
 import { dateTime, TimeRange } from '@grafana/data';
 
 import { TemplateSrv } from '../../templating/template_srv';
-import { onTimeRangeUpdated, OnTimeRangeUpdatedDependencies, setOptionAsCurrent } from './actions';
 import { DashboardModel } from '../../dashboard/state';
 import { DashboardState } from '../../../types';
 import { createIntervalVariableAdapter } from '../interval/adapter';
@@ -10,20 +9,22 @@ import { createConstantVariableAdapter } from '../constant/adapter';
 import { VariableRefresh } from '../types';
 import { constantBuilder, intervalBuilder } from '../shared/testing/builders';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
-import { getRootReducer, RootReducerType } from './helpers';
-import { toVariableIdentifier, toVariablePayload } from './types';
+import { createIntervalOptions } from '../interval/reducer';
+import { silenceConsoleOutput } from '../../../../test/core/utils/silenceConsoleOutput';
+import { notifyApp } from '../../../core/reducers/appNotification';
+import { expect } from '../../../../test/lib/common';
+import { appEvents } from '../../../core/core';
+
+import { TemplatingState } from './reducers';
 import {
   setCurrentVariableValue,
   variableStateCompleted,
   variableStateFailed,
   variableStateFetching,
 } from './sharedReducer';
-import { createIntervalOptions } from '../interval/reducer';
-import { silenceConsoleOutput } from '../../../../test/core/utils/silenceConsoleOutput';
-import { notifyApp } from '../../../core/reducers/appNotification';
-import { expect } from '../../../../test/lib/common';
-import { TemplatingState } from './reducers';
-import { appEvents } from '../../../core/core';
+import { toVariableIdentifier, toVariablePayload } from './types';
+import { getRootReducer, RootReducerType } from './helpers';
+import { onTimeRangeUpdated, OnTimeRangeUpdatedDependencies, setOptionAsCurrent } from './actions';
 import { variablesInitTransaction } from './transactionReducer';
 
 variableAdapters.setInit(() => [createIntervalVariableAdapter(), createConstantVariableAdapter()]);

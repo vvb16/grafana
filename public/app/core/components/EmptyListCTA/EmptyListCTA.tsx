@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { css } from '@emotion/css';
+
 import { CallToActionCard, Icon, IconName, LinkButton } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 

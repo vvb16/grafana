@@ -1,8 +1,9 @@
 import { lastValueFrom, of } from 'rxjs';
+import { toArray } from 'rxjs/operators';
+
 import { setDataSourceSrv } from '@grafana/runtime';
 import { ArrayVector, DataFrame, dataFrameToJSON, dateTime, Field, MutableDataFrame } from '@grafana/data';
 
-import { toArray } from 'rxjs/operators';
 import { CloudWatchMetricsQuery, MetricEditorMode, MetricQueryType, CloudWatchLogsQueryStatus } from './types';
 import {
   setupMockedDataSource,

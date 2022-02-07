@@ -1,10 +1,12 @@
 import { DataFrame, DataFrameFieldIndex } from '@grafana/data';
 import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useMountedState } from 'react-use';
+import uPlot from 'uplot';
+
 import { UPlotConfigBuilder } from '../config/UPlotConfigBuilder';
+
 import { Marker } from './Marker';
 import { XYCanvas } from './XYCanvas';
-import uPlot from 'uplot';
 
 interface EventsCanvasProps {
   id: string;

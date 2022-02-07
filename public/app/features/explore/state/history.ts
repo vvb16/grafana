@@ -1,3 +1,5 @@
+import { AnyAction, createAction } from '@reduxjs/toolkit';
+
 import {
   deleteAllFromRichHistory,
   deleteQueryInRichHistory,
@@ -5,9 +7,9 @@ import {
   updateStarredInRichHistory,
 } from 'app/core/utils/richHistory';
 import { ExploreId, ExploreItemState, ThunkResult } from 'app/types';
-import { richHistoryUpdatedAction } from './main';
 import { HistoryItem } from '@grafana/data';
-import { AnyAction, createAction } from '@reduxjs/toolkit';
+
+import { richHistoryUpdatedAction } from './main';
 
 //
 // Actions and Payloads

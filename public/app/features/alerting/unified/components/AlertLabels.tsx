@@ -1,7 +1,9 @@
-import { GrafanaTheme } from '@grafana/data';
-import { useStyles } from '@grafana/ui';
 import { css, cx } from '@emotion/css';
 import React from 'react';
+
+import { GrafanaTheme } from '@grafana/data';
+import { useStyles } from '@grafana/ui';
+
 import { AlertLabel } from './AlertLabel';
 
 type Props = { labels: Record<string, string>; className?: string };

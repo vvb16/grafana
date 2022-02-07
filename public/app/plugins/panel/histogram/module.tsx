@@ -1,10 +1,11 @@
+import { histogramFieldInfo } from '@grafana/data/src/transformations/transformers/histogram';
+
 import { FieldColorModeId, FieldConfigProperty, PanelPlugin } from '@grafana/data';
-import { HistogramPanel } from './HistogramPanel';
 import { commonOptionsBuilder, graphFieldOptions } from '@grafana/ui';
+
+import { HistogramPanel } from './HistogramPanel';
 import { PanelFieldConfig, PanelOptions, defaultPanelFieldConfig, defaultPanelOptions } from './models.gen';
 import { originalDataHasHistogram } from './utils';
-
-import { histogramFieldInfo } from '@grafana/data/src/transformations/transformers/histogram';
 
 export const plugin = new PanelPlugin<PanelOptions, PanelFieldConfig>(HistogramPanel)
   .setPanelOptions((builder) => {

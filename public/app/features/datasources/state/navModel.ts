@@ -4,6 +4,7 @@ import config from 'app/core/config';
 import { contextSrv } from 'app/core/core';
 import { AccessControlAction } from 'app/types';
 import { ProBadge } from 'app/core/components/Upgrade/ProBadge';
+
 import { GenericDataSourcePlugin } from '../settings/PluginSettings';
 
 export function buildNavModel(dataSource: DataSourceSettings, plugin: GenericDataSourcePlugin): NavModelItem {

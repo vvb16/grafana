@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { setUsersSearchQuery } from './state/reducers';
-import { getInviteesCount, getUsersSearchQuery } from './state/selectors';
+
 import { RadioButtonGroup, LinkButton, FilterInput } from '@grafana/ui';
 import { contextSrv } from 'app/core/core';
 import { AccessControlAction } from 'app/types';
+
+import { getInviteesCount, getUsersSearchQuery } from './state/selectors';
+import { setUsersSearchQuery } from './state/reducers';
 
 export interface Props {
   searchQuery: string;

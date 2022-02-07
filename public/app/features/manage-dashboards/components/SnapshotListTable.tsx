@@ -1,8 +1,10 @@
 import React, { FC, useState, useCallback } from 'react';
+import useAsync from 'react-use/lib/useAsync';
+
 import { ConfirmModal, Button, LinkButton } from '@grafana/ui';
 import { getBackendSrv, locationService } from '@grafana/runtime';
+
 import { Snapshot } from '../types';
-import useAsync from 'react-use/lib/useAsync';
 
 export function getSnapshots() {
   return getBackendSrv()

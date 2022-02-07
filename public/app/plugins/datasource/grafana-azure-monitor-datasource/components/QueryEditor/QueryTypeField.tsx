@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from 'react';
+
 import { Select } from '@grafana/ui';
+import { SelectableValue } from '@grafana/data';
+
 import { Field } from '../Field';
 import { AzureMonitorQuery, AzureQueryType } from '../../types';
-import { SelectableValue } from '@grafana/data';
 
 interface QueryTypeFieldProps {
   query: AzureMonitorQuery;

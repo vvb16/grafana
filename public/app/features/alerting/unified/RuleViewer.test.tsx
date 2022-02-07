@@ -2,16 +2,19 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+
 import { DataSourceJsonData, PluginMeta } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
-import { RuleViewer } from './RuleViewer';
 import { configureStore } from 'app/store/configureStore';
-import { typeAsJestMock } from '../../../../test/helpers/typeAsJestMock';
-import { useCombinedRule } from './hooks/useCombinedRule';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
-import { GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
 import { CombinedRule } from 'app/types/unified-alerting';
 import { GrafanaAlertStateDecision } from 'app/types/unified-alerting-dto';
+
+import { typeAsJestMock } from '../../../../test/helpers/typeAsJestMock';
+
+import { useCombinedRule } from './hooks/useCombinedRule';
+import { GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
+import { RuleViewer } from './RuleViewer';
 
 jest.mock('./hooks/useCombinedRule');
 jest.mock('@grafana/runtime', () => ({

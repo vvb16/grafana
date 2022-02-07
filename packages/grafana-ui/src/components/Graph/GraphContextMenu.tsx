@@ -1,6 +1,4 @@
 import React from 'react';
-import { ContextMenu, ContextMenuProps } from '../ContextMenu/ContextMenu';
-import { GraphDimensions } from './GraphTooltip/types';
 import {
   FlotDataPoint,
   getValueFromDimension,
@@ -9,13 +7,17 @@ import {
   TimeZone,
   FormattedValue,
 } from '@grafana/data';
+import { css } from '@emotion/css';
+
 import { useTheme } from '../../themes';
 import { HorizontalGroup } from '../Layout/Layout';
 import { FormattedValueDisplay } from '../FormattedValueDisplay/FormattedValueDisplay';
 import { SeriesIcon } from '../VizLegend/SeriesIcon';
-import { css } from '@emotion/css';
+import { ContextMenu, ContextMenuProps } from '../ContextMenu/ContextMenu';
 import { MenuGroup, MenuGroupProps } from '../Menu/MenuGroup';
 import { MenuItem } from '../Menu/MenuItem';
+
+import { GraphDimensions } from './GraphTooltip/types';
 
 export type ContextDimensions<T extends Dimensions = any> = { [key in keyof T]: [number, number | undefined] | null };
 

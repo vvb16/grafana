@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import { chain } from 'lodash';
+import AutoSizer from 'react-virtualized-auto-sizer';
+
 import { AppEvents, PanelData, SelectableValue } from '@grafana/data';
 import { Button, CodeEditor, Field, Select } from '@grafana/ui';
-import AutoSizer from 'react-virtualized-auto-sizer';
 import { selectors } from '@grafana/e2e-selectors';
 import { appEvents } from 'app/core/core';
 import { DashboardModel, PanelModel } from 'app/features/dashboard/state';
+
 import { getPanelInspectorStyles } from '../inspector/styles';
 
 enum ShowContent {

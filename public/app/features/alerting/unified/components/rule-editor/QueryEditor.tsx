@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { css } from '@emotion/css';
+
 import {
   DataQuery,
   getDefaultRelativeTimeRange,
@@ -11,7 +12,6 @@ import {
 import { selectors } from '@grafana/e2e-selectors';
 import { Button, HorizontalGroup, stylesFactory } from '@grafana/ui';
 import { config } from '@grafana/runtime';
-import { QueryRows } from './QueryRows';
 import {
   dataSource as expressionDatasource,
   ExpressionDatasourceUID,
@@ -20,9 +20,12 @@ import { getNextRefIdChar } from 'app/core/utils/query';
 import { defaultCondition } from 'app/features/expressions/utils/expressionTypes';
 import { ExpressionQueryType } from 'app/features/expressions/types';
 import { AlertQuery } from 'app/types/unified-alerting-dto';
-import { AlertingQueryRunner } from '../../state/AlertingQueryRunner';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 import { isExpressionQuery } from 'app/features/expressions/guards';
+
+import { AlertingQueryRunner } from '../../state/AlertingQueryRunner';
+
+import { QueryRows } from './QueryRows';
 
 interface Props {
   value?: AlertQuery[];

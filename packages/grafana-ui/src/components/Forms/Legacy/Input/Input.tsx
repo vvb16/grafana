@@ -1,5 +1,6 @@
 import React, { PureComponent, ChangeEvent } from 'react';
 import classNames from 'classnames';
+
 import { validate, EventsWithValidation, hasValidationEvent } from '../../../../utils';
 import { ValidationEvents, ValidationRule } from '../../../../types';
 

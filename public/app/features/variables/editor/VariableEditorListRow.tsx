@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { css } from '@emotion/css';
 import { Draggable } from 'react-beautiful-dnd';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Icon, IconButton, useStyles2, useTheme2 } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';

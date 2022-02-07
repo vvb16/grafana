@@ -1,4 +1,5 @@
 import { find, first, isArray, isString, escape } from 'lodash';
+
 import {
   escapeStringForRegex,
   formattedValueToString,
@@ -15,6 +16,7 @@ import {
   GrafanaTheme,
 } from '@grafana/data';
 import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
+
 import { ColumnRender, TableRenderModel, ColumnStyle } from './types';
 import { ColumnOptionsCtrl } from './column_options';
 

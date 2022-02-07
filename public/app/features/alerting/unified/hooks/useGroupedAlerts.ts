@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { AlertmanagerGroup } from 'app/plugins/datasource/alertmanager/types';
 import { Labels } from '@grafana/data';
 

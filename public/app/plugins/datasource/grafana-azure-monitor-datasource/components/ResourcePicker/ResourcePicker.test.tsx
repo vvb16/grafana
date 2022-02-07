@@ -1,13 +1,14 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
-import ResourcePicker from '.';
 import createMockResourcePickerData from '../../__mocks__/resourcePickerData';
 import {
   createMockResourceGroupsBySubscription,
   createMockSubscriptions,
   mockResourcesByResourceGroup,
 } from '../../__mocks__/resourcePickerRows';
+
+import ResourcePicker from '.';
 
 const noResourceURI = '';
 const singleSubscriptionSelectionURI = 'def-456';

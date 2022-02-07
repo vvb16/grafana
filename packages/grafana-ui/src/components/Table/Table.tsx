@@ -13,6 +13,10 @@ import {
   useTable,
 } from 'react-table';
 import { FixedSizeList } from 'react-window';
+
+import { CustomScrollbar } from '../CustomScrollbar/CustomScrollbar';
+import { useStyles2 } from '../../themes';
+
 import { getColumns, sortCaseInsensitive, sortNumber } from './utils';
 import {
   TableColumnResizeActionCallback,
@@ -22,9 +26,7 @@ import {
   TableSortByFieldState,
 } from './types';
 import { getTableStyles } from './styles';
-import { CustomScrollbar } from '../CustomScrollbar/CustomScrollbar';
 import { TableCell } from './TableCell';
-import { useStyles2 } from '../../themes';
 import { FooterRow } from './FooterRow';
 import { HeaderRow } from './HeaderRow';
 

@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { cx, css } from '@emotion/css';
+
 import { MenuItem, WithContextMenu, MenuGroup, useTheme2 } from '@grafana/ui';
 import { SelectableValue, GrafanaTheme2 } from '@grafana/data';
+
 import { Seg } from './Seg';
 import { unwrap } from './unwrap';
 import { toSelectableValue } from './toSelectableValue';

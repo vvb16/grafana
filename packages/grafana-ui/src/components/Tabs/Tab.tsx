@@ -6,8 +6,9 @@ import { selectors } from '@grafana/e2e-selectors';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../../types';
 import { stylesFactory, useTheme2 } from '../../themes';
-import { Counter } from './Counter';
 import { getFocusStyles } from '../../themes/mixins';
+
+import { Counter } from './Counter';
 
 export interface TabProps extends HTMLProps<HTMLAnchorElement> {
   label: string;

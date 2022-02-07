@@ -1,4 +1,5 @@
 import { setBackendSrv } from '@grafana/runtime';
+
 import { API_ROOT, GCOM_API_ROOT } from '../constants';
 import {
   CatalogPlugin,
@@ -10,6 +11,7 @@ import {
   PluginListDisplayMode,
 } from '../types';
 import * as permissions from '../permissions';
+
 import remotePluginMock from './remotePlugin.mock';
 import localPluginMock from './localPlugin.mock';
 import catalogPluginMock from './catalogPlugin.mock';

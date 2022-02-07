@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { css } from '@emotion/css';
+import { t, Trans } from '@lingui/macro';
 
 import {
   Button,
@@ -17,11 +18,9 @@ import {
 } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-
 import { DashboardSearchHit, DashboardSearchItemType } from 'app/features/search/types';
 import { backendSrv } from 'app/core/services/backend_srv';
 import { PreferencesService } from 'app/core/services/PreferencesService';
-import { t, Trans } from '@lingui/macro';
 
 export interface Props {
   resourceUri: string;

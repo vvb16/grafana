@@ -1,6 +1,8 @@
 import React from 'react';
-import { DataQueryError } from '@grafana/data';
 import { shallow } from 'enzyme';
+
+import { DataQueryError } from '@grafana/data';
+
 import { ErrorContainer } from './ErrorContainer';
 
 const makeError = (propOverrides?: DataQueryError): DataQueryError => {

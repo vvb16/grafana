@@ -15,10 +15,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Ticks from '../Ticks';
+
 import TimelineHeaderRow from './TimelineHeaderRow';
 import TimelineColumnResizer from './TimelineColumnResizer';
 import TimelineViewingLayer from './TimelineViewingLayer';
-import Ticks from '../Ticks';
 import { TimelineCollapser } from './TimelineCollapser';
 
 describe('<TimelineHeaderRow>', () => {

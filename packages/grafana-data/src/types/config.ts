@@ -1,9 +1,10 @@
-import { DataSourceInstanceSettings } from './datasource';
-import { PanelPluginMeta } from './panel';
-import { GrafanaTheme } from './theme';
 import { SystemDateFormatSettings } from '../datetime';
 import { GrafanaTheme2 } from '../themes';
 import { MapLayerOptions } from '../geo/layer';
+
+import { DataSourceInstanceSettings } from './datasource';
+import { PanelPluginMeta } from './panel';
+import { GrafanaTheme } from './theme';
 import { FeatureToggles } from './featureToggles.gen';
 
 /**

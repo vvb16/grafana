@@ -1,8 +1,9 @@
 import type { Monaco, monacoTypes } from '@grafana/ui';
 import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
-import { CloudWatchDatasource } from '../datasource';
-import { linkedTokenBuilder } from './linkedTokenBuilder';
 
+import { CloudWatchDatasource } from '../datasource';
+
+import { linkedTokenBuilder } from './linkedTokenBuilder';
 import { LinkedToken } from './LinkedToken';
 import { LanguageDefinition } from './register';
 import { StatementPosition, SuggestionKind, TokenTypes } from './types';

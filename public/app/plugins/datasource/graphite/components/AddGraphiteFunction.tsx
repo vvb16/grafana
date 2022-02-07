@@ -1,11 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { css, cx } from '@emotion/css';
+
 import { Button, Segment, useStyles2 } from '@grafana/ui';
+import { GrafanaTheme2, SelectableValue } from '@grafana/data';
+
 import { FuncDefs } from '../gfunc';
 import { actions } from '../state/actions';
-import { GrafanaTheme2, SelectableValue } from '@grafana/data';
-import { css, cx } from '@emotion/css';
-import { mapFuncDefsToSelectables } from './helpers';
 import { useDispatch } from '../state/context';
+
+import { mapFuncDefsToSelectables } from './helpers';
 
 type Props = {
   funcDefs: FuncDefs;

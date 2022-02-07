@@ -16,9 +16,9 @@ import * as React from 'react';
 import { css } from '@emotion/css';
 import cx from 'classnames';
 import { useStyles2 } from '@grafana/ui';
-
 import IoIosArrowDown from 'react-icons/lib/io/ios-arrow-down';
 import IoIosArrowRight from 'react-icons/lib/io/ios-arrow-right';
+
 import { TraceSpanReference } from '../../types/trace';
 import ReferenceLink from '../../url/ReferenceLink';
 import { uAlignIcon } from '../../uberUtilityStyles';

@@ -1,5 +1,6 @@
 import React, { HTMLProps, useRef } from 'react';
 import { SelectableValue } from '@grafana/data';
+
 import { AsyncSelect, Select } from '../Select/Select';
 import { useTheme2 } from '../../themes/ThemeContext';
 

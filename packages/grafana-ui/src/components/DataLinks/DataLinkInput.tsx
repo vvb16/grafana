@@ -1,9 +1,5 @@
 import React, { memo, RefObject, useEffect, useMemo, useRef, useState } from 'react';
 import usePrevious from 'react-use/lib/usePrevious';
-import { DataLinkSuggestions } from './DataLinkSuggestions';
-import { makeValue } from '../../index';
-import { SelectionReference } from './SelectionReference';
-import { Portal } from '../index';
 
 // @ts-ignore
 import Prism, { Grammar, LanguageMap } from 'prismjs';
@@ -12,13 +8,18 @@ import { Value } from 'slate';
 import Plain from 'slate-plain-serializer';
 import { Popper as ReactPopper } from 'react-popper';
 import { css, cx } from '@emotion/css';
+import { DataLinkBuiltInVars, GrafanaTheme2, VariableOrigin, VariableSuggestion } from '@grafana/data';
 
 import { SlatePrism } from '../../slate-plugins';
 import { SCHEMA } from '../../utils/slate';
 import { useStyles2 } from '../../themes';
-import { DataLinkBuiltInVars, GrafanaTheme2, VariableOrigin, VariableSuggestion } from '@grafana/data';
+import { Portal } from '../index';
+import { makeValue } from '../../index';
 import { getInputStyles } from '../Input/Input';
 import CustomScrollbar from '../CustomScrollbar/CustomScrollbar';
+
+import { SelectionReference } from './SelectionReference';
+import { DataLinkSuggestions } from './DataLinkSuggestions';
 
 const modulo = (a: number, n: number) => a - n * Math.floor(a / n);
 

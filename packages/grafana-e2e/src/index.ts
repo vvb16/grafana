@@ -3,11 +3,12 @@
  *
  * @packageDocumentation
  */
+import { E2ESelectors, Selectors, selectors } from '@grafana/e2e-selectors';
+
 import { e2eScenario, ScenarioArguments } from './support/scenario';
 import { benchmark } from './support/benchmark';
 import { getScenarioContext, setScenarioContext } from './support/scenarioContext';
 import { e2eFactory } from './support';
-import { E2ESelectors, Selectors, selectors } from '@grafana/e2e-selectors';
 import * as flows from './flows';
 import * as typings from './typings';
 

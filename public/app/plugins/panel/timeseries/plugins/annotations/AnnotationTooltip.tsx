@@ -1,8 +1,9 @@
 import React from 'react';
+import { css } from '@emotion/css';
+
 import { HorizontalGroup, IconButton, Tag, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2, textUtil } from '@grafana/data';
 import alertDef from 'app/features/alerting/state/alertDef';
-import { css } from '@emotion/css';
 
 interface AnnotationTooltipProps {
   annotation: AnnotationsDataFrameViewDTO;

@@ -1,10 +1,13 @@
 import React from 'react';
 // @ts-ignore
 import renderer from 'react-test-renderer';
-import { CloudMonitoringVariableQueryEditor, Props } from './VariableQueryEditor';
+
+import { VariableModel } from '@grafana/data';
+
 import { CloudMonitoringVariableQuery, MetricFindQueryTypes } from '../types';
 import CloudMonitoringDatasource from '../datasource';
-import { VariableModel } from '@grafana/data';
+
+import { CloudMonitoringVariableQueryEditor, Props } from './VariableQueryEditor';
 
 jest.mock('../functions', () => ({
   getMetricTypes: (): any => ({ metricTypes: [], selectedMetricType: '' }),

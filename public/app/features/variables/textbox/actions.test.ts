@@ -1,14 +1,16 @@
+import { locationService } from '@grafana/runtime';
+
 import { variableAdapters } from '../adapters';
-import { createTextBoxVariableAdapter } from './adapter';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
-import { setTextBoxVariableOptionsFromUrl, updateTextBoxVariableOptions } from './actions';
 import { getRootReducer, RootReducerType } from '../state/helpers';
 import { VariableOption } from '../types';
 import { toVariablePayload } from '../state/types';
-import { createTextBoxOptions } from './reducer';
 import { addVariable, changeVariableProp, setCurrentVariableValue } from '../state/sharedReducer';
 import { textboxBuilder } from '../shared/testing/builders';
-import { locationService } from '@grafana/runtime';
+
+import { createTextBoxOptions } from './reducer';
+import { setTextBoxVariableOptionsFromUrl, updateTextBoxVariableOptions } from './actions';
+import { createTextBoxVariableAdapter } from './adapter';
 
 jest.mock('@grafana/runtime', () => {
   const original = jest.requireActual('@grafana/runtime');

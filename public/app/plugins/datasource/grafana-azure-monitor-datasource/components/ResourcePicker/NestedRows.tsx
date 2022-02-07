@@ -1,8 +1,10 @@
 import { cx } from '@emotion/css';
-import { Checkbox, FadeTransition, Icon, IconButton, LoadingPlaceholder, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { Checkbox, FadeTransition, Icon, IconButton, LoadingPlaceholder, useStyles2, useTheme2 } from '@grafana/ui';
+
 import { Space } from '../Space';
+
 import getStyles from './styles';
 import { ResourceRow, ResourceRowGroup, ResourceRowType } from './types';
 import { findRow } from './utils';

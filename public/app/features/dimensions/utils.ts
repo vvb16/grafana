@@ -12,6 +12,7 @@ import {
   ScalarDimensionConfig,
 } from 'app/features/dimensions';
 import { config } from '@grafana/runtime';
+
 import { getScalarDimension } from './scalar';
 
 export function getColorDimensionFromData(

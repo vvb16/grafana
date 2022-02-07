@@ -3,6 +3,7 @@ import { useMeasure } from 'react-use';
 import { css } from '@emotion/css';
 import { LegendPlacement } from '@grafana/schema';
 import { GrafanaTheme2 } from '@grafana/data';
+
 import { CustomScrollbar } from '../CustomScrollbar/CustomScrollbar';
 import { getFocusStyles } from '../../themes/mixins';
 import { useStyles2 } from '../../themes/ThemeContext';

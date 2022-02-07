@@ -1,6 +1,9 @@
-import { CombinedRuleNamespace } from 'app/types/unified-alerting';
 import React, { FC, useMemo } from 'react';
+
+import { CombinedRuleNamespace } from 'app/types/unified-alerting';
+
 import { isCloudRulesSource, isGrafanaRulesSource } from '../../utils/datasource';
+
 import { CloudRules } from './CloudRules';
 import { GrafanaRules } from './GrafanaRules';
 

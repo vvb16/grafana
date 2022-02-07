@@ -1,15 +1,16 @@
 import React, { memo, useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { useStyles2 } from '@grafana/ui';
 import { css, cx } from '@emotion/css';
 
+import { useStyles2 } from '@grafana/ui';
 import Page from 'app/core/components/Page/Page';
 import { StoreState, ServiceAccountDTO } from 'app/types';
-import { loadServiceAccounts, removeServiceAccount, updateServiceAccount } from './state/actions';
 import { getNavModel } from 'app/core/selectors/navModel';
-import { getServiceAccounts, getServiceAccountsSearchPage, getServiceAccountsSearchQuery } from './state/selectors';
 import PageLoader from 'app/core/components/PageLoader/PageLoader';
 import { GrafanaTheme2 } from '@grafana/data';
+
+import { getServiceAccounts, getServiceAccountsSearchPage, getServiceAccountsSearchQuery } from './state/selectors';
+import { loadServiceAccounts, removeServiceAccount, updateServiceAccount } from './state/actions';
 export type Props = ConnectedProps<typeof connector>;
 
 export interface State {}

@@ -1,13 +1,16 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+
 import { setTemplateSrv } from '@grafana/runtime';
 import config from 'app/core/config';
-import { Props, ShareLink, State } from './ShareLink';
+import { getDefaultTimeRange } from '@grafana/data';
+
 import { initTemplateSrv } from '../../../../../test/helpers/initTemplateSrv';
 import { variableAdapters } from '../../../variables/adapters';
 import { createQueryVariableAdapter } from '../../../variables/query/adapter';
 import { DashboardModel, PanelModel } from '../../state';
-import { getDefaultTimeRange } from '@grafana/data';
+
+import { Props, ShareLink, State } from './ShareLink';
 
 jest.mock('app/features/dashboard/services/TimeSrv', () => ({
   getTimeSrv: () => ({

@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { css, cx } from '@emotion/css';
 import { cloneDeep } from 'lodash';
+import { connect, ConnectedProps } from 'react-redux';
+
 import { GrafanaTheme2, NavModelItem, NavSection } from '@grafana/data';
 import { Icon, IconName, useTheme2 } from '@grafana/ui';
 import { locationService } from '@grafana/runtime';
 import { KioskMode, StoreState } from 'app/types';
-import { enrichConfigItems, getActiveItem, isMatchOrChildMatch, isSearchActive, SEARCH_ITEM_ID } from './utils';
+
 import { OrgSwitcher } from '../OrgSwitcher';
+import { Branding } from '../Branding/Branding';
+
+import { enrichConfigItems, getActiveItem, isMatchOrChildMatch, isSearchActive, SEARCH_ITEM_ID } from './utils';
 import { NavBarSection } from './NavBarSection';
 import { NavBarMenu } from './NavBarMenu';
 import NavBarItem from './NavBarItem';
 import { NavBarItemWithoutMenu } from './NavBarItemWithoutMenu';
-import { Branding } from '../Branding/Branding';
-import { connect, ConnectedProps } from 'react-redux';
 
 const onOpenSearch = () => {
   locationService.partial({ search: 'open' });

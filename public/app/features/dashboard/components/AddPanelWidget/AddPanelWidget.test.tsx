@@ -1,7 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { AddPanelWidgetUnconnected as AddPanelWidget, Props } from './AddPanelWidget';
+
 import { DashboardModel, PanelModel } from '../../state';
+
+import { AddPanelWidgetUnconnected as AddPanelWidget, Props } from './AddPanelWidget';
 
 const getTestContext = (propOverrides?: object) => {
   const props: Props = {

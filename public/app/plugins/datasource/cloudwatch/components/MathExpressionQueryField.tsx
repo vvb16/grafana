@@ -1,8 +1,10 @@
 import React, { useCallback, useRef } from 'react';
+import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
+
 import { CodeEditor, Monaco } from '@grafana/ui';
+
 import language from '../metric-math/definition';
 import { registerLanguage } from '../monarch/register';
-import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
 import { TRIGGER_SUGGEST } from '../monarch/commands';
 import { CloudWatchDatasource } from '../datasource';
 

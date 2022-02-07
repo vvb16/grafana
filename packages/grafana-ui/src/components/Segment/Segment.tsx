@@ -2,10 +2,13 @@ import React, { HTMLProps } from 'react';
 import { cx } from '@emotion/css';
 import { isObject } from 'lodash';
 import { SelectableValue } from '@grafana/data';
-import { SegmentSelect, useExpandableLabel, SegmentProps } from './';
-import { getSegmentStyles } from './styles';
+
 import { InlineLabel } from '../Forms/InlineLabel';
 import { useStyles } from '../../themes';
+
+import { getSegmentStyles } from './styles';
+
+import { SegmentSelect, useExpandableLabel, SegmentProps } from './';
 
 export interface SegmentSyncProps<T> extends SegmentProps<T>, Omit<HTMLProps<HTMLDivElement>, 'value' | 'onChange'> {
   value?: T | SelectableValue<T>;

@@ -1,4 +1,5 @@
 import { Subscription } from 'rxjs';
+
 import { getDataSourceSrv, toDataQueryError } from '@grafana/runtime';
 import { DataSourceRef } from '@grafana/data';
 
@@ -15,10 +16,11 @@ import {
 import { changeVariableProp } from '../state/sharedReducer';
 import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
 import { getVariableQueryEditor } from '../editor/getVariableQueryEditor';
+import { hasOngoingTransaction } from '../utils';
+
 import { getVariableQueryRunner } from './VariableQueryRunner';
 import { variableQueryObserver } from './variableQueryObserver';
 import { QueryVariableEditorState } from './reducer';
-import { hasOngoingTransaction } from '../utils';
 
 export const updateQueryVariableOptions = (
   identifier: VariableIdentifier,

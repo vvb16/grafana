@@ -1,5 +1,6 @@
 import { ComponentType } from 'react';
 import { Observable } from 'rxjs';
+
 import {
   CustomVariableSupport,
   DataQuery,

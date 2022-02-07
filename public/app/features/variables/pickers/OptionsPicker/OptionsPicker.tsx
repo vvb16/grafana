@@ -1,12 +1,11 @@
 import React, { ComponentType, PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { ClickOutsideWrapper } from '@grafana/ui';
 import { LoadingState } from '@grafana/data';
-
 import { StoreState } from 'app/types';
+
 import { VariableInput } from '../shared/VariableInput';
-import { commitChangesToVariable, filterOrSearchOptions, navigateOptions, openOptions } from './actions';
-import { OptionsPickerState, toggleAllOptions, toggleOption } from './reducer';
 import { VariableOption, VariableWithMultiSupport, VariableWithOptions } from '../../types';
 import { VariableOptions } from '../shared/VariableOptions';
 import { isMulti } from '../../guard';
@@ -15,6 +14,9 @@ import { formatVariableLabel } from '../../shared/formatVariable';
 import { toVariableIdentifier } from '../../state/types';
 import { getVariableQueryRunner } from '../../query/VariableQueryRunner';
 import { VariableLink } from '../shared/VariableLink';
+
+import { OptionsPickerState, toggleAllOptions, toggleOption } from './reducer';
+import { commitChangesToVariable, filterOrSearchOptions, navigateOptions, openOptions } from './actions';
 
 export const optionPickerFactory = <Model extends VariableWithOptions | VariableWithMultiSupport>(): ComponentType<
   VariablePickerProps<Model>

@@ -1,9 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { Modal, TabContent, TabsBar, Tab, Button, useStyles } from '@grafana/ui';
-import { Rule, RuleType, PipeLineEntitiesInfo, RuleSetting } from './types';
-import { getBackendSrv } from '@grafana/runtime';
 import { css } from '@emotion/css';
+
+import { Modal, TabContent, TabsBar, Tab, Button, useStyles } from '@grafana/ui';
+import { getBackendSrv } from '@grafana/runtime';
 import { GrafanaTheme } from '@grafana/data';
+
+import { Rule, RuleType, PipeLineEntitiesInfo, RuleSetting } from './types';
 import { RuleSettingsEditor } from './RuleSettingsEditor';
 import { getPipeLineEntities } from './utils';
 import { RuleSettingsArray } from './RuleSettingsArray';

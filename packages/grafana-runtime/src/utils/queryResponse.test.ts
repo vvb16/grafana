@@ -1,5 +1,6 @@
 import { DataQuery, toDataFrameDTO, DataFrame } from '@grafana/data';
 import { FetchError, FetchResponse } from 'src/services';
+
 import { BackendDataSourceResponse, toDataQueryResponse, toTestingStatus } from './queryResponse';
 
 const resp = {

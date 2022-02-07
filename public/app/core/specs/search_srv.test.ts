@@ -1,7 +1,9 @@
+import { beforeEach } from 'test/lib/common';
+
 import { SearchSrv } from 'app/core/services/search_srv';
 import impressionSrv from 'app/core/services/impression_srv';
 import { contextSrv } from 'app/core/services/context_srv';
-import { beforeEach } from 'test/lib/common';
+
 import { backendSrv } from '../services/backend_srv';
 
 jest.mock('app/core/store', () => {

@@ -2,6 +2,7 @@ import { cloneDeep, defaults } from 'lodash';
 import { forkJoin, lastValueFrom, merge, Observable, of, OperatorFunction, pipe, throwError } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import LRU from 'lru-cache';
+
 import {
   AnnotationEvent,
   CoreApp,
@@ -30,10 +31,10 @@ import {
   BackendDataSourceResponse,
   toDataQueryResponse,
 } from '@grafana/runtime';
-
 import { safeStringifyValue } from 'app/core/utils/explore';
 import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+
 import addLabelToQuery from './add_label_to_query';
 import PrometheusLanguageProvider from './language_provider';
 import { expandRecordingRules } from './language_utils';

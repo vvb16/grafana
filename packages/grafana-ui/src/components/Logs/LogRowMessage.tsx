@@ -6,9 +6,11 @@ import memoizeOne from 'memoize-one';
 
 // @ts-ignore
 import Highlighter from 'react-highlight-words';
-import { LogRowContextQueryErrors, HasMoreContextRows, LogRowContextRows } from './LogRowContextProvider';
+
 import { Themeable2 } from '../../types/theme';
 import { withTheme2 } from '../../themes/index';
+
+import { LogRowContextQueryErrors, HasMoreContextRows, LogRowContextRows } from './LogRowContextProvider';
 import { getLogRowStyles } from './getLogRowStyles';
 
 //Components

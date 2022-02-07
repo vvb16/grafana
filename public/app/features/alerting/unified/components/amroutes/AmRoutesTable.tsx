@@ -1,14 +1,17 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { intersectionWith, isEqual } from 'lodash';
+
 import { Button, HorizontalGroup, IconButton } from '@grafana/ui';
+
 import { AmRouteReceiver, FormAmRoute } from '../../types/amroutes';
 import { prepareItems } from '../../utils/dynamicTable';
 import { DynamicTable, DynamicTableColumnProps, DynamicTableItemProps } from '../DynamicTable';
-import { AmRoutesExpandedForm } from './AmRoutesExpandedForm';
-import { AmRoutesExpandedRead } from './AmRoutesExpandedRead';
 import { Matchers } from '../silences/Matchers';
 import { matcherFieldToMatcher, parseMatchers } from '../../utils/alertmanager';
-import { intersectionWith, isEqual } from 'lodash';
 import { EmptyArea } from '../EmptyArea';
+
+import { AmRoutesExpandedRead } from './AmRoutesExpandedRead';
+import { AmRoutesExpandedForm } from './AmRoutesExpandedForm';
 
 export interface AmRoutesTableProps {
   isAddMode: boolean;

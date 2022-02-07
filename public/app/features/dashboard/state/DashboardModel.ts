@@ -13,14 +13,16 @@ import {
   pull,
   some,
 } from 'lodash';
+
 // Constants
+import { Subscription } from 'rxjs';
+
 import { DEFAULT_ANNOTATION_COLOR } from '@grafana/ui';
 import { GRID_CELL_HEIGHT, GRID_CELL_VMARGIN, GRID_COLUMN_COUNT, REPEAT_DIR_VERTICAL } from 'app/core/constants';
 // Utils & Services
 import { contextSrv } from 'app/core/services/context_srv';
+
 // Types
-import { GridPos, PanelModel } from './PanelModel';
-import { DashboardMigrator } from './DashboardMigrator';
 import {
   AnnotationQuery,
   AppEvent,
@@ -39,15 +41,14 @@ import { CoreEvents, DashboardMeta, KioskMode } from 'app/types';
 import { GetVariables, getVariables } from 'app/features/variables/state/selectors';
 import { variableAdapters } from 'app/features/variables/adapters';
 import { onTimeRangeUpdated } from 'app/features/variables/state/actions';
-import { dispatch } from '../../../store/store';
-import { isAllVariable } from '../../variables/utils';
 import { DashboardPanelsChangedEvent, RenderEvent } from 'app/types/events';
-import { getTimeSrv } from '../services/TimeSrv';
-import { mergePanels, PanelMergeInfo } from '../utils/panelMerge';
-import { deleteScopeVars, isOnTheSameGridRow } from './utils';
 import { RefreshEvent, TimeRangeUpdatedEvent } from '@grafana/runtime';
 import { sortedDeepCloneWithoutNulls } from 'app/core/utils/object';
-import { Subscription } from 'rxjs';
+
+import { dispatch } from '../../../store/store';
+import { isAllVariable } from '../../variables/utils';
+import { getTimeSrv } from '../services/TimeSrv';
+import { mergePanels, PanelMergeInfo } from '../utils/panelMerge';
 import { appEvents } from '../../../core/core';
 import {
   VariablesChanged,
@@ -55,6 +56,10 @@ import {
   VariablesChangedInUrl,
   VariablesTimeRangeProcessDone,
 } from '../../variables/types';
+
+import { deleteScopeVars, isOnTheSameGridRow } from './utils';
+import { DashboardMigrator } from './DashboardMigrator';
+import { GridPos, PanelModel } from './PanelModel';
 
 export interface CloneOptions {
   saveVariables?: boolean;

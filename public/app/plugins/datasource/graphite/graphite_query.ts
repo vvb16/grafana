@@ -1,8 +1,10 @@
 import { compact, each, findIndex, flatten, get, join, keyBy, last, map, reduce, without } from 'lodash';
+
 import { arrayMove } from 'app/core/utils/arrayMove';
-import { Parser } from './parser';
 import { TemplateSrv } from '@grafana/runtime';
 import { ScopedVars } from '@grafana/data';
+
+import { Parser } from './parser';
 import { FuncInstance } from './gfunc';
 import { GraphiteSegment } from './types';
 import { GraphiteDatasource } from './datasource';

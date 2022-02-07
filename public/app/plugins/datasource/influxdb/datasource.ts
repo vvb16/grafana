@@ -2,6 +2,7 @@ import { cloneDeep, extend, get, has, isString, map as _map, omit, pick, reduce 
 import { lastValueFrom, Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
+
 import { DataSourceWithBackend, frameToMetricFindValue, getBackendSrv } from '@grafana/runtime';
 import {
   AnnotationEvent,
@@ -23,13 +24,13 @@ import {
   TIME_SERIES_VALUE_FIELD_NAME,
   TimeSeries,
 } from '@grafana/data';
+import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
 
 import InfluxSeries from './influx_series';
 import InfluxQueryModel from './influx_query_model';
 import ResponseParser from './response_parser';
 import { InfluxQueryBuilder } from './query_builder';
 import { InfluxOptions, InfluxQuery, InfluxVersion } from './types';
-import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
 import { FluxQueryEditor } from './components/FluxQueryEditor';
 import { buildRawQuery } from './queryUtils';
 

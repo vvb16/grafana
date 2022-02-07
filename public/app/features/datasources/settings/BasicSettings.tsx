@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import { InlineFormLabel, LegacyForms } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 

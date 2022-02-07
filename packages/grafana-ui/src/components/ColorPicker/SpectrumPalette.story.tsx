@@ -1,8 +1,10 @@
 import React from 'react';
-import SpectrumPalette from './SpectrumPalette';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { UseState } from '../../utils/storybook/UseState';
 import { renderComponentWithTheme } from '../../utils/storybook/withTheme';
+
+import SpectrumPalette from './SpectrumPalette';
 import mdx from './ColorPicker.mdx';
 
 export default {

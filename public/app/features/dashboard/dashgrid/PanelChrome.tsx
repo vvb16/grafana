@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Subscription } from 'rxjs';
+
 import { locationService, RefreshEvent } from '@grafana/runtime';
 import {
   AbsoluteTimeRange,
@@ -22,22 +23,23 @@ import {
 import { ErrorBoundary, PanelContext, PanelContextProvider, SeriesVisibilityChangeMode } from '@grafana/ui';
 import { VizLegendOptions } from '@grafana/schema';
 import { selectors } from '@grafana/e2e-selectors';
-
-import { PanelHeader } from './PanelHeader/PanelHeader';
-import { getTimeSrv, TimeSrv } from '../services/TimeSrv';
 import { applyPanelTimeOverrides } from 'app/features/dashboard/utils/panel';
 import { profiler } from 'app/core/profiler';
 import config from 'app/core/config';
-import { DashboardModel, PanelModel } from '../state';
 import { PANEL_BORDER } from 'app/core/constants';
-import { loadSnapshotData } from '../utils/loadSnapshotData';
 import { RenderEvent } from 'app/types/events';
 import { changeSeriesColorConfigFactory } from 'app/plugins/panel/timeseries/overrides/colorSeriesConfigFactory';
-import { seriesVisibilityConfigFactory } from './SeriesVisibilityConfigFactory';
+
+import { loadSnapshotData } from '../utils/loadSnapshotData';
+import { DashboardModel, PanelModel } from '../state';
+import { getTimeSrv, TimeSrv } from '../services/TimeSrv';
 import { deleteAnnotation, saveAnnotation, updateAnnotation } from '../../annotations/api';
 import { getDashboardQueryRunner } from '../../query/state/DashboardQueryRunner/DashboardQueryRunner';
-import { liveTimer } from './liveTimer';
 import { isSoloRoute } from '../../../routes/utils';
+
+import { seriesVisibilityConfigFactory } from './SeriesVisibilityConfigFactory';
+import { liveTimer } from './liveTimer';
+import { PanelHeader } from './PanelHeader/PanelHeader';
 
 const DEFAULT_PLUGIN_ERROR = 'Error in plugin';
 

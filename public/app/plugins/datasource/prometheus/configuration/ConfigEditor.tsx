@@ -1,12 +1,15 @@
 import React from 'react';
+
 import { AlertingSettings, DataSourceHttpSettings, Alert } from '@grafana/ui';
 import { DataSourcePluginOptionsEditorProps, DataSourceSettings } from '@grafana/data';
 import { config } from 'app/core/config';
+import { getAllAlertmanagerDataSources } from 'app/features/alerting/unified/utils/alertmanager';
+
 import { PromOptions } from '../types';
+
 import { AzureAuthSettings } from './AzureAuthSettings';
 import { PromSettings } from './PromSettings';
 import { hasCredentials, setDefaultCredentials, resetCredentials } from './AzureCredentialsConfig';
-import { getAllAlertmanagerDataSources } from 'app/features/alerting/unified/utils/alertmanager';
 
 export type Props = DataSourcePluginOptionsEditorProps<PromOptions>;
 export const ConfigEditor = (props: Props) => {

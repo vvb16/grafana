@@ -1,4 +1,5 @@
 import { MetricsConfiguration } from '../../../types';
+
 import {
   isMetricAggregationWithField,
   isPipelineAggregationWithMultipleBucketPaths,

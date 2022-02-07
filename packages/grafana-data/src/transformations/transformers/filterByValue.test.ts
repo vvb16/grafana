@@ -3,6 +3,9 @@ import { DataTransformerConfig, FieldType, MatcherConfig } from '../../types';
 import { ArrayVector } from '../../vector';
 import { transformDataFrame } from '../transformDataFrame';
 import { toDataFrame } from '../../dataframe/processDataFrame';
+import { ValueMatcherID } from '../matchers/ids';
+import { BasicValueMatcherOptions } from '../matchers/valueMatchers/types';
+
 import {
   FilterByValueMatch,
   filterByValueTransformer,
@@ -10,8 +13,6 @@ import {
   FilterByValueType,
 } from './filterByValue';
 import { DataTransformerID } from './ids';
-import { ValueMatcherID } from '../matchers/ids';
-import { BasicValueMatcherOptions } from '../matchers/valueMatchers/types';
 
 const seriesAWithSingleField = toDataFrame({
   name: 'A',

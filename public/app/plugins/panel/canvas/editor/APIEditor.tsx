@@ -1,4 +1,5 @@
 import React, { FC, useCallback } from 'react';
+
 import { Button, InlineField, InlineFieldRow, JSONFormatter, StringValueEditor } from '@grafana/ui';
 import { AppEvents, StandardEditorProps, StandardEditorsRegistryItem, StringFieldConfigSettings } from '@grafana/data';
 import { config, getBackendSrv } from '@grafana/runtime';

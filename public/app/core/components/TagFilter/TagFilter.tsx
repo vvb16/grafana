@@ -3,8 +3,10 @@ import React, { FC } from 'react';
 import { css } from '@emotion/css';
 import { components } from 'react-select';
 import debounce from 'debounce-promise';
+
 import { stylesFactory, useTheme, Icon, AsyncMultiSelect } from '@grafana/ui';
 import { escapeStringForRegex, GrafanaTheme } from '@grafana/data';
+
 // Components
 import { TagOption } from './TagOption';
 import { TagBadge } from './TagBadge';

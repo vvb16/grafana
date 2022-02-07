@@ -13,6 +13,7 @@ const readdirPromise = util.promisify(fs.readdir);
 const accessPromise = util.promisify(fs.access);
 
 import * as webpack from 'webpack';
+
 import { getStyleLoaders, getStylesheetEntries, getFileLoaders } from './webpack/loaders';
 
 export interface WebpackConfigurationOptions {

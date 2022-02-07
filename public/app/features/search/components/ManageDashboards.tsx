@@ -1,15 +1,18 @@
 import React, { FC, memo, useState } from 'react';
 import { css } from '@emotion/css';
+
 import { FilterInput, Spinner, stylesFactory, useTheme } from '@grafana/ui';
 import { GrafanaTheme } from '@grafana/data';
 import { contextSrv } from 'app/core/services/context_srv';
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
 import { FolderDTO } from 'app/types';
+
 import { useManageDashboards } from '../hooks/useManageDashboards';
 import { SearchLayout } from '../types';
+import { useSearchQuery } from '../hooks/useSearchQuery';
+
 import { ConfirmDeleteModal } from './ConfirmDeleteModal';
 import { MoveToFolderModal } from './MoveToFolderModal';
-import { useSearchQuery } from '../hooks/useSearchQuery';
 import { SearchResultsFilter } from './SearchResultsFilter';
 import { SearchResults } from './SearchResults';
 import { DashboardActions } from './DashboardActions';

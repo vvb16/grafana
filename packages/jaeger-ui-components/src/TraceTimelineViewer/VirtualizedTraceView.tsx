@@ -14,16 +14,18 @@
 
 import * as React from 'react';
 import { css } from '@emotion/css';
-
 import { isEqual } from 'lodash';
 import memoizeOne from 'memoize-one';
 import { stylesFactory, withTheme2 } from '@grafana/ui';
 import { GrafanaTheme2, LinkModel } from '@grafana/data';
 
-import ListView from './ListView';
-import SpanBarRow from './SpanBarRow';
-import DetailState from './SpanDetail/DetailState';
-import SpanDetailRow from './SpanDetailRow';
+import { Accessors } from '../ScrollManager';
+import { getColorByKey } from '../utils/color-generator';
+import { SpanLinkFunc, TNil } from '../types';
+import { TraceLog, TraceSpan, Trace, TraceKeyValuePair, TraceLink } from '../types/trace';
+import TTraceTimeline from '../types/TTraceTimeline';
+import { PEER_SERVICE } from '../constants/tag-keys';
+
 import {
   createViewedBoundsFunc,
   findServerChildSpan,
@@ -32,12 +34,10 @@ import {
   spanContainsErredSpan,
   ViewedBoundsFunctionType,
 } from './utils';
-import { Accessors } from '../ScrollManager';
-import { getColorByKey } from '../utils/color-generator';
-import { SpanLinkFunc, TNil } from '../types';
-import { TraceLog, TraceSpan, Trace, TraceKeyValuePair, TraceLink } from '../types/trace';
-import TTraceTimeline from '../types/TTraceTimeline';
-import { PEER_SERVICE } from '../constants/tag-keys';
+import SpanDetailRow from './SpanDetailRow';
+import DetailState from './SpanDetail/DetailState';
+import SpanBarRow from './SpanBarRow';
+import ListView from './ListView';
 
 type TExtractUiFindFromStateReturn = {
   uiFind: string | undefined;

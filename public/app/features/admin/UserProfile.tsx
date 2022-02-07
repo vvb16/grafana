@@ -1,6 +1,7 @@
 import React, { FC, PureComponent, useRef, useState } from 'react';
-import { AccessControlAction, UserDTO } from 'app/types';
 import { css, cx } from '@emotion/css';
+
+import { AccessControlAction, UserDTO } from 'app/types';
 import { config } from 'app/core/config';
 import { GrafanaTheme } from '@grafana/data';
 import { Button, ConfirmButton, ConfirmModal, Input, LegacyInputStatus, stylesFactory } from '@grafana/ui';

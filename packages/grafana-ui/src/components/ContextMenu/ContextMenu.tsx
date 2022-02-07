@@ -1,6 +1,7 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import { selectors } from '@grafana/e2e-selectors';
 import { useClickAway } from 'react-use';
+
 import { Portal } from '../Portal/Portal';
 import { Menu } from '../Menu/Menu';
 

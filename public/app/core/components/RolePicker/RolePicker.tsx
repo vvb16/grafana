@@ -1,8 +1,10 @@
 import React, { FormEvent, useCallback, useEffect, useState } from 'react';
+
 import { ClickOutsideWrapper, HorizontalGroup, Spinner } from '@grafana/ui';
+import { Role, OrgRole } from 'app/types';
+
 import { RolePickerMenu } from './RolePickerMenu';
 import { RolePickerInput } from './RolePickerInput';
-import { Role, OrgRole } from 'app/types';
 
 export interface Props {
   builtInRole?: OrgRole;

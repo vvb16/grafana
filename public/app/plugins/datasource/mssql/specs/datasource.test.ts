@@ -1,12 +1,13 @@
 import { of } from 'rxjs';
-import { dataFrameToJSON, dateTime, MetricFindValue, MutableDataFrame } from '@grafana/data';
-
-import { MssqlDatasource } from '../datasource';
-import { TemplateSrv } from 'app/features/templating/template_srv';
-import { backendSrv } from 'app/core/services/backend_srv';
-import { initialCustomVariableModelState } from '../../../../features/variables/custom/reducer';
 import { createFetchResponse } from 'test/helpers/createFetchResponse';
 import { TimeSrvStub } from 'test/specs/helpers';
+
+import { dataFrameToJSON, dateTime, MetricFindValue, MutableDataFrame } from '@grafana/data';
+import { TemplateSrv } from 'app/features/templating/template_srv';
+import { backendSrv } from 'app/core/services/backend_srv';
+
+import { MssqlDatasource } from '../datasource';
+import { initialCustomVariableModelState } from '../../../../features/variables/custom/reducer';
 
 jest.mock('@grafana/runtime', () => ({
   ...(jest.requireActual('@grafana/runtime') as unknown as object),

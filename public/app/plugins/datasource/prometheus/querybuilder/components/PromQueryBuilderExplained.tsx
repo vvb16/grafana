@@ -1,6 +1,7 @@
 import React from 'react';
-import { PromVisualQuery } from '../types';
 import { Stack } from '@grafana/experimental';
+
+import { PromVisualQuery } from '../types';
 import { promQueryModeller } from '../PromQueryModeller';
 import { OperationListExplained } from '../shared/OperationListExplained';
 import { OperationExplainedBox } from '../shared/OperationExplainedBox';

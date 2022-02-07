@@ -1,4 +1,5 @@
 import { from, lastValueFrom, Observable } from 'rxjs';
+
 import {
   CustomVariableSupport,
   DataQueryRequest,
@@ -6,10 +7,11 @@ import {
   MetricFindValue,
   toDataFrame,
 } from '@grafana/data';
+import { getTemplateSrv } from '@grafana/runtime';
+
 import VariableEditor from './components/VariableEditor/VariableEditor';
 import DataSource from './datasource';
 import { AzureQueryType, AzureMonitorQuery } from './types';
-import { getTemplateSrv } from '@grafana/runtime';
 import { migrateStringQueriesToObjectQueries } from './grafanaTemplateVariableFns';
 import { GrafanaTemplateVariableQuery } from './types/templateVariables';
 import messageFromError from './utils/messageFromError';

@@ -1,3 +1,5 @@
+import { omitBy, pickBy, isNil, isNumber, isString } from 'lodash';
+
 import {
   ConfigOverrideRule,
   DynamicConfigValue,
@@ -28,8 +30,8 @@ import {
   StackingMode,
   SortOrder,
 } from '@grafana/schema';
+
 import { TimeSeriesOptions } from './types';
-import { omitBy, pickBy, isNil, isNumber, isString } from 'lodash';
 import { defaultGraphConfig } from './config';
 
 /**

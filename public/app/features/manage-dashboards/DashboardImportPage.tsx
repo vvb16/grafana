@@ -1,6 +1,7 @@
 import React, { FormEvent, PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { css } from '@emotion/css';
+
 import { AppEvents, GrafanaTheme2, LoadingState } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
 import {
@@ -18,14 +19,16 @@ import {
   withTheme2,
 } from '@grafana/ui';
 import Page from 'app/core/components/Page/Page';
-import { ImportDashboardOverview } from './components/ImportDashboardOverview';
-import { validateDashboardJson, validateGcomDashboard } from './utils/validation';
-import { fetchGcomDashboard, importDashboardJson } from './state/actions';
 import appEvents from 'app/core/app_events';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { StoreState } from 'app/types';
 import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
+
 import { cleanUpAction } from '../../core/actions/cleanUp';
+
+import { fetchGcomDashboard, importDashboardJson } from './state/actions';
+import { validateDashboardJson, validateGcomDashboard } from './utils/validation';
+import { ImportDashboardOverview } from './components/ImportDashboardOverview';
 
 type DashboardImportPageRouteSearchParams = {
   gcomDashboardId?: string;

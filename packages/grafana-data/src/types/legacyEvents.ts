@@ -1,9 +1,10 @@
-import { DataQueryError, DataQueryResponseData } from './datasource';
-import { AngularPanelMenuItem } from './panel';
-import { DataFrame } from './dataFrame';
 import { eventFactory } from '../events/eventFactory';
 import { BusEventBase, BusEventWithPayload } from '../events/types';
 import { DataHoverPayload } from '../events';
+
+import { DataQueryError, DataQueryResponseData } from './datasource';
+import { AngularPanelMenuItem } from './panel';
+import { DataFrame } from './dataFrame';
 
 export type AlertPayload = [string, string?];
 export type AlertErrorPayload = [string, (string | Error)?];

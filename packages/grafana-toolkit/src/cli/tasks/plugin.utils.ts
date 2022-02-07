@@ -1,13 +1,14 @@
-import { Task, TaskRunner } from './task';
+import { readFileSync } from 'fs';
+import path = require('path');
+import execa = require('execa');
+
 import { getPluginJson } from '../../config/utils/pluginValidation';
 import { GitHubRelease } from '../utils/githubRelease';
 import { getPluginId } from '../../config/utils/getPluginId';
 import { getCiFolder } from '../../plugins/env';
 import { useSpinner } from '../utils/useSpinner';
-import { readFileSync } from 'fs';
 
-import path = require('path');
-import execa = require('execa');
+import { Task, TaskRunner } from './task';
 
 interface Command extends Array<any> {}
 const DEFAULT_EMAIL_ADDRESS = 'eng@grafana.com';

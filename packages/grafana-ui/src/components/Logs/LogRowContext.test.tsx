@@ -1,6 +1,7 @@
 import React from 'react';
 import { LogRowModel } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
+
 import { LogRowContextGroup } from './LogRowContext';
 
 describe('LogRowContextGroup component', () => {

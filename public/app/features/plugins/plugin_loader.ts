@@ -1,7 +1,9 @@
 // eslint-disable-next-line lodash/import-scope
 import _ from 'lodash';
+
 import * as sdk from 'app/plugins/sdk';
 import kbn from 'app/core/utils/kbn';
+
 import moment from 'moment'; // eslint-disable-line no-restricted-imports
 import angular from 'angular';
 import jquery from 'jquery';
@@ -28,13 +30,18 @@ import * as ticks from 'app/core/utils/ticks';
 import { BackendSrv, getBackendSrv } from 'app/core/services/backend_srv';
 import { promiseToDigest } from 'app/angular/promiseToDigest';
 import impressionSrv from 'app/core/services/impression_srv';
+
 import builtInPlugins from './built_in_plugins';
+
 import * as d3 from 'd3';
 import * as emotion from '@emotion/css';
+
 import * as grafanaData from '@grafana/data';
 import * as grafanaUIraw from '@grafana/ui';
 import * as grafanaRuntime from '@grafana/runtime';
+
 import { GenericDataSourcePlugin } from '../datasources/settings/PluginSettings';
+
 import { locateWithCache, registerPluginInCache } from './pluginCacheBuster';
 
 // Help the 6.4 to 6.5 migration

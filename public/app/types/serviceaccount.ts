@@ -1,4 +1,5 @@
 import { WithAccessControlMetadata } from '@grafana/data';
+
 import { OrgRole } from '.';
 
 export interface OrgServiceAccount {

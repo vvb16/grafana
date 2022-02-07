@@ -1,12 +1,15 @@
-import { AlertmanagerAlert } from 'app/plugins/datasource/alertmanager/types';
 import React, { useMemo } from 'react';
+import { css } from '@emotion/css';
+
+import { AlertmanagerAlert } from 'app/plugins/datasource/alertmanager/types';
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2, intervalToAbbreviatedDurationString } from '@grafana/data';
-import { css } from '@emotion/css';
+
 import { DynamicTableColumnProps, DynamicTableItemProps } from '../DynamicTable';
 import { AmAlertStateTag } from '../silences/AmAlertStateTag';
 import { AlertLabels } from '../AlertLabels';
 import { DynamicTableWithGuidelines } from '../DynamicTableWithGuidelines';
+
 import { AlertDetails } from './AlertDetails';
 
 interface Props {

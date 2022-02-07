@@ -1,9 +1,11 @@
 import { Value } from 'slate';
+import Prism, { Token } from 'prismjs';
+
 import { TypeaheadOutput } from '@grafana/ui';
+
 import { CloudWatchDatasource } from './datasource';
 import { GetLogGroupFieldsResponse } from './types';
 import { CloudWatchLanguageProvider } from './language_provider';
-import Prism, { Token } from 'prismjs';
 import {
   AGGREGATION_FUNCTIONS_STATS,
   BOOLEAN_FUNCTIONS,

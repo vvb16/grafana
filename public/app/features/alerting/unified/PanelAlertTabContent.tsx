@@ -1,12 +1,14 @@
 import { css } from '@emotion/css';
+import React, { FC } from 'react';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Alert, CustomScrollbar, LoadingPlaceholder, useStyles2 } from '@grafana/ui';
 import { DashboardModel, PanelModel } from 'app/features/dashboard/state';
-import React, { FC } from 'react';
+import { selectors } from '@grafana/e2e-selectors';
+
 import { NewRuleFromPanelButton } from './components/panel-alerts-tab/NewRuleFromPanelButton';
 import { RulesTable } from './components/rules/RulesTable';
 import { usePanelCombinedRules } from './hooks/usePanelCombinedRules';
-import { selectors } from '@grafana/e2e-selectors';
 
 interface Props {
   dashboard: DashboardModel;

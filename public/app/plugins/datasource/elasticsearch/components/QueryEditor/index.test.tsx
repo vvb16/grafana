@@ -1,8 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { QueryEditor } from '.';
+
 import { ElasticDatasource } from '../../datasource';
 import { ElasticsearchQuery } from '../../types';
+
+import { QueryEditor } from '.';
 
 const noop = () => void 0;
 

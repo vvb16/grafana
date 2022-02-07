@@ -1,4 +1,5 @@
 import { cloneDeep, extend, isString } from 'lodash';
+
 import {
   dateMath,
   dateTime,
@@ -9,14 +10,15 @@ import {
   TimeRange,
   toUtc,
 } from '@grafana/data';
-import { DashboardModel } from '../state/DashboardModel';
 import { getShiftedTimeRange, getZoomedTimeRange } from 'app/core/utils/timePicker';
 import { config } from 'app/core/config';
-import { getRefreshFromUrl } from '../utils/getRefreshFromUrl';
 import { locationService } from '@grafana/runtime';
-import { AbsoluteTimeEvent, ShiftTimeEvent, ShiftTimeEventPayload, ZoomOutEvent } from '../../../types/events';
 import { contextSrv, ContextSrv } from 'app/core/services/context_srv';
 import appEvents from 'app/core/app_events';
+
+import { AbsoluteTimeEvent, ShiftTimeEvent, ShiftTimeEventPayload, ZoomOutEvent } from '../../../types/events';
+import { getRefreshFromUrl } from '../utils/getRefreshFromUrl';
+import { DashboardModel } from '../state/DashboardModel';
 
 export class TimeSrv {
   time: any;

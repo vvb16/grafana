@@ -1,5 +1,6 @@
 import { DataSourceInstanceSettings, DataSourceJsonData, DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import React, { useMemo } from 'react';
+
 import { Switch } from '../Forms/Legacy/Switch/Switch';
 import { InlineField } from '../Forms/InlineField';
 import { InlineFieldRow } from '../Forms/InlineFieldRow';

@@ -15,6 +15,7 @@ import {
 } from '@grafana/data';
 import { merge, Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+
 import {
   getBackendSrv,
   getDataSourceSrv,
@@ -23,6 +24,7 @@ import {
   StreamingFrameAction,
 } from '../services';
 import { config } from '../config';
+
 import { BackendDataSourceResponse, toDataQueryResponse } from './queryResponse';
 
 /**

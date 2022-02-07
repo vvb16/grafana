@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { oneLineTrim } from 'common-tags';
 import { Story, Meta } from '@storybook/react';
-import { getAvailableIcons } from '../../types';
-import { Button, Modal, ModalTabsHeader, TabContent } from '@grafana/ui';
 import { css, cx } from '@emotion/css';
 
+import { Button, Modal, ModalTabsHeader, TabContent } from '@grafana/ui';
+
+import { getAvailableIcons } from '../../types';
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { UseState } from '../../utils/storybook/UseState';
+
 import mdx from './Modal.mdx';
 
 export default {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+
 import { PartialHighlighter } from './PartialHighlighter';
 
 function assertPart(component: ReactWrapper, isHighlighted: boolean, text: string): void {

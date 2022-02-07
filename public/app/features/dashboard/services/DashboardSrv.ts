@@ -1,9 +1,10 @@
 import { appEvents } from 'app/core/app_events';
-import { DashboardModel } from '../state/DashboardModel';
-import { removePanel } from '../utils/panel';
 import { DashboardMeta } from 'app/types';
 import { getBackendSrv } from 'app/core/services/backend_srv';
 import { saveDashboard } from 'app/features/manage-dashboards/state/actions';
+
+import { removePanel } from '../utils/panel';
+import { DashboardModel } from '../state/DashboardModel';
 import { RemovePanelEvent } from '../../../types/events';
 
 export class DashboardSrv {

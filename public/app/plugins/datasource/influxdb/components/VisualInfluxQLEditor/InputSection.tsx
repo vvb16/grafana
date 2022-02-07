@@ -1,7 +1,10 @@
 import React from 'react';
 import { cx } from '@emotion/css';
+
 import { Input } from '@grafana/ui';
+
 import { useShadowedState } from '../useShadowedState';
+
 import { paddingRightClass } from './styles';
 
 type Props = {

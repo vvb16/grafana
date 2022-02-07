@@ -1,6 +1,8 @@
 import { MatcherOperator } from 'app/plugins/datasource/alertmanager/types';
-import { getMatcherQueryParams, findAlertRulesWithMatchers, parseQueryParamMatchers } from './matchers';
+
 import { mockCombinedRule } from '../mocks';
+
+import { getMatcherQueryParams, findAlertRulesWithMatchers, parseQueryParamMatchers } from './matchers';
 
 describe('Unified Alerting matchers', () => {
   describe('getMatcherQueryParams tests', () => {

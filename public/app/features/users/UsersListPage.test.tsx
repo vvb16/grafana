@@ -1,10 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Props, UsersListPage } from './UsersListPage';
-import { Invitee, OrgUser } from 'app/types';
-// import { getMockUser } from './__mocks__/userMocks';
-import { NavModel } from '@grafana/data';
 import { mockToolkitActionCreator } from 'test/core/redux/mocks';
+
+import { Invitee, OrgUser } from 'app/types';
+import { NavModel } from '@grafana/data';
+
+import { Props, UsersListPage } from './UsersListPage';
+// import { getMockUser } from './__mocks__/userMocks';
+
 import { setUsersSearchPage, setUsersSearchQuery } from './state/reducers';
 
 jest.mock('../../core/app_events', () => ({

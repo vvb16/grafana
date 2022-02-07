@@ -1,6 +1,8 @@
 import React from 'react';
 import { Global } from '@emotion/react';
+
 import { useTheme2 } from '..';
+
 import { getElementStyles } from './elements';
 import { getCardStyles } from './card';
 import { getAgularPanelStyles } from './angularPanelStyles';

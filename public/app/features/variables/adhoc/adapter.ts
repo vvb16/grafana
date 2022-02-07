@@ -3,6 +3,7 @@ import { cloneDeep } from 'lodash';
 import { AdHocVariableModel } from '../types';
 import { dispatch } from '../../../store/store';
 import { VariableAdapter } from '../adapters';
+
 import { AdHocPicker } from './picker/AdHocPicker';
 import { adHocVariableReducer, initialAdHocVariableModelState } from './reducer';
 import { AdHocVariableEditor } from './AdHocVariableEditor';

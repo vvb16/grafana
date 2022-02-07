@@ -1,14 +1,17 @@
 import React, { useRef } from 'react';
 import { GroupBase, OptionsOrGroups } from 'react-select';
+import { uniqueId } from 'lodash';
+
 import { InlineField, Input, Select, TimeZonePicker } from '@grafana/ui';
+import { InternalTimeZones, SelectableValue } from '@grafana/data';
+
 import { DateHistogram } from '../aggregations';
 import { bucketAggregationConfig } from '../utils';
 import { useDispatch } from '../../../../hooks/useStatelessReducer';
-import { InternalTimeZones, SelectableValue } from '@grafana/data';
 import { changeBucketAggregationSetting } from '../state/actions';
-import { inlineFieldProps } from '.';
-import { uniqueId } from 'lodash';
 import { useCreatableSelectPersistedBehaviour } from '../../../hooks/useCreatableSelectPersistedBehaviour';
+
+import { inlineFieldProps } from '.';
 
 const defaultIntervalOptions: Array<SelectableValue<string>> = [
   { label: 'auto', value: 'auto' },

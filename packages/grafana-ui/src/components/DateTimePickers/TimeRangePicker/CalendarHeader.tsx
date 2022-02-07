@@ -1,11 +1,13 @@
 import React from 'react';
-import { TimePickerTitle } from './TimePickerTitle';
-import { Button } from '../../Button';
 import { selectors } from '@grafana/e2e-selectors';
-import { TimePickerCalendarProps } from './TimePickerCalendar';
-import { useStyles2 } from '../../../themes';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css } from '@emotion/css';
+
+import { useStyles2 } from '../../../themes';
+import { Button } from '../../Button';
+
+import { TimePickerCalendarProps } from './TimePickerCalendar';
+import { TimePickerTitle } from './TimePickerTitle';
 
 export function Header({ onClose }: TimePickerCalendarProps) {
   const styles = useStyles2(getHeaderStyles);

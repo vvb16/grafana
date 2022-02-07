@@ -1,11 +1,13 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/react';
+import { SelectableValue } from '@grafana/data';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { UseState } from '../../utils/storybook/UseState';
-import { SelectableValue } from '@grafana/data';
-import { ButtonSelect } from './ButtonSelect';
 import { DashboardStoryCanvas } from '../../utils/storybook/DashboardStoryCanvas';
+
+import { ButtonSelect } from './ButtonSelect';
 
 export default {
   title: 'Forms/Select/ButtonSelect',

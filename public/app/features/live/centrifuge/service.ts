@@ -7,6 +7,9 @@ import {
   StreamingFrameOptions,
 } from '@grafana/runtime/src/services/live';
 import { BehaviorSubject, Observable, share, startWith } from 'rxjs';
+import { BackendDataSourceResponse } from '@grafana/runtime/src/utils/queryResponse';
+import { FetchResponse } from '@grafana/runtime/src/services/backendSrv';
+
 import {
   DataQueryError,
   DataQueryResponse,
@@ -15,11 +18,11 @@ import {
   LiveChannelId,
   toLiveChannelId,
 } from '@grafana/data';
+
+import { StreamingResponseData } from '../data/utils';
+
 import { CentrifugeLiveChannel } from './channel';
 import { LiveDataStream } from './LiveDataStream';
-import { StreamingResponseData } from '../data/utils';
-import { BackendDataSourceResponse } from '@grafana/runtime/src/utils/queryResponse';
-import { FetchResponse } from '@grafana/runtime/src/services/backendSrv';
 
 export type CentrifugeSrvDeps = {
   appUrl: string;

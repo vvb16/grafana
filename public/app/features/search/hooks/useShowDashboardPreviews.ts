@@ -1,6 +1,7 @@
-import { PREVIEWS_LOCAL_STORAGE_KEY } from '../constants';
 import { config } from '@grafana/runtime/src';
 import { useLocalStorage } from 'react-use';
+
+import { PREVIEWS_LOCAL_STORAGE_KEY } from '../constants';
 
 export const useShowDashboardPreviews = () => {
   const previewFeatureEnabled = Boolean(config.featureToggles.dashboardPreviews);

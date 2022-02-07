@@ -18,8 +18,9 @@ import IoChevronRight from 'react-icons/lib/io/chevron-right';
 import IoIosArrowDown from 'react-icons/lib/io/ios-arrow-down';
 import { createTheme } from '@grafana/data';
 
-import SpanTreeOffset, { getStyles } from './SpanTreeOffset';
 import spanAncestorIdsSpy from '../utils/span-ancestor-ids';
+
+import SpanTreeOffset, { getStyles } from './SpanTreeOffset';
 
 jest.mock('../utils/span-ancestor-ids');
 

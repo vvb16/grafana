@@ -1,5 +1,6 @@
-import { StoreState } from 'app/types';
 import { Store } from 'redux';
+
+import { StoreState } from 'app/types';
 
 export let store: Store<StoreState>;
 

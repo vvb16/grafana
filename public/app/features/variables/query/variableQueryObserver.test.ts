@@ -1,6 +1,8 @@
-import { variableQueryObserver } from './variableQueryObserver';
 import { LoadingState } from '@grafana/data';
+
 import { VariableIdentifier } from '../state/types';
+
+import { variableQueryObserver } from './variableQueryObserver';
 import { UpdateOptionsResults } from './VariableQueryRunner';
 
 function getTestContext(args: { next?: UpdateOptionsResults; error?: any; complete?: boolean }) {

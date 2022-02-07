@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Cell } from 'react-table';
+
 import { GrafanaTableColumn, TableFilterActionCallback } from './types';
 import { TableStyles } from './styles';
 

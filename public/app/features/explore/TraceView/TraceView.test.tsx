@@ -1,13 +1,16 @@
 import React from 'react';
 import { render, prettyDOM, screen } from '@testing-library/react';
-import { TraceView } from './TraceView';
-import { setDataSourceSrv } from '@grafana/runtime';
-import { ExploreId } from 'app/types';
 import { TraceData, TraceSpanData } from '@jaegertracing/jaeger-ui-components/src/types/trace';
-import { MutableDataFrame } from '@grafana/data';
-import { configureStore } from '../../../store/configureStore';
 import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
+
+import { setDataSourceSrv } from '@grafana/runtime';
+import { ExploreId } from 'app/types';
+import { MutableDataFrame } from '@grafana/data';
+
+import { configureStore } from '../../../store/configureStore';
+
+import { TraceView } from './TraceView';
 
 function renderTraceView(frames = [frameOld]) {
   const store = configureStore();

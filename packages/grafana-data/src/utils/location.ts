@@ -1,6 +1,7 @@
 import { GrafanaConfig, RawTimeRange, ScopedVars } from '../types';
-import { UrlQueryMap, urlUtil } from './url';
 import { textUtil } from '../text';
+
+import { UrlQueryMap, urlUtil } from './url';
 
 let grafanaConfig: GrafanaConfig = { appSubUrl: '' } as any;
 let getTimeRangeUrlParams: () => RawTimeRange;

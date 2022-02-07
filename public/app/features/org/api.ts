@@ -1,7 +1,8 @@
 import { getBackendSrv } from '@grafana/runtime';
 import { appEvents } from 'app/core/core';
-import { FormModel } from './UserInviteForm';
 import { AppEvents } from '@grafana/data';
+
+import { FormModel } from './UserInviteForm';
 
 export const userInviteSubmit = async (formData: FormModel) => {
   try {

@@ -1,8 +1,10 @@
 import { Field, GrafanaTheme, LinkModel } from '@grafana/data';
 import { css } from '@emotion/css';
 import React from 'react';
+
 import { useStyles } from '../../themes';
 import { Icon } from '../Icon/Icon';
+
 import { DataLinkButton } from './DataLinkButton';
 
 type Props = {

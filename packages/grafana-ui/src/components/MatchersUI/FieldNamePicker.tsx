@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { FieldNamePickerConfigSettings, SelectableValue, StandardEditorProps } from '@grafana/data';
+
 import { Select } from '../Select/Select';
+
 import { useFieldDisplayNames, useSelectOptions, frameHasName } from './utils';
 
 // Pick a field name out of the fulds

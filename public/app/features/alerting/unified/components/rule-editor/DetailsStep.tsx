@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import { RuleFormType, RuleFormValues } from '../../types/rule-form';
+
 import LabelsField from './LabelsField';
 import AnnotationsField from './AnnotationsField';
 import { RuleEditorSection } from './RuleEditorSection';
-import { useFormContext } from 'react-hook-form';
-import { RuleFormType, RuleFormValues } from '../../types/rule-form';
 
 export const DetailsStep: FC = () => {
   const { watch } = useFormContext<RuleFormValues>();

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   HorizontalGroup,
   Button,
@@ -14,6 +15,7 @@ import { getConfig } from 'app/core/config';
 import { OrgRole } from 'app/types';
 import { locationService } from '@grafana/runtime';
 import { locationUtil } from '@grafana/data';
+
 import { userInviteSubmit } from './api';
 
 const roles = [

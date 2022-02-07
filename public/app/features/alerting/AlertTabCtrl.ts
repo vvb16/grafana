@@ -1,19 +1,22 @@
 import { find, map, reduce, remove } from 'lodash';
+
 import coreModule from 'app/angular/core_module';
-import { ThresholdMapper } from './state/ThresholdMapper';
 import { QueryPart } from 'app/angular/components/query_part';
-import alertDef from './state/alertDef';
 import config from 'app/core/config';
 import appEvents from 'app/core/app_events';
 import { getBackendSrv } from '@grafana/runtime';
-import { DashboardSrv } from '../dashboard/services/DashboardSrv';
-import DatasourceSrv from '../plugins/datasource_srv';
 import { DataQuery, DataSourceApi, rangeUtil } from '@grafana/data';
 import { PanelModel } from 'app/features/dashboard/state';
-import { getDefaultCondition } from './getAlertingValidationMessage';
 import { CoreEvents } from 'app/types';
 import { promiseToDigest } from 'app/angular/promiseToDigest';
+
+import DatasourceSrv from '../plugins/datasource_srv';
+import { DashboardSrv } from '../dashboard/services/DashboardSrv';
 import { ShowConfirmModalEvent } from '../../types/events';
+
+import { getDefaultCondition } from './getAlertingValidationMessage';
+import alertDef from './state/alertDef';
+import { ThresholdMapper } from './state/ThresholdMapper';
 
 export class AlertTabCtrl {
   panel: PanelModel;

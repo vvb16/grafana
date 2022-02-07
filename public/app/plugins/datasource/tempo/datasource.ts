@@ -1,5 +1,7 @@
 import { EMPTY, from, merge, Observable, of, throwError } from 'rxjs';
 import { catchError, map, mergeMap, toArray } from 'rxjs/operators';
+import { identity, pick, pickBy, groupBy, startCase } from 'lodash';
+
 import {
   DataQuery,
   DataQueryRequest,
@@ -14,10 +16,12 @@ import { TraceToLogsOptions } from 'app/core/components/TraceToLogsSettings';
 import { config, BackendSrvRequest, DataSourceWithBackend, getBackendSrv } from '@grafana/runtime';
 import { serializeParams } from 'app/core/utils/fetch';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
-import { identity, pick, pickBy, groupBy, startCase } from 'lodash';
+import { NodeGraphOptions } from 'app/core/components/NodeGraphSettings';
+
 import { LokiOptions, LokiQuery } from '../loki/types';
 import { PrometheusDatasource } from '../prometheus/datasource';
 import { PromQuery } from '../prometheus/types';
+
 import {
   failedMetric,
   histogramMetric,
@@ -31,7 +35,6 @@ import {
   transformFromOTLP as transformFromOTEL,
   createTableFrameFromSearch,
 } from './resultTransformer';
-import { NodeGraphOptions } from 'app/core/components/NodeGraphSettings';
 
 // search = Loki search, nativeSearch = Tempo search for backwards compatibility
 export type TempoQueryType = 'search' | 'traceId' | 'serviceMap' | 'upload' | 'nativeSearch' | 'clear';

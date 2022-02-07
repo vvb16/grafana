@@ -1,11 +1,14 @@
 import React from 'react';
+import { cloneDeep } from 'lodash';
+
 import { CanvasGroupOptions, canvasElementRegistry } from 'app/features/canvas';
 import { DimensionContext } from 'app/features/dimensions';
 import { notFoundItem } from 'app/features/canvas/elements/notFound';
-import { ElementState } from './element';
-import { CanvasElementItem } from '../element';
 import { LayerActionID } from 'app/plugins/panel/canvas/types';
-import { cloneDeep } from 'lodash';
+
+import { CanvasElementItem } from '../element';
+
+import { ElementState } from './element';
 import { Scene } from './scene';
 import { RootElement } from './root';
 

@@ -5,11 +5,13 @@ import { SlideDown } from 'app/core/components/Animations/SlideDown';
 import { LegacyForms, Tooltip, Icon, Button } from '@grafana/ui';
 const { Input } = LegacyForms;
 
-import { StoreState, TeamGroup } from '../../types';
-import { addTeamGroup, loadTeamGroups, removeTeamGroup } from './state/actions';
-import { getTeamGroups } from './state/selectors';
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
 import { CloseButton } from 'app/core/components/CloseButton/CloseButton';
+
+import { StoreState, TeamGroup } from '../../types';
+
+import { addTeamGroup, loadTeamGroups, removeTeamGroup } from './state/actions';
+import { getTeamGroups } from './state/selectors';
 
 function mapStateToProps(state: StoreState) {
   return {

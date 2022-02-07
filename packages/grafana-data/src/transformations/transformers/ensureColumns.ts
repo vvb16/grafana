@@ -1,9 +1,11 @@
-import { seriesToColumnsTransformer } from './seriesToColumns';
+import { map } from 'rxjs/operators';
+
 import { DataFrame } from '../../types/dataFrame';
 import { getTimeField } from '../../dataframe/processDataFrame';
 import { SynchronousDataTransformerInfo } from '../../types/transformations';
+
+import { seriesToColumnsTransformer } from './seriesToColumns';
 import { DataTransformerID } from './ids';
-import { map } from 'rxjs/operators';
 
 export const ensureColumnsTransformer: SynchronousDataTransformerInfo = {
   id: DataTransformerID.ensureColumns,

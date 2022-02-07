@@ -1,13 +1,14 @@
 import React from 'react';
-import { Icon } from '../Icon/Icon';
 import RCCascader from 'rc-cascader';
-
-import { Select } from '../Select/Select';
-import { Input } from '../Input/Input';
 import { SelectableValue } from '@grafana/data';
 import { css } from '@emotion/css';
-import { onChangeCascader } from './optionMappings';
 import memoizeOne from 'memoize-one';
+
+import { Icon } from '../Icon/Icon';
+import { Select } from '../Select/Select';
+import { Input } from '../Input/Input';
+
+import { onChangeCascader } from './optionMappings';
 
 export interface CascaderProps {
   /** The separator between levels in the search */

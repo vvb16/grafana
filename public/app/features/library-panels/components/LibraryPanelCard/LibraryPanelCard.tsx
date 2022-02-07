@@ -1,12 +1,14 @@
 import React, { ReactElement, useState } from 'react';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Icon, Link, useStyles2 } from '@grafana/ui';
-import { LibraryElementDTO } from '../../types';
 import { PanelTypeCard } from 'app/features/panel/components/VizTypePicker/PanelTypeCard';
-import { DeleteLibraryPanelModal } from '../DeleteLibraryPanelModal/DeleteLibraryPanelModal';
 import { config } from '@grafana/runtime';
 import { getPanelPluginNotFound } from 'app/features/panel/components/PanelPluginError';
+
+import { DeleteLibraryPanelModal } from '../DeleteLibraryPanelModal/DeleteLibraryPanelModal';
+import { LibraryElementDTO } from '../../types';
 
 export interface LibraryPanelCardProps {
   libraryPanel: LibraryElementDTO;

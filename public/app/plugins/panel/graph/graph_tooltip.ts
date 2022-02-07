@@ -1,4 +1,5 @@
 import $ from 'jquery';
+
 import { appEvents } from 'app/core/core';
 import { CoreEvents } from 'app/types';
 import {

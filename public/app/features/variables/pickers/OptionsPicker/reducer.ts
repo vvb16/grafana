@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { cloneDeep, isString, trim } from 'lodash';
+
 import { VariableOption, VariableWithOptions } from '../../types';
 import { isMulti, isQuery } from '../../guard';
 import { applyStateChanges } from '../../../../core/utils/applyStateChanges';

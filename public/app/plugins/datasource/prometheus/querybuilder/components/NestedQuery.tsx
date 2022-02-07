@@ -1,10 +1,13 @@
 import { css } from '@emotion/css';
-import { GrafanaTheme2, toOption } from '@grafana/data';
 import { FlexItem } from '@grafana/experimental';
-import { IconButton, Input, Select, useStyles2 } from '@grafana/ui';
 import React from 'react';
+
+import { GrafanaTheme2, toOption } from '@grafana/data';
+import { IconButton, Input, Select, useStyles2 } from '@grafana/ui';
+
 import { PrometheusDatasource } from '../../datasource';
 import { PromVisualQueryBinary } from '../types';
+
 import { PromQueryBuilder } from './PromQueryBuilder';
 
 export interface Props {

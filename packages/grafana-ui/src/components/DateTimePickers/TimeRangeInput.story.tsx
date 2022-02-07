@@ -2,9 +2,12 @@ import { Story } from '@storybook/react';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { dateTime, DefaultTimeZone, TimeRange, TimeZone } from '@grafana/data';
+
+import { TimeRangeInput } from '@grafana/ui';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { UseState } from '../../utils/storybook/UseState';
-import { TimeRangeInput } from '@grafana/ui';
+
 import { TimeRangeInputProps } from './TimeRangeInput';
 import mdx from './TimeRangeInput.mdx';
 

@@ -6,6 +6,7 @@ import { map } from 'lodash';
 // Types
 import { InlineFormLabel, RadioButtonGroup, InlineField, Input, Select } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
+
 import { LokiQuery, LokiQueryType } from '../types';
 
 export interface LokiOptionFieldsProps {

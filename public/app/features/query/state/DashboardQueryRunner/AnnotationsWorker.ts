@@ -1,8 +1,11 @@
 import { cloneDeep } from 'lodash';
 import { from, merge, Observable, of } from 'rxjs';
 import { catchError, filter, finalize, map, mergeAll, mergeMap, reduce, takeUntil } from 'rxjs/operators';
+
 import { getDataSourceSrv } from '@grafana/runtime';
 import { AnnotationQuery, DataSourceApi } from '@grafana/data';
+
+import { AnnotationQueryFinished, AnnotationQueryStarted } from '../../../../types/events';
 
 import {
   AnnotationQueryRunner,
@@ -13,7 +16,6 @@ import {
 import { emptyResult, handleDatasourceSrvError, translateQueryResult } from './utils';
 import { LegacyAnnotationQueryRunner } from './LegacyAnnotationQueryRunner';
 import { AnnotationsQueryRunner } from './AnnotationsQueryRunner';
-import { AnnotationQueryFinished, AnnotationQueryStarted } from '../../../../types/events';
 import { getDashboardQueryRunner } from './DashboardQueryRunner';
 
 export class AnnotationsWorker implements DashboardQueryRunnerWorker {

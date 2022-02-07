@@ -1,13 +1,16 @@
 import React, { FC, useMemo } from 'react';
+import { css } from '@emotion/css';
+import { useFormContext } from 'react-hook-form';
+
 import { DataSourceInstanceSettings, GrafanaTheme2, SelectableValue } from '@grafana/data';
 import { Field, Input, InputControl, Select, useStyles2 } from '@grafana/ui';
-import { css } from '@emotion/css';
-import { RuleEditorSection } from './RuleEditorSection';
-import { useFormContext } from 'react-hook-form';
+import { contextSrv } from 'app/core/services/context_srv';
+
 import { RuleFormType, RuleFormValues } from '../../types/rule-form';
+
+import { RuleEditorSection } from './RuleEditorSection';
 import { Folder, RuleFolderPicker } from './RuleFolderPicker';
 import { GroupAndNamespaceFields } from './GroupAndNamespaceFields';
-import { contextSrv } from 'app/core/services/context_srv';
 import { CloudRulesSourcePicker } from './CloudRulesSourcePicker';
 import { checkForPathSeparator } from './util';
 

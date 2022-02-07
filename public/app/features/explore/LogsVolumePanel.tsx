@@ -1,8 +1,10 @@
-import { AbsoluteTimeRange, DataQueryResponse, LoadingState, SplitOpen, TimeZone } from '@grafana/data';
-import { Alert, Button, Collapse, InlineField, TooltipDisplayMode, useStyles2, useTheme2 } from '@grafana/ui';
-import { ExploreGraph } from './ExploreGraph';
 import React from 'react';
 import { css } from '@emotion/css';
+
+import { AbsoluteTimeRange, DataQueryResponse, LoadingState, SplitOpen, TimeZone } from '@grafana/data';
+import { Alert, Button, Collapse, InlineField, TooltipDisplayMode, useStyles2, useTheme2 } from '@grafana/ui';
+
+import { ExploreGraph } from './ExploreGraph';
 
 type Props = {
   logsVolumeData?: DataQueryResponse;

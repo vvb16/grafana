@@ -2,6 +2,8 @@ import React, { PureComponent, createRef } from 'react';
 import { css } from '@emotion/css';
 import { capitalize } from 'lodash';
 import memoizeOne from 'memoize-one';
+import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
+
 import { TooltipDisplayMode } from '@grafana/schema';
 import {
   rangeUtil,
@@ -33,9 +35,9 @@ import {
 } from '@grafana/ui';
 import store from 'app/core/store';
 import { dedupLogRows, filterLogLevels } from 'app/core/logs_model';
+
 import { LogsMetaRow } from './LogsMetaRow';
 import LogsNavigation from './LogsNavigation';
-import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
 import { ExploreGraph } from './ExploreGraph';
 
 const SETTINGS_KEYS = {

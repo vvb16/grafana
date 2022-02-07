@@ -3,11 +3,12 @@ import { GrafanaTheme, DataQueryError, LogRowModel, textUtil } from '@grafana/da
 import { css, cx } from '@emotion/css';
 
 import { Alert } from '../Alert/Alert';
-import { LogRowContextRows, LogRowContextQueryErrors, HasMoreContextRows } from './LogRowContextProvider';
 import { useStyles, useTheme } from '../../themes/ThemeContext';
 import { CustomScrollbar } from '../CustomScrollbar/CustomScrollbar';
 import { List } from '../List/List';
 import { ClickOutsideWrapper } from '../ClickOutsideWrapper/ClickOutsideWrapper';
+
+import { LogRowContextRows, LogRowContextQueryErrors, HasMoreContextRows } from './LogRowContextProvider';
 import { LogMessageAnsi } from './LogMessageAnsi';
 
 interface LogRowContextProps {

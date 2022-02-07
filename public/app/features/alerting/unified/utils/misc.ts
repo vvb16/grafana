@@ -1,13 +1,15 @@
+import { sortBy } from 'lodash';
+
 import { urlUtil, UrlQueryMap, Labels } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { Alert, CombinedRule, FilterState, RulesSource, SilenceFilterState } from 'app/types/unified-alerting';
+import { SortOrder } from 'app/plugins/panel/alertlist/types';
+import { alertInstanceKey } from 'app/features/alerting/unified/utils/rules';
+import { GrafanaAlertState, PromAlertingRuleState } from 'app/types/unified-alerting-dto';
+
 import { ALERTMANAGER_NAME_QUERY_KEY } from './constants';
 import { getRulesSourceName } from './datasource';
 import * as ruleId from './rule-id';
-import { SortOrder } from 'app/plugins/panel/alertlist/types';
-import { alertInstanceKey } from 'app/features/alerting/unified/utils/rules';
-import { sortBy } from 'lodash';
-import { GrafanaAlertState, PromAlertingRuleState } from 'app/types/unified-alerting-dto';
 import { getMatcherQueryParams } from './matchers';
 
 export function createViewLink(ruleSource: RulesSource, rule: CombinedRule, returnTo: string): string {

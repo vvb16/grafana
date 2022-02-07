@@ -1,4 +1,7 @@
 import { interval, lastValueFrom, of, throwError } from 'rxjs';
+import { getTemplateSrvDependencies } from 'test/helpers/getTemplateSrvDependencies';
+import { createFetchResponse } from 'test/helpers/createFetchResponse';
+
 import {
   DataFrame,
   DataQueryErrorType,
@@ -6,10 +9,11 @@ import {
   dateMath,
   getFrameDisplayName,
 } from '@grafana/data';
-
 import * as redux from 'app/store/store';
-import { CloudWatchDatasource, MAX_ATTEMPTS } from '../datasource';
 import { TemplateSrv } from 'app/features/templating/template_srv';
+import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
+import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+
 import {
   MetricEditorMode,
   CloudWatchJsonData,
@@ -19,14 +23,10 @@ import {
   LogAction,
   MetricQueryType,
 } from '../types';
-import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
-import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { CloudWatchDatasource, MAX_ATTEMPTS } from '../datasource';
 import { convertToStoreState } from '../../../../../test/helpers/convertToStoreState';
-import { getTemplateSrvDependencies } from 'test/helpers/getTemplateSrvDependencies';
 import { CustomVariableModel, initialVariableModelState, VariableHide } from '../../../../features/variables/types';
-
 import * as rxjsUtils from '../utils/rxjs/increasingInterval';
-import { createFetchResponse } from 'test/helpers/createFetchResponse';
 
 jest.mock('@grafana/runtime', () => ({
   ...(jest.requireActual('@grafana/runtime') as unknown as object),

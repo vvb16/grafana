@@ -1,16 +1,20 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { ExploreId, ExploreItemState } from 'app/types/explore';
 import { PageToolbar, SetInterval, ToolbarButton, ToolbarButtonRow } from '@grafana/ui';
 import { DataSourceInstanceSettings, RawTimeRange } from '@grafana/data';
 import { DataSourcePicker } from '@grafana/runtime';
 import { StoreState } from 'app/types/store';
 import { createAndCopyShortLink } from 'app/core/utils/shortLinks';
+
+import { getFiscalYearStartMonth, getTimeZone } from '../profile/state/selectors';
+import { updateFiscalYearStartMonthForSession, updateTimeZoneForSession } from '../profile/state/reducers';
+import { DashNavButton } from '../dashboard/components/DashNav/DashNavButton';
+
 import { changeDatasource } from './state/datasource';
 import { splitClose, splitOpen } from './state/main';
 import { syncTimes, changeRefreshInterval } from './state/time';
-import { getFiscalYearStartMonth, getTimeZone } from '../profile/state/selectors';
-import { updateFiscalYearStartMonthForSession, updateTimeZoneForSession } from '../profile/state/reducers';
 import { ExploreTimeControls } from './ExploreTimeControls';
 import { LiveTailButton } from './LiveTailButton';
 import { RunButton } from './RunButton';
@@ -18,7 +22,6 @@ import { LiveTailControls } from './useLiveTailControls';
 import { cancelQueries, runQueries } from './state/query';
 import ReturnToDashboardButton from './ReturnToDashboardButton';
 import { isSplit } from './state/selectors';
-import { DashNavButton } from '../dashboard/components/DashNav/DashNavButton';
 
 interface OwnProps {
   exploreId: ExploreId;

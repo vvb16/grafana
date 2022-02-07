@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme } from '@grafana/data';
 import { stylesFactory, useTheme } from '@grafana/ui';
-import { TutorialCard } from './TutorialCard';
+
 import { Card, SetupStep, TutorialCardType } from '../types';
+
+import { TutorialCard } from './TutorialCard';
 import { DocsCard } from './DocsCard';
 
 interface Props {

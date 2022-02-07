@@ -19,15 +19,10 @@ import { DataLinkButton, TextArea, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2, LinkModel } from '@grafana/data';
 import IoLink from 'react-icons/lib/io/link';
 
-import AccordianKeyValues from './AccordianKeyValues';
-import AccordianLogs from './AccordianLogs';
-import AccordianText from './AccordianText';
-import DetailState from './DetailState';
 import { formatDuration } from '../utils';
 import LabeledList from '../../common/LabeledList';
 import { SpanLinkFunc, TNil } from '../../types';
 import { TraceKeyValuePair, TraceLink, TraceLog, TraceSpan } from '../../types/trace';
-import AccordianReferences from './AccordianReferences';
 import { autoColor } from '../../Theme';
 import { UIDivider } from '../../uiElementsContext';
 import {
@@ -40,6 +35,12 @@ import {
   ubMy1,
   ubTxRightAlign,
 } from '../../uberUtilityStyles';
+
+import AccordianReferences from './AccordianReferences';
+import DetailState from './DetailState';
+import AccordianText from './AccordianText';
+import AccordianLogs from './AccordianLogs';
+import AccordianKeyValues from './AccordianKeyValues';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

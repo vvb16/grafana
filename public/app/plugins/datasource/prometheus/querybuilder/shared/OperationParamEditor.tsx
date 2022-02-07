@@ -1,6 +1,8 @@
+import React, { ComponentType } from 'react';
+
 import { toOption } from '@grafana/data';
 import { Input, Select } from '@grafana/ui';
-import React, { ComponentType } from 'react';
+
 import { QueryBuilderOperationParamDef, QueryBuilderOperationParamEditorProps } from '../shared/types';
 
 export function getOperationParamEditor(

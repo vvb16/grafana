@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+
 import { Select } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
 

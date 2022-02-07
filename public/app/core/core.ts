@@ -1,6 +1,7 @@
 import './jquery_extended';
 import './services/search_srv';
 import { colors, JsonExplorer } from '@grafana/ui/';
+
 import appEvents from './app_events';
 import { assignModelProperties } from './utils/model_utils';
 import { contextSrv } from './services/context_srv';

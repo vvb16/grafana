@@ -1,4 +1,6 @@
 import React from 'react';
+import { shallow } from 'enzyme';
+
 import {
   DataSourceApi,
   LoadingState,
@@ -9,7 +11,7 @@ import {
   createTheme,
 } from '@grafana/data';
 import { ExploreId } from 'app/types/explore';
-import { shallow } from 'enzyme';
+
 import { Explore, Props } from './Explore';
 import { scanStopAction } from './state/query';
 import { SecondaryActions } from './SecondaryActions';

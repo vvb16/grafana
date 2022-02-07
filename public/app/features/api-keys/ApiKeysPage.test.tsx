@@ -1,14 +1,17 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
-import { ApiKeysPageUnconnected, Props } from './ApiKeysPage';
+import userEvent from '@testing-library/user-event';
+
 import { ApiKey, OrgRole } from 'app/types';
 import { NavModel } from '@grafana/data';
-import { setSearchQuery } from './state/reducers';
-import { mockToolkitActionCreator } from '../../../test/core/redux/mocks';
-import { getMultipleMockKeys } from './__mocks__/apiKeysMock';
 import { selectors } from '@grafana/e2e-selectors';
-import userEvent from '@testing-library/user-event';
+
+import { mockToolkitActionCreator } from '../../../test/core/redux/mocks';
 import { silenceConsoleOutput } from '../../../test/core/utils/silenceConsoleOutput';
+
+import { ApiKeysPageUnconnected, Props } from './ApiKeysPage';
+import { setSearchQuery } from './state/reducers';
+import { getMultipleMockKeys } from './__mocks__/apiKeysMock';
 
 const setup = (propOverrides: Partial<Props>) => {
   const loadApiKeysMock = jest.fn();

@@ -4,6 +4,7 @@ import { TimeZone, LogsDedupStrategy, LogRowModel, Field, LinkModel, LogsSortOrd
 
 import { Themeable2 } from '../../types/theme';
 import { withTheme2 } from '../../themes/index';
+
 import { getLogRowStyles } from './getLogRowStyles';
 
 //Components

@@ -1,4 +1,5 @@
 import { monacoTypes } from '@grafana/ui';
+
 import MonacoMock from '../../__mocks__/monarch/Monaco';
 import TextModel from '../../__mocks__/monarch/TextModel';
 import {
@@ -9,10 +10,11 @@ import {
 } from '../../__mocks__/cloudwatch-sql-test-data';
 import { LinkedToken } from '../../monarch/LinkedToken';
 import { linkedTokenBuilder } from '../../monarch/linkedTokenBuilder';
-import { SQLTokenTypes } from './types';
-import { getMetricNameToken, getNamespaceToken, getSelectStatisticToken, getSelectToken } from './tokenUtils';
 import { SELECT } from '../language';
 import cloudWatchSqlLanguageDefinition from '../definition';
+
+import { SQLTokenTypes } from './types';
+import { getMetricNameToken, getNamespaceToken, getSelectStatisticToken, getSelectToken } from './tokenUtils';
 
 const getToken = (
   query: string,

@@ -1,6 +1,7 @@
+import { find, isNumber } from 'lodash';
+
 import coreModule from 'app/angular/core_module';
 import config from 'app/core/config';
-import { find, isNumber } from 'lodash';
 import { NavModel } from '@grafana/data';
 
 export class NavModelSrv {

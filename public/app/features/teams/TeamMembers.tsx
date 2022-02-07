@@ -1,19 +1,21 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { SlideDown } from 'app/core/components/Animations/SlideDown';
 import { UserPicker } from 'app/core/components/Select/UserPicker';
 import { TagBadge } from 'app/core/components/TagFilter/TagBadge';
 import { TeamMember, OrgUser } from 'app/types';
-import { addTeamMember } from './state/actions';
-import { getSearchMemberQuery, isSignedInUserTeamAdmin } from './state/selectors';
 import { WithFeatureToggle } from 'app/core/components/WithFeatureToggle';
 import { config } from 'app/core/config';
 import { contextSrv } from 'app/core/services/context_srv';
-import TeamMemberRow from './TeamMemberRow';
-import { setSearchMemberQuery } from './state/reducers';
 import { CloseButton } from 'app/core/components/CloseButton/CloseButton';
 import { Button, FilterInput, Label } from '@grafana/ui';
 import { SelectableValue } from '@grafana/data';
+
+import { setSearchMemberQuery } from './state/reducers';
+import TeamMemberRow from './TeamMemberRow';
+import { getSearchMemberQuery, isSignedInUserTeamAdmin } from './state/selectors';
+import { addTeamMember } from './state/actions';
 
 function mapStateToProps(state: any) {
   return {

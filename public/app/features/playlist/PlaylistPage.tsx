@@ -1,15 +1,18 @@
 import React, { FC, useState } from 'react';
 import { connect, MapStateToProps } from 'react-redux';
+import { useDebounce } from 'react-use';
+
 import { NavModel } from '@grafana/data';
 import Page from 'app/core/components/Page/Page';
 import { StoreState } from 'app/types';
-import { GrafanaRouteComponentProps } from '../../core/navigation/types';
 import { getNavModel } from 'app/core/selectors/navModel';
-import { useDebounce } from 'react-use';
-import { PlaylistDTO } from './types';
 import { ConfirmModal } from '@grafana/ui';
 import PageActionBar from 'app/core/components/PageActionBar/PageActionBar';
+
+import { GrafanaRouteComponentProps } from '../../core/navigation/types';
 import EmptyListCTA from '../../core/components/EmptyListCTA/EmptyListCTA';
+
+import { PlaylistDTO } from './types';
 import { deletePlaylist, getAllPlaylist } from './api';
 import { StartModal } from './StartModal';
 import { PlaylistPageList } from './PlaylistPageList';

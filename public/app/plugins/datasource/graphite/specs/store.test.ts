@@ -1,7 +1,9 @@
-import { dispatch } from 'app/store/store';
-import gfunc from '../gfunc';
 import { TemplateSrvStub } from 'test/specs/helpers';
 import { silenceConsoleOutput } from 'test/core/utils/silenceConsoleOutput';
+
+import { dispatch } from 'app/store/store';
+
+import gfunc from '../gfunc';
 import { actions } from '../state/actions';
 import {
   getAltSegmentsSelectables,

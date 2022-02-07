@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import traceGenerator from '../demo/trace-generators';
+
 import {
   findServerChildSpan,
   createViewedBoundsFunc,
@@ -21,8 +23,6 @@ import {
   spanContainsErredSpan,
   spanHasTag,
 } from './utils';
-
-import traceGenerator from '../demo/trace-generators';
 
 describe('TraceTimelineViewer/utils', () => {
   describe('getViewedBounds()', () => {

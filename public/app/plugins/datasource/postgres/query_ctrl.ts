@@ -1,15 +1,17 @@
 import { clone, filter, find, findIndex, indexOf, map } from 'lodash';
-import appEvents from 'app/core/app_events';
-import { PostgresMetaQuery } from './meta_query';
-import { QueryCtrl } from 'app/plugins/sdk';
-import { SqlPart } from 'app/angular/components/sql_part/sql_part';
-import PostgresQueryModel from './postgres_query_model';
-import sqlPart from './sql_part';
 import { auto } from 'angular';
+
+import { SqlPart } from 'app/angular/components/sql_part/sql_part';
+import { QueryCtrl } from 'app/plugins/sdk';
+import appEvents from 'app/core/app_events';
 import { PanelEvents, QueryResultMeta } from '@grafana/data';
 import { VariableWithMultiSupport } from 'app/features/variables/types';
 import { TemplateSrv } from '@grafana/runtime';
 import { ShowConfirmModalEvent } from 'app/types/events';
+
+import sqlPart from './sql_part';
+import PostgresQueryModel from './postgres_query_model';
+import { PostgresMetaQuery } from './meta_query';
 
 const defaultQuery = `SELECT
   $__time(time_column),

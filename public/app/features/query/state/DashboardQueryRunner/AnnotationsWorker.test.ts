@@ -1,15 +1,17 @@
 import { Subject, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 import { setDataSourceSrv } from '@grafana/runtime';
+import { AnnotationQuery } from '@grafana/data';
+
+import * as annotationsSrv from '../../../annotations/executeAnnotationQuery';
+import { silenceConsoleOutput } from '../../../../../test/core/utils/silenceConsoleOutput';
 
 import { AnnotationsWorker } from './AnnotationsWorker';
-import * as annotationsSrv from '../../../annotations/executeAnnotationQuery';
 import { getDefaultOptions, LEGACY_DS_NAME, NEXT_GEN_DS_NAME, toAsyncOfResult } from './testHelpers';
-import { silenceConsoleOutput } from '../../../../../test/core/utils/silenceConsoleOutput';
 import { createDashboardQueryRunner, setDashboardQueryRunnerFactory } from './DashboardQueryRunner';
 import { emptyResult } from './utils';
 import { DashboardQueryRunnerOptions, DashboardQueryRunnerWorkerResult } from './types';
-import { AnnotationQuery } from '@grafana/data';
-import { delay } from 'rxjs/operators';
 
 function getTestContext(dataSourceSrvRejects = false) {
   jest.clearAllMocks();

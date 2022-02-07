@@ -1,7 +1,10 @@
 import React, { memo, useEffect } from 'react';
+
 import { QueryEditorProps, CoreApp } from '@grafana/data';
+
 import { PrometheusDatasource } from '../datasource';
 import { PromQuery, PromOptions } from '../types';
+
 import PromQueryField from './PromQueryField';
 import { PromExploreExtraField } from './PromExploreExtraField';
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AlertRuleListUnconnected, Props } from './AlertRuleList';
-import { AlertRule } from '../../types';
-import appEvents from '../../core/app_events';
-import { NavModel } from '@grafana/data';
-import { setSearchQuery } from './state/reducers';
 import { mockToolkitActionCreator } from 'test/core/redux/mocks';
+
+import { NavModel } from '@grafana/data';
 import { getRouteComponentProps } from 'app/core/navigation/__mocks__/routeProps';
 import { locationService } from '@grafana/runtime';
+
+import appEvents from '../../core/app_events';
+import { AlertRule } from '../../types';
 import { ShowModalReactEvent } from '../../types/events';
+
+import { setSearchQuery } from './state/reducers';
+import { AlertRuleListUnconnected, Props } from './AlertRuleList';
 import { AlertHowToModal } from './AlertHowToModal';
 
 jest.mock('../../core/app_events', () => ({

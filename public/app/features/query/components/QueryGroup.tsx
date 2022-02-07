@@ -1,6 +1,10 @@
 // Libraries
 import React, { PureComponent } from 'react';
+
 // Components
+import { Unsubscribable } from 'rxjs';
+import { css } from '@emotion/css';
+
 import {
   Button,
   CustomScrollbar,
@@ -11,7 +15,7 @@ import {
   stylesFactory,
 } from '@grafana/ui';
 import { DataSourcePicker, getDataSourceSrv } from '@grafana/runtime';
-import { QueryEditorRows } from './QueryEditorRows';
+
 // Services
 import { backendSrv } from 'app/core/services/backend_srv';
 import config from 'app/core/config';
@@ -26,16 +30,17 @@ import {
 } from '@grafana/data';
 import { PluginHelp } from 'app/core/components/PluginHelp/PluginHelp';
 import { addQuery } from 'app/core/utils/query';
-import { Unsubscribable } from 'rxjs';
 import { dataSource as expressionDatasource } from 'app/features/expressions/ExpressionDatasource';
 import { selectors } from '@grafana/e2e-selectors';
-import { PanelQueryRunner } from '../state/PanelQueryRunner';
-import { QueryGroupOptionsEditor } from './QueryGroupOptions';
 import { DashboardQueryEditor, isSharedDashboardQuery } from 'app/plugins/datasource/dashboard';
-import { css } from '@emotion/css';
 import { QueryGroupOptions } from 'app/types';
-import { GroupActionComponents } from './QueryActionComponent';
+
+import { PanelQueryRunner } from '../state/PanelQueryRunner';
 import { updateQueries } from '../state/updateQueries';
+
+import { QueryGroupOptionsEditor } from './QueryGroupOptions';
+import { GroupActionComponents } from './QueryActionComponent';
+import { QueryEditorRows } from './QueryEditorRows';
 
 interface Props {
   queryRunner: PanelQueryRunner;

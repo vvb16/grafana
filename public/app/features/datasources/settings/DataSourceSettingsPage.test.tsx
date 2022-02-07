@@ -1,13 +1,16 @@
 import React from 'react';
-import { DataSourceSettingsPage, Props } from './DataSourceSettingsPage';
+import { screen, render } from '@testing-library/react';
+
+import { getRouteComponentProps } from 'app/core/navigation/__mocks__/routeProps';
+import { cleanUpAction } from 'app/core/actions/cleanUp';
+import { selectors } from '@grafana/e2e-selectors';
+import { PluginState } from '@grafana/data';
+
 import { getMockDataSource } from '../__mocks__/dataSourcesMocks';
 import { getMockPlugin } from '../../plugins/__mocks__/pluginMocks';
 import { dataSourceLoaded, setDataSourceName, setIsDefault } from '../state/reducers';
-import { getRouteComponentProps } from 'app/core/navigation/__mocks__/routeProps';
-import { cleanUpAction } from 'app/core/actions/cleanUp';
-import { screen, render } from '@testing-library/react';
-import { selectors } from '@grafana/e2e-selectors';
-import { PluginState } from '@grafana/data';
+
+import { DataSourceSettingsPage, Props } from './DataSourceSettingsPage';
 
 jest.mock('app/core/core', () => {
   return {

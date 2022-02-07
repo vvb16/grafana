@@ -1,6 +1,9 @@
+import React, { useCallback, useMemo } from 'react';
+import { debounce } from 'lodash';
+
 import { Alert } from '@grafana/ui';
 import { QueryEditorProps } from '@grafana/data';
-import React, { useCallback, useMemo } from 'react';
+
 import AzureMonitorDatasource from '../../datasource';
 import {
   AzureMonitorQuery,
@@ -10,14 +13,14 @@ import {
   AzureDataSourceJsonData,
 } from '../../types';
 import MetricsQueryEditor from '../MetricsQueryEditor';
-import QueryTypeField from './QueryTypeField';
 import useLastError from '../../utils/useLastError';
 import LogsQueryEditor from '../LogsQueryEditor';
 import ArgQueryEditor from '../ArgQueryEditor';
 import ApplicationInsightsEditor from '../ApplicationInsightsEditor';
 import InsightsAnalyticsEditor from '../InsightsAnalyticsEditor';
 import { Space } from '../Space';
-import { debounce } from 'lodash';
+
+import QueryTypeField from './QueryTypeField';
 import usePreparedQuery from './usePreparedQuery';
 
 export type AzureMonitorQueryEditorProps = QueryEditorProps<

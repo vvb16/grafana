@@ -1,8 +1,10 @@
+import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import { DataSourceInstanceSettings, DataSourcePluginMeta, PluginType } from '@grafana/data';
+import { DataSourceWithBackend } from '@grafana/runtime';
+
 import { ExpressionQuery, ExpressionQueryType } from './types';
 import { ExpressionQueryEditor } from './ExpressionQueryEditor';
-import { DataSourceWithBackend } from '@grafana/runtime';
-import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
 
 /**
  * This is a singleton instance that just pretends to be a DataSource

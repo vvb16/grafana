@@ -1,7 +1,9 @@
-import { MapLayerRegistryItem, Registry, MapLayerOptions, GrafanaTheme2 } from '@grafana/data';
 import Map from 'ol/Map';
-import { carto } from './basemaps/carto';
+
+import { MapLayerRegistryItem, Registry, MapLayerOptions, GrafanaTheme2 } from '@grafana/data';
 import { config } from 'app/core/config';
+
+import { carto } from './basemaps/carto';
 import { basemapLayers } from './basemaps';
 import { dataLayers } from './data';
 

@@ -3,11 +3,13 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { getDefaultNormalizer, render, RenderResult, SelectorMatcherOptions, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import { config } from '@grafana/runtime';
-import { mockPluginApis, getCatalogPluginMock, getPluginsStateMock, mockUserPermissions } from '../__mocks__';
 import { configureStore } from 'app/store/configureStore';
-import PluginDetailsPage from './PluginDetails';
 import { getRouteComponentProps } from 'app/core/navigation/__mocks__/routeProps';
+import { PluginErrorCode, PluginSignatureStatus, PluginType, dateTimeFormatTimeAgo } from '@grafana/data';
+import { selectors } from '@grafana/e2e-selectors';
+
 import {
   CatalogPlugin,
   CatalogPluginDetails,
@@ -19,8 +21,9 @@ import {
 import * as api from '../api';
 import { fetchRemotePlugins } from '../state/actions';
 import { usePluginConfig } from '../hooks/usePluginConfig';
-import { PluginErrorCode, PluginSignatureStatus, PluginType, dateTimeFormatTimeAgo } from '@grafana/data';
-import { selectors } from '@grafana/e2e-selectors';
+import { mockPluginApis, getCatalogPluginMock, getPluginsStateMock, mockUserPermissions } from '../__mocks__';
+
+import PluginDetailsPage from './PluginDetails';
 
 jest.mock('@grafana/runtime', () => {
   const original = jest.requireActual('@grafana/runtime');

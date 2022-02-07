@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 
 import { dateTimeFormatTimeAgo, GrafanaTheme2 } from '@grafana/data';
 import { useStyles2 } from '@grafana/ui';
+
 import { Version } from '../types';
 import { getLatestCompatibleVersion } from '../helpers';
 

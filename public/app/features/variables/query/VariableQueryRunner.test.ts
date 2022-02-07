@@ -1,12 +1,14 @@
 import { of, throwError } from 'rxjs';
-import { getDefaultTimeRange, LoadingState, VariableSupportType } from '@grafana/data';
 import { delay } from 'rxjs/operators';
 
-import { UpdateOptionsResults, VariableQueryRunner } from './VariableQueryRunner';
+import { getDefaultTimeRange, LoadingState, VariableSupportType } from '@grafana/data';
+
 import { queryBuilder } from '../shared/testing/builders';
-import { QueryRunner, QueryRunners } from './queryRunners';
 import { toVariableIdentifier, VariableIdentifier } from '../state/types';
 import { QueryVariableModel } from '../types';
+
+import { QueryRunner, QueryRunners } from './queryRunners';
+import { UpdateOptionsResults, VariableQueryRunner } from './VariableQueryRunner';
 import { updateVariableOptions } from './reducer';
 
 type DoneCallback = {

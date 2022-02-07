@@ -1,5 +1,7 @@
 import { Observable, of, OperatorFunction } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { isString } from 'lodash';
+
 import {
   AnnotationEvent,
   AnnotationEventFieldSource,
@@ -13,8 +15,6 @@ import {
   KeyValue,
   standardTransformers,
 } from '@grafana/data';
-
-import { isString } from 'lodash';
 
 export const standardAnnotationSupport: AnnotationSupport = {
   /**

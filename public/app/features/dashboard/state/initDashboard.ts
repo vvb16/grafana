@@ -7,6 +7,18 @@ import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { keybindingSrv } from 'app/core/services/keybindingSrv';
 // Actions
 import { notifyApp } from 'app/core/actions';
+
+// Types
+import { DashboardDTO, DashboardInitPhase, DashboardRoutes, StoreState, ThunkDispatch, ThunkResult } from 'app/types';
+import { DataQuery, locationUtil, setWeekStart } from '@grafana/data';
+import { dashboardWatcher } from 'app/features/live/dashboard/dashboardWatcher';
+import { config, locationService } from '@grafana/runtime';
+
+import { initVariablesTransaction } from '../../variables/state/actions';
+import { createDashboardQueryRunner } from '../../query/state/DashboardQueryRunner/DashboardQueryRunner';
+
+import { emitDashboardViewEvent } from './analyticsProcessor';
+import { DashboardModel } from './DashboardModel';
 import {
   clearDashboardQueriesToUpdateOnLoad,
   dashboardInitCompleted,
@@ -15,15 +27,6 @@ import {
   dashboardInitServices,
   dashboardInitSlow,
 } from './reducers';
-// Types
-import { DashboardDTO, DashboardInitPhase, DashboardRoutes, StoreState, ThunkDispatch, ThunkResult } from 'app/types';
-import { DashboardModel } from './DashboardModel';
-import { DataQuery, locationUtil, setWeekStart } from '@grafana/data';
-import { initVariablesTransaction } from '../../variables/state/actions';
-import { emitDashboardViewEvent } from './analyticsProcessor';
-import { dashboardWatcher } from 'app/features/live/dashboard/dashboardWatcher';
-import { config, locationService } from '@grafana/runtime';
-import { createDashboardQueryRunner } from '../../query/state/DashboardQueryRunner/DashboardQueryRunner';
 
 export interface InitDashboardArgs {
   urlUid?: string;

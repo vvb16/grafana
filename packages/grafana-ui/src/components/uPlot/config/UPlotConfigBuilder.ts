@@ -10,12 +10,14 @@ import {
   TimeRange,
   TimeZone,
 } from '@grafana/data';
+import { AxisPlacement } from '@grafana/schema';
+
 import { FacetedData, PlotConfig, PlotTooltipInterpolator } from '../types';
+import { pluginLog } from '../utils';
+
 import { ScaleProps, UPlotScaleBuilder } from './UPlotScaleBuilder';
 import { SeriesProps, UPlotSeriesBuilder } from './UPlotSeriesBuilder';
 import { AxisProps, UPlotAxisBuilder } from './UPlotAxisBuilder';
-import { AxisPlacement } from '@grafana/schema';
-import { pluginLog } from '../utils';
 import { getThresholdsDrawHook, UPlotThresholdOptions } from './UPlotThresholds';
 
 const cursorDefaults: Cursor = {

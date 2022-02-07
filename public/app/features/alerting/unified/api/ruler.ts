@@ -1,7 +1,8 @@
 import { lastValueFrom } from 'rxjs';
-import { FetchResponse, getBackendSrv } from '@grafana/runtime';
 
+import { FetchResponse, getBackendSrv } from '@grafana/runtime';
 import { PostableRulerRuleGroupDTO, RulerRuleGroupDTO, RulerRulesConfigDTO } from 'app/types/unified-alerting-dto';
+
 import { getDatasourceAPIId, GRAFANA_RULES_SOURCE_NAME } from '../utils/datasource';
 import { RULER_NOT_SUPPORTED_MSG } from '../utils/constants';
 

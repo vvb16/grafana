@@ -1,9 +1,11 @@
+import { cleanUpPanelState, panelModelAndPluginReady } from 'app/features/panel/state/reducers';
+import { getPanelPlugin } from 'app/features/plugins/__mocks__/pluginMocks';
+
 import { thunkTester } from '../../../../../../test/core/thunk/thunkTester';
+import { DashboardModel, PanelModel } from '../../../state';
+
 import { closeEditor, initialState, PanelEditorState } from './reducers';
 import { exitPanelEditor, initPanelEditor, skipPanelUpdate } from './actions';
-import { cleanUpPanelState, panelModelAndPluginReady } from 'app/features/panel/state/reducers';
-import { DashboardModel, PanelModel } from '../../../state';
-import { getPanelPlugin } from 'app/features/plugins/__mocks__/pluginMocks';
 
 describe('panelEditor actions', () => {
   describe('initPanelEditor', () => {

@@ -22,16 +22,16 @@ import cx from 'classnames';
 import { stylesFactory, withTheme2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 
+import { SpanLinkFunc, TNil } from '../types';
+import { TraceSpan } from '../types/trace';
+import { autoColor } from '../Theme';
+
 import ReferencesButton from './ReferencesButton';
 import TimelineRow from './TimelineRow';
 import { formatDuration, ViewedBoundsFunctionType } from './utils';
 import SpanTreeOffset from './SpanTreeOffset';
 import SpanBar from './SpanBar';
 import Ticks from './Ticks';
-
-import { SpanLinkFunc, TNil } from '../types';
-import { TraceSpan } from '../types/trace';
-import { autoColor } from '../Theme';
 
 const spanBarClassName = 'spanBar';
 const spanBarLabelClassName = 'spanBarLabel';

@@ -17,7 +17,6 @@ import {
   StackingMode,
   GraphTresholdsStyleMode,
 } from '@grafana/schema';
-
 import { graphFieldOptions, commonOptionsBuilder } from '@grafana/ui';
 
 import { LineStyleEditor } from './LineStyleEditor';

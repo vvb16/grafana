@@ -1,17 +1,15 @@
-import { getRootReducer, RootReducerType } from '../state/helpers';
-import { reduxTester } from '../../../../test/core/redux/reduxTester';
-import { toVariableIdentifier, toVariablePayload } from '../state/types';
-import { updateAutoValue, UpdateAutoValueDependencies, updateIntervalVariableOptions } from './actions';
-import { createIntervalOptions } from './reducer';
+import { dateTime } from '@grafana/data';
+
+import { variableAdapters } from '../adapters';
 import {
   addVariable,
   setCurrentVariableValue,
   variableStateFailed,
   variableStateFetching,
 } from '../state/sharedReducer';
-import { variableAdapters } from '../adapters';
-import { createIntervalVariableAdapter } from './adapter';
-import { dateTime } from '@grafana/data';
+import { toVariableIdentifier, toVariablePayload } from '../state/types';
+import { reduxTester } from '../../../../test/core/redux/reduxTester';
+import { getRootReducer, RootReducerType } from '../state/helpers';
 import { getTimeSrv, setTimeSrv, TimeSrv } from '../../dashboard/services/TimeSrv';
 import { TemplateSrv } from '../../templating/template_srv';
 import { intervalBuilder } from '../shared/testing/builders';
@@ -20,6 +18,10 @@ import { notifyApp } from '../../../core/actions';
 import { silenceConsoleOutput } from '../../../../test/core/utils/silenceConsoleOutput';
 import { variablesInitTransaction } from '../state/transactionReducer';
 import { afterEach, beforeEach } from '../../../../test/lib/common';
+
+import { createIntervalVariableAdapter } from './adapter';
+import { createIntervalOptions } from './reducer';
+import { updateAutoValue, UpdateAutoValueDependencies, updateIntervalVariableOptions } from './actions';
 
 describe('interval actions', () => {
   variableAdapters.setInit(() => [createIntervalVariableAdapter()]);

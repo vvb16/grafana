@@ -1,22 +1,4 @@
 import React, { FC, useCallback } from 'react';
-import { VizTooltipOptions } from '@grafana/schema';
-import {
-  FieldDisplay,
-  FALLBACK_COLOR,
-  formattedValueToString,
-  GrafanaTheme2,
-  DataHoverClearEvent,
-  DataHoverEvent,
-} from '@grafana/data';
-import {
-  useTheme2,
-  useStyles2,
-  SeriesTableRowProps,
-  DataLinksContextMenu,
-  SeriesTable,
-  usePanelContext,
-} from '@grafana/ui';
-import { PieChartType, PieChartLabels } from './types';
 import { useTooltip, useTooltipInPortal } from '@visx/tooltip';
 import Pie, { PieArcDatum, ProvidedProps } from '@visx/shape/lib/shapes/Pie';
 import { UseTooltipParams } from '@visx/tooltip/lib/hooks/useTooltip';
@@ -25,10 +7,29 @@ import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import tinycolor from 'tinycolor2';
 import { css } from '@emotion/css';
-
 import { useComponentInstanceId } from '@grafana/ui/src/utils/useComponetInstanceId';
 import { getTooltipContainerStyles } from '@grafana/ui/src/themes/mixins';
+
+import {
+  useTheme2,
+  useStyles2,
+  SeriesTableRowProps,
+  DataLinksContextMenu,
+  SeriesTable,
+  usePanelContext,
+} from '@grafana/ui';
+import {
+  FieldDisplay,
+  FALLBACK_COLOR,
+  formattedValueToString,
+  GrafanaTheme2,
+  DataHoverClearEvent,
+  DataHoverEvent,
+} from '@grafana/data';
+import { VizTooltipOptions } from '@grafana/schema';
 import { selectors } from '@grafana/e2e-selectors';
+
+import { PieChartType, PieChartLabels } from './types';
 import { filterDisplayItems, sumDisplayItemsReducer } from './utils';
 
 /**

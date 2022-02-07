@@ -13,7 +13,9 @@ import {
   DataFrameJSON,
   dataFrameFromJSON,
 } from '@grafana/data';
+
 import { FetchError, FetchResponse } from '../services';
+
 import { toDataQueryError } from './toDataQueryError';
 
 /**

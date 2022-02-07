@@ -2,9 +2,10 @@
 import { pickBy } from 'lodash';
 
 // Utils
+import { Location } from 'history';
+
 import { getBackendSrv, locationService } from '@grafana/runtime';
 import { locationUtil, urlUtil, rangeUtil } from '@grafana/data';
-import { Location } from 'history';
 
 export const queryParamsToPreserve: { [key: string]: boolean } = {
   kiosk: true,

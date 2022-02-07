@@ -2,14 +2,15 @@ import { variableAdapters } from '../adapters';
 import { constantBuilder, customBuilder } from '../shared/testing/builders';
 import { DashboardState, StoreState } from '../../../types';
 import { initialState } from '../../dashboard/state/reducers';
-import { TemplatingState } from './reducers';
 import { ExtendedUrlQueryMap } from '../utils';
-import { templateVarsChangedInUrl } from './actions';
 import { createCustomVariableAdapter } from '../custom/adapter';
-import { VariablesState } from './types';
 import { DashboardModel } from '../../dashboard/state';
 import { createConstantVariableAdapter } from '../constant/adapter';
 import { VariableModel } from '../types';
+
+import { VariablesState } from './types';
+import { templateVarsChangedInUrl } from './actions';
+import { TemplatingState } from './reducers';
 
 const dashboardModel = new DashboardModel({});
 

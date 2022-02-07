@@ -1,6 +1,8 @@
 import React, { FC, useCallback } from 'react';
-import { FILTER_FOR_OPERATOR, FILTER_OUT_OPERATOR, TableCellProps } from './types';
+
 import { Icon, Tooltip } from '..';
+
+import { FILTER_FOR_OPERATOR, FILTER_OUT_OPERATOR, TableCellProps } from './types';
 
 export const FilterActions: FC<TableCellProps> = ({ cell, field, tableStyles, onCellFilterAdded }) => {
   const onFilterFor = useCallback(

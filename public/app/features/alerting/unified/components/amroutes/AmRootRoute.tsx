@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Button, useStyles2 } from '@grafana/ui';
+
 import { AmRouteReceiver, FormAmRoute } from '../../types/amroutes';
+import { isVanillaPrometheusAlertManagerDataSource } from '../../utils/datasource';
+
 import { AmRootRouteForm } from './AmRootRouteForm';
 import { AmRootRouteRead } from './AmRootRouteRead';
-import { isVanillaPrometheusAlertManagerDataSource } from '../../utils/datasource';
 
 export interface AmRootRouteProps {
   isEditMode: boolean;

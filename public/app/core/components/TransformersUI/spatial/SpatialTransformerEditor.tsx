@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { css } from '@emotion/css';
+
 import {
   DataTransformerID,
   FrameGeometrySource,
@@ -11,12 +12,12 @@ import {
   TransformerRegistryItem,
   TransformerUIProps,
 } from '@grafana/data';
+import { addLocationFields } from 'app/features/geo/editor/locationEditor';
+import { useTheme2 } from '@grafana/ui';
 
 import { isLineBuilderOption, spatialTransformer } from './spatialTransformer';
-import { addLocationFields } from 'app/features/geo/editor/locationEditor';
 import { getDefaultOptions, getTransformerOptionPane } from './optionsHelper';
 import { SpatialCalculation, SpatialOperation, SpatialAction, SpatialTransformOptions } from './models.gen';
-import { useTheme2 } from '@grafana/ui';
 
 // Nothing defined in state
 const supplier = (

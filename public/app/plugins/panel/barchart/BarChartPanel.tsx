@@ -1,5 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { css } from '@emotion/css';
+import { PropDiffFn } from '@grafana/ui/src/components/GraphNG/GraphNG';
+
 import { LegendDisplayMode } from '@grafana/schema';
 import {
   CartesianCoords2D,
@@ -27,13 +29,13 @@ import {
   VizTooltipContainer,
 } from '@grafana/ui';
 import { PanelDataErrorView } from '@grafana/runtime';
-import { PropDiffFn } from '@grafana/ui/src/components/GraphNG/GraphNG';
+import { CloseButton } from 'app/core/components/CloseButton/CloseButton';
+
+import { DataHoverView } from '../geomap/components/DataHoverView';
+import { getFieldLegendItem } from '../state-timeline/utils';
 
 import { PanelOptions } from './models.gen';
 import { prepareBarChartDisplayValues, preparePlotConfigBuilder } from './utils';
-import { DataHoverView } from '../geomap/components/DataHoverView';
-import { getFieldLegendItem } from '../state-timeline/utils';
-import { CloseButton } from 'app/core/components/CloseButton/CloseButton';
 import { HoverEvent, setupConfig } from './config';
 
 const TOOLTIP_OFFSET = 10;

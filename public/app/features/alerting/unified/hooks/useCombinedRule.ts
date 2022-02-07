@@ -1,13 +1,16 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { CombinedRule, RuleIdentifier, RuleNamespace } from 'app/types/unified-alerting';
-import { AsyncRequestMapSlice, AsyncRequestState, initialAsyncRequestState } from '../utils/redux';
-import { useCombinedRuleNamespaces } from './useCombinedRuleNamespaces';
-import { useUnifiedAlertingSelector } from './useUnifiedAlertingSelector';
-import { fetchPromRulesAction, fetchRulerRulesAction } from '../state/actions';
 import { RulerRulesConfigDTO } from 'app/types/unified-alerting-dto';
+
+import { AsyncRequestMapSlice, AsyncRequestState, initialAsyncRequestState } from '../utils/redux';
+import { fetchPromRulesAction, fetchRulerRulesAction } from '../state/actions';
 import * as ruleId from '../utils/rule-id';
 import { isRulerNotSupportedResponse } from '../utils/rules';
+
+import { useUnifiedAlertingSelector } from './useUnifiedAlertingSelector';
+import { useCombinedRuleNamespaces } from './useCombinedRuleNamespaces';
 
 export function useCombinedRule(
   identifier: RuleIdentifier | undefined,

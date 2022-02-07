@@ -1,8 +1,8 @@
 import React from 'react';
+import { Story } from '@storybook/react';
 
 import { withCenteredStory } from './storybook/withCenteredStory';
 import { useDelayedSwitch } from './useDelayedSwitch';
-import { Story } from '@storybook/react';
 
 export default {
   title: 'useDelayedSwitch',

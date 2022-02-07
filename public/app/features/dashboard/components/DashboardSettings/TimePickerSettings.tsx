@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { isEmpty } from 'lodash';
+
 import { CollapsableSection, Field, Input, Switch, TimeZonePicker, WeekStartPicker } from '@grafana/ui';
 import { rangeUtil, TimeZone } from '@grafana/data';
-import { isEmpty } from 'lodash';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { AutoRefreshIntervals } from './AutoRefreshIntervals';
 
 interface Props {

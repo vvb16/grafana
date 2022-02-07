@@ -8,9 +8,10 @@ import { getValueFormat, isBooleanUnit } from '../valueFormats/valueFormats';
 import { getValueMappingResult } from '../utils/valueMappings';
 import { dateTime, dateTimeParse } from '../datetime';
 import { KeyValue, TimeZone } from '../types';
-import { getScaleCalculator } from './scale';
 import { GrafanaTheme2 } from '../themes/types';
 import { anyToNumber } from '../utils/anyToNumber';
+
+import { getScaleCalculator } from './scale';
 
 interface DisplayProcessorOptions {
   field: Partial<Field>;

@@ -1,8 +1,11 @@
 import React from 'react';
 import { css } from '@emotion/css';
+
 import { Button, useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2, VariableOrigin, DataLinkBuiltInVars } from '@grafana/data';
+
 import { DataLinkConfig } from '../types';
+
 import { DataLink } from './DataLink';
 
 const getStyles = (theme: GrafanaTheme2) => {

@@ -1,11 +1,12 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import { selectOptionInTest } from '@grafana/ui';
 
-import MetricsQueryEditor from './MetricsQueryEditor';
+import { selectOptionInTest } from '@grafana/ui';
 
 import createMockQuery from '../../__mocks__/query';
 import createMockDatasource from '../../__mocks__/datasource';
+
+import MetricsQueryEditor from './MetricsQueryEditor';
 
 const variableOptionGroup = {
   label: 'Template variables',

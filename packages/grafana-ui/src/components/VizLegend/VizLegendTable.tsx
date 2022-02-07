@@ -1,11 +1,13 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-import { VizLegendTableProps } from './types';
+import { orderBy } from 'lodash';
+import { DisplayValue, GrafanaTheme2 } from '@grafana/data';
+
 import { Icon } from '../Icon/Icon';
 import { useStyles2 } from '../../themes/ThemeContext';
-import { orderBy } from 'lodash';
+
+import { VizLegendTableProps } from './types';
 import { LegendTableItem } from './VizLegendTableItem';
-import { DisplayValue, GrafanaTheme2 } from '@grafana/data';
 
 /**
  * @internal

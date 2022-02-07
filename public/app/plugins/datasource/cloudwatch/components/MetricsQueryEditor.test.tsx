@@ -2,12 +2,15 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+
 import { DataSourceInstanceSettings } from '@grafana/data';
 import { TemplateSrv } from 'app/features/templating/template_srv';
-import { MetricsQueryEditor, normalizeQuery, Props } from './MetricsQueryEditor';
+
 import { CloudWatchDatasource } from '../datasource';
 import { CustomVariableModel, initialVariableModelState } from '../../../../features/variables/types';
 import { CloudWatchJsonData, CloudWatchMetricsQuery, MetricEditorMode, MetricQueryType } from '../types';
+
+import { MetricsQueryEditor, normalizeQuery, Props } from './MetricsQueryEditor';
 
 const setup = () => {
   const instanceSettings = {

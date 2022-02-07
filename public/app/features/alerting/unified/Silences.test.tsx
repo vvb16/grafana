@@ -1,19 +1,21 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
-import { dateTime } from '@grafana/data';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { fetchSilences, fetchAlerts, createOrUpdateSilence } from './api/alertmanager';
 import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+import { byLabelText, byPlaceholderText, byRole, byTestId, byText } from 'testing-library-selector';
+import userEvent from '@testing-library/user-event';
+
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
+import { dateTime } from '@grafana/data';
 import { configureStore } from 'app/store/configureStore';
+import { AlertState, MatcherOperator } from 'app/plugins/datasource/alertmanager/types';
+
+import { fetchSilences, fetchAlerts, createOrUpdateSilence } from './api/alertmanager';
 import Silences from './Silences';
 import { mockAlertmanagerAlert, mockDataSource, MockDataSourceSrv, mockSilence } from './mocks';
 import { DataSourceType } from './utils/datasource';
 import { parseMatchers } from './utils/alertmanager';
-import { AlertState, MatcherOperator } from 'app/plugins/datasource/alertmanager/types';
-import { byLabelText, byPlaceholderText, byRole, byTestId, byText } from 'testing-library-selector';
-import userEvent from '@testing-library/user-event';
 
 jest.mock('./api/alertmanager');
 

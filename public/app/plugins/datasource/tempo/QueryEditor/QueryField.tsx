@@ -1,4 +1,7 @@
 import { css } from '@emotion/css';
+import React from 'react';
+import useAsync from 'react-use/lib/useAsync';
+
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import {
@@ -13,13 +16,13 @@ import {
   withTheme2,
 } from '@grafana/ui';
 import { TraceToLogsOptions } from 'app/core/components/TraceToLogsSettings';
-import React from 'react';
+
 import { LokiQueryField } from '../../loki/components/LokiQueryField';
 import { LokiQuery } from '../../loki/types';
 import { TempoDatasource, TempoQuery, TempoQueryType } from '../datasource';
 import LokiDatasource from '../../loki/datasource';
 import { PrometheusDatasource } from '../../prometheus/datasource';
-import useAsync from 'react-use/lib/useAsync';
+
 import NativeSearch from './NativeSearch';
 import { getDS } from './utils';
 import { ServiceGraphSection } from './ServiceGraphSection';

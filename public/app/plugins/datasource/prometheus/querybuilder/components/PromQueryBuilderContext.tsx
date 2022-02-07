@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { PrometheusDatasource } from '../../datasource';
 import { PromVisualQuery } from '../types';
 

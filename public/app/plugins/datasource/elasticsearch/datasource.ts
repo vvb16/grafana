@@ -2,6 +2,8 @@ import { cloneDeep, find, first as _first, isNumber, isObject, isString, map as 
 import { generate, lastValueFrom, Observable, of, throwError } from 'rxjs';
 import { catchError, first, map, mergeMap, skipWhile, throwIfEmpty } from 'rxjs/operators';
 import { gte, lt, satisfies } from 'semver';
+import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
+
 import { BackendSrvRequest, getBackendSrv, getDataSourceSrv } from '@grafana/runtime';
 import {
   DataFrame,
@@ -26,14 +28,15 @@ import {
   TimeRange,
   toUtc,
 } from '@grafana/data';
+import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+import { queryLogsVolume } from 'app/core/logs_model';
+
 import LanguageProvider from './language_provider';
 import { ElasticResponse } from './elastic_response';
 import { IndexPattern } from './index_pattern';
 import { ElasticQueryBuilder } from './query_builder';
 import { defaultBucketAgg, hasMetricOfType } from './query_def';
-import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
 import { DataLinkConfig, ElasticsearchOptions, ElasticsearchQuery, TermsQuery } from './types';
-import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
 import { metricAggregationConfig } from './components/QueryEditor/MetricAggregationsEditor/utils';
 import {
   isMetricAggregationWithField,
@@ -46,7 +49,6 @@ import {
   isBucketAggregationWithField,
 } from './components/QueryEditor/BucketAggregationsEditor/aggregations';
 import { coerceESVersion, getScriptValue } from './utils';
-import { queryLogsVolume } from 'app/core/logs_model';
 
 // Those are metadata fields as defined in https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html#_identity_metadata_fields.
 // custom fields can start with underscores, therefore is not safe to exclude anything that starts with one.

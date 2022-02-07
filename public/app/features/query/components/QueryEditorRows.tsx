@@ -2,6 +2,8 @@
 import React, { PureComponent } from 'react';
 
 // Types
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+
 import {
   CoreApp,
   DataQuery,
@@ -10,9 +12,9 @@ import {
   HistoryItem,
   PanelData,
 } from '@grafana/data';
-import { QueryEditorRow } from './QueryEditorRow';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { getDataSourceSrv } from '@grafana/runtime';
+
+import { QueryEditorRow } from './QueryEditorRow';
 
 interface Props {
   // The query configuration

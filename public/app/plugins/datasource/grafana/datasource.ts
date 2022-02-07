@@ -1,4 +1,7 @@
 import { from, merge, Observable, of } from 'rxjs';
+import { isString } from 'lodash';
+import { map } from 'rxjs/operators';
+
 import {
   DataSourceWithBackend,
   getBackendSrv,
@@ -19,13 +22,12 @@ import {
   parseLiveChannelAddress,
   toDataFrame,
 } from '@grafana/data';
+import { migrateDatasourceNameToRef } from 'app/features/dashboard/state/DashboardMigrator';
+
+import { getDashboardSrv } from '../../../features/dashboard/services/DashboardSrv';
 
 import { GrafanaAnnotationQuery, GrafanaAnnotationType, GrafanaQuery, GrafanaQueryType } from './types';
 import AnnotationQueryEditor from './components/AnnotationQueryEditor';
-import { getDashboardSrv } from '../../../features/dashboard/services/DashboardSrv';
-import { isString } from 'lodash';
-import { migrateDatasourceNameToRef } from 'app/features/dashboard/state/DashboardMigrator';
-import { map } from 'rxjs/operators';
 
 let counter = 100;
 

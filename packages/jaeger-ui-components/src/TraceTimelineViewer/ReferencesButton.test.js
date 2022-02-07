@@ -15,11 +15,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ReferencesButton, { getStyles } from './ReferencesButton';
 import transformTraceData from '../model/transform-trace-data';
 import traceGenerator from '../demo/trace-generators';
 import ReferenceLink from '../url/ReferenceLink';
 import { UIDropdown, UIMenuItem, UITooltip } from '../uiElementsContext';
+
+import ReferencesButton, { getStyles } from './ReferencesButton';
 
 describe(ReferencesButton, () => {
   const trace = transformTraceData(traceGenerator.trace({ numberOfSpans: 10 }));

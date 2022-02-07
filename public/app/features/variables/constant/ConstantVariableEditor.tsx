@@ -1,4 +1,5 @@
 import React, { FormEvent, PureComponent } from 'react';
+
 import { selectors } from '@grafana/e2e-selectors';
 import { VerticalGroup } from '@grafana/ui';
 

@@ -1,8 +1,4 @@
 // Load the Builtin matchers
-import { getFieldPredicateMatchers, getFramePredicateMatchers } from './matchers/predicates';
-import { getFieldNameMatchers, getFrameNameMatchers } from './matchers/nameMatcher';
-import { getFieldTypeMatchers } from './matchers/fieldTypeMatcher';
-import { getRefIdMatchers } from './matchers/refIdMatcher';
 import {
   FieldMatcherInfo,
   MatcherConfig,
@@ -13,6 +9,11 @@ import {
   ValueMatcher,
 } from '../types/transformations';
 import { Registry } from '../utils/Registry';
+
+import { getFieldPredicateMatchers, getFramePredicateMatchers } from './matchers/predicates';
+import { getFieldNameMatchers, getFrameNameMatchers } from './matchers/nameMatcher';
+import { getFieldTypeMatchers } from './matchers/fieldTypeMatcher';
+import { getRefIdMatchers } from './matchers/refIdMatcher';
 import { getNullValueMatchers } from './matchers/valueMatchers/nullMatchers';
 import { getNumericValueMatchers } from './matchers/valueMatchers/numericMatchers';
 import { getEqualValueMatchers } from './matchers/valueMatchers/equalMatchers';

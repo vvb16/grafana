@@ -3,15 +3,17 @@ import { useFormContext } from 'react-hook-form';
 import { useDebounce } from 'react-use';
 import { useDispatch } from 'react-redux';
 import { css } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Badge, useStyles2 } from '@grafana/ui';
+import { CombinedRule } from 'app/types/unified-alerting';
+
 import { DynamicTable, DynamicTableColumnProps, DynamicTableItemProps } from '../DynamicTable';
 import { RuleState } from '../rules/RuleState';
 import { useCombinedRuleNamespaces } from '../../hooks/useCombinedRuleNamespaces';
 import { Annotation } from '../../utils/constants';
 import { findAlertRulesWithMatchers } from '../../utils/matchers';
 import { fetchAllPromAndRulerRulesAction } from '../../state/actions';
-import { CombinedRule } from 'app/types/unified-alerting';
 import { MatcherFieldValue, SilenceFormFields } from '../../types/silence-form';
 
 type MatchedRulesTableItemProps = DynamicTableItemProps<{

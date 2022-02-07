@@ -1,11 +1,16 @@
 import React, { Component, ReactNode } from 'react';
-import { DEFAULT_BASEMAP_CONFIG, geomapLayerRegistry } from './layers/registry';
 import { Map as OpenLayersMap, MapBrowserEvent, PluggableMap, View } from 'ol';
 import Attribution from 'ol/control/Attribution';
 import Zoom from 'ol/control/Zoom';
 import ScaleLine from 'ol/control/ScaleLine';
 import { defaults as interactionDefaults } from 'ol/interaction';
 import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
+import { fromLonLat, toLonLat } from 'ol/proj';
+import { Coordinate } from 'ol/coordinate';
+import { css } from '@emotion/css';
+import { Global } from '@emotion/react';
+import { Subscription } from 'rxjs';
+import { cloneDeep } from 'lodash';
 
 import {
   PanelData,
@@ -18,22 +23,17 @@ import {
   FrameGeometrySourceMode,
 } from '@grafana/data';
 import { config } from '@grafana/runtime';
+import { PanelContext, PanelContextRoot, stylesFactory } from '@grafana/ui';
+import { PanelEditExitedEvent } from 'app/types/events';
 
 import { ControlsOptions, GeomapPanelOptions, MapLayerState, MapViewConfig } from './types';
 import { centerPointRegistry, MapCenterID } from './view';
-import { fromLonLat, toLonLat } from 'ol/proj';
-import { Coordinate } from 'ol/coordinate';
-import { css } from '@emotion/css';
-import { PanelContext, PanelContextRoot, stylesFactory } from '@grafana/ui';
 import { GeomapOverlay, OverlayProps } from './GeomapOverlay';
 import { DebugOverlay } from './components/DebugOverlay';
 import { getGlobalStyles } from './globalStyles';
-import { Global } from '@emotion/react';
 import { GeomapHoverPayload, GeomapLayerHover } from './event';
-import { Subscription } from 'rxjs';
-import { PanelEditExitedEvent } from 'app/types/events';
 import { defaultMarkersConfig, MARKERS_LAYER_ID } from './layers/data/markersLayer';
-import { cloneDeep } from 'lodash';
+import { DEFAULT_BASEMAP_CONFIG, geomapLayerRegistry } from './layers/registry';
 import { GeomapTooltip } from './GeomapTooltip';
 
 // Allows multiple panels to share the same view instance

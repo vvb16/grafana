@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { selectOptionInTest } from './test-utils';
 import { SelectableValue } from '@grafana/data';
+
+import { selectOptionInTest } from './test-utils';
 import { SelectBase } from './SelectBase';
 
 describe('SelectBase', () => {

@@ -1,4 +1,14 @@
 import { AppEvents, DataSourceInstanceSettings, locationUtil } from '@grafana/data';
+import { DashboardDataDTO, DashboardDTO, FolderInfo, PermissionLevelString, ThunkResult } from 'app/types';
+import { dashboardWatcher } from 'app/features/live/dashboard/dashboardWatcher';
+import { getDataSourceSrv, locationService, getBackendSrv } from '@grafana/runtime';
+
+import { appEvents } from '../../../core/core';
+import { DashboardSearchHit } from '../../search/types';
+import { getLibraryPanel } from '../../library-panels/state/api';
+import { LibraryElementDTO, LibraryElementKind } from '../../library-panels/types';
+import { LibraryElementExport } from '../../dashboard/components/DashExportModal/DashboardExporter';
+
 import {
   clearDashboard,
   fetchDashboard,
@@ -12,14 +22,6 @@ import {
   setJsonDashboard,
   setLibraryPanelInputs,
 } from './reducers';
-import { DashboardDataDTO, DashboardDTO, FolderInfo, PermissionLevelString, ThunkResult } from 'app/types';
-import { appEvents } from '../../../core/core';
-import { dashboardWatcher } from 'app/features/live/dashboard/dashboardWatcher';
-import { getDataSourceSrv, locationService, getBackendSrv } from '@grafana/runtime';
-import { DashboardSearchHit } from '../../search/types';
-import { getLibraryPanel } from '../../library-panels/state/api';
-import { LibraryElementDTO, LibraryElementKind } from '../../library-panels/types';
-import { LibraryElementExport } from '../../dashboard/components/DashExportModal/DashboardExporter';
 
 export function fetchGcomDashboard(id: string): ThunkResult<void> {
   return async (dispatch) => {

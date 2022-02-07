@@ -1,8 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+
 import { CloudWatchLogsQuery, CloudWatchMetricsQuery, MetricEditorMode, MetricQueryType } from '../types';
 import { setupMockedDataSource } from '../__mocks__/CloudWatchDataSource';
+
 import QueryHeader from './QueryHeader';
 
 const ds = setupMockedDataSource({

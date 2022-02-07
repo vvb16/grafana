@@ -1,8 +1,9 @@
 import React from 'react';
 import { FieldType, LogRowModel, MutableDataFrame, Labels, LogLevel, DataQueryResponse } from '@grafana/data';
-import { getRowContexts, LogRowContextProvider } from './LogRowContextProvider';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+
+import { getRowContexts, LogRowContextProvider } from './LogRowContextProvider';
 
 describe('getRowContexts', () => {
   describe('when called with a DataFrame and results are returned', () => {

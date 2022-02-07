@@ -1,21 +1,24 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/css';
+import { useDispatch, useSelector } from 'react-redux';
+import { Field } from '@grafana/ui/src/components/Forms/Field';
+import { useLocalStorage } from 'react-use';
+
 import { GrafanaTheme, PanelData, SelectableValue } from '@grafana/data';
 import { Button, CustomScrollbar, FilterInput, RadioButtonGroup, useStyles } from '@grafana/ui';
-import { changePanelPlugin } from '../../../panel/state/actions';
-import { PanelModel } from '../../state/PanelModel';
-import { useDispatch, useSelector } from 'react-redux';
-import { VizTypePicker } from '../../../panel/components/VizTypePicker/VizTypePicker';
-import { Field } from '@grafana/ui/src/components/Forms/Field';
 import { PanelLibraryOptionsGroup } from 'app/features/library-panels/components/PanelLibraryOptionsGroup/PanelLibraryOptionsGroup';
-import { toggleVizPicker } from './state/reducers';
 import { selectors } from '@grafana/e2e-selectors';
-import { getPanelPluginWithFallback } from '../../state/selectors';
 import { VizTypeChangeDetails } from 'app/features/panel/components/VizTypePicker/types';
 import { VisualizationSuggestions } from 'app/features/panel/components/VizTypePicker/VisualizationSuggestions';
-import { useLocalStorage } from 'react-use';
-import { VisualizationSelectPaneTab } from './types';
 import { LS_VISUALIZATION_SELECT_TAB_KEY } from 'app/core/constants';
+
+import { changePanelPlugin } from '../../../panel/state/actions';
+import { PanelModel } from '../../state/PanelModel';
+import { VizTypePicker } from '../../../panel/components/VizTypePicker/VizTypePicker';
+import { getPanelPluginWithFallback } from '../../state/selectors';
+
+import { toggleVizPicker } from './state/reducers';
+import { VisualizationSelectPaneTab } from './types';
 
 interface Props {
   panel: PanelModel;

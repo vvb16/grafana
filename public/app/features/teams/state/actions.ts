@@ -1,10 +1,10 @@
 import { getBackendSrv } from '@grafana/runtime';
-
 import { TeamMember, ThunkResult } from 'app/types';
 import { updateNavIndex } from 'app/core/actions';
+import { accessControlQueryParam } from 'app/core/utils/accessControl';
+
 import { buildNavModel } from './navModel';
 import { teamGroupsLoaded, teamLoaded, teamMembersLoaded, teamsLoaded } from './reducers';
-import { accessControlQueryParam } from 'app/core/utils/accessControl';
 
 export function loadTeams(): ThunkResult<void> {
   return async (dispatch) => {

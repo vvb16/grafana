@@ -3,10 +3,11 @@
 import { Profiler, ProfilerOnRenderCallback, useState, FC } from 'react';
 import { GrafanaTheme2 } from '@grafana/data';
 import { css, cx } from '@emotion/css';
+import classnames from 'classnames';
+
 import { useStyles2, useTheme2 } from '../../themes';
 import { Button } from '../Button';
 import { VerticalGroup } from '../Layout/Layout';
-import classnames from 'classnames';
 
 export function EmotionPerfTest() {
   console.log('process.env.NODE_ENV', process.env.NODE_ENV);

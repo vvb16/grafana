@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
+
 import { QueryGroup } from 'app/features/query/components/QueryGroup';
-import { PanelModel } from '../../state';
 import { getLocationSrv } from '@grafana/runtime';
 import { QueryGroupDataSource, QueryGroupOptions } from 'app/types';
 import { DataQuery } from '@grafana/data';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
+
+import { PanelModel } from '../../state';
 
 interface Props {
   /** Current panel */

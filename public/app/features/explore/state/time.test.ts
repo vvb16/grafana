@@ -1,8 +1,9 @@
+import { reducerTester } from 'test/core/redux/reducerTester';
+
 import { dateTime, LoadingState } from '@grafana/data';
+import { ExploreId, ExploreItemState } from 'app/types/explore';
 
 import { makeExplorePaneState } from './utils';
-import { ExploreId, ExploreItemState } from 'app/types/explore';
-import { reducerTester } from 'test/core/redux/reducerTester';
 import { changeRangeAction, changeRefreshIntervalAction, timeReducer } from './time';
 
 describe('Explore item reducer', () => {

@@ -1,4 +1,5 @@
 import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import { updateQueries } from './updateQueries';
 
 describe('updateQueries', () => {

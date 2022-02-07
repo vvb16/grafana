@@ -1,5 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
-import { CleanUp, cleanUpAction } from '../actions/cleanUp';
+
 import sharedReducers from 'app/core/reducers';
 import alertingReducers from 'app/features/alerting/state/reducers';
 import teamsReducers from 'app/features/teams/state/reducers';
@@ -18,6 +18,8 @@ import importDashboardReducers from 'app/features/manage-dashboards/state/reduce
 import panelEditorReducers from 'app/features/dashboard/components/PanelEditor/state/reducers';
 import panelsReducers from 'app/features/panel/state/reducers';
 import serviceAccountsReducer from 'app/features/serviceaccounts/state/reducers';
+
+import { CleanUp, cleanUpAction } from '../actions/cleanUp';
 
 const rootReducers = {
   ...sharedReducers,

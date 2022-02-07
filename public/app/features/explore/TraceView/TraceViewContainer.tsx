@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Collapse } from '@grafana/ui';
 import { DataFrame, SplitOpen } from '@grafana/data';
-import { TraceView } from './TraceView';
 import { ExploreId } from 'app/types/explore';
+
+import { TraceView } from './TraceView';
 
 interface Props {
   dataFrames: DataFrame[];

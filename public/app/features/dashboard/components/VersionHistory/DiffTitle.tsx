@@ -1,7 +1,9 @@
 import React from 'react';
+import { css } from '@emotion/css';
+
 import { useStyles, Icon } from '@grafana/ui';
 import { GrafanaTheme } from '@grafana/data';
-import { css } from '@emotion/css';
+
 import { Diff, getDiffText } from './utils';
 import { DiffValues } from './DiffValues';
 

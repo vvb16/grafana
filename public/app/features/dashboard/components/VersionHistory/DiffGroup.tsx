@@ -1,8 +1,10 @@
 import React from 'react';
 import { last } from 'lodash';
+import { css } from '@emotion/css';
+
 import { useStyles } from '@grafana/ui';
 import { GrafanaTheme } from '@grafana/data';
-import { css } from '@emotion/css';
+
 import { DiffTitle } from './DiffTitle';
 import { DiffValues } from './DiffValues';
 import { Diff, getDiffText } from './utils';

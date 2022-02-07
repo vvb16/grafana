@@ -1,16 +1,19 @@
 import { css } from '@emotion/css';
-import { GrafanaTheme2, LoadingState } from '@grafana/data';
 import { EditorHeader, FlexItem, InlineSelect, Space } from '@grafana/experimental';
+import React, { SyntheticEvent, useCallback, useState } from 'react';
+
+import { GrafanaTheme2, LoadingState } from '@grafana/data';
 import { Button, useStyles2 } from '@grafana/ui';
 import { QueryEditorModeToggle } from 'app/plugins/datasource/prometheus/querybuilder/shared/QueryEditorModeToggle';
 import { QueryHeaderSwitch } from 'app/plugins/datasource/prometheus/querybuilder/shared/QueryHeaderSwitch';
 import { QueryEditorMode } from 'app/plugins/datasource/prometheus/querybuilder/shared/types';
-import React, { SyntheticEvent, useCallback, useState } from 'react';
+
 import { LokiQueryEditor } from '../../components/LokiQueryEditor';
 import { LokiQueryEditorProps } from '../../components/types';
 import { LokiQueryType } from '../../types';
 import { lokiQueryModeller } from '../LokiQueryModeller';
 import { getDefaultEmptyQuery, LokiVisualQuery } from '../types';
+
 import { LokiQueryBuilder } from './LokiQueryBuilder';
 import { LokiQueryBuilderExplained } from './LokiQueryBuilderExplaind';
 

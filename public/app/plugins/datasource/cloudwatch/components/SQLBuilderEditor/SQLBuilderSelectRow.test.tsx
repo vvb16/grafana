@@ -1,9 +1,12 @@
 import React from 'react';
-import { selectOptionInTest } from '@grafana/ui';
 import { act, render, screen } from '@testing-library/react';
+
+import { selectOptionInTest } from '@grafana/ui';
+
 import { CloudWatchMetricsQuery, MetricEditorMode, MetricQueryType, SQLExpression } from '../../types';
 import { setupMockedDataSource } from '../../__mocks__/CloudWatchDataSource';
 import { QueryEditorExpressionType, QueryEditorPropertyType } from '../../expressions';
+
 import SQLBuilderSelectRow from './SQLBuilderSelectRow';
 
 const { datasource } = setupMockedDataSource();

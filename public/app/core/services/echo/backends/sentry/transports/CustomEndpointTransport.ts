@@ -8,6 +8,7 @@ import {
   SyncPromise,
 } from '@sentry/utils';
 import { Response } from '@sentry/types';
+
 import { BaseTransport } from '../types';
 
 export interface CustomEndpointTransportOptions {

@@ -1,10 +1,11 @@
 import { AlertState, AlertStateInfo, getDefaultTimeRange, TimeRange } from '@grafana/data';
 import { backendSrv } from 'app/core/services/backend_srv';
 
-import { DashboardQueryRunnerOptions } from './types';
-import { AlertStatesWorker } from './AlertStatesWorker';
 import { silenceConsoleOutput } from '../../../../../test/core/utils/silenceConsoleOutput';
 import * as store from '../../../../store/store';
+
+import { DashboardQueryRunnerOptions } from './types';
+import { AlertStatesWorker } from './AlertStatesWorker';
 
 jest.mock('@grafana/runtime', () => ({
   ...(jest.requireActual('@grafana/runtime') as unknown as object),

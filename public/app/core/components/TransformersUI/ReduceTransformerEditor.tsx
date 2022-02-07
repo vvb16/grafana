@@ -1,4 +1,6 @@
 import React, { useCallback } from 'react';
+import { ReduceTransformerMode, ReduceTransformerOptions } from '@grafana/data/src/transformations/transformers/reduce';
+
 import { LegacyForms, Select, StatsPicker } from '@grafana/ui';
 import {
   DataTransformerID,
@@ -8,8 +10,6 @@ import {
   TransformerRegistryItem,
   TransformerUIProps,
 } from '@grafana/data';
-
-import { ReduceTransformerMode, ReduceTransformerOptions } from '@grafana/data/src/transformations/transformers/reduce';
 import { selectors } from '@grafana/e2e-selectors';
 
 // TODO:  Minimal implementation, needs some <3

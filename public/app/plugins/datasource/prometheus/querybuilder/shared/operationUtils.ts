@@ -1,4 +1,5 @@
 import { capitalize } from 'lodash';
+
 import { QueryBuilderOperation, QueryBuilderOperationDef, QueryWithOperations } from './types';
 
 export function functionRendererLeft(model: QueryBuilderOperation, def: QueryBuilderOperationDef, innerExpr: string) {

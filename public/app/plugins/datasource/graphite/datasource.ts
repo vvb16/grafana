@@ -1,6 +1,7 @@
 import { each, indexOf, isArray, isString, map as _map } from 'lodash';
 import { lastValueFrom, Observable, of, OperatorFunction, pipe, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
 import { getBackendSrv } from '@grafana/runtime';
 import {
   DataFrame,
@@ -18,11 +19,14 @@ import {
   TimeRange,
   toDataFrame,
 } from '@grafana/data';
-
 import { isVersionGtOrEq, SemVersion } from 'app/core/utils/version';
-import gfunc, { FuncDefs, FuncInstance } from './gfunc';
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+
 // Types
+import { getRollupNotice, getRuntimeConsolidationNotice } from 'app/plugins/datasource/graphite/meta';
+
+import { getSearchFilterScopedVar } from '../../../features/variables/utils';
+
 import {
   GraphiteLokiMapping,
   GraphiteMetricLokiMatcher,
@@ -32,8 +36,7 @@ import {
   GraphiteType,
   MetricTankRequestMeta,
 } from './types';
-import { getRollupNotice, getRuntimeConsolidationNotice } from 'app/plugins/datasource/graphite/meta';
-import { getSearchFilterScopedVar } from '../../../features/variables/utils';
+import gfunc, { FuncDefs, FuncInstance } from './gfunc';
 import { DEFAULT_GRAPHITE_VERSION } from './versions';
 import { reduceError } from './utils';
 import { default as GraphiteQueryModel } from './graphite_query';

@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import { Item } from '@react-stately/collections';
 import { css, cx } from '@emotion/css';
+import { useLingui } from '@lingui/react';
+
 import { GrafanaTheme2, locationUtil, NavMenuItemType, NavModelItem } from '@grafana/data';
 import { IconName, useTheme2 } from '@grafana/ui';
 import { locationService } from '@grafana/runtime';
@@ -10,7 +12,6 @@ import { getNavBarItemWithoutMenuStyles, NavBarItemWithoutMenu } from './NavBarI
 import { NavBarItemMenuTrigger } from './NavBarItemMenuTrigger';
 import { NavBarItemMenu } from './NavBarItemMenu';
 import { getNavModelItemKey } from './utils';
-import { useLingui } from '@lingui/react';
 import menuItemTranslations from './navBarItem-translations';
 
 export interface Props {

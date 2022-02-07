@@ -1,9 +1,11 @@
-import { Task, TaskRunner } from './task';
-import { bundlePlugin as bundleFn, PluginBundleOptions } from './plugin/bundle';
-import { useSpinner } from '../utils/useSpinner';
-import { lintPlugin } from './plugin.build';
 import execa = require('execa');
 import path = require('path');
+
+import { useSpinner } from '../utils/useSpinner';
+
+import { Task, TaskRunner } from './task';
+import { bundlePlugin as bundleFn, PluginBundleOptions } from './plugin/bundle';
+import { lintPlugin } from './plugin.build';
 
 const bundlePlugin = (options: PluginBundleOptions) =>
   useSpinner('Bundling plugin in dev mode', () => bundleFn(options));

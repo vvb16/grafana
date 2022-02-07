@@ -1,7 +1,8 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import { css } from '@emotion/css';
-import { useStyles2, useTheme2 } from '../../themes';
 import { GrafanaTheme2 } from '@grafana/data';
+
+import { useStyles2, useTheme2 } from '../../themes';
 
 /**
  * @internal

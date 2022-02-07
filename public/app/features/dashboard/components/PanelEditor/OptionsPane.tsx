@@ -1,12 +1,14 @@
 import React from 'react';
+import { css } from '@emotion/css';
+import { useSelector } from 'react-redux';
+
 import { GrafanaTheme } from '@grafana/data';
 import { useStyles } from '@grafana/ui';
-import { css } from '@emotion/css';
 import { selectors } from '@grafana/e2e-selectors';
+import { StoreState } from 'app/types';
+
 import { VisualizationButton } from './VisualizationButton';
 import { OptionsPaneOptions } from './OptionsPaneOptions';
-import { useSelector } from 'react-redux';
-import { StoreState } from 'app/types';
 import { VisualizationSelectPane } from './VisualizationSelectPane';
 import { usePanelLatestData } from './usePanelLatestData';
 import { OptionPaneRenderProps } from './types';

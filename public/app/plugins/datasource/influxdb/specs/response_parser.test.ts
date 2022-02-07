@@ -1,4 +1,5 @@
 import { size } from 'lodash';
+
 import ResponseParser from '../response_parser';
 
 describe('influxdb response parser', () => {

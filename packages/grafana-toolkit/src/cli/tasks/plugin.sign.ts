@@ -1,5 +1,7 @@
 import path from 'path';
+
 import { buildManifest, signManifest, saveManifest } from '../../plugins/manifest';
+
 import { Task, TaskRunner } from './task';
 import { getToolkitVersion } from './plugin.utils';
 interface PluginSignOptions {

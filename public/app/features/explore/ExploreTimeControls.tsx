@@ -8,11 +8,12 @@ import { TimeRange, TimeZone, RawTimeRange, dateTimeForTimeZone, dateMath } from
 // State
 
 // Components
-import { TimeSyncButton } from './TimeSyncButton';
 import { TimePickerWithHistory } from 'app/core/components/TimePicker/TimePickerWithHistory';
 
 // Utils & Services
 import { getShiftedTimeRange, getZoomedTimeRange } from 'app/core/utils/timePicker';
+
+import { TimeSyncButton } from './TimeSyncButton';
 
 export interface Props {
   exploreId: ExploreId;

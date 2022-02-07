@@ -1,10 +1,12 @@
 import { merge } from 'lodash';
-import { getFieldDisplayValues, GetFieldDisplayValuesOptions } from './fieldDisplay';
+
 import { toDataFrame } from '../dataframe/processDataFrame';
 import { ReducerID } from '../transformations/fieldReducer';
 import { MappingType, SpecialValueMatch, ValueMapping } from '../types';
-import { standardFieldConfigEditorRegistry } from './standardFieldConfigEditorRegistry';
 import { createTheme } from '../themes';
+
+import { standardFieldConfigEditorRegistry } from './standardFieldConfigEditorRegistry';
+import { getFieldDisplayValues, GetFieldDisplayValuesOptions } from './fieldDisplay';
 import { getDisplayProcessor } from './displayProcessor';
 
 describe('FieldDisplay', () => {

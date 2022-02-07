@@ -1,9 +1,11 @@
 import { css } from '@emotion/css';
-import { DataSourceApi, GrafanaTheme2 } from '@grafana/data';
 import { FlexItem, Stack } from '@grafana/experimental';
-import { Button, useStyles2 } from '@grafana/ui';
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+
+import { Button, useStyles2 } from '@grafana/ui';
+import { DataSourceApi, GrafanaTheme2 } from '@grafana/data';
+
 import {
   VisualQueryModeller,
   QueryBuilderOperation,
@@ -11,6 +13,7 @@ import {
   QueryBuilderOperationDef,
   QueryBuilderOperationParamDef,
 } from '../shared/types';
+
 import { OperationInfoButton } from './OperationInfoButton';
 import { OperationName } from './OperationName';
 import { getOperationParamEditor } from './OperationParamEditor';

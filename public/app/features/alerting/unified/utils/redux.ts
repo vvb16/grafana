@@ -1,8 +1,8 @@
 import { isArray } from 'angular';
 import { AsyncThunk, createSlice, Draft, isAsyncThunkAction, PayloadAction, SerializedError } from '@reduxjs/toolkit';
+
 import { FetchError } from '@grafana/runtime';
 import { AppEvents } from '@grafana/data';
-
 import { appEvents } from 'app/core/core';
 
 export interface AsyncRequestState<T> {

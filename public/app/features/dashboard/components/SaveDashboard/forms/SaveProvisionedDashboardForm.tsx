@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { css } from '@emotion/css';
 import { saveAs } from 'file-saver';
+
 import { Button, ClipboardButton, Modal, stylesFactory, TextArea, useTheme } from '@grafana/ui';
-import { SaveDashboardFormProps } from '../types';
 import { AppEvents, GrafanaTheme } from '@grafana/data';
+
+import { SaveDashboardFormProps } from '../types';
 import appEvents from '../../../../../core/app_events';
 
 export const SaveProvisionedDashboardForm: React.FC<SaveDashboardFormProps> = ({ dashboard, onCancel }) => {

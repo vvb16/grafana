@@ -1,6 +1,8 @@
-import { ThunkResult } from '../../../types';
 import { getBackendSrv } from '@grafana/runtime';
 import { ServiceAccountDTO } from 'app/types';
+
+import { ThunkResult } from '../../../types';
+
 import { serviceAccountLoaded, serviceAccountsLoaded } from './reducers';
 
 const BASE_URL = `/api/serviceaccounts`;

@@ -1,11 +1,12 @@
+import { IPosition } from 'monaco-editor';
+
+import { getTemplateSrv } from '@grafana/runtime';
+import { Monaco, monacoTypes } from '@grafana/ui';
+
 import MonacoMock from '../../__mocks__/monarch/Monaco';
 import TextModel from '../../__mocks__/monarch/TextModel';
-import { MetricMathCompletionItemProvider } from './CompletionItemProvider';
-import { getTemplateSrv } from '@grafana/runtime';
 import { CloudWatchDatasource } from '../../datasource';
 import cloudWatchMetricMathLanguageDefinition from '../definition';
-import { Monaco, monacoTypes } from '@grafana/ui';
-import { IPosition } from 'monaco-editor';
 import {
   METRIC_MATH_FNS,
   METRIC_MATH_KEYWORDS,
@@ -14,6 +15,8 @@ import {
   METRIC_MATH_STATISTIC_KEYWORD_STRINGS,
 } from '../language';
 import * as MetricMathTestData from '../../__mocks__/metric-math-test-data';
+
+import { MetricMathCompletionItemProvider } from './CompletionItemProvider';
 
 const getSuggestions = async (value: string, position: IPosition) => {
   const setup = new MetricMathCompletionItemProvider(

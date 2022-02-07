@@ -1,11 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
+
 import { DataFrame, FieldType, PanelProps } from '@grafana/data';
 import { TooltipPlugin, useTheme2, ZoomPlugin, usePanelContext } from '@grafana/ui';
+import { getLastStreamingDataFramePacket } from 'app/features/live/data/StreamingDataFrame';
+
 import { TimelineMode, TimelineOptions } from './types';
 import { TimelineChart } from './TimelineChart';
 import { prepareTimelineFields, prepareTimelineLegendItems } from './utils';
 import { StateTimelineTooltip } from './StateTimelineTooltip';
-import { getLastStreamingDataFramePacket } from 'app/features/live/data/StreamingDataFrame';
 
 interface TimelinePanelProps extends PanelProps<TimelineOptions> {}
 

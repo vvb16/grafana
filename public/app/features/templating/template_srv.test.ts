@@ -1,13 +1,15 @@
 import { dateTime, TimeRange } from '@grafana/data';
+import { setDataSourceSrv } from '@grafana/runtime';
+
 import { initTemplateSrv } from '../../../test/helpers/initTemplateSrv';
 import { silenceConsoleOutput } from '../../../test/core/utils/silenceConsoleOutput';
 import { VariableAdapter, variableAdapters } from '../variables/adapters';
 import { createQueryVariableAdapter } from '../variables/query/adapter';
 import { createAdHocVariableAdapter } from '../variables/adhoc/adapter';
 import { VariableModel } from '../variables/types';
-import { FormatRegistryID } from './formatRegistry';
-import { setDataSourceSrv } from '@grafana/runtime';
 import { mockDataSource, MockDataSourceSrv } from '../alerting/unified/mocks';
+
+import { FormatRegistryID } from './formatRegistry';
 
 variableAdapters.setInit(() => [
   createQueryVariableAdapter() as unknown as VariableAdapter<VariableModel>,

@@ -1,8 +1,9 @@
 import { AppEvents } from '@grafana/data';
 import { getBackendSrv, locationService } from '@grafana/runtime';
 import { appEvents } from 'app/core/core';
-import { loadAlertRules, loadedAlertRules, notificationChannelLoaded, setNotificationChannels } from './reducers';
 import { AlertRuleDTO, NotifierDTO, ThunkResult } from 'app/types';
+
+import { loadAlertRules, loadedAlertRules, notificationChannelLoaded, setNotificationChannels } from './reducers';
 
 export function getAlertRulesAsync(options: { state: string }): ThunkResult<void> {
   return async (dispatch) => {

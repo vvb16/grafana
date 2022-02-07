@@ -2,6 +2,7 @@ import React, { HTMLAttributes, ReactNode } from 'react';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { useTheme2 } from '../../themes';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../../types/icon';

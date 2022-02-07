@@ -1,7 +1,8 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
+import { css } from '@emotion/css';
+
 import { InlineFormLabel, Select, useStyles } from '@grafana/ui';
 import { GrafanaTheme, SelectableValue } from '@grafana/data';
-import { css } from '@emotion/css';
 import { useUniqueId } from 'app/plugins/datasource/influxdb/components/useUniqueId';
 
 interface VariableSelectFieldProps<T> {

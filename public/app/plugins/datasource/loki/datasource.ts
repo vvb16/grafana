@@ -1,10 +1,9 @@
-// Libraries
 import { cloneDeep, isEmpty, map as lodashMap } from 'lodash';
 import { lastValueFrom, merge, Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import Prism from 'prismjs';
+import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
 
-// Types
 import {
   AnnotationEvent,
   AnnotationQueryRequest,
@@ -35,9 +34,15 @@ import {
 } from '@grafana/data';
 import { BackendSrvRequest, FetchError, getBackendSrv } from '@grafana/runtime';
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
-import { addLabelToQuery } from './add_label_to_query';
 import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { convertToWebSocketUrl } from 'app/core/utils/explore';
+import { queryLogsVolume } from 'app/core/logs_model';
+import config from 'app/core/config';
+
+import { serializeParams } from '../../../core/utils/fetch';
+import { renderLegendFormat } from '../prometheus/legend';
+
+import { addLabelToQuery } from './add_label_to_query';
 import {
   lokiResultsToTableModel,
   lokiStreamResultToDataFrame,
@@ -45,7 +50,6 @@ import {
   processRangeQueryResponse,
 } from './result_transformer';
 import { addParsedLabelToQuery, queryHasPipeParser } from './query_utils';
-
 import {
   LokiOptions,
   LokiQuery,
@@ -57,13 +61,8 @@ import {
 } from './types';
 import { LiveStreams, LokiLiveTarget } from './live_streams';
 import LanguageProvider from './language_provider';
-import { serializeParams } from '../../../core/utils/fetch';
-import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
 import syntax from './syntax';
 import { DEFAULT_RESOLUTION } from './components/LokiOptionFields';
-import { queryLogsVolume } from 'app/core/logs_model';
-import config from 'app/core/config';
-import { renderLegendFormat } from '../prometheus/legend';
 
 export type RangeQueryOptions = DataQueryRequest<LokiQuery> | AnnotationQueryRequest<LokiQuery>;
 export const DEFAULT_MAX_LINES = 1000;

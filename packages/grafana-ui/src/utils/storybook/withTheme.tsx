@@ -1,8 +1,9 @@
 import React from 'react';
-import { ThemeContext } from '../../themes/ThemeContext';
 import { createTheme, GrafanaTheme2 } from '@grafana/data';
-import { RenderFunction } from '../../types';
 import { useDarkMode } from 'storybook-dark-mode';
+
+import { ThemeContext } from '../../themes/ThemeContext';
+import { RenderFunction } from '../../types';
 import { GlobalStyles } from '../../themes/GlobalStyles/GlobalStyles';
 
 type SassThemeChangeHandler = (theme: GrafanaTheme2) => void;

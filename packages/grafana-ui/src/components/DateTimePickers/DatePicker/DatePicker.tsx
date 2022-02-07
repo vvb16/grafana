@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
+
 import { useStyles2 } from '../../../themes';
 import { ClickOutsideWrapper } from '../../ClickOutsideWrapper/ClickOutsideWrapper';
 import { Icon } from '../../Icon/Icon';

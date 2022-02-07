@@ -1,12 +1,15 @@
-import { contextSrv } from 'app/core/services/context_srv';
-import { isGrafanaRulerRule } from '../utils/rules';
-import { RulerRuleDTO } from 'app/types/unified-alerting-dto';
-import { useFolder } from './useFolder';
-import { useUnifiedAlertingSelector } from './useUnifiedAlertingSelector';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+
+import { contextSrv } from 'app/core/services/context_srv';
+import { RulerRuleDTO } from 'app/types/unified-alerting-dto';
+
+import { isGrafanaRulerRule } from '../utils/rules';
 import { checkIfLotexSupportsEditingRulesAction } from '../state/actions';
 import { GRAFANA_RULES_SOURCE_NAME } from '../utils/datasource';
+
+import { useFolder } from './useFolder';
+import { useUnifiedAlertingSelector } from './useUnifiedAlertingSelector';
 
 interface ResultBag {
   isEditable?: boolean;

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { dateTime, DateTime } from '@grafana/data';
-import { DateTimePicker, Props } from './DateTimePicker';
+
 import { withCenteredStory } from '../../../utils/storybook/withCenteredStory';
+
+import { DateTimePicker, Props } from './DateTimePicker';
 import mdx from './DateTimePicker.mdx';
 
 export default {

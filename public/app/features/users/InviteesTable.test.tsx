@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import InviteesTable, { Props } from './InviteesTable';
+
 import { Invitee } from 'app/types';
+
+import InviteesTable, { Props } from './InviteesTable';
 import { getMockInvitees } from './__mocks__/userMocks';
 
 const setup = (propOverrides?: object) => {

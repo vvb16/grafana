@@ -1,11 +1,14 @@
 import Plain from 'slate-plain-serializer';
 import { Editor as SlateEditor } from 'slate';
+
+import { AbstractLabelOperator, HistoryItem } from '@grafana/data';
+import { SearchFunctionType } from '@grafana/ui';
+
 import LanguageProvider from './language_provider';
 import { PrometheusDatasource } from './datasource';
-import { AbstractLabelOperator, HistoryItem } from '@grafana/data';
 import { PromQuery } from './types';
+
 import Mock = jest.Mock;
-import { SearchFunctionType } from '@grafana/ui';
 
 describe('Language completion provider', () => {
   const datasource: PrometheusDatasource = {

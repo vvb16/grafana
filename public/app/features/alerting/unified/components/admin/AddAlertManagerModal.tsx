@@ -1,10 +1,12 @@
 import React, { FC, useMemo } from 'react';
 import { css, cx } from '@emotion/css';
 import { useDispatch } from 'react-redux';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Button, Field, FieldArray, Form, Icon, Input, Modal, useStyles2 } from '@grafana/ui';
-import { addExternalAlertmanagersAction } from '../../state/actions';
 import { AlertmanagerUrl } from 'app/plugins/datasource/alertmanager/types';
+
+import { addExternalAlertmanagersAction } from '../../state/actions';
 
 interface Props {
   onClose: () => void;

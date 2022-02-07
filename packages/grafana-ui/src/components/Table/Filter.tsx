@@ -2,11 +2,12 @@ import React, { FC, useCallback, useMemo, useRef, useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { Field, GrafanaTheme } from '@grafana/data';
 
-import { TableStyles } from './styles';
 import { stylesFactory, useStyles } from '../../themes';
 import { Icon } from '../Icon/Icon';
-import { FilterPopup } from './FilterPopup';
 import { Popover } from '..';
+
+import { FilterPopup } from './FilterPopup';
+import { TableStyles } from './styles';
 
 interface Props {
   column: any;

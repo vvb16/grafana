@@ -1,5 +1,6 @@
 import React from 'react';
 import { SelectableValue } from '@grafana/data';
+
 import { SelectCommonProps, MultiSelectCommonProps, SelectAsyncProps } from './types';
 import { SelectBase } from './SelectBase';
 import { SelectContainer, SelectContainerProps } from './SelectContainer';

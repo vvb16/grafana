@@ -1,5 +1,6 @@
 import { isString, escape } from 'lodash';
 import $ from 'jquery';
+
 import coreModule from 'app/angular/core_module';
 import alertDef from 'app/features/alerting/state/alertDef';
 import { DashboardSrv } from 'app/features/dashboard/services/DashboardSrv';

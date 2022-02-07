@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { cloneDeep, defaults as lodashDefaults } from 'lodash';
+
 import { LoadingState, VariableType } from '@grafana/data';
+
 import { VariableModel, VariableOption, VariableWithOptions } from '../types';
-import { AddVariable, getInstanceState, initialVariablesState, VariablePayload, VariablesState } from './types';
 import { variableAdapters } from '../adapters';
 import { changeVariableNameSucceeded } from '../editor/reducer';
 import { ensureStringValues } from '../utils';
+
+import { AddVariable, getInstanceState, initialVariablesState, VariablePayload, VariablesState } from './types';
 import { getNextVariableIndex } from './selectors';
 
 const sharedReducerSlice = createSlice({

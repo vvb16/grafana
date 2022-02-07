@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { Legend } from '@grafana/ui';
+
 import mdx from './Legend.mdx';
 
 export default {

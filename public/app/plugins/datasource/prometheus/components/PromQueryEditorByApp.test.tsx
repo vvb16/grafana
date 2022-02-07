@@ -1,9 +1,12 @@
 import React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { PromQueryEditorByApp } from './PromQueryEditorByApp';
-import { CoreApp } from '@grafana/data';
 import { noop } from 'lodash';
+
+import { CoreApp } from '@grafana/data';
+
 import { PrometheusDatasource } from '../datasource';
+
+import { PromQueryEditorByApp } from './PromQueryEditorByApp';
 import { testIds as alertingTestIds } from './PromQueryEditorForAlerting';
 import { testIds as regularTestIds } from './PromQueryEditor';
 import { testIds as exploreTestIds } from './PromExploreQueryEditor';

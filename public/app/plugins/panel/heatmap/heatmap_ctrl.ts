@@ -1,10 +1,18 @@
-import { MetricsPanelCtrl } from 'app/plugins/sdk';
 import { defaultsDeep, includes, keys, map, reduce, min as _min, max as _max } from 'lodash';
-import kbn from 'app/core/utils/kbn';
+import { auto } from 'angular';
+
 import TimeSeries from 'app/core/time_series2';
-import { axesEditor } from './axes_editor';
-import { heatmapDisplayEditor } from './display_editor';
-import rendering from './rendering';
+import kbn from 'app/core/utils/kbn';
+import { MetricsPanelCtrl } from 'app/plugins/sdk';
+import { getProcessedDataFrames } from 'app/features/query/state/runRequest';
+import { LegacyResponseData, PanelEvents, DataFrame, rangeUtil } from '@grafana/data';
+import { TemplateSrv } from 'app/features/templating/template_srv';
+import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import appEvents from 'app/core/app_events';
+import { ZoomOutEvent } from 'app/types/events';
+
+import { DataProcessor } from '../graph/data_processor';
+
 import {
   convertToHeatMap,
   convertToCards,
@@ -12,14 +20,9 @@ import {
   calculateBucketSize,
   sortSeriesByLabel,
 } from './heatmap_data_converter';
-import { auto } from 'angular';
-import { getProcessedDataFrames } from 'app/features/query/state/runRequest';
-import { DataProcessor } from '../graph/data_processor';
-import { LegacyResponseData, PanelEvents, DataFrame, rangeUtil } from '@grafana/data';
-import { TemplateSrv } from 'app/features/templating/template_srv';
-import { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
-import appEvents from 'app/core/app_events';
-import { ZoomOutEvent } from 'app/types/events';
+import rendering from './rendering';
+import { heatmapDisplayEditor } from './display_editor';
+import { axesEditor } from './axes_editor';
 
 const X_BUCKET_NUMBER_DEFAULT = 30;
 const Y_BUCKET_NUMBER_DEFAULT = 10;

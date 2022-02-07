@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { TimeZone } from '@grafana/data';
 import { CollapsableSection, Field, Input, RadioButtonGroup, TagsInput } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 import { FolderPicker } from 'app/core/components/Select/FolderPicker';
+import { updateTimeZoneDashboard, updateWeekStartDashboard } from 'app/features/dashboard/state/actions';
+import { config } from '@grafana/runtime';
+
 import { DashboardModel } from '../../state/DashboardModel';
 import { DeleteDashboardButton } from '../DeleteDashboard/DeleteDashboardButton';
-import { TimePickerSettings } from './TimePickerSettings';
 
-import { updateTimeZoneDashboard, updateWeekStartDashboard } from 'app/features/dashboard/state/actions';
+import { TimePickerSettings } from './TimePickerSettings';
 import { PreviewSettings } from './PreviewSettings';
-import { config } from '@grafana/runtime';
 
 interface OwnProps {
   dashboard: DashboardModel;

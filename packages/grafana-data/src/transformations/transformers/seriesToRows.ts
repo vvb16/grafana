@@ -1,7 +1,6 @@
 import { omit } from 'lodash';
 import { map } from 'rxjs/operators';
 
-import { DataTransformerID } from './ids';
 import { DataTransformerInfo } from '../../types/transformations';
 import {
   Field,
@@ -14,6 +13,8 @@ import { isTimeSeries } from '../../dataframe/utils';
 import { MutableDataFrame, sortDataFrame } from '../../dataframe';
 import { ArrayVector } from '../../vector';
 import { getFrameDisplayName } from '../../field/fieldState';
+
+import { DataTransformerID } from './ids';
 
 export interface SeriesToRowsTransformerOptions {}
 

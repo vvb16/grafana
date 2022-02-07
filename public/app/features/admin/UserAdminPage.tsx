@@ -1,14 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { NavModel } from '@grafana/data';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { featureEnabled } from '@grafana/runtime';
 import Page from 'app/core/components/Page/Page';
+import { StoreState, UserDTO, UserOrg, UserSession, SyncInfo, UserAdminError, AccessControlAction } from 'app/types';
+import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
+import { contextSrv } from 'app/core/core';
+
 import { UserProfile } from './UserProfile';
 import { UserPermissions } from './UserPermissions';
 import { UserSessions } from './UserSessions';
 import { UserLdapSyncInfo } from './UserLdapSyncInfo';
-import { StoreState, UserDTO, UserOrg, UserSession, SyncInfo, UserAdminError, AccessControlAction } from 'app/types';
 import {
   loadAdminUserPage,
   revokeSession,
@@ -25,8 +29,6 @@ import {
   syncLdapUser,
 } from './state/actions';
 import { UserOrgs } from './UserOrgs';
-import { GrafanaRouteComponentProps } from 'app/core/navigation/types';
-import { contextSrv } from 'app/core/core';
 
 interface OwnProps extends GrafanaRouteComponentProps<{ id: string }> {
   navModel: NavModel;

@@ -1,5 +1,3 @@
-import InputDatasource, { describeDataFrame } from './InputDatasource';
-import { InputOptions, InputQuery } from './types';
 import {
   DataFrame,
   DataFrameDTO,
@@ -9,6 +7,8 @@ import {
   readCSV,
 } from '@grafana/data';
 
+import InputDatasource, { describeDataFrame } from './InputDatasource';
+import { InputOptions, InputQuery } from './types';
 import { getQueryOptions } from './testHelpers';
 
 describe('InputDatasource', () => {

@@ -2,12 +2,13 @@ import { rangeUtil } from '@grafana/data';
 
 import { toVariablePayload, VariableIdentifier } from '../state/types';
 import { ThunkResult } from '../../../types';
-import { createIntervalOptions } from './reducer';
 import { validateVariableSelectionState } from '../state/actions';
 import { getVariable } from '../state/selectors';
 import { IntervalVariableModel } from '../types';
 import { getTimeSrv } from '../../dashboard/services/TimeSrv';
 import { getTemplateSrv, TemplateSrv } from '../../templating/template_srv';
+
+import { createIntervalOptions } from './reducer';
 
 export const updateIntervalVariableOptions =
   (identifier: VariableIdentifier): ThunkResult<void> =>

@@ -1,7 +1,10 @@
+import React from 'react';
+
 import { DataLinksInlineEditor, Input, RadioButtonGroup, Select, Switch, TextArea } from '@grafana/ui';
 import { getPanelLinksVariableSuggestions } from 'app/features/panel/panellinks/link_srv';
-import React from 'react';
+
 import { RepeatRowSelect } from '../RepeatRowSelect/RepeatRowSelect';
+
 import { OptionsPaneItemDescriptor } from './OptionsPaneItemDescriptor';
 import { OptionsPaneCategoryDescriptor } from './OptionsPaneCategoryDescriptor';
 import { OptionPaneRenderProps } from './types';

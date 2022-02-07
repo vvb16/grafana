@@ -18,14 +18,15 @@ import cx from 'classnames';
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 
-import { TimelineCollapser } from './TimelineCollapser';
-import TimelineColumnResizer from './TimelineColumnResizer';
-import TimelineViewingLayer from './TimelineViewingLayer';
 import Ticks from '../Ticks';
 import TimelineRow from '../TimelineRow';
 import { TUpdateViewRangeTimeFunction, ViewRangeTime, ViewRangeTimeUpdate } from '../types';
 import { autoColor } from '../../Theme';
 import { ubFlex, ubPx2 } from '../../uberUtilityStyles';
+
+import TimelineViewingLayer from './TimelineViewingLayer';
+import TimelineColumnResizer from './TimelineColumnResizer';
+import { TimelineCollapser } from './TimelineCollapser';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

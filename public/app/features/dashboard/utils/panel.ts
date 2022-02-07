@@ -1,4 +1,6 @@
 // Store
+import { isString as _isString } from 'lodash';
+
 import store from 'app/core/store';
 
 // Models
@@ -7,7 +9,6 @@ import { PanelModel } from 'app/features/dashboard/state/PanelModel';
 import { TimeRange, AppEvents, rangeUtil, dateMath, PanelModel as IPanelModel } from '@grafana/data';
 
 // Utils
-import { isString as _isString } from 'lodash';
 import appEvents from 'app/core/app_events';
 import config from 'app/core/config';
 
@@ -16,11 +17,11 @@ import { getTemplateSrv } from '@grafana/runtime';
 
 // Constants
 import { LS_PANEL_COPY_KEY, PANEL_BORDER } from 'app/core/constants';
-
 import { ShareModal } from 'app/features/dashboard/components/ShareModal';
-import { ShowConfirmModalEvent, ShowModalReactEvent } from '../../../types/events';
 import { AddLibraryPanelModal } from 'app/features/library-panels/components/AddLibraryPanelModal/AddLibraryPanelModal';
 import { UnlinkModal } from 'app/features/library-panels/components/UnlinkModal/UnlinkModal';
+
+import { ShowConfirmModalEvent, ShowModalReactEvent } from '../../../types/events';
 
 export const removePanel = (dashboard: DashboardModel, panel: PanelModel, ask: boolean) => {
   // confirm deletion

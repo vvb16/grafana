@@ -2,6 +2,7 @@ import { config } from '@grafana/runtime';
 import { PluginSignatureStatus, dateTimeParse, PluginError, PluginErrorCode } from '@grafana/data';
 import { getBackendSrv } from 'app/core/services/backend_srv';
 import { Settings } from 'app/core/config';
+
 import { CatalogPlugin, LocalPlugin, RemotePlugin, Version } from './types';
 
 export function mergeLocalsAndRemotes(

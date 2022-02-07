@@ -1,5 +1,6 @@
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
+
 import { FetchResponse } from '@grafana/runtime';
 import {
   dataFrameToJSON,
@@ -9,10 +10,10 @@ import {
   MutableDataFrame,
   toUtc,
 } from '@grafana/data';
-
-import { PostgresDatasource } from '../datasource';
 import { backendSrv } from 'app/core/services/backend_srv'; // will use the version in __mocks__
 import { TemplateSrv } from 'app/features/templating/template_srv';
+
+import { PostgresDatasource } from '../datasource';
 import { initialCustomVariableModelState } from '../../../../features/variables/custom/reducer';
 import { TimeSrv } from '../../../../features/dashboard/services/TimeSrv';
 import { PostgresOptions, PostgresQuery } from '../types';

@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { UserSession } from 'app/types';
-import { Button, Icon, LoadingPlaceholder } from '@grafana/ui';
 import { withI18n, withI18nProps } from '@lingui/react';
 import { t, Trans } from '@lingui/macro';
+
+import { UserSession } from 'app/types';
+import { Button, Icon, LoadingPlaceholder } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 
 interface Props extends withI18nProps {

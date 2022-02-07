@@ -1,4 +1,6 @@
 import { css } from '@emotion/css';
+import React from 'react';
+
 import {
   DataSourceJsonData,
   DataSourcePluginOptionsEditorProps,
@@ -7,7 +9,6 @@ import {
 } from '@grafana/data';
 import { DataSourcePicker } from '@grafana/runtime';
 import { InlineField, InlineFieldRow, Input, TagsInput, useStyles, InlineSwitch } from '@grafana/ui';
-import React from 'react';
 
 export interface TraceToLogsOptions {
   datasourceUid?: string;

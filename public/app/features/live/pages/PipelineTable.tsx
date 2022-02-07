@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/css';
+
 import { getBackendSrv } from '@grafana/runtime';
 import { Tag, useStyles, IconButton } from '@grafana/ui';
-import { css } from '@emotion/css';
 import { GrafanaTheme } from '@grafana/data';
+import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
+
 import { Rule, Output, RuleType } from './types';
 import { RuleModal } from './RuleModal';
-import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 
 function renderOutputTags(key: string, output?: Output): React.ReactNode {
   if (!output?.type) {

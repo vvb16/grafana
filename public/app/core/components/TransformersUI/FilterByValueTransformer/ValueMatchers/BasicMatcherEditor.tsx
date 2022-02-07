@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
+
 import { Input } from '@grafana/ui';
 import { ValueMatcherID, BasicValueMatcherOptions } from '@grafana/data';
+
 import { ValueMatcherEditorConfig, ValueMatcherUIProps, ValueMatcherUIRegistryItem } from './types';
 import { convertToType } from './utils';
 

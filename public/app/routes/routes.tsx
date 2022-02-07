@@ -1,18 +1,20 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 import LdapPage from 'app/features/admin/ldap/LdapPage';
 import UserAdminPage from 'app/features/admin/UserAdminPage';
 import { LoginPage } from 'app/core/components/Login/LoginPage';
 import config from 'app/core/config';
 import { AccessControlAction, DashboardRoutes } from 'app/types';
-import { SafeDynamicImport } from '../core/components/DynamicImports/SafeDynamicImport';
-import { RouteDescriptor } from '../core/navigation/types';
-import { Redirect } from 'react-router-dom';
 import ErrorPage from 'app/core/components/ErrorPage/ErrorPage';
 import { getRoutes as getPluginCatalogRoutes } from 'app/features/plugins/admin/routes';
 import { contextSrv } from 'app/core/services/context_srv';
 import { getLiveRoutes } from 'app/features/live/pages/routes';
 import { getAlertingRoutes } from 'app/features/alerting/routes';
 import ServiceAccountPage from 'app/features/serviceaccounts/ServiceAccountPage';
+
+import { RouteDescriptor } from '../core/navigation/types';
+import { SafeDynamicImport } from '../core/components/DynamicImports/SafeDynamicImport';
 
 export const extraRoutes: RouteDescriptor[] = [];
 

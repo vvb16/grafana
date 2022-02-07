@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { AzureMonitorQuery } from '../../types';
 import Datasource from '../../datasource';
 import { isGUIDish } from '../ResourcePicker/utils';

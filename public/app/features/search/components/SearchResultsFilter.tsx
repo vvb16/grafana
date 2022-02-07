@@ -1,8 +1,11 @@
 import React, { FC, ChangeEvent, FormEvent } from 'react';
 import { css } from '@emotion/css';
+
 import { Button, Checkbox, stylesFactory, useTheme, HorizontalGroup } from '@grafana/ui';
 import { GrafanaTheme, SelectableValue } from '@grafana/data';
+
 import { DashboardQuery, SearchLayout } from '../types';
+
 import { ActionRow } from './ActionRow';
 
 export interface Props {

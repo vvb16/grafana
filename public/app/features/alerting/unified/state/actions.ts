@@ -1,5 +1,7 @@
-import { getBackendSrv, locationService } from '@grafana/runtime';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { isEmpty } from 'lodash';
+
+import { getBackendSrv, locationService } from '@grafana/runtime';
 import {
   AlertmanagerAlert,
   AlertManagerCortexConfig,
@@ -18,6 +20,8 @@ import {
   RulerRuleGroupDTO,
   RulerRulesConfigDTO,
 } from 'app/types/unified-alerting-dto';
+import messageFromError from 'app/plugins/datasource/grafana-azure-monitor-datasource/utils/messageFromError';
+
 import { fetchNotifiers } from '../api/grafana';
 import { fetchAnnotations } from '../api/annotations';
 import {
@@ -64,8 +68,6 @@ import {
 } from '../utils/rules';
 import { addDefaultsToAlertmanagerConfig, removeMuteTimingFromRoute } from '../utils/alertmanager';
 import * as ruleId from '../utils/rule-id';
-import { isEmpty } from 'lodash';
-import messageFromError from 'app/plugins/datasource/grafana-azure-monitor-datasource/utils/messageFromError';
 
 const FETCH_CONFIG_RETRY_TIMEOUT = 30 * 1000;
 

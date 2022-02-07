@@ -1,5 +1,4 @@
 const loaderUtils = require('loader-utils');
-
 const WebWorkerTemplatePlugin = require('webpack/lib/webworker/WebWorkerTemplatePlugin');
 const ExternalsPlugin = require('webpack/lib/ExternalsPlugin');
 const NodeTargetPlugin = require('webpack/lib/node/NodeTargetPlugin');

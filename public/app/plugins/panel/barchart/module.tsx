@@ -7,13 +7,14 @@ import {
   PanelPlugin,
   VizOrientation,
 } from '@grafana/data';
-import { BarChartPanel } from './BarChartPanel';
 import { StackingMode, VisibilityMode } from '@grafana/schema';
 import { graphFieldOptions, commonOptionsBuilder } from '@grafana/ui';
+import { config } from '@grafana/runtime';
+
+import { BarChartPanel } from './BarChartPanel';
 import { BarChartFieldConfig, PanelOptions, defaultBarChartFieldConfig, defaultPanelOptions } from './models.gen';
 import { BarChartSuggestionsSupplier } from './suggestions';
 import { prepareBarChartDisplayValues } from './utils';
-import { config } from '@grafana/runtime';
 import { TickSpacingEditor } from './TickSpacingEditor';
 
 export const plugin = new PanelPlugin<PanelOptions, BarChartFieldConfig>(BarChartPanel)

@@ -7,8 +7,10 @@ import {
   TimeRange,
 } from 'app/plugins/datasource/alertmanager/types';
 import { Labels } from 'app/types/unified-alerting-dto';
-import { MatcherFieldValue } from '../types/silence-form';
 import { SelectableValue } from '@grafana/data';
+
+import { MatcherFieldValue } from '../types/silence-form';
+
 import { getAllDataSources } from './config';
 import { DataSourceType } from './datasource';
 

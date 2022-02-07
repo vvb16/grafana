@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useAsync } from 'react-use';
+
 import { Checkbox, CollapsableSection, ColorValueEditor, Field, HorizontalGroup, Input } from '@grafana/ui';
-import { DashboardModel } from '../../state/DashboardModel';
 import { AnnotationQuery, DataSourceInstanceSettings } from '@grafana/data';
 import { DataSourcePicker, getDataSourceSrv } from '@grafana/runtime';
-import { useAsync } from 'react-use';
 import StandardAnnotationQueryEditor from 'app/features/annotations/components/StandardAnnotationQueryEditor';
-import { AngularEditorLoader } from './AngularEditorLoader';
 import { selectors } from '@grafana/e2e-selectors';
+
+import { DashboardModel } from '../../state/DashboardModel';
+
+import { AngularEditorLoader } from './AngularEditorLoader';
 
 export const newAnnotation: AnnotationQuery = {
   name: 'New annotation',

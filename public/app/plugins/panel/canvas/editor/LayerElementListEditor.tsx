@@ -1,20 +1,22 @@
 import React, { PureComponent } from 'react';
-import { Button, HorizontalGroup } from '@grafana/ui';
-import { AppEvents, SelectableValue, StandardEditorProps } from '@grafana/data';
 import { DropResult } from 'react-beautiful-dnd';
 
-import { PanelOptions } from '../models.gen';
-import { LayerActionID } from '../types';
+import { AppEvents, SelectableValue, StandardEditorProps } from '@grafana/data';
+import { Button, HorizontalGroup } from '@grafana/ui';
 import { CanvasElementOptions, canvasElementRegistry } from 'app/features/canvas';
 import appEvents from 'app/core/app_events';
 import { ElementState } from 'app/features/canvas/runtime/element';
 import { notFoundItem } from 'app/features/canvas/elements/notFound';
 import { GroupState } from 'app/features/canvas/runtime/group';
-import { LayerEditorProps } from './layerEditor';
 import { SelectionParams } from 'app/features/canvas/runtime/scene';
 import { ShowConfirmModalEvent } from 'app/types/events';
 import { LayerDragDropList } from 'app/core/components/Layers/LayerDragDropList';
 import { AddLayerButton } from 'app/core/components/Layers/AddLayerButton';
+
+import { LayerActionID } from '../types';
+import { PanelOptions } from '../models.gen';
+
+import { LayerEditorProps } from './layerEditor';
 
 type Props = StandardEditorProps<any, LayerEditorProps, PanelOptions>;
 

@@ -2,13 +2,14 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import selectEvent from 'react-select-event';
 
-import QueryEditor from './QueryEditor';
+import * as ui from '@grafana/ui';
 
 import createMockQuery from '../../__mocks__/query';
 import createMockDatasource from '../../__mocks__/datasource';
 import { AzureQueryType } from '../../types';
 import { invalidNamespaceError } from '../../__mocks__/errors';
-import * as ui from '@grafana/ui';
+
+import QueryEditor from './QueryEditor';
 
 // Have to mock CodeEditor because it doesnt seem to work in tests???
 jest.mock('@grafana/ui', () => ({

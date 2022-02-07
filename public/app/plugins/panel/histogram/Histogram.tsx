@@ -1,6 +1,11 @@
 import React from 'react';
 import uPlot, { AlignedData } from 'uplot';
 import {
+  histogramBucketSizes,
+  histogramFrameBucketMaxFieldName,
+} from '@grafana/data/src/transformations/transformers/histogram';
+
+import {
   VizLegendOptions,
   LegendDisplayMode,
   ScaleDistribution,
@@ -17,10 +22,6 @@ import {
 } from '@grafana/data';
 import { Themeable2, UPlotConfigBuilder, UPlotChart, VizLayout, PlotLegend } from '@grafana/ui';
 
-import {
-  histogramBucketSizes,
-  histogramFrameBucketMaxFieldName,
-} from '@grafana/data/src/transformations/transformers/histogram';
 import { PanelOptions } from './models.gen';
 
 function incrRoundDn(num: number, incr: number) {

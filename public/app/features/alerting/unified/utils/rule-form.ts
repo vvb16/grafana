@@ -1,3 +1,5 @@
+import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
+
 import {
   DataQuery,
   rangeUtil,
@@ -23,14 +25,15 @@ import {
   PostableRuleGrafanaRuleDTO,
   RulerRuleDTO,
 } from 'app/types/unified-alerting-dto';
+
 import { EvalFunction } from '../../state/alertDef';
 import { RuleFormType, RuleFormValues } from '../types/rule-form';
+
 import { Annotation } from './constants';
 import { isGrafanaRulesSource } from './datasource';
 import { arrayToRecord, recordToArray } from './misc';
 import { isAlertingRulerRule, isGrafanaRulerRule, isRecordingRulerRule } from './rules';
 import { parseInterval } from './time';
-import { ExpressionDatasourceRef } from '@grafana/runtime/src/utils/DataSourceWithBackend';
 
 export const getDefaultFormValues = (): RuleFormValues =>
   Object.freeze({

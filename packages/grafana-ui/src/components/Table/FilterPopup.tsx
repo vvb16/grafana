@@ -2,9 +2,10 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 import { Field, GrafanaTheme, SelectableValue } from '@grafana/data';
 import { css, cx } from '@emotion/css';
 
-import { TableStyles } from './styles';
 import { stylesFactory, useStyles, useTheme2 } from '../../themes';
 import { Button, ClickOutsideWrapper, HorizontalGroup, IconButton, Label, VerticalGroup } from '..';
+
+import { TableStyles } from './styles';
 import { FilterList } from './FilterList';
 import { calculateUniqueFieldValues, getFilteredOptions, valuesToOptions } from './utils';
 

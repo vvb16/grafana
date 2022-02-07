@@ -19,6 +19,7 @@ import {
   VizOrientation,
 } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { FormattedValueDisplay } from '../FormattedValueDisplay/FormattedValueDisplay';
 import { calculateFontSize, measureText } from '../../utils/measureText';
 import { Themeable2 } from '../../types';

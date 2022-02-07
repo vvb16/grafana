@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+
 import { Modal } from '@grafana/ui';
 
 import { GraphEdge, GraphNode } from './utils';

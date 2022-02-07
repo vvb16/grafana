@@ -1,13 +1,15 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
-import { Icon, ToolbarButton, Tooltip, useStyles2 } from '@grafana/ui';
 import { sanitize, sanitizeUrl } from '@grafana/data/src/text/sanitize';
-import { getBackendSrv } from 'app/core/services/backend_srv';
-import { getLinkSrv } from '../../../panel/panellinks/link_srv';
-import { DashboardLink } from '../../state/DashboardModel';
-import { DashboardSearchHit } from 'app/features/search/types';
-import { selectors } from '@grafana/e2e-selectors';
 import { useAsync } from 'react-use';
 import { css, cx } from '@emotion/css';
+
+import { Icon, ToolbarButton, Tooltip, useStyles2 } from '@grafana/ui';
+import { getBackendSrv } from 'app/core/services/backend_srv';
+import { DashboardSearchHit } from 'app/features/search/types';
+import { selectors } from '@grafana/e2e-selectors';
+
+import { getLinkSrv } from '../../../panel/panellinks/link_srv';
+import { DashboardLink } from '../../state/DashboardModel';
 
 interface Props {
   link: DashboardLink;

@@ -1,13 +1,16 @@
-import { PanelChrome } from '@grafana/ui';
-import { PanelRenderer } from 'app/features/panel/components/PanelRenderer';
 import React, { useEffect, useState } from 'react';
-import { DashboardModel, PanelModel } from '../../state';
-import { usePanelLatestData } from './usePanelLatestData';
+
+import { PanelRenderer } from 'app/features/panel/components/PanelRenderer';
+import { PanelChrome } from '@grafana/ui';
 import { PanelOptions } from 'app/plugins/panel/table/models.gen';
 import { RefreshEvent } from '@grafana/runtime';
 import { applyPanelTimeOverrides } from 'app/features/dashboard/utils/panel';
+
+import { DashboardModel, PanelModel } from '../../state';
 import { getTimeSrv } from '../../services/TimeSrv';
 import PanelHeaderCorner from '../../dashgrid/PanelHeader/PanelHeaderCorner';
+
+import { usePanelLatestData } from './usePanelLatestData';
 
 interface Props {
   width: number;

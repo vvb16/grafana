@@ -1,8 +1,10 @@
 import React from 'react';
 import { FeatureState } from '@grafana/data';
-import { InfoBox, FeatureInfoBox, VerticalGroup } from '@grafana/ui';
-import mdx from './InfoBox.mdx';
 import { Story } from '@storybook/react';
+
+import { InfoBox, FeatureInfoBox, VerticalGroup } from '@grafana/ui';
+
+import mdx from './InfoBox.mdx';
 import { FeatureInfoBoxProps } from './FeatureInfoBox';
 import { InfoBoxProps } from './InfoBox';
 

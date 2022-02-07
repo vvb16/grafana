@@ -1,11 +1,11 @@
 // Libraries
 import { each, find, findIndex, flattenDeep, isArray, isBoolean, isNumber, isString, map, max, some } from 'lodash';
+
 // Utils
 import getFactors from 'app/core/utils/factors';
 import kbn from 'app/core/utils/kbn';
+
 // Types
-import { PanelModel } from './PanelModel';
-import { DashboardModel } from './DashboardModel';
 import {
   AnnotationQuery,
   DataLink,
@@ -40,14 +40,11 @@ import {
 } from 'app/core/constants';
 import { isConstant, isMulti } from 'app/features/variables/guard';
 import { alignCurrentWithMulti } from 'app/features/variables/shared/multiOptions';
-import { VariableHide } from '../../variables/types';
 import { config } from 'app/core/config';
 import { plugin as statPanelPlugin } from 'app/plugins/panel/stat/module';
 import { plugin as gaugePanelPlugin } from 'app/plugins/panel/gauge/module';
 import { AxisPlacement, GraphFieldConfig } from '@grafana/ui';
 import { getDataSourceSrv } from '@grafana/runtime';
-import { labelsToFieldsTransformer } from '../../../../../packages/grafana-data/src/transformations/transformers/labelsToFields';
-import { mergeTransformer } from '../../../../../packages/grafana-data/src/transformations/transformers/merge';
 import {
   migrateCloudWatchQuery,
   migrateMultipleStatsAnnotationQuery,
@@ -55,6 +52,13 @@ import {
 } from 'app/plugins/datasource/cloudwatch/migrations';
 import { CloudWatchAnnotationQuery, CloudWatchMetricsQuery } from 'app/plugins/datasource/cloudwatch/types';
 import { getAllOptionEditors, getAllStandardFieldConfigs } from 'app/core/components/editors/registry';
+
+import { mergeTransformer } from '../../../../../packages/grafana-data/src/transformations/transformers/merge';
+import { labelsToFieldsTransformer } from '../../../../../packages/grafana-data/src/transformations/transformers/labelsToFields';
+import { VariableHide } from '../../variables/types';
+
+import { DashboardModel } from './DashboardModel';
+import { PanelModel } from './PanelModel';
 
 standardEditorsRegistry.setInit(getAllOptionEditors);
 standardFieldConfigEditorRegistry.setInit(getAllStandardFieldConfigs);

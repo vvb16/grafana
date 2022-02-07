@@ -1,10 +1,13 @@
 import { css } from '@emotion/css';
+import React, { FC } from 'react';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { Alert, LinkButton, useStyles2 } from '@grafana/ui';
 import { AlertManagerCortexConfig } from 'app/plugins/datasource/alertmanager/types';
-import React, { FC } from 'react';
+
 import { GRAFANA_RULES_SOURCE_NAME, isVanillaPrometheusAlertManagerDataSource } from '../../utils/datasource';
 import { makeAMLink } from '../../utils/misc';
+
 import { ReceiversTable } from './ReceiversTable';
 import { TemplatesTable } from './TemplatesTable';
 

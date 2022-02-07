@@ -1,5 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react';
 import { css, cx } from '@emotion/css';
+
 import { IconSize, useStyles, Icon } from '@grafana/ui';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {

@@ -1,8 +1,10 @@
 import { css } from '@emotion/css';
-import { CoreApp, GrafanaTheme2, LoadingState } from '@grafana/data';
 import { EditorHeader, FlexItem, InlineSelect, Space } from '@grafana/experimental';
-import { Button, useStyles2 } from '@grafana/ui';
 import React, { SyntheticEvent, useCallback, useState } from 'react';
+
+import { CoreApp, GrafanaTheme2, LoadingState } from '@grafana/data';
+import { Button, useStyles2 } from '@grafana/ui';
+
 import { PromQueryEditor } from '../../components/PromQueryEditor';
 import { PromQueryEditorProps } from '../../components/types';
 import { promQueryModeller } from '../PromQueryModeller';
@@ -10,6 +12,7 @@ import { QueryEditorModeToggle } from '../shared/QueryEditorModeToggle';
 import { QueryHeaderSwitch } from '../shared/QueryHeaderSwitch';
 import { QueryEditorMode } from '../shared/types';
 import { getDefaultEmptyQuery, PromVisualQuery } from '../types';
+
 import { PromQueryBuilder } from './PromQueryBuilder';
 import { PromQueryBuilderExplained } from './PromQueryBuilderExplained';
 

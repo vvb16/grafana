@@ -1,8 +1,11 @@
-import RichHistoryStorage, { RichHistoryServiceError, RichHistoryStorageWarning } from './RichHistoryStorage';
+import { isEqual, omit } from 'lodash';
+
+import { DataQuery } from '@grafana/data';
+
 import { RichHistoryQuery } from '../../types';
 import store from '../store';
-import { DataQuery } from '@grafana/data';
-import { isEqual, omit } from 'lodash';
+
+import RichHistoryStorage, { RichHistoryServiceError, RichHistoryStorageWarning } from './RichHistoryStorage';
 import { createRetentionPeriodBoundary, RICH_HISTORY_SETTING_KEYS } from './richHistoryLocalStorageUtils';
 
 export const RICH_HISTORY_KEY = 'grafana.explore.richHistory';

@@ -1,6 +1,7 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { UPlotConfigBuilder } from '@grafana/ui';
 import { positionTooltip } from '@grafana/ui/src/components/uPlot/plugins/TooltipPlugin';
+
+import { UPlotConfigBuilder } from '@grafana/ui';
 import { CartesianCoords2D } from '@grafana/data';
 
 export type HoverEvent = {

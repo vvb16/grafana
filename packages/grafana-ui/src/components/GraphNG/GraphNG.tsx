@@ -1,7 +1,5 @@
 import React from 'react';
 import uPlot, { AlignedData } from 'uplot';
-import { Themeable2 } from '../../types';
-import { findMidPointYPosition, pluginLog } from '../uPlot/utils';
 import {
   DataFrame,
   DataHoverClearEvent,
@@ -13,17 +11,21 @@ import {
   TimeRange,
   TimeZone,
 } from '@grafana/data';
-import { preparePlotFrame as defaultPreparePlotFrame } from './utils';
 import { VizLegendOptions } from '@grafana/schema';
-import { PanelContext, PanelContextRoot } from '../PanelChrome/PanelContext';
 import { Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
-import { GraphNGLegendEvent, XYFieldMatchers } from './types';
+
+import { PanelContext, PanelContextRoot } from '../PanelChrome/PanelContext';
+import { findMidPointYPosition, pluginLog } from '../uPlot/utils';
+import { Themeable2 } from '../../types';
 import { Renderers, UPlotConfigBuilder } from '../uPlot/config/UPlotConfigBuilder';
 import { VizLayout } from '../VizLayout/VizLayout';
 import { UPlotChart } from '../uPlot/Plot';
 import { ScaleProps } from '../uPlot/config/UPlotScaleBuilder';
 import { AxisProps } from '../uPlot/config/UPlotAxisBuilder';
+
+import { preparePlotFrame as defaultPreparePlotFrame } from './utils';
+import { GraphNGLegendEvent, XYFieldMatchers } from './types';
 
 /**
  * @internal -- not a public API

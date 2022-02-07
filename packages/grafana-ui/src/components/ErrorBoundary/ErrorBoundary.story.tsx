@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { ErrorBoundary, ErrorBoundaryAlert } from './ErrorBoundary';
 import { withCenteredStory } from '@grafana/ui/src/utils/storybook/withCenteredStory';
-import mdx from './ErrorBoundary.mdx';
+
 import { Button } from '../Button';
-import { ErrorWithStack } from './ErrorWithStack';
 import { Alert } from '../Alert/Alert';
+
+import { ErrorBoundary, ErrorBoundaryAlert } from './ErrorBoundary';
+import mdx from './ErrorBoundary.mdx';
+import { ErrorWithStack } from './ErrorWithStack';
 
 export default {
   title: 'General/ErrorBoundary',

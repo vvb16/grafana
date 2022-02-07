@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { MenuItem } from './MenuItem';
 import { SubMenu } from './SubMenu';
 

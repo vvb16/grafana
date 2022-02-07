@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { ThresholdsConfig, ThresholdsMode, VizOrientation, getFieldConfigWithMinMax } from '@grafana/data';
+
 import { BarGauge, BarGaugeDisplayMode } from '../BarGauge/BarGauge';
+
 import { TableCellProps, TableCellDisplayMode } from './types';
 
 const defaultScale: ThresholdsConfig = {

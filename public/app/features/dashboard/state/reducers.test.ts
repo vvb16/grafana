@@ -1,3 +1,5 @@
+import { DashboardInitPhase, DashboardState, OrgRole, PermissionLevel } from 'app/types';
+
 import {
   dashboardInitCompleted,
   dashboardInitFailed,
@@ -7,7 +9,6 @@ import {
   dashboardReducer,
   initialState,
 } from './reducers';
-import { DashboardInitPhase, DashboardState, OrgRole, PermissionLevel } from 'app/types';
 import { DashboardModel } from './DashboardModel';
 
 describe('dashboard reducer', () => {

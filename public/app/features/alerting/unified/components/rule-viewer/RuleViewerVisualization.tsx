@@ -1,12 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { css } from '@emotion/css';
+import AutoSizer from 'react-virtualized-auto-sizer';
+
 import { DataSourceInstanceSettings, DateTime, dateTime, GrafanaTheme2, PanelData, urlUtil } from '@grafana/data';
 import { config, getDataSourceSrv, PanelRenderer } from '@grafana/runtime';
 import { Alert, CodeEditor, DateTimePicker, LinkButton, useStyles2, useTheme2 } from '@grafana/ui';
 import { isExpressionQuery } from 'app/features/expressions/guards';
 import { PanelOptions } from 'app/plugins/panel/table/models.gen';
 import { AlertQuery } from 'app/types/unified-alerting-dto';
-import AutoSizer from 'react-virtualized-auto-sizer';
+
 import { PanelPluginsButtonGroup, SupportedPanelPlugins } from '../PanelPluginsButtonGroup';
 import { TABLE, TIMESERIES } from '../../utils/constants';
 

@@ -1,3 +1,8 @@
+import store from 'app/core/store';
+import { dateTime, DataQuery } from '@grafana/data';
+
+import RichHistoryStorage, { RichHistoryServiceError, RichHistoryStorageWarning } from '../history/RichHistoryStorage';
+
 import {
   addToRichHistory,
   updateStarredInRichHistory,
@@ -10,9 +15,6 @@ import {
   filterAndSortQueries,
   SortOrder,
 } from './richHistory';
-import store from 'app/core/store';
-import { dateTime, DataQuery } from '@grafana/data';
-import RichHistoryStorage, { RichHistoryServiceError, RichHistoryStorageWarning } from '../history/RichHistoryStorage';
 
 const richHistoryStorageMock: RichHistoryStorage = {} as RichHistoryStorage;
 

@@ -1,10 +1,13 @@
 import React from 'react';
-import { PlaylistDTO } from './types';
+import { css } from '@emotion/css';
+
 import { Button, Card, LinkButton, ModalsController, useStyles2 } from '@grafana/ui';
 import { contextSrv } from 'app/core/services/context_srv';
 import { GrafanaTheme2 } from '@grafana/data';
-import { css } from '@emotion/css';
+
 import { DashNavButton } from '../dashboard/components/DashNav/DashNavButton';
+
+import { PlaylistDTO } from './types';
 import { ShareModal } from './ShareModal';
 
 interface Props {

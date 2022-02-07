@@ -3,8 +3,8 @@ import { each } from 'lodash';
 
 import config from 'app/core/config';
 import coreModule from 'app/angular/core_module';
-
 import { DataSourceApi, PanelEvents } from '@grafana/data';
+
 import { importDataSourcePlugin, importAppPlugin } from '../../features/plugins/plugin_loader';
 import { importPanelPlugin } from '../../features/plugins/importPanelPlugin';
 

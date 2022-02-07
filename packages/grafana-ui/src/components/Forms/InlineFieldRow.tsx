@@ -1,7 +1,8 @@
 import React, { FC, HTMLProps, ReactNode } from 'react';
 import { css, cx } from '@emotion/css';
-import { useStyles } from '../../themes';
 import { GrafanaTheme } from '@grafana/data';
+
+import { useStyles } from '../../themes';
 
 export interface Props extends Omit<HTMLProps<HTMLDivElement>, 'css'> {
   children: ReactNode | ReactNode[];

@@ -17,16 +17,17 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2, LinkModel } from '@grafana/data';
 import { stylesFactory, withTheme2 } from '@grafana/ui';
 
-import TimelineHeaderRow from './TimelineHeaderRow';
-import VirtualizedTraceView from './VirtualizedTraceView';
 import { merge as mergeShortcuts } from '../keyboard-shortcuts';
 import { Accessors } from '../ScrollManager';
-import { TUpdateViewRangeTimeFunction, ViewRange, ViewRangeTimeUpdate } from './types';
 import { SpanLinkFunc, TNil } from '../types';
 import { TraceSpan, Trace, TraceLog, TraceKeyValuePair, TraceLink } from '../types/trace';
 import TTraceTimeline from '../types/TTraceTimeline';
 import { autoColor } from '../Theme';
 import ExternalLinkContext from '../url/externalLinkContext';
+
+import { TUpdateViewRangeTimeFunction, ViewRange, ViewRangeTimeUpdate } from './types';
+import VirtualizedTraceView from './VirtualizedTraceView';
+import TimelineHeaderRow from './TimelineHeaderRow';
 
 type TExtractUiFindFromStateReturn = {
   uiFind: string | undefined;

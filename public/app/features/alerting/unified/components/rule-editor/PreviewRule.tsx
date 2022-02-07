@@ -3,11 +3,14 @@ import { css } from '@emotion/css';
 import { useFormContext } from 'react-hook-form';
 import { takeWhile } from 'rxjs/operators';
 import { useMountedState } from 'react-use';
+
 import { Button, HorizontalGroup, useStyles2 } from '@grafana/ui';
 import { dateTimeFormatISO, GrafanaTheme2, LoadingState } from '@grafana/data';
+
 import { RuleFormType } from '../../types/rule-form';
 import { PreviewRuleRequest, PreviewRuleResponse } from '../../types/preview';
 import { previewAlertRule } from '../../api/preview';
+
 import { PreviewRuleResult } from './PreviewRuleResult';
 
 const fields: string[] = ['type', 'dataSourceName', 'condition', 'queries', 'expression'];

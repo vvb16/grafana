@@ -1,11 +1,14 @@
 import React, { HTMLAttributes, useCallback, useRef, useState } from 'react';
-import { GrafanaTheme2, dateTimeFormat, systemDateFormats, TimeZone } from '@grafana/data';
-import { Portal, useStyles2, usePanelContext } from '@grafana/ui';
 import { css } from '@emotion/css';
-import { AnnotationEditorForm } from './AnnotationEditorForm';
-import { getCommonAnnotationStyles } from '../styles';
 import { usePopper } from 'react-popper';
 import { getTooltipContainerStyles } from '@grafana/ui/src/themes/mixins';
+
+import { GrafanaTheme2, dateTimeFormat, systemDateFormats, TimeZone } from '@grafana/data';
+import { Portal, useStyles2, usePanelContext } from '@grafana/ui';
+
+import { getCommonAnnotationStyles } from '../styles';
+
+import { AnnotationEditorForm } from './AnnotationEditorForm';
 import { AnnotationTooltip } from './AnnotationTooltip';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

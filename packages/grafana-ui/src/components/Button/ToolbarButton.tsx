@@ -1,14 +1,16 @@
 import React, { forwardRef, ButtonHTMLAttributes } from 'react';
 import { cx, css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
+import { isString } from 'lodash';
+import { selectors } from '@grafana/e2e-selectors';
+
 import { styleMixins, useStyles2 } from '../../themes';
 import { IconName } from '../../types/icon';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { Icon } from '../Icon/Icon';
-import { getPropertiesForVariant } from './Button';
-import { isString } from 'lodash';
-import { selectors } from '@grafana/e2e-selectors';
 import { getFocusStyles, getMouseFocusStyles } from '../../themes/mixins';
+
+import { getPropertiesForVariant } from './Button';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Icon name */

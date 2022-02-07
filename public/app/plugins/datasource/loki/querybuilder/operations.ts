@@ -9,6 +9,7 @@ import {
   VisualQueryModeller,
 } from '../../prometheus/querybuilder/shared/types';
 import { FUNCTIONS } from '../syntax';
+
 import { LokiOperationId, LokiVisualQuery, LokiVisualQueryOperationCategory } from './types';
 
 export function getOperationDefintions(): QueryBuilderOperationDef[] {

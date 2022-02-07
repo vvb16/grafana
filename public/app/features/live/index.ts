@@ -1,9 +1,11 @@
 import { config, getBackendSrv, getGrafanaLiveSrv, setGrafanaLiveSrv } from '@grafana/runtime';
-import { GrafanaLiveService } from './live';
+import { liveTimer } from 'app/features/dashboard/dashgrid/liveTimer';
+
 import { contextSrv } from '../../core/services/context_srv';
+
+import { GrafanaLiveService } from './live';
 import { CentrifugeServiceWorkerProxy } from './centrifuge/serviceWorkerProxy';
 import { CentrifugeService } from './centrifuge/service';
-import { liveTimer } from 'app/features/dashboard/dashgrid/liveTimer';
 
 export const sessionId =
   (window as any)?.grafanaBootData?.user?.id +

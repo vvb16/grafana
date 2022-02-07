@@ -1,13 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { OperationList } from './OperationList';
+
+import { DataSourceApi } from '@grafana/data';
+
 import { promQueryModeller } from '../PromQueryModeller';
 import { EmptyLanguageProviderMock } from '../../language_provider.mock';
 import PromQlLanguageProvider from '../../language_provider';
 import { PromVisualQuery } from '../types';
 import { PrometheusDatasource } from '../../datasource';
-import { DataSourceApi } from '@grafana/data';
+
+import { OperationList } from './OperationList';
 
 const defaultQuery: PromVisualQuery = {
   metric: 'random_metric',

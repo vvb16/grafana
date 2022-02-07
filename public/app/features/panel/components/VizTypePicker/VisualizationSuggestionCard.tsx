@@ -1,11 +1,14 @@
 import React, { CSSProperties } from 'react';
-import { GrafanaTheme2, PanelData, VisualizationSuggestion } from '@grafana/data';
-import { PanelRenderer } from '../PanelRenderer';
 import { css, cx } from '@emotion/css';
-import { Tooltip, useStyles2 } from '@grafana/ui';
-import { VizTypeChangeDetails } from './types';
-import { selectors } from '@grafana/e2e-selectors';
 import { cloneDeep } from 'lodash';
+
+import { GrafanaTheme2, PanelData, VisualizationSuggestion } from '@grafana/data';
+import { Tooltip, useStyles2 } from '@grafana/ui';
+import { selectors } from '@grafana/e2e-selectors';
+
+import { PanelRenderer } from '../PanelRenderer';
+
+import { VizTypeChangeDetails } from './types';
 
 export interface Props {
   data: PanelData;

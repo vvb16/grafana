@@ -15,13 +15,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import CanvasSpanGraph from './CanvasSpanGraph';
-import SpanGraph from './index';
-import TickLabels from './TickLabels';
-import ViewingLayer from './ViewingLayer';
 import traceGenerator from '../../demo/trace-generators';
 import transformTraceData from '../../model/transform-trace-data';
 import { polyfill as polyfillAnimationFrame } from '../../utils/test/requestAnimationFrame';
+
+import ViewingLayer from './ViewingLayer';
+import TickLabels from './TickLabels';
+import CanvasSpanGraph from './CanvasSpanGraph';
+
+import SpanGraph from './index';
 
 describe('<SpanGraph>', () => {
   polyfillAnimationFrame(window);

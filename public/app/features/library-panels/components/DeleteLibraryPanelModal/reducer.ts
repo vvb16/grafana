@@ -1,7 +1,8 @@
-import { DashboardSearchHit } from 'app/features/search/types';
-import { LoadingState } from '@grafana/data';
 import { AnyAction } from 'redux';
 import { createAction } from '@reduxjs/toolkit';
+
+import { DashboardSearchHit } from 'app/features/search/types';
+import { LoadingState } from '@grafana/data';
 
 export interface DeleteLibraryPanelModalState {
   loadingState: LoadingState;

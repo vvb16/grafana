@@ -1,6 +1,8 @@
 import React, { ComponentProps, ReactNode } from 'react';
 import { render } from '@testing-library/react';
+
 import { getDefaultTimeRange } from '@grafana/data';
+
 import { ElasticDatasource } from '../datasource';
 import { ElasticsearchProvider } from '../components/QueryEditor/ElasticsearchQueryContext';
 

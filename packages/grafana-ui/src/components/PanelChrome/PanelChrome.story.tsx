@@ -1,10 +1,12 @@
 import React, { CSSProperties, useState } from 'react';
-import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
-import { PanelChrome, useTheme, PanelChromeProps } from '@grafana/ui';
-import { HorizontalGroup, VerticalGroup } from '../Layout/Layout';
 import { merge } from 'lodash';
 import { GrafanaTheme } from '@grafana/data';
 import { useInterval } from 'react-use';
+
+import { PanelChrome, useTheme, PanelChromeProps } from '@grafana/ui';
+
+import { HorizontalGroup, VerticalGroup } from '../Layout/Layout';
+import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 
 export default {
   title: 'Visualizations/PanelChrome',

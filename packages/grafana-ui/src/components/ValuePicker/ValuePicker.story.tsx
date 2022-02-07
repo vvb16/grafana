@@ -1,9 +1,12 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+
 import { ValuePicker } from '@grafana/ui';
+
 import { generateOptions } from '../Select/mockOptions';
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { getAvailableIcons } from '../../types';
+
 import mdx from './ValuePicker.mdx';
 import { ValuePickerProps } from './ValuePicker';
 

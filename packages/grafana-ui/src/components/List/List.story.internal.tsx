@@ -1,8 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { List } from './List';
 import { css, cx } from '@emotion/css';
 import tinycolor from 'tinycolor2';
+
+import { List } from './List';
 import { InlineList } from './InlineList';
 
 export default {

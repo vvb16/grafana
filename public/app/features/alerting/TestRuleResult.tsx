@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
+
 import { LoadingPlaceholder, JSONFormatter, Icon, HorizontalGroup, ClipboardButton } from '@grafana/ui';
 import appEvents from 'app/core/app_events';
-import { DashboardModel, PanelModel } from '../dashboard/state';
 import { getBackendSrv } from '@grafana/runtime';
 import { AppEvents } from '@grafana/data';
+
+import { DashboardModel, PanelModel } from '../dashboard/state';
 
 export interface Props {
   dashboard: DashboardModel;

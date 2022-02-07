@@ -1,13 +1,15 @@
+import { UrlQueryValue } from '@grafana/data';
+
 import { TextBoxVariableModel } from '../types';
 import { ThunkResult } from '../../../types';
 import { getVariable } from '../state/selectors';
 import { variableAdapters } from '../adapters';
-import { createTextBoxOptions } from './reducer';
 import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
 import { setOptionFromUrl } from '../state/actions';
-import { UrlQueryValue } from '@grafana/data';
 import { changeVariableProp } from '../state/sharedReducer';
 import { ensureStringValues } from '../utils';
+
+import { createTextBoxOptions } from './reducer';
 
 export const updateTextBoxVariableOptions = (identifier: VariableIdentifier): ThunkResult<void> => {
   return async (dispatch, getState) => {

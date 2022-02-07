@@ -1,6 +1,9 @@
 import { of } from 'rxjs';
-import { queryBuilder } from '../shared/testing/builders';
+
 import { FieldType, toDataFrame } from '@grafana/data';
+
+import { queryBuilder } from '../shared/testing/builders';
+
 import { updateVariableOptions } from './reducer';
 import { areMetricFindValues, toMetricFindValues, updateOptionsState, validateVariableSelection } from './operators';
 

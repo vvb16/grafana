@@ -1,5 +1,11 @@
 import React, { PureComponent } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
+import { saveAs } from 'file-saver';
+import { css } from '@emotion/css';
+
+import { config } from 'app/core/config';
+import { selectors } from '@grafana/e2e-selectors';
+import { Button, Container, Spinner, Table } from '@grafana/ui';
 import {
   applyFieldOverrides,
   applyRawFieldOverrides,
@@ -14,19 +20,15 @@ import {
   transformDataFrame,
   TimeZone,
 } from '@grafana/data';
-import { Button, Container, Spinner, Table } from '@grafana/ui';
-import { selectors } from '@grafana/e2e-selectors';
-import { InspectDataOptions } from './InspectDataOptions';
-import { getPanelInspectorStyles } from './styles';
-import { config } from 'app/core/config';
-import { saveAs } from 'file-saver';
-import { css } from '@emotion/css';
 import { GetDataOptions } from 'app/features/query/state/PanelQueryRunner';
 import { PanelModel } from 'app/features/dashboard/state';
 import { dataFrameToLogsModel } from 'app/core/logs_model';
 import { transformToJaeger } from 'app/plugins/datasource/jaeger/responseTransform';
 import { transformToZipkin } from 'app/plugins/datasource/zipkin/utils/transforms';
 import { transformToOTLP } from 'app/plugins/datasource/tempo/resultTransformer';
+
+import { getPanelInspectorStyles } from './styles';
+import { InspectDataOptions } from './InspectDataOptions';
 
 interface Props {
   isLoading: boolean;

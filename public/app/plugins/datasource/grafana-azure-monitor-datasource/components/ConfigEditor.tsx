@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import {
   DataSourcePluginOptionsEditorProps,
   SelectableValue,
@@ -8,14 +9,16 @@ import {
   updateDatasourcePluginSecureJsonDataOption,
 } from '@grafana/data';
 import { Alert } from '@grafana/ui';
-import { MonitorConfig } from './MonitorConfig';
-import { AnalyticsConfig } from './AnalyticsConfig';
 import { getBackendSrv, getTemplateSrv, TemplateSrv } from '@grafana/runtime';
-import { InsightsConfig } from './InsightsConfig';
+
 import ResponseParser from '../azure_monitor/response_parser';
 import { AzureDataSourceJsonData, AzureDataSourceSecureJsonData, AzureDataSourceSettings } from '../types';
 import { isAppInsightsConfigured } from '../credentials';
 import { routeNames } from '../utils/common';
+
+import { InsightsConfig } from './InsightsConfig';
+import { AnalyticsConfig } from './AnalyticsConfig';
+import { MonitorConfig } from './MonitorConfig';
 
 export type Props = DataSourcePluginOptionsEditorProps<AzureDataSourceJsonData, AzureDataSourceSecureJsonData>;
 

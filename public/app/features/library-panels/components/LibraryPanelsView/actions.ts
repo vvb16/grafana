@@ -4,6 +4,7 @@ import { from, merge, of, Subscription, timer } from 'rxjs';
 import { catchError, finalize, mapTo, mergeMap, share, takeUntil } from 'rxjs/operators';
 
 import { deleteLibraryPanel as apiDeleteLibraryPanel, getLibraryPanels } from '../../state/api';
+
 import { initialLibraryPanelsViewState, initSearch, searchCompleted } from './reducer';
 
 type DispatchResult = (dispatch: Dispatch<AnyAction>) => void;

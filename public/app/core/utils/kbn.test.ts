@@ -1,5 +1,6 @@
-import kbn from './kbn';
 import { DecimalCount, TimeZone } from '@grafana/data';
+
+import kbn from './kbn';
 
 interface ValueFormatTest {
   id: string;

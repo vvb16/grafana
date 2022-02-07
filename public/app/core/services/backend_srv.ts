@@ -12,21 +12,23 @@ import {
 import { catchError, filter, map, mergeMap, retryWhen, share, takeUntil, tap, throwIfEmpty } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
 import { v4 as uuidv4 } from 'uuid';
+
 import { BackendSrv as BackendService, BackendSrvRequest, FetchError, FetchResponse } from '@grafana/runtime';
 import { AppEvents, DataQueryErrorType } from '@grafana/data';
-
 import appEvents from 'app/core/app_events';
 import { getConfig } from 'app/core/config';
 import { DashboardSearchHit } from 'app/features/search/types';
 import { FolderDTO } from 'app/types';
-import { ContextSrv, contextSrv } from './context_srv';
+import { TokenRevokedModal } from 'app/features/users/TokenRevokedModal';
+
 import { parseInitFromOptions, parseResponseBody, parseUrlFromOptions } from '../utils/fetch';
 import { isDataQuery, isLocalUrl } from '../utils/query';
+import { ShowModalReactEvent } from '../../types/events';
+
+import { ContextSrv, contextSrv } from './context_srv';
 import { FetchQueue } from './FetchQueue';
 import { ResponseQueue } from './ResponseQueue';
 import { FetchQueueWorker } from './FetchQueueWorker';
-import { TokenRevokedModal } from 'app/features/users/TokenRevokedModal';
-import { ShowModalReactEvent } from '../../types/events';
 
 const CANCEL_ALL_REQUESTS_REQUEST_ID = 'cancel_all_requests_request_id';
 

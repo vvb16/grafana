@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { uniqueId } from 'lodash';
 import { Placement } from '@popperjs/core';
+
 import { Tooltip } from '../../../Tooltip/Tooltip';
 import { Icon } from '../../..';
 

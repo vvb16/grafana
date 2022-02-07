@@ -1,10 +1,13 @@
-import { Input } from '@grafana/ui';
 import React from 'react';
+
+import { Input } from '@grafana/ui';
+import { LibraryPanelInformation } from 'app/features/library-panels/components/LibraryPanelInfo/LibraryPanelInfo';
+
+import { isPanelModelLibraryPanel } from '../../../library-panels/guard';
+
 import { OptionsPaneItemDescriptor } from './OptionsPaneItemDescriptor';
 import { OptionsPaneCategoryDescriptor } from './OptionsPaneCategoryDescriptor';
 import { OptionPaneRenderProps } from './types';
-import { isPanelModelLibraryPanel } from '../../../library-panels/guard';
-import { LibraryPanelInformation } from 'app/features/library-panels/components/LibraryPanelInfo/LibraryPanelInfo';
 
 export function getLibraryPanelOptionsCategory(props: OptionPaneRenderProps): OptionsPaneCategoryDescriptor {
   const { panel, onPanelConfigChange, dashboard } = props;

@@ -1,6 +1,8 @@
 import { TimeRange } from '@grafana/data';
-import { convertToStoreState } from './convertToStoreState';
+
 import { TemplateSrv } from '../../app/features/templating/template_srv';
+
+import { convertToStoreState } from './convertToStoreState';
 import { getTemplateSrvDependencies } from './getTemplateSrvDependencies';
 
 export function initTemplateSrv(variables: any[], timeRange?: TimeRange) {

@@ -1,15 +1,17 @@
 import { cloneDeep } from 'lodash';
+
 import { CustomVariableModel } from '../types';
 import { dispatch } from '../../../store/store';
 import { setOptionAsCurrent, setOptionFromUrl } from '../state/actions';
 import { VariableAdapter } from '../adapters';
-import { customVariableReducer, initialCustomVariableModelState } from './reducer';
-import { CustomVariableEditor } from './CustomVariableEditor';
-import { updateCustomVariableOptions } from './actions';
 import { toVariableIdentifier } from '../state/types';
 import { isAllVariable } from '../utils';
 import { optionPickerFactory } from '../pickers';
 import { ALL_VARIABLE_TEXT } from '../constants';
+
+import { updateCustomVariableOptions } from './actions';
+import { CustomVariableEditor } from './CustomVariableEditor';
+import { customVariableReducer, initialCustomVariableModelState } from './reducer';
 
 export const createCustomVariableAdapter = (): VariableAdapter<CustomVariableModel> => {
   return {

@@ -1,5 +1,6 @@
-import store from 'app/core/store';
 import { filter, isArray, isNumber } from 'lodash';
+
+import store from 'app/core/store';
 import config from 'app/core/config';
 
 export class ImpressionSrv {

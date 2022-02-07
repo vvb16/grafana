@@ -5,7 +5,9 @@ import {
   formattedValueToString,
   getFieldDisplayName,
 } from '@grafana/data';
+
 import { SeriesTable } from '../../VizTooltip';
+
 import { GraphTooltipContentProps } from './types';
 
 export const SingleModeGraphTooltip: React.FC<GraphTooltipContentProps> = ({

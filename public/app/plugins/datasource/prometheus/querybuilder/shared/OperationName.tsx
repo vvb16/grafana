@@ -1,7 +1,9 @@
 import { css } from '@emotion/css';
+import React, { useState } from 'react';
+
 import { GrafanaTheme2, SelectableValue } from '@grafana/data';
 import { Icon, Select, useStyles2 } from '@grafana/ui';
-import React, { useState } from 'react';
+
 import { VisualQueryModeller, QueryBuilderOperation, QueryBuilderOperationDef } from './types';
 
 export interface Props {

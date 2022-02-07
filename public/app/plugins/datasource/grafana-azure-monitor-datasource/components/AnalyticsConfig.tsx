@@ -1,8 +1,11 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { AzureCredentialsForm } from './AzureCredentialsForm';
+
 import { Button, Alert } from '@grafana/ui';
+
 import { AzureDataSourceSettings } from '../types';
 import { getCredentials } from '../credentials';
+
+import { AzureCredentialsForm } from './AzureCredentialsForm';
 
 export interface Props {
   options: AzureDataSourceSettings;

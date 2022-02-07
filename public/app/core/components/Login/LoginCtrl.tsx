@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import config from 'app/core/config';
 import { getBackendSrv } from '@grafana/runtime';
 import appEvents from 'app/core/app_events';

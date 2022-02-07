@@ -1,5 +1,7 @@
 import { merge, Observable, of, Subject, throwError, Unsubscribable } from 'rxjs';
 import { catchError, filter, finalize, mergeMap, take, takeUntil } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
+
 import {
   CoreApp,
   DataQuery,
@@ -17,10 +19,10 @@ import { QueryVariableModel, VariableRefresh } from '../types';
 import { StoreState, ThunkDispatch } from '../../../types';
 import { dispatch, getState } from '../../../store/store';
 import { getTemplatedRegex } from '../utils';
-import { v4 as uuidv4 } from 'uuid';
 import { getTimeSrv } from '../../dashboard/services/TimeSrv';
-import { QueryRunners } from './queryRunners';
 import { runRequest } from '../../query/state/runRequest';
+
+import { QueryRunners } from './queryRunners';
 import { toMetricFindValues, updateOptionsState, validateVariableSelection } from './operators';
 
 interface UpdateOptionsArgs {

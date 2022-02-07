@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { IconButton, IconButtonVariant } from './IconButton';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
 import { useTheme2 } from '../../themes';
 import { IconSize, IconName } from '../../types';
-import mdx from './IconButton.mdx';
 import { VerticalGroup } from '../Layout/Layout';
+
+import mdx from './IconButton.mdx';
+import { IconButton, IconButtonVariant } from './IconButton';
 
 export default {
   title: 'Buttons/IconButton',

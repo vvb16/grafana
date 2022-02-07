@@ -1,8 +1,12 @@
 import React from 'react';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
 import { render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+import { byLabelText, byRole, byTestId, byText } from 'testing-library-selector';
+import userEvent from '@testing-library/user-event';
+
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
 import {
   AlertManagerCortexConfig,
   AlertManagerDataSourceJsonData,
@@ -11,15 +15,13 @@ import {
   Route,
 } from 'app/plugins/datasource/alertmanager/types';
 import { configureStore } from 'app/store/configureStore';
-import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
-import { byLabelText, byRole, byTestId, byText } from 'testing-library-selector';
+import { selectOptionInTest } from '@grafana/ui';
+
 import AmRoutes from './AmRoutes';
 import { fetchAlertManagerConfig, fetchStatus, updateAlertManagerConfig } from './api/alertmanager';
 import { mockDataSource, MockDataSourceSrv, someCloudAlertManagerConfig, someCloudAlertManagerStatus } from './mocks';
 import { getAllDataSources } from './utils/config';
 import { DataSourceType, GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
-import userEvent from '@testing-library/user-event';
-import { selectOptionInTest } from '@grafana/ui';
 import { ALERTMANAGER_NAME_QUERY_KEY } from './utils/constants';
 
 jest.mock('./api/alertmanager');

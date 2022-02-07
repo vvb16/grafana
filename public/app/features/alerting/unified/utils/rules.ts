@@ -1,3 +1,5 @@
+import { capitalize } from 'lodash';
+
 import { AlertState } from '@grafana/data';
 import {
   GrafanaAlertState,
@@ -20,10 +22,11 @@ import {
   RuleIdentifier,
   RuleNamespace,
 } from 'app/types/unified-alerting';
+
+import { State } from '../components/StateTag';
+
 import { AsyncRequestState } from './redux';
 import { RULER_NOT_SUPPORTED_MSG } from './constants';
-import { capitalize } from 'lodash';
-import { State } from '../components/StateTag';
 
 export function isAlertingRule(rule: Rule | undefined): rule is AlertingRule {
   return typeof rule === 'object' && rule.type === PromRuleType.Alerting;

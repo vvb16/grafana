@@ -17,10 +17,10 @@ import { shallow } from 'enzyme';
 import { createTheme } from '@grafana/data';
 
 import CopyIcon from '../../common/CopyIcon';
-
-import KeyValuesTable, { LinkValue, getStyles } from './KeyValuesTable';
 import { UIDropdown, UIIcon } from '../../uiElementsContext';
 import { ubInlineBlock } from '../../uberUtilityStyles';
+
+import KeyValuesTable, { LinkValue, getStyles } from './KeyValuesTable';
 
 describe('LinkValue', () => {
   const title = 'titleValue';

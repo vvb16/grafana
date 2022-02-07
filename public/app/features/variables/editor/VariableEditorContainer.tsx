@@ -1,17 +1,19 @@
 import React, { MouseEvent, PureComponent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+
 import { Icon, LinkButton } from '@grafana/ui';
 import { selectors } from '@grafana/e2e-selectors';
 
 import { toVariableIdentifier, toVariablePayload, VariableIdentifier } from '../state/types';
 import { StoreState } from '../../../types';
-import { VariableEditorEditor } from './VariableEditorEditor';
-import { connect, ConnectedProps } from 'react-redux';
 import { getEditorVariables } from '../state/selectors';
-import { switchToEditMode, switchToListMode, switchToNewMode } from './actions';
 import { changeVariableOrder, duplicateVariable, removeVariable } from '../state/sharedReducer';
-import { VariableEditorList } from './VariableEditorList';
 import { VariablesUnknownTable } from '../inspect/VariablesUnknownTable';
 import { VariablesDependenciesButton } from '../inspect/VariablesDependenciesButton';
+
+import { VariableEditorList } from './VariableEditorList';
+import { switchToEditMode, switchToListMode, switchToNewMode } from './actions';
+import { VariableEditorEditor } from './VariableEditorEditor';
 
 const mapStateToProps = (state: StoreState) => ({
   variables: getEditorVariables(state),

@@ -1,10 +1,12 @@
 import { css } from '@emotion/css';
-import { DataSourceInstanceSettings, GrafanaTheme2 } from '@grafana/data';
-import { Alert, Button, Tooltip, useStyles2 } from '@grafana/ui';
 import { SerializedError } from '@reduxjs/toolkit';
 import pluralize from 'pluralize';
 import React, { useMemo, ReactElement, useState, FC } from 'react';
 import { useLocalStorage } from 'react-use';
+
+import { Alert, Button, Tooltip, useStyles2 } from '@grafana/ui';
+import { DataSourceInstanceSettings, GrafanaTheme2 } from '@grafana/data';
+
 import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
 import { getRulesDataSources, GRAFANA_RULES_SOURCE_NAME } from '../../utils/datasource';
 import { isRulerNotSupportedResponse } from '../../utils/rules';

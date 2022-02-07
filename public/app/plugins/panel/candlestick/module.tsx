@@ -8,6 +8,10 @@ import {
   SelectableValue,
 } from '@grafana/data';
 import { commonOptionsBuilder } from '@grafana/ui';
+import { config } from '@grafana/runtime';
+
+import { defaultGraphConfig, getGraphFieldConfig } from '../timeseries/config';
+
 import { CandlestickPanel } from './CandlestickPanel';
 import {
   defaultColors,
@@ -17,9 +21,7 @@ import {
   defaultPanelOptions,
   CandleStyle,
 } from './models.gen';
-import { defaultGraphConfig, getGraphFieldConfig } from '../timeseries/config';
 import { CandlestickData, candlestickFieldsInfo, FieldPickerInfo, prepareCandlestickFields } from './fields';
-import { config } from '@grafana/runtime';
 import { CandlestickSuggestionsSupplier } from './suggestions';
 
 const modeOptions = [

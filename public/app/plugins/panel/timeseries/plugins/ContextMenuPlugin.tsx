@@ -1,5 +1,8 @@
 import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { css as cssCore, Global } from '@emotion/react';
+import { useClickAway } from 'react-use';
+import { pluginLog } from '@grafana/ui/src/components/uPlot/utils';
+
 import {
   ContextMenu,
   GraphContextMenuHeader,
@@ -11,8 +14,6 @@ import {
   UPlotConfigBuilder,
 } from '@grafana/ui';
 import { CartesianCoords2D, DataFrame, getFieldDisplayName, InterpolateFunction, TimeZone } from '@grafana/data';
-import { useClickAway } from 'react-use';
-import { pluginLog } from '@grafana/ui/src/components/uPlot/utils';
 
 type ContextMenuSelectionCoords = { viewport: CartesianCoords2D; plotCanvas: CartesianCoords2D };
 type ContextMenuSelectionPoint = { seriesIdx: number | null; dataIdx: number | null };

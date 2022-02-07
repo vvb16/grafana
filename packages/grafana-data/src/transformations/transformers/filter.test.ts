@@ -1,10 +1,11 @@
 import { FieldType } from '../../types/dataFrame';
-import { DataTransformerID } from './ids';
 import { toDataFrame } from '../../dataframe/processDataFrame';
 import { FieldMatcherID } from '../matchers/ids';
 import { mockTransformationsRegistry } from '../../utils/tests/mockTransformationsRegistry';
-import { filterFieldsTransformer } from './filter';
 import { transformDataFrame } from '../transformDataFrame';
+
+import { filterFieldsTransformer } from './filter';
+import { DataTransformerID } from './ids';
 
 export const simpleSeriesWithTypes = toDataFrame({
   fields: [

@@ -2,8 +2,10 @@ import React from 'react';
 import { cloneDeep, find, findLast, isEmpty, isString, set } from 'lodash';
 import { from, lastValueFrom, merge, Observable, of, throwError, zip } from 'rxjs';
 import { catchError, concatMap, finalize, map, mergeMap, repeat, scan, share, takeWhile, tap } from 'rxjs/operators';
-import { DataSourceWithBackend, FetchError, getBackendSrv, toDataQueryResponse } from '@grafana/runtime';
 import { RowContextOptions } from '@grafana/ui/src/components/Logs/LogRowContextProvider';
+import { toTestingStatus } from '@grafana/runtime/src/utils/queryResponse';
+
+import { DataSourceWithBackend, FetchError, getBackendSrv, toDataQueryResponse } from '@grafana/runtime';
 import {
   DataFrame,
   DataQueryError,
@@ -21,13 +23,14 @@ import {
   TimeRange,
   toLegacyResponseData,
 } from '@grafana/data';
-
 import { notifyApp } from 'app/core/actions';
 import { createErrorNotification } from 'app/core/copy/appNotification';
 import { AppNotificationTimeout } from 'app/types';
 import { store } from 'app/store/store';
 import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
 import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { VariableWithMultiSupport } from 'app/features/variables/types';
+
 import { ThrottlingErrorMessage } from './components/ThrottlingErrorMessage';
 import memoizedDebounce from './memoizedDebounce';
 import {
@@ -53,9 +56,7 @@ import {
   CloudWatchLogsRequest,
 } from './types';
 import { CloudWatchLanguageProvider } from './language_provider';
-import { VariableWithMultiSupport } from 'app/features/variables/types';
 import { increasingInterval } from './utils/rxjs/increasingInterval';
-import { toTestingStatus } from '@grafana/runtime/src/utils/queryResponse';
 import { addDataLinksToLogsResponse } from './utils/datalinks';
 import { runWithRetry } from './utils/logsRetry';
 import { SQLCompletionItemProvider } from './cloudwatch-sql/completion/CompletionItemProvider';

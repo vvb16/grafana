@@ -1,4 +1,5 @@
 import { DataQuery, DataSourceRef } from '@grafana/data';
+
 import { ExpressionQuery } from '../features/expressions/types';
 
 export interface QueryGroupOptions {

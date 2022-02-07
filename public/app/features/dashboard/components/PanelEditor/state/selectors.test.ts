@@ -1,7 +1,9 @@
-import { getPanelEditorTabs } from './selectors';
 import { PanelPlugin } from '@grafana/data';
+
 import { PanelEditorTabId } from '../types';
 import { updateConfig } from '../../../../../core/config';
+
+import { getPanelEditorTabs } from './selectors';
 
 describe('getPanelEditorTabs selector', () => {
   it('return no tabs when no plugin provided', () => {

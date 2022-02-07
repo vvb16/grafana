@@ -1,7 +1,8 @@
 import { MonoTypeOperatorFunction } from 'rxjs';
 
-import { DataFrame, Field } from './dataFrame';
 import { RegistryItemWithOptions } from '../utils/Registry';
+
+import { DataFrame, Field } from './dataFrame';
 
 /**
  * Function that transform data frames (AKA transformer)

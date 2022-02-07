@@ -1,10 +1,12 @@
+import { isString } from 'lodash';
+
 import { DataQueryRequest, DataSourceInstanceSettings, ScopedVars } from '@grafana/data';
 import { getTemplateSrv, DataSourceWithBackend } from '@grafana/runtime';
-import { isString } from 'lodash';
 
 import TimegrainConverter from '../time_grain_converter';
 import { AzureDataSourceJsonData, AzureMonitorQuery, AzureQueryType, DatasourceValidationResult } from '../types';
 import { routeNames } from '../utils/common';
+
 import ResponseParser from './response_parser';
 
 export interface LogAnalyticsColumn {

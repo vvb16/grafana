@@ -1,17 +1,17 @@
 import 'symbol-observable';
 import 'core-js';
 import 'regenerator-runtime/runtime';
-
 import 'whatwg-fetch'; // fetch polyfill needed for PhantomJs rendering
 import './polyfills/old-mediaquerylist'; // Safari < 14 does not have mql.addEventListener()
 import 'file-saver';
 import 'jquery';
-
 // eslint-disable-next-line lodash/import-scope
 import _ from 'lodash';
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import config from 'app/core/config';
+import 'app/features/all';
 // @ts-ignore ignoring this for now, otherwise we would have to extend _ interface with move
 import {
   locationUtil,
@@ -23,8 +23,11 @@ import {
   standardFieldConfigEditorRegistry,
   standardTransformersRegistry,
 } from '@grafana/data';
+
+import { setPanelRenderer } from '@grafana/runtime/src/components/PanelRenderer';
+import { setPanelDataErrorView } from '@grafana/runtime/src/components/PanelDataErrorView';
+
 import { arrayMove } from 'app/core/utils/arrayMove';
-import { preloadPlugins } from './features/plugins/pluginPreloader';
 import {
   locationService,
   registerEchoBackend,
@@ -34,14 +37,17 @@ import {
   setLocationSrv,
   setQueryRunnerFactory,
 } from '@grafana/runtime';
+import { getScrollbarWidth } from '@grafana/ui';
+import { getStandardTransformers } from 'app/core/utils/standardTransformers';
+
+import getDefaultMonacoLanguages from '../lib/monaco-languages';
+
+import { preloadPlugins } from './features/plugins/pluginPreloader';
 import { Echo } from './core/services/echo/Echo';
 import { reportPerformance } from './core/services/echo/EchoSrv';
 import { PerformanceBackend } from './core/services/echo/backends/PerformanceBackend';
-import 'app/features/all';
-import { getScrollbarWidth } from '@grafana/ui';
 import { variableAdapters } from './features/variables/adapters';
 import { initDevFeatures } from './dev';
-import { getStandardTransformers } from 'app/core/utils/standardTransformers';
 import { SentryEchoBackend } from './core/services/echo/backends/sentry/SentryBackend';
 import { setVariableQueryRunner, VariableQueryRunner } from './features/variables/query/VariableQueryRunner';
 import { configureStore } from './store/configureStore';
@@ -51,16 +57,13 @@ import { PanelRenderer } from './features/panel/components/PanelRenderer';
 import { QueryRunner } from './features/query/state/QueryRunner';
 import { getTimeSrv } from './features/dashboard/services/TimeSrv';
 import { getVariablesUrlParams } from './features/variables/getAllVariableValuesForUrl';
-import getDefaultMonacoLanguages from '../lib/monaco-languages';
 import { contextSrv } from './core/services/context_srv';
 import { GAEchoBackend } from './core/services/echo/backends/analytics/GABackend';
 import { ApplicationInsightsBackend } from './core/services/echo/backends/analytics/ApplicationInsightsBackend';
 import { RudderstackBackend } from './core/services/echo/backends/analytics/RudderstackBackend';
 import { getAllOptionEditors, getAllStandardFieldConfigs } from './core/components/editors/registry';
 import { backendSrv } from './core/services/backend_srv';
-import { setPanelRenderer } from '@grafana/runtime/src/components/PanelRenderer';
 import { PanelDataErrorView } from './features/panel/components/PanelDataErrorView';
-import { setPanelDataErrorView } from '@grafana/runtime/src/components/PanelDataErrorView';
 import { DatasourceSrv } from './features/plugins/datasource_srv';
 import { AngularApp } from './angular';
 import { ModalManager } from './core/services/ModalManager';

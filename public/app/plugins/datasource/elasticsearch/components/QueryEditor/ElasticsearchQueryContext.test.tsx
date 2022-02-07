@@ -1,10 +1,13 @@
 import React, { PropsWithChildren } from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { render } from '@testing-library/react';
-import { ElasticsearchProvider, useQuery } from './ElasticsearchQueryContext';
+
+import { getDefaultTimeRange } from '@grafana/data';
+
 import { ElasticsearchQuery } from '../../types';
 import { ElasticDatasource } from '../../datasource';
-import { getDefaultTimeRange } from '@grafana/data';
+
+import { ElasticsearchProvider, useQuery } from './ElasticsearchQueryContext';
 
 const query: ElasticsearchQuery = {
   refId: 'A',

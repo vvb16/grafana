@@ -1,19 +1,6 @@
-import {
-  addQueryRowAction,
-  addResultsToCache,
-  cancelQueries,
-  cancelQueriesAction,
-  cleanLogsVolumeAction,
-  clearCache,
-  importQueries,
-  queryReducer,
-  runQueries,
-  scanStartAction,
-  scanStopAction,
-  storeLogsVolumeDataProviderAction,
-} from './query';
-import { ExploreId, ExploreItemState, StoreState, ThunkDispatch } from 'app/types';
 import { EMPTY, interval, Observable, of } from 'rxjs';
+import { thunkTester } from 'test/core/thunk/thunkTester';
+
 import {
   ArrayVector,
   DataFrame,
@@ -28,11 +15,28 @@ import {
   RawTimeRange,
   toUtc,
 } from '@grafana/data';
-import { thunkTester } from 'test/core/thunk/thunkTester';
-import { makeExplorePaneState } from './utils';
+import { ExploreId, ExploreItemState, StoreState, ThunkDispatch } from 'app/types';
+
 import { reducerTester } from '../../../../test/core/redux/reducerTester';
 import { configureStore } from '../../../store/configureStore';
 import { setTimeSrv } from '../../dashboard/services/TimeSrv';
+
+import { makeExplorePaneState } from './utils';
+import {
+  addQueryRowAction,
+  addResultsToCache,
+  cancelQueries,
+  cancelQueriesAction,
+  cleanLogsVolumeAction,
+  clearCache,
+  importQueries,
+  queryReducer,
+  runQueries,
+  scanStartAction,
+  scanStopAction,
+  storeLogsVolumeDataProviderAction,
+} from './query';
+
 import Mock = jest.Mock;
 
 const t = toUtc();

@@ -1,19 +1,20 @@
 import React, { CSSProperties } from 'react';
+import SVG from 'react-inlinesvg';
+import { css } from '@emotion/css';
+import { isString } from 'lodash';
 
-import { CanvasElementItem, CanvasElementProps } from '../element';
+import { ColorDimensionEditor, ResourceDimensionEditor } from 'app/features/dimensions/editors';
 import {
   ColorDimensionConfig,
   ResourceDimensionConfig,
   ResourceDimensionMode,
   getPublicOrAbsoluteUrl,
 } from 'app/features/dimensions';
-import { ColorDimensionEditor, ResourceDimensionEditor } from 'app/features/dimensions/editors';
-import SVG from 'react-inlinesvg';
-import { css } from '@emotion/css';
-import { isString } from 'lodash';
-import { LineConfig } from '../types';
 import { DimensionContext } from 'app/features/dimensions/context';
 import { APIEditor, APIEditorConfig, callApi } from 'app/plugins/panel/canvas/editor/APIEditor';
+
+import { LineConfig } from '../types';
+import { CanvasElementItem, CanvasElementProps } from '../element';
 
 export interface IconConfig {
   path?: ResourceDimensionConfig;

@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, useEffect } from 'react';
 import { css, cx } from '@emotion/css';
+
 import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 

@@ -1,6 +1,7 @@
 import { createTheme, dateTime, TimeRange } from '@grafana/data';
 import { render } from '@testing-library/react';
 import React from 'react';
+
 import { UnthemedTimeRangePicker } from './TimeRangePicker';
 
 const from = dateTime('2019-12-17T07:48:27.433Z');

@@ -1,16 +1,18 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { useStyles2, Icon, HorizontalGroup } from '@grafana/ui';
+
+import { CatalogPlugin } from '../types';
+import { getLatestCompatibleVersion } from '../helpers';
 
 import { InstallControls } from './InstallControls';
 import { PluginDetailsHeaderSignature } from './PluginDetailsHeaderSignature';
 import { PluginDetailsHeaderDependencies } from './PluginDetailsHeaderDependencies';
 import { PluginLogo } from './PluginLogo';
-import { CatalogPlugin } from '../types';
 import { PluginDisabledBadge } from './Badges';
 import { GetStartedWithPlugin } from './GetStartedWithPlugin';
-import { getLatestCompatibleVersion } from '../helpers';
 
 type Props = {
   currentUrl: string;

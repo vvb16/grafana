@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { uniq } from 'lodash';
+
 import { SafeDynamicImport } from 'app/core/components/DynamicImports/SafeDynamicImport';
 import { config } from 'app/core/config';
 import { RouteDescriptor } from 'app/core/navigation/types';
-import { uniq } from 'lodash';
 
 const commonRoutes: RouteDescriptor[] = [
   {

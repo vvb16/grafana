@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { NamedColorsPalette, NamedColorsPaletteProps } from './NamedColorsPalette';
 import { Meta, Story } from '@storybook/react';
+
 import { withCenteredStory } from '../../utils/storybook/withCenteredStory';
+
+import { NamedColorsPalette, NamedColorsPaletteProps } from './NamedColorsPalette';
 import mdx from './ColorPicker.mdx';
 
 export default {

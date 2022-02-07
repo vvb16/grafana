@@ -1,9 +1,10 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import { css, CSSObject, cx } from '@emotion/css';
+import { colorManipulator, GrafanaTheme2, ThemeRichColor } from '@grafana/data';
+
 import { useTheme2 } from '../../themes';
 import { IconName } from '../../types/icon';
 import { getPropertiesForButtonSize } from '../Forms/commonStyles';
-import { colorManipulator, GrafanaTheme2, ThemeRichColor } from '@grafana/data';
 import { ComponentSize } from '../../types/size';
 import { getFocusStyles, getMouseFocusStyles } from '../../themes/mixins';
 import { Icon } from '../Icon/Icon';

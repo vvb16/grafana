@@ -1,9 +1,11 @@
-import type { Monaco, monacoTypes } from '@grafana/ui';
 import { uniq } from 'lodash';
+
+import type { Monaco, monacoTypes } from '@grafana/ui';
+import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
+
 import { TRIGGER_SUGGEST } from '../../monarch/commands';
 import { LinkedToken } from '../../monarch/LinkedToken';
 import { SuggestionKind, CompletionItemPriority, StatementPosition } from '../../monarch/types';
-import { SQLTokenTypes } from './types';
 import {
   BY,
   FROM,
@@ -19,10 +21,11 @@ import {
   LOGICAL_OPERATORS,
   STATISTICS,
 } from '../language';
-import { getMetricNameToken, getNamespaceToken } from './tokenUtils';
 import { CompletionItemProvider } from '../../monarch/CompletionItemProvider';
 import { CloudWatchDatasource } from '../../datasource';
-import { getTemplateSrv, TemplateSrv } from '@grafana/runtime';
+
+import { SQLTokenTypes } from './types';
+import { getMetricNameToken, getNamespaceToken } from './tokenUtils';
 import { getStatementPosition } from './statementPosition';
 import { getSuggestionKinds } from './suggestionKind';
 

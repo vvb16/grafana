@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
+import { GrafanaTheme } from '@grafana/data';
+
 import { getTagColorsFromName } from '../../utils';
 import { stylesFactory, useTheme } from '../../themes';
 import { Icon } from '../Icon/Icon';
-import { GrafanaTheme } from '@grafana/data';
 
 interface Props {
   name: string;

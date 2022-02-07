@@ -1,9 +1,10 @@
 import React from 'react';
-import config from 'app/core/config';
 import { css, cx } from '@emotion/css';
+import { pickBy } from 'lodash';
+
+import config from 'app/core/config';
 import { Icon, IconName, LinkButton, useStyles, useTheme2, VerticalGroup } from '@grafana/ui';
 import { GrafanaTheme, GrafanaTheme2, DEFAULT_SAML_NAME } from '@grafana/data';
-import { pickBy } from 'lodash';
 
 export interface LoginService {
   bgColor: string;

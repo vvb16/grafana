@@ -1,9 +1,11 @@
 import React, { useState, HTMLAttributes, useMemo, useRef, useLayoutEffect } from 'react';
 import { css, cx } from '@emotion/css';
-import { useStyles2 } from '../../themes';
-import { getTooltipContainerStyles } from '../../themes/mixins';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import { Dimensions2D, GrafanaTheme2 } from '@grafana/data';
+
+import { useStyles2 } from '../../themes';
+import { getTooltipContainerStyles } from '../../themes/mixins';
+
 import { calculateTooltipPosition } from './utils';
 
 /**

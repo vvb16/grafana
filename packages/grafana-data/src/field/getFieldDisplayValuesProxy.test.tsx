@@ -1,7 +1,8 @@
-import { getFieldDisplayValuesProxy } from './getFieldDisplayValuesProxy';
-import { applyFieldOverrides } from './fieldOverrides';
 import { MutableDataFrame, toDataFrame } from '../dataframe';
 import { createTheme } from '../themes';
+
+import { getFieldDisplayValuesProxy } from './getFieldDisplayValuesProxy';
+import { applyFieldOverrides } from './fieldOverrides';
 
 describe('getFieldDisplayValuesProxy', () => {
   const shortTimeField = [{ name: 'Time', values: [1, 2, 3] }];

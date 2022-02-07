@@ -1,10 +1,13 @@
-import { CombinedRule } from 'app/types/unified-alerting';
 import React, { FC } from 'react';
-import { useStyles2 } from '@grafana/ui';
 import { css } from '@emotion/css';
+
+import { CombinedRule } from 'app/types/unified-alerting';
+import { useStyles2 } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
+
 import { AlertLabels } from '../AlertLabels';
 import { DetailsField } from '../DetailsField';
+
 import { RuleDetailsActionButtons } from './RuleDetailsActionButtons';
 import { RuleDetailsDataSources } from './RuleDetailsDataSources';
 import { RuleDetailsMatchingInstances } from './RuleDetailsMatchingInstances';

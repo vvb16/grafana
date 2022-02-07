@@ -1,5 +1,6 @@
 import { AppEvents, UrlQueryValue } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
+
 import appEvents from '../app_events';
 import { KioskMode } from '../../types';
 

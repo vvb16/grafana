@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { Icon, ReactUtils, stylesFactory, useTheme } from '@grafana/ui';
-import { GrafanaTheme } from '@grafana/data';
 import { css, cx } from '@emotion/css';
 import { useUpdateEffect } from 'react-use';
 import { Draggable } from 'react-beautiful-dnd';
+
+import { GrafanaTheme } from '@grafana/data';
+import { Icon, ReactUtils, stylesFactory, useTheme } from '@grafana/ui';
 
 interface QueryOperationRowProps {
   index: number;

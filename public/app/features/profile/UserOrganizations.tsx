@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Trans } from '@lingui/macro';
+
 import { UserDTO, UserOrg } from 'app/types';
 import { Button, LoadingPlaceholder } from '@grafana/ui';
-import { Trans } from '@lingui/macro';
 import { selectors } from '@grafana/e2e-selectors';
 
 export interface Props {

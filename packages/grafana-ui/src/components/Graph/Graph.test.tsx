@@ -1,9 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Graph from './Graph';
 import { TooltipDisplayMode } from '@grafana/schema';
-import { VizTooltip } from '../VizTooltip';
 import { GraphSeriesXY, FieldType, ArrayVector, dateTime, FieldColorModeId, DisplayProcessor } from '@grafana/data';
+
+import { VizTooltip } from '../VizTooltip';
+
+import Graph from './Graph';
 
 const display: DisplayProcessor = (v) => ({ numeric: v, text: String(v), color: 'red' });
 

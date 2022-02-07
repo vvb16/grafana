@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import Prism from 'prismjs';
+import { Node } from 'slate';
+import { css } from '@emotion/css';
+import { debounce } from 'lodash';
+
+import { GrafanaTheme2, isValidGoDuration, SelectableValue } from '@grafana/data';
 import {
   InlineFieldRow,
   InlineField,
@@ -12,17 +18,13 @@ import {
   Alert,
   useStyles2,
 } from '@grafana/ui';
-import { tokenizer } from '../syntax';
-import Prism from 'prismjs';
-import { Node } from 'slate';
-import { css } from '@emotion/css';
-import { GrafanaTheme2, isValidGoDuration, SelectableValue } from '@grafana/data';
-import TempoLanguageProvider from '../language_provider';
-import { TempoDatasource, TempoQuery } from '../datasource';
-import { debounce } from 'lodash';
 import { dispatch } from 'app/store/store';
 import { notifyApp } from 'app/core/actions';
 import { createErrorNotification } from 'app/core/copy/appNotification';
+
+import { TempoDatasource, TempoQuery } from '../datasource';
+import TempoLanguageProvider from '../language_provider';
+import { tokenizer } from '../syntax';
 
 interface Props {
   datasource: TempoDatasource;

@@ -1,12 +1,12 @@
 import React from 'react';
-import { IconName } from '../../types/icon';
 import { css } from '@emotion/css';
-
 import RCCascader from 'rc-cascader';
+import { GrafanaTheme2 } from '@grafana/data';
+
+import { IconName } from '../../types/icon';
 import { CascaderOption } from '../Cascader/Cascader';
 import { onChangeCascader, onLoadDataCascader } from '../Cascader/optionMappings';
 import { stylesFactory, useTheme2 } from '../../themes';
-import { GrafanaTheme2 } from '@grafana/data';
 import { Button, ButtonProps } from '../Button';
 import { Icon } from '../Icon/Icon';
 

@@ -1,4 +1,8 @@
 import React, { PureComponent } from 'react';
+import { DataLinksContextMenuApi } from '@grafana/ui/src/components/DataLinks/DataLinksContextMenu';
+import { findNumericFieldMinMax } from '@grafana/data/src/field/fieldOverrides';
+import { isNumber } from 'lodash';
+
 import {
   BigValue,
   BigValueGraphMode,
@@ -16,12 +20,9 @@ import {
   NumericRange,
   PanelProps,
 } from '@grafana/data';
-
 import { config } from 'app/core/config';
+
 import { StatPanelOptions } from './types';
-import { DataLinksContextMenuApi } from '@grafana/ui/src/components/DataLinks/DataLinksContextMenu';
-import { findNumericFieldMinMax } from '@grafana/data/src/field/fieldOverrides';
-import { isNumber } from 'lodash';
 
 export class StatPanel extends PureComponent<PanelProps<StatPanelOptions>> {
   renderComponent = (

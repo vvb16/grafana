@@ -1,12 +1,14 @@
 import React, { FC, useCallback } from 'react';
+import { css } from '@emotion/css';
+
 import { GrafanaTheme2, SelectableValue, StandardEditorProps } from '@grafana/data';
-import { ColorDimensionConfig } from '../types';
 import { Select, ColorPicker, useStyles2 } from '@grafana/ui';
+
+import { ColorDimensionConfig } from '../types';
 import {
   useFieldDisplayNames,
   useSelectOptions,
 } from '../../../../../packages/grafana-ui/src/components/MatchersUI/utils';
-import { css } from '@emotion/css';
 
 const fixedColorOption: SelectableValue<string> = {
   label: 'Fixed color',

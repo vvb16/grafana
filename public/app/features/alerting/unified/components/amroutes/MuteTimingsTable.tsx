@@ -1,9 +1,11 @@
 import React, { FC, useMemo, useState } from 'react';
 import { css } from '@emotion/css';
+import { useDispatch } from 'react-redux';
+
 import { GrafanaTheme2 } from '@grafana/data';
 import { IconButton, LinkButton, Link, useStyles2, ConfirmModal } from '@grafana/ui';
 import { AlertManagerCortexConfig, MuteTimeInterval, TimeInterval } from 'app/plugins/datasource/alertmanager/types';
-import { useDispatch } from 'react-redux';
+
 import { useUnifiedAlertingSelector } from '../../hooks/useUnifiedAlertingSelector';
 import { deleteMuteTimingAction } from '../../state/actions';
 import { makeAMLink } from '../../utils/misc';

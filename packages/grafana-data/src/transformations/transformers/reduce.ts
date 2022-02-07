@@ -1,6 +1,5 @@
 import { map } from 'rxjs/operators';
 
-import { DataTransformerID } from './ids';
 import { DataTransformerInfo, FieldMatcher, MatcherConfig } from '../../types/transformations';
 import { fieldReducers, reduceField, ReducerID } from '../fieldReducer';
 import { alwaysFieldMatcher, notTimeFieldMatcher } from '../matchers/predicates';
@@ -10,6 +9,8 @@ import { KeyValue } from '../../types/data';
 import { guessFieldTypeForField } from '../../dataframe/processDataFrame';
 import { getFieldMatcher } from '../matchers';
 import { getFieldDisplayName } from '../../field';
+
+import { DataTransformerID } from './ids';
 
 export enum ReduceTransformerMode {
   SeriesToRows = 'seriesToRows', // default

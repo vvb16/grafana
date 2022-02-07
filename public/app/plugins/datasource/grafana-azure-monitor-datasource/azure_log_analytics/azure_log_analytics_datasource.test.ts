@@ -1,11 +1,13 @@
-import AzureMonitorDatasource from '../datasource';
-import AzureLogAnalyticsDatasource from './azure_log_analytics_datasource';
-import FakeSchemaData from './__mocks__/schema';
 import { TemplateSrv } from 'app/features/templating/template_srv';
-import { AzureMonitorQuery, AzureQueryType, DatasourceValidationResult } from '../types';
 import { toUtc } from '@grafana/data';
+
+import { AzureMonitorQuery, AzureQueryType, DatasourceValidationResult } from '../types';
+import AzureMonitorDatasource from '../datasource';
 import createMockQuery from '../__mocks__/query';
 import { singleVariable } from '../__mocks__/variables';
+
+import FakeSchemaData from './__mocks__/schema';
+import AzureLogAnalyticsDatasource from './azure_log_analytics_datasource';
 
 const templateSrv = new TemplateSrv();
 

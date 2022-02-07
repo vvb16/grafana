@@ -1,14 +1,16 @@
 import { isArray, isEqual } from 'lodash';
+
 import { ScopedVars, UrlQueryMap, UrlQueryValue, VariableType } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
+import { safeStringifyValue } from 'app/core/utils/explore';
+
+import { getTimeSrv } from '../dashboard/services/TimeSrv';
+import { StoreState } from '../../types';
+import { getState } from '../../store/store';
 
 import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from './constants';
 import { QueryVariableModel, TransactionStatus, VariableModel, VariableRefresh } from './types';
-import { getTimeSrv } from '../dashboard/services/TimeSrv';
 import { variableAdapters } from './adapters';
-import { safeStringifyValue } from 'app/core/utils/explore';
-import { StoreState } from '../../types';
-import { getState } from '../../store/store';
 
 /*
  * This regex matches 3 types of variable reference with an optional format specifier

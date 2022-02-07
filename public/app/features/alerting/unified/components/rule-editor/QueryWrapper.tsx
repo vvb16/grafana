@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react';
 import { css } from '@emotion/css';
 import { cloneDeep } from 'lodash';
+
 import {
   CoreApp,
   DataQuery,
@@ -14,11 +15,13 @@ import {
 } from '@grafana/data';
 import { RelativeTimeRangePicker, useStyles2 } from '@grafana/ui';
 import { QueryEditorRow } from 'app/features/query/components/QueryEditorRow';
-import { VizWrapper } from './VizWrapper';
 import { isExpressionQuery } from 'app/features/expressions/guards';
+import { AlertQuery } from 'app/types/unified-alerting-dto';
+
 import { TABLE, TIMESERIES } from '../../utils/constants';
 import { SupportedPanelPlugins } from '../PanelPluginsButtonGroup';
-import { AlertQuery } from 'app/types/unified-alerting-dto';
+
+import { VizWrapper } from './VizWrapper';
 
 interface Props {
   data: PanelData;

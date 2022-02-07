@@ -4,9 +4,11 @@ import React from 'react';
 import Highlighter from 'react-highlight-words';
 import { css, cx } from '@emotion/css';
 import { GrafanaTheme } from '@grafana/data';
+
 import { CompletionItem, CompletionItemKind } from '../../types/completion';
-import { PartialHighlighter } from './PartialHighlighter';
 import { useStyles } from '../../themes/ThemeContext';
+
+import { PartialHighlighter } from './PartialHighlighter';
 
 interface Props {
   isSelected: boolean;

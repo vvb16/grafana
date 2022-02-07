@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrafanaTheme2, GraphSeriesValue } from '@grafana/data';
 import { css, cx } from '@emotion/css';
+
 import { SeriesIcon } from '../VizLegend/SeriesIcon';
 import { useStyles2 } from '../../themes';
 

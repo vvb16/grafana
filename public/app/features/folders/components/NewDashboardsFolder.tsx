@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { Button, Input, Form, Field } from '@grafana/ui';
 import Page from 'app/core/components/Page/Page';
-import { createNewFolder } from '../state/actions';
 import { getNavModel } from 'app/core/selectors/navModel';
 import { StoreState } from 'app/types';
+
+import { createNewFolder } from '../state/actions';
 import { validationSrv } from '../../manage-dashboards/services/ValidationSrv';
 
 const mapStateToProps = (state: StoreState) => ({

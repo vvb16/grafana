@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { css } from '@emotion/css';
+
 import { stylesFactory } from '@grafana/ui';
 import { DataFrame, Field, formattedValueToString, getFieldDisplayName, GrafanaTheme2 } from '@grafana/data';
-import { css } from '@emotion/css';
 import { config } from 'app/core/config';
+
 import { ScatterSeries } from './types';
 
 export interface Props {

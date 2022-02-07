@@ -5,11 +5,12 @@ import { useAsync } from 'react-use';
 import { GrafanaRouteComponentProps } from '../../core/navigation/types';
 import { StoreState } from '../../types';
 import { getNavModel } from '../../core/selectors/navModel';
-import { getLoadingNav } from './state/navModel';
 import { LibraryElementDTO } from '../library-panels/types';
 import Page from '../../core/components/Page/Page';
 import { LibraryPanelsSearch } from '../library-panels/components/LibraryPanelsSearch/LibraryPanelsSearch';
 import { OpenLibraryPanelModal } from '../library-panels/components/OpenLibraryPanelModal/OpenLibraryPanelModal';
+
+import { getLoadingNav } from './state/navModel';
 import { getFolderByUid } from './state/actions';
 
 export interface OwnProps extends GrafanaRouteComponentProps<{ uid: string }> {}

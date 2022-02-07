@@ -2,6 +2,7 @@
 import React, { PureComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 import { cloneDeep, has } from 'lodash';
+
 // Utils & Services
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
 import { AngularComponent, getAngularLoader } from '@grafana/runtime';
@@ -21,7 +22,6 @@ import {
   TimeRange,
   toLegacyResponseData,
 } from '@grafana/data';
-import { QueryEditorRowHeader } from './QueryEditorRowHeader';
 import {
   QueryOperationRow,
   QueryOperationRowRenderProps,
@@ -31,6 +31,8 @@ import { selectors } from '@grafana/e2e-selectors';
 import { PanelModel } from 'app/features/dashboard/state/PanelModel';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
 import { OperationRowHelp } from 'app/core/components/QueryOperationRow/OperationRowHelp';
+
+import { QueryEditorRowHeader } from './QueryEditorRowHeader';
 import { RowActionComponents } from './QueryActionComponent';
 
 interface Props<TQuery extends DataQuery> {

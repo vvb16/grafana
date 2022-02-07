@@ -1,3 +1,7 @@
+import cx from 'classnames';
+import { css } from '@emotion/css';
+import React, { useRef } from 'react';
+
 import { GrafanaTheme } from '@grafana/data';
 import {
   Button,
@@ -9,9 +13,6 @@ import {
   useTheme,
 } from '@grafana/ui';
 import { ButtonProps, Elements, PopoverProps, TooltipProps } from '@jaegertracing/jaeger-ui-components';
-import cx from 'classnames';
-import { css } from '@emotion/css';
-import React, { useRef } from 'react';
 
 /**
  * Right now Jaeger components need some UI elements to be injected. This is to get rid of AntD UI library that was

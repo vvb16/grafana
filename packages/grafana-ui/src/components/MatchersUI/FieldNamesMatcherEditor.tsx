@@ -1,8 +1,10 @@
 import React, { memo, useCallback } from 'react';
-import { MatcherUIProps, FieldMatcherUIRegistryItem } from './types';
 import { FieldMatcherID, fieldMatchers, SelectableValue, ByNamesMatcherOptions } from '@grafana/data';
+
 import { MultiSelect } from '../Select/Select';
 import { Input } from '../Input/Input';
+
+import { MatcherUIProps, FieldMatcherUIRegistryItem } from './types';
 import { useFieldDisplayNames, useSelectOptions, frameHasName } from './utils';
 
 export const FieldNamesMatcherEditor = memo<MatcherUIProps<ByNamesMatcherOptions>>((props) => {

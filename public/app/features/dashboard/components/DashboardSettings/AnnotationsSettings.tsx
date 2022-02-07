@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import { DashboardModel } from '../../state/DashboardModel';
 import { AnnotationSettingsEdit, AnnotationSettingsList } from '../AnnotationSettings';
 import { newAnnotation } from '../AnnotationSettings/AnnotationSettingsEdit';
+
 import { DashboardSettingsHeader } from './DashboardSettingsHeader';
 
 interface Props {

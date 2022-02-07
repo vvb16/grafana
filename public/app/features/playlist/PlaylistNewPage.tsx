@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 import { connect, MapStateToProps } from 'react-redux';
+
 import { NavModel } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
 import { useStyles2 } from '@grafana/ui';
-
 import Page from 'app/core/components/Page/Page';
 import { StoreState } from 'app/types';
-import { GrafanaRouteComponentProps } from '../../core/navigation/types';
 import { getNavModel } from 'app/core/selectors/navModel';
+
+import { GrafanaRouteComponentProps } from '../../core/navigation/types';
+
 import { PlaylistForm } from './PlaylistForm';
 import { createPlaylist } from './api';
 import { Playlist } from './types';

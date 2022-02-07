@@ -1,10 +1,17 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { configureStore } from 'app/store/configureStore';
 import { Provider } from 'react-redux';
-import RuleList from './RuleList';
 import { byLabelText, byRole, byTestId, byText } from 'testing-library-selector';
 import { typeAsJestMock } from 'test/helpers/typeAsJestMock';
+import { SerializedError } from '@reduxjs/toolkit';
+import userEvent from '@testing-library/user-event';
+import { Router } from 'react-router-dom';
+
+import { configureStore } from 'app/store/configureStore';
+import { PromAlertingRuleState } from 'app/types/unified-alerting-dto';
+import { locationService, setDataSourceSrv } from '@grafana/runtime';
+
+import RuleList from './RuleList';
 import { getAllDataSources } from './utils/config';
 import { fetchRules } from './api/prometheus';
 import { fetchRulerRules, deleteRulerRulesGroup, deleteNamespace, setRulerRuleGroup } from './api/ruler';
@@ -20,11 +27,6 @@ import {
   someRulerRules,
 } from './mocks';
 import { DataSourceType, GRAFANA_RULES_SOURCE_NAME } from './utils/datasource';
-import { SerializedError } from '@reduxjs/toolkit';
-import { PromAlertingRuleState } from 'app/types/unified-alerting-dto';
-import userEvent from '@testing-library/user-event';
-import { locationService, setDataSourceSrv } from '@grafana/runtime';
-import { Router } from 'react-router-dom';
 
 jest.mock('./api/prometheus');
 jest.mock('./api/ruler');

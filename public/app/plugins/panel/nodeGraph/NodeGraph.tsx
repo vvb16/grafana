@@ -1,17 +1,19 @@
 import React, { memo, MouseEvent, MutableRefObject, useCallback, useMemo, useState } from 'react';
 import cx from 'classnames';
 import useMeasure from 'react-use/lib/useMeasure';
+import { css } from '@emotion/css';
+
 import { Icon, Spinner, useStyles2, useTheme2 } from '@grafana/ui';
+import { DataFrame, GrafanaTheme2, LinkModel } from '@grafana/data';
+
 import { usePanning } from './usePanning';
 import { EdgeDatum, NodeDatum, NodesMarker } from './types';
 import { Node } from './Node';
 import { Edge } from './Edge';
 import { ViewControls } from './ViewControls';
-import { DataFrame, GrafanaTheme2, LinkModel } from '@grafana/data';
 import { useZoom } from './useZoom';
 import { Config, defaultConfig, useLayout } from './layout';
 import { EdgeArrowMarker } from './EdgeArrowMarker';
-import { css } from '@emotion/css';
 import { useCategorizeFrames } from './useCategorizeFrames';
 import { EdgeLabel } from './EdgeLabel';
 import { useContextMenu } from './useContextMenu';

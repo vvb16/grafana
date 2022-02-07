@@ -1,12 +1,3 @@
-import {
-  applyFieldOverrides,
-  applyRawFieldOverrides,
-  FieldOverrideEnv,
-  findNumericFieldMinMax,
-  getLinksSupplier,
-  setDynamicConfigValue,
-  setFieldConfigDefaults,
-} from './fieldOverrides';
 import { ArrayDataFrame, MutableDataFrame, toDataFrame } from '../dataframe';
 import {
   DataFrame,
@@ -23,11 +14,21 @@ import {
 import { locationUtil, Registry } from '../utils';
 import { mockStandardProperties } from '../utils/tests/mockStandardProperties';
 import { FieldMatcherID } from '../transformations';
+import { ArrayVector } from '../vector';
+import { createTheme } from '../themes';
+
 import { FieldConfigOptionsRegistry } from './FieldConfigOptionsRegistry';
 import { getFieldDisplayName } from './fieldState';
-import { ArrayVector } from '../vector';
 import { getDisplayProcessor } from './displayProcessor';
-import { createTheme } from '../themes';
+import {
+  applyFieldOverrides,
+  applyRawFieldOverrides,
+  FieldOverrideEnv,
+  findNumericFieldMinMax,
+  getLinksSupplier,
+  setDynamicConfigValue,
+  setFieldConfigDefaults,
+} from './fieldOverrides';
 
 const property1: any = {
   id: 'custom.property1', // Match field properties

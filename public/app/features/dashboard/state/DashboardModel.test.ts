@@ -1,4 +1,5 @@
 import { keys as _keys } from 'lodash';
+
 import { DashboardModel } from '../state/DashboardModel';
 import { PanelModel } from '../state/PanelModel';
 import { getDashboardModel } from '../../../../test/helpers/getDashboardModel';

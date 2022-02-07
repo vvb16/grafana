@@ -1,4 +1,8 @@
 import React, { ChangeEvent } from 'react';
+import { css } from '@emotion/css';
+import { Unsubscribable } from 'rxjs';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+
 import {
   Alert,
   Button,
@@ -22,18 +26,17 @@ import {
   standardTransformersRegistry,
   TransformerRegistryItem,
 } from '@grafana/data';
-import { css } from '@emotion/css';
 import { selectors } from '@grafana/e2e-selectors';
-import { Unsubscribable } from 'rxjs';
-import { PanelModel } from '../../state';
 import { getDocsLink } from 'app/core/utils/docsLinks';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { TransformationOperationRows } from './TransformationOperationRows';
-import { TransformationsEditorTransformation } from './types';
-import { PanelNotSupported } from '../PanelEditor/PanelNotSupported';
-import { AppNotificationSeverity } from '../../../../types';
 import { LocalStorageValueProvider } from 'app/core/components/LocalStorageValueProvider';
 import { PluginStateInfo } from 'app/features/plugins/components/PluginStateInfo';
+
+import { PanelModel } from '../../state';
+import { PanelNotSupported } from '../PanelEditor/PanelNotSupported';
+import { AppNotificationSeverity } from '../../../../types';
+
+import { TransformationOperationRows } from './TransformationOperationRows';
+import { TransformationsEditorTransformation } from './types';
 
 const LOCAL_STORAGE_KEY = 'dashboard.components.TransformationEditor.featureInfoBox.isDismissed';
 

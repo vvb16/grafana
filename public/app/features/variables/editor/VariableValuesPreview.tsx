@@ -1,9 +1,11 @@
 import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
-import { VariableOption, VariableWithOptions } from '../types';
+import { css } from '@emotion/css';
+
 import { selectors } from '@grafana/e2e-selectors';
 import { Button, InlineFieldRow, InlineLabel, useStyles, VerticalGroup } from '@grafana/ui';
 import { GrafanaTheme } from '@grafana/data';
-import { css } from '@emotion/css';
+
+import { VariableOption, VariableWithOptions } from '../types';
 
 export interface VariableValuesPreviewProps {
   variable: VariableWithOptions;

@@ -1,10 +1,11 @@
-import { Task, TaskRunner } from './task';
-import { pluginBuildRunner } from './plugin.build';
-import { getPluginJson } from '../../config/utils/pluginValidation';
-import { getPluginId } from '../../config/utils/getPluginId';
 import execa = require('execa');
 import path = require('path');
 import fs from 'fs-extra';
+import rimrafCallback from 'rimraf';
+import { promisify } from 'util';
+
+import { getPluginJson } from '../../config/utils/pluginValidation';
+import { getPluginId } from '../../config/utils/getPluginId';
 import { getPackageDetails, getGrafanaVersions, readGitLog } from '../../plugins/utils';
 import { buildManifest, signManifest, saveManifest } from '../../plugins/manifest';
 import {
@@ -17,8 +18,9 @@ import {
 } from '../../plugins/env';
 import { agregateWorkflowInfo, agregateCoverageInfo, agregateTestInfo } from '../../plugins/workflow';
 import { PluginPackageDetails, PluginBuildReport } from '../../plugins/types';
-import rimrafCallback from 'rimraf';
-import { promisify } from 'util';
+
+import { pluginBuildRunner } from './plugin.build';
+import { Task, TaskRunner } from './task';
 const rimraf = promisify(rimrafCallback);
 
 export interface PluginCIOptions {

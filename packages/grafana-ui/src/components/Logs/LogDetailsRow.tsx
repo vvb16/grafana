@@ -4,12 +4,13 @@ import { Field, LinkModel, LogLabelStatsModel, GrafanaTheme2 } from '@grafana/da
 
 import { Themeable2 } from '../../types/theme';
 import { withTheme2 } from '../../themes/index';
+import { IconButton } from '../IconButton/IconButton';
+import { DataLinkButton } from '../DataLinks/DataLinkButton';
+
 import { getLogRowStyles } from './getLogRowStyles';
 
 //Components
 import { LogLabelStats } from './LogLabelStats';
-import { IconButton } from '../IconButton/IconButton';
-import { DataLinkButton } from '../DataLinks/DataLinkButton';
 
 export interface Props extends Themeable2 {
   parsedValue: string;

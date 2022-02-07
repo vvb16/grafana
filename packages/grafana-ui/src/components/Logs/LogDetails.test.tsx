@@ -1,7 +1,8 @@
 import React from 'react';
-import { LogDetails, Props } from './LogDetails';
 import { LogRowModel, LogLevel, MutableDataFrame, Field, GrafanaTheme2 } from '@grafana/data';
 import { mount } from 'enzyme';
+
+import { LogDetails, Props } from './LogDetails';
 import { LogDetailsRow } from './LogDetailsRow';
 
 const setup = (propOverrides?: Partial<Props>, rowOverrides?: Partial<LogRowModel>) => {

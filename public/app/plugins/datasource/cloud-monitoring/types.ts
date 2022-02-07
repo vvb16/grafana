@@ -1,5 +1,6 @@
-import { DataQuery, DataSourceJsonData, SelectableValue } from '@grafana/data';
 import { GoogleAuthType } from '@grafana/google-sdk';
+
+import { DataQuery, DataSourceJsonData, SelectableValue } from '@grafana/data';
 
 export const authTypes: Array<SelectableValue<string>> = [
   { label: 'Google JWT File', value: GoogleAuthType.JWT },

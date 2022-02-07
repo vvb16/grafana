@@ -2,21 +2,23 @@ import React, { FC, Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { css } from '@emotion/css';
+
 import { AppEvents, GrafanaTheme2, urlUtil } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { Button, ConfirmModal, ClipboardButton, HorizontalGroup, LinkButton, useStyles2 } from '@grafana/ui';
 import { contextSrv } from 'app/core/services/context_srv';
 import { appEvents } from 'app/core/core';
+import { CombinedRule, RulesSource } from 'app/types/unified-alerting';
+import { RulerGrafanaRuleDTO, RulerRuleDTO } from 'app/types/unified-alerting-dto';
+
 import { useIsRuleEditable } from '../../hooks/useIsRuleEditable';
 import { Annotation } from '../../utils/constants';
 import { getRulesSourceName, isCloudRulesSource, isGrafanaRulesSource } from '../../utils/datasource';
 import { createExploreLink, createViewLink, makeRuleBasedSilenceLink } from '../../utils/misc';
 import * as ruleId from '../../utils/rule-id';
 import { deleteRuleAction } from '../../state/actions';
-import { CombinedRule, RulesSource } from 'app/types/unified-alerting';
 import { getAlertmanagerByUid } from '../../utils/alertmanager';
 import { useStateHistoryModal } from '../../hooks/useStateHistoryModal';
-import { RulerGrafanaRuleDTO, RulerRuleDTO } from 'app/types/unified-alerting-dto';
 
 interface Props {
   rule: CombinedRule;

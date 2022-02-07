@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { OperatorSegment } from './OperatorSegment';
+
 import { AdHocVariableFilter } from 'app/features/variables/types';
 import { DataSourceRef, SelectableValue } from '@grafana/data';
+
+import { OperatorSegment } from './OperatorSegment';
 import { AdHocFilterKey } from './AdHocFilterKey';
 import { AdHocFilterValue } from './AdHocFilterValue';
 

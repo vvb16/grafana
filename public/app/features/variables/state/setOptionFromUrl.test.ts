@@ -2,12 +2,13 @@ import { variableAdapters } from '../adapters';
 import { createCustomVariableAdapter } from '../custom/adapter';
 import { customBuilder } from '../shared/testing/builders';
 import { reduxTester } from '../../../../test/core/redux/reduxTester';
+import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
+
 import { TemplatingState } from './reducers';
 import { getTemplatingRootReducer } from './helpers';
 import { addVariable, setCurrentVariableValue } from './sharedReducer';
 import { toVariableIdentifier, toVariablePayload } from './types';
 import { setOptionFromUrl } from './actions';
-import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from '../constants';
 
 variableAdapters.setInit(() => [createCustomVariableAdapter()]);
 

@@ -11,6 +11,7 @@ import {
   SelectableValue,
 } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
+
 import { getDataSourceSrv } from '../services/dataSourceSrv';
 
 /**

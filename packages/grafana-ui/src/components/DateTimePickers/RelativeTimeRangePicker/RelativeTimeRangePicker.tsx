@@ -1,6 +1,7 @@
 import React, { FormEvent, ReactElement, useCallback, useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { RelativeTimeRange, GrafanaTheme2, TimeOption } from '@grafana/data';
+
 import { useStyles2 } from '../../../themes';
 import { Button } from '../../Button';
 import { ClickOutsideWrapper } from '../../ClickOutsideWrapper/ClickOutsideWrapper';
@@ -8,6 +9,11 @@ import { TimeRangeList } from '../TimeRangePicker/TimeRangeList';
 import { quickOptions } from '../options';
 import CustomScrollbar from '../../CustomScrollbar/CustomScrollbar';
 import { TimePickerTitle } from '../TimeRangePicker/TimePickerTitle';
+import { Field } from '../../Forms/Field';
+import { getInputStyles, Input } from '../../Input/Input';
+import { Icon } from '../../Icon/Icon';
+import { Tooltip } from '../../Tooltip/Tooltip';
+
 import {
   isRangeValid,
   isRelativeFormat,
@@ -15,10 +21,6 @@ import {
   mapRelativeTimeRangeToOption,
   RangeValidation,
 } from './utils';
-import { Field } from '../../Forms/Field';
-import { getInputStyles, Input } from '../../Input/Input';
-import { Icon } from '../../Icon/Icon';
-import { Tooltip } from '../../Tooltip/Tooltip';
 
 /**
  * @internal

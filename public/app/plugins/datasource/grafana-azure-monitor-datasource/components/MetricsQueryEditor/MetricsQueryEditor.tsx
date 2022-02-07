@@ -1,8 +1,11 @@
 import React from 'react';
 
+import { InlineFieldRow } from '@grafana/ui';
+
 import Datasource from '../../datasource';
 import { AzureMonitorQuery, AzureMonitorOption, AzureMonitorErrorish } from '../../types';
 import SubscriptionField from '../SubscriptionField';
+
 import MetricNamespaceField from './MetricNamespaceField';
 import ResourceTypeField from './ResourceTypeField';
 import ResourceGroupsField from './ResourceGroupsField';
@@ -13,7 +16,6 @@ import TimeGrainField from './TimeGrainField';
 import DimensionFields from './DimensionFields';
 import TopField from './TopField';
 import LegendFormatField from './LegendFormatField';
-import { InlineFieldRow } from '@grafana/ui';
 import {
   useMetricNames,
   useMetricNamespaces,

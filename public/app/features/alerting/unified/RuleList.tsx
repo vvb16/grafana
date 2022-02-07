@@ -1,22 +1,24 @@
-import { GrafanaTheme2, urlUtil } from '@grafana/data';
-import { useStyles2, LinkButton, withErrorBoundary, Button } from '@grafana/ui';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { css } from '@emotion/css';
+import { useLocation } from 'react-router-dom';
+
+import { GrafanaTheme2, urlUtil } from '@grafana/data';
+import { useStyles2, LinkButton, withErrorBoundary, Button } from '@grafana/ui';
+import { useQueryParams } from 'app/core/hooks/useQueryParams';
+import { contextSrv } from 'app/core/services/context_srv';
+
 import { AlertingPageWrapper } from './components/AlertingPageWrapper';
 import { NoRulesSplash } from './components/rules/NoRulesCTA';
 import { useUnifiedAlertingSelector } from './hooks/useUnifiedAlertingSelector';
 import { useFilteredRules } from './hooks/useFilteredRules';
 import { fetchAllPromAndRulerRulesAction } from './state/actions';
 import { getAllRulesSourceNames } from './utils/datasource';
-import { css } from '@emotion/css';
 import { useCombinedRuleNamespaces } from './hooks/useCombinedRuleNamespaces';
 import { RULE_LIST_POLL_INTERVAL_MS } from './utils/constants';
 import RulesFilter from './components/rules/RulesFilter';
 import { RuleListGroupView } from './components/rules/RuleListGroupView';
 import { RuleListStateView } from './components/rules/RuleListStateView';
-import { useQueryParams } from 'app/core/hooks/useQueryParams';
-import { useLocation } from 'react-router-dom';
-import { contextSrv } from 'app/core/services/context_srv';
 import { RuleStats } from './components/rules/RuleStats';
 import { RuleListErrors } from './components/rules/RuleListErrors';
 import { getFiltersFromUrlParams } from './utils/misc';

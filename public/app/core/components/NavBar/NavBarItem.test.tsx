@@ -2,8 +2,10 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
+
 import { locationUtil } from '@grafana/data';
 import { config, setLocationService } from '@grafana/runtime';
+
 import TestProvider from '../../../../test/helpers/TestProvider';
 
 import NavBarItem, { Props } from './NavBarItem';

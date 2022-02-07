@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import memoizeOne from 'memoize-one';
+
 import { DataQuery, ExploreUrlState, EventBusExtended, EventBusSrv } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
 import store from 'app/core/store';
-import { lastSavedUrl, cleanupPaneAction } from './state/main';
-import { initializeExplore, refreshExplore } from './state/explorePane';
 import { ExploreId } from 'app/types/explore';
 import { StoreState } from 'app/types';
 import {
@@ -16,7 +15,11 @@ import {
   lastUsedDatasourceKeyForOrgId,
   parseUrlState,
 } from 'app/core/utils/explore';
+
 import { getFiscalYearStartMonth, getTimeZone } from '../profile/state/selectors';
+
+import { initializeExplore, refreshExplore } from './state/explorePane';
+import { lastSavedUrl, cleanupPaneAction } from './state/main';
 import Explore from './Explore';
 
 interface OwnProps {
