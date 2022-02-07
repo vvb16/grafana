@@ -1202,8 +1202,6 @@ steps:
   image: grafana/build-container:1.4.9
   name: copy-packages-for-docker
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition oss --shouldSave
   depends_on:
   - copy-packages-for-docker
@@ -1216,8 +1214,6 @@ steps:
   - name: docker
     path: /var/run/docker.sock
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition oss --shouldSave --ubuntu
   depends_on:
   - copy-packages-for-docker
@@ -1808,8 +1804,6 @@ steps:
   image: grafana/build-container:1.4.9
   name: copy-packages-for-docker
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition enterprise --shouldSave
   depends_on:
   - copy-packages-for-docker
@@ -1822,8 +1816,6 @@ steps:
   - name: docker
     path: /var/run/docker.sock
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition enterprise --shouldSave --ubuntu
   depends_on:
   - copy-packages-for-docker
@@ -2966,8 +2958,6 @@ steps:
   image: grafana/build-container:1.4.9
   name: copy-packages-for-docker
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition oss --shouldSave
   depends_on:
   - copy-packages-for-docker
@@ -2980,8 +2970,6 @@ steps:
   - name: docker
     path: /var/run/docker.sock
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition oss --shouldSave --ubuntu
   depends_on:
   - copy-packages-for-docker
@@ -3499,8 +3487,6 @@ steps:
   image: grafana/build-container:1.4.9
   name: copy-packages-for-docker
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition enterprise --shouldSave
   depends_on:
   - copy-packages-for-docker
@@ -3513,8 +3499,6 @@ steps:
   - name: docker
     path: /var/run/docker.sock
 - commands:
-  - printenv GCP_KEY | base64 -d > /tmp/gcpkey.json
-  - gcloud auth activate-service-account --key-file=/tmp/gcpkey.json
   - ./bin/grabpl build-docker --edition enterprise --shouldSave --ubuntu
   depends_on:
   - copy-packages-for-docker
@@ -4194,6 +4178,6 @@ kind: secret
 name: gcp_upload_artifacts_key
 ---
 kind: signature
-hmac: b697c1d027af3dec4cb90c9b5f0ccd15359a3af60685338f258c74efd0e45aa5
+hmac: 9cb0bad1487788b7ccc0745526c8ecb5b35a081e9c83e6357357f0cbcd609261
 
 ...
