@@ -1,12 +1,30 @@
 {
   "extends": ["@grafana/eslint-config"],
   "root": true,
-  "plugins": ["no-only-tests", "@emotion", "lodash"],
+  "plugins": ["no-only-tests", "@emotion", "lodash", "import"],
+  "settings": {
+    "import/internal-regex": "^app/",
+    "import/external-module-folders": ["node_modules", ".yarn"],
+    "pathGroups": [
+      {
+        "pattern": "grafana/packages/**",
+        "group": "internal",
+        "position": "before"
+      }
+    ]
+  },
   "rules": {
     "no-only-tests/no-only-tests": "error",
     "react/prop-types": "off",
     "@emotion/jsx-import": "error",
-    "lodash/import-scope": [2, "member"]
+    "lodash/import-scope": [2, "member"],
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
+    ]
   },
   "overrides": [
     {
