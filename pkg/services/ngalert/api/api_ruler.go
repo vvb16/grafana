@@ -249,7 +249,7 @@ func (srv RulerSrv) RoutePostNameRulesConfig(c *models.ReqContext, ruleGroupConf
 		return toNamespaceErrorResponse(err)
 	}
 
-	rules, err := validateRuleGroup(&ruleGroupConfig, c.SignedInUser.OrgId, namespace, srv.BaseInterval, srv.conditionValidator(c))
+	rules, err := validateRuleGroup(&ruleGroupConfig, c.SignedInUser.OrgId, namespace, srv.BaseInterval, conditionValidator(c, srv.DatasourceCache))
 	if err != nil {
 		return ErrResp(http.StatusBadRequest, err, "")
 	}
@@ -371,9 +371,9 @@ func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int6
 	}
 	existingGroupRules := q.Result
 
-	existingGroupRulesUIDs := make(map[string]ngmodels.AlertRule, len(existingGroupRules))
+	existingGroupRulesUIDs := make(map[string]*ngmodels.AlertRule, len(existingGroupRules))
 	for _, r := range existingGroupRules {
-		existingGroupRulesUIDs[r.UID] = *r
+		existingGroupRulesUIDs[r.UID] = r
 	}
 
 	upsert := make([]store.UpsertRule, 0, len(submittedRules))
@@ -384,17 +384,17 @@ func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int6
 
 		if r.UID != "" {
 			if existingGroupRule, ok := existingGroupRulesUIDs[r.UID]; ok {
-				existing = &existingGroupRule
+				existing = existingGroupRule
 				// remove the rule from existingGroupRulesUIDs
 				delete(existingGroupRulesUIDs, r.UID)
+			} else {
+				// Rule can be from other group or namespace
+				q := &ngmodels.GetAlertRuleByUIDQuery{OrgID: orgId, UID: r.UID}
+				if err := ruleStore.GetAlertRuleByUID(ctx, q); err != nil && !errors.Is(err, ngmodels.ErrAlertRuleNotFound) {
+					return nil, fmt.Errorf("failed to query database for an alert rule with UID %s: %w", r.UID, err)
+				}
+				existing = q.Result
 			}
-
-			// Rule can be from other group or namespace
-			q := &ngmodels.GetAlertRuleByUIDQuery{OrgID: orgId, UID: r.UID}
-			if err := ruleStore.GetAlertRuleByUID(ctx, q); err != nil && !errors.Is(err, ngmodels.ErrAlertRuleNotFound) {
-				return nil, fmt.Errorf("failed to query database for an alert rule with UID %s: %w", r.UID, err)
-			}
-			existing = q.Result
 		}
 
 		if existing == nil {
@@ -418,7 +418,7 @@ func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int6
 	}
 
 	for _, rule := range existingGroupRulesUIDs {
-		toDelete = append(toDelete, &rule)
+		toDelete = append(toDelete, rule)
 	}
 
 	return &RuleChanges{
@@ -426,10 +426,4 @@ func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int6
 		Delete:   toDelete,
 		newRules: newRules,
 	}, nil
-}
-
-func (srv RulerSrv) conditionValidator(c *models.ReqContext) func(ngmodels.Condition) error {
-	return func(condition ngmodels.Condition) error {
-		return validateCondition(c.Req.Context(), condition, c.SignedInUser, c.SkipCache, srv.DatasourceCache)
-	}
 }
