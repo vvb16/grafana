@@ -12,7 +12,13 @@ import (
 	"github.com/grafana/grafana/pkg/services/ngalert/store"
 )
 
-func validateRuleNode(ruleGroupConfig *apimodels.PostableRuleGroupConfig, ruleNode apimodels.PostableExtendedRuleNode, orgId int64, namespace *models.Folder, conditionValidator func(ngmodels.Condition) error) (*ngmodels.AlertRule, error) {
+func validateRuleNode(
+	ruleGroupConfig *apimodels.PostableRuleGroupConfig,
+	ruleNode apimodels.PostableExtendedRuleNode,
+	orgId int64,
+	namespace *models.Folder,
+	conditionValidator func(ngmodels.Condition) error,
+) (*ngmodels.AlertRule, error) {
 	if ruleNode.GrafanaManagedAlert == nil {
 		return nil, fmt.Errorf("not Grafana managed alert rule")
 	}
@@ -94,7 +100,13 @@ func validateRuleNode(ruleGroupConfig *apimodels.PostableRuleGroupConfig, ruleNo
 	return &newAlertRule, nil
 }
 
-func validateRuleGroup(ruleGroupConfig *apimodels.PostableRuleGroupConfig, orgId int64, namespace *models.Folder, baseInterval time.Duration, conditionValidator func(ngmodels.Condition) error) ([]*ngmodels.AlertRule, error) {
+func validateRuleGroup(
+	ruleGroupConfig *apimodels.PostableRuleGroupConfig,
+	orgId int64,
+	namespace *models.Folder,
+	baseInterval time.Duration,
+	conditionValidator func(ngmodels.Condition) error,
+) ([]*ngmodels.AlertRule, error) {
 	if ruleGroupConfig.Name == "" {
 		return nil, errors.New("rule group name cannot be empty")
 	}
