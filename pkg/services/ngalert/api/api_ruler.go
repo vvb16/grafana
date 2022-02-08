@@ -30,7 +30,12 @@ type RulerSrv struct {
 	QuotaService    *quota.QuotaService
 	scheduleService schedule.ScheduleService
 	log             log.Logger
+	BaseInterval    time.Duration
 }
+
+var (
+	errQuotaReached = errors.New("quota has been exceeded")
+)
 
 func (srv RulerSrv) RouteDeleteNamespaceRulesConfig(c *models.ReqContext) response.Response {
 	namespaceTitle := web.Params(c.Req)[":Namespace"]
@@ -244,62 +249,68 @@ func (srv RulerSrv) RoutePostNameRulesConfig(c *models.ReqContext, ruleGroupConf
 		return toNamespaceErrorResponse(err)
 	}
 
-	//TODO: Should this belong in alerting-api?
-	if ruleGroupConfig.Name == "" {
-		return ErrResp(http.StatusBadRequest, errors.New("rule group name is not valid"), "")
+	rules, err := validateRuleGroup(&ruleGroupConfig, c.SignedInUser.OrgId, namespace, srv.BaseInterval, srv.conditionValidator(c))
+	if err != nil {
+		return ErrResp(http.StatusBadRequest, err, "")
 	}
 
-	alertRuleUIDs := make(map[string]struct{})
-	for _, r := range ruleGroupConfig.Rules {
-		cond := ngmodels.Condition{
-			Condition: r.GrafanaManagedAlert.Condition,
-			OrgID:     c.SignedInUser.OrgId,
-			Data:      r.GrafanaManagedAlert.Data,
-		}
-		if err := validateCondition(c.Req.Context(), cond, c.SignedInUser, c.SkipCache, srv.DatasourceCache); err != nil {
-			return ErrResp(http.StatusBadRequest, err, "failed to validate alert rule %q", r.GrafanaManagedAlert.Title)
-		}
-		if r.GrafanaManagedAlert.UID != "" {
-			_, ok := alertRuleUIDs[r.GrafanaManagedAlert.UID]
-			if ok {
-				return ErrResp(http.StatusBadRequest, fmt.Errorf("conflicting UID %q found", r.GrafanaManagedAlert.UID), "failed to validate alert rule %q", r.GrafanaManagedAlert.Title)
-			}
-			alertRuleUIDs[r.GrafanaManagedAlert.UID] = struct{}{}
-		}
-	}
+	// TODO add create rules authz logic
 
-	numOfNewRules := len(ruleGroupConfig.Rules) - len(alertRuleUIDs)
-	if numOfNewRules > 0 {
-		// quotas are checked in advanced
-		// that is acceptable under the assumption that there will be only one alert rule under the rule group
-		// alternatively we should check the quotas after the rule group update
-		// and rollback the transaction in case of violation
-		limitReached, err := srv.QuotaService.QuotaReached(c, "alert_rule")
+	var changes *RuleChanges = nil
+	err = srv.store.InTransaction(c.Req.Context(), func(tranCtx context.Context) error {
+		changes, err = calculateChanges(tranCtx, srv.store, c.SignedInUser.OrgId, namespace, ruleGroupConfig.Name, rules)
 		if err != nil {
-			return ErrResp(http.StatusInternalServerError, err, "failed to get quota")
+			return err
 		}
-		if limitReached {
-			return ErrResp(http.StatusForbidden, errors.New("quota reached"), "")
-		}
-	}
 
-	if err := srv.store.UpdateRuleGroup(c.Req.Context(), store.UpdateRuleGroupCmd{
-		OrgID:           c.SignedInUser.OrgId,
-		NamespaceUID:    namespace.Uid,
-		RuleGroupConfig: ruleGroupConfig,
-	}); err != nil {
+		// TODO add update/delete authz logic
+		err := srv.store.UpsertAlertRules(tranCtx, changes.Upsert)
+		if err != nil {
+			return fmt.Errorf("failed to add or update rules: %w", err)
+		}
+
+		for _, rule := range changes.Delete {
+			if err = srv.store.DeleteAlertRuleByUID(tranCtx, c.SignedInUser.OrgId, rule.UID); err != nil {
+				return fmt.Errorf("failed to delete rule %d with UID %s: %w", rule.ID, rule.UID, err)
+			}
+		}
+
+		if len(changes.Upsert) > 0 {
+			limitReached, err := srv.QuotaService.QuotaReached(c, "alert_rule") // alert rule is table name
+			if err != nil {
+				return fmt.Errorf("failed to get alert rules quota: %w", err)
+			}
+			if limitReached {
+				return errQuotaReached
+			}
+		}
+		return nil
+	})
+
+	if err != nil {
 		if errors.Is(err, ngmodels.ErrAlertRuleNotFound) {
 			return ErrResp(http.StatusNotFound, err, "failed to update rule group")
 		} else if errors.Is(err, ngmodels.ErrAlertRuleFailedValidation) {
 			return ErrResp(http.StatusBadRequest, err, "failed to update rule group")
+		} else if errors.Is(err, errQuotaReached) {
+			return ErrResp(http.StatusForbidden, err, "")
 		}
 		return ErrResp(http.StatusInternalServerError, err, "failed to update rule group")
 	}
 
-	for uid := range alertRuleUIDs {
-		srv.scheduleService.UpdateAlertRule(ngmodels.AlertRuleKey{
+	for _, rule := range changes.Upsert {
+		if rule.Existing != nil {
+			srv.scheduleService.UpdateAlertRule(ngmodels.AlertRuleKey{
+				OrgID: c.SignedInUser.OrgId,
+				UID:   rule.Existing.UID,
+			})
+		}
+	}
+
+	for _, rule := range changes.Delete {
+		srv.scheduleService.DeleteAlertRule(ngmodels.AlertRuleKey{
 			OrgID: c.SignedInUser.OrgId,
-			UID:   uid,
+			UID:   rule.UID,
 		})
 	}
 
@@ -415,4 +426,10 @@ func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int6
 		Delete:   toDelete,
 		newRules: newRules,
 	}, nil
+}
+
+func (srv RulerSrv) conditionValidator(c *models.ReqContext) func(ngmodels.Condition) error {
+	return func(condition ngmodels.Condition) error {
+		return validateCondition(c.Req.Context(), condition, c.SignedInUser, c.SkipCache, srv.DatasourceCache)
+	}
 }
