@@ -254,17 +254,22 @@ func (srv RulerSrv) RoutePostNameRulesConfig(c *models.ReqContext, ruleGroupConf
 		return ErrResp(http.StatusBadRequest, err, "")
 	}
 
+	return srv.updateAlertRulesInGroup(c, namespace, ruleGroupConfig, rules)
+}
+
+func (srv RulerSrv) updateAlertRulesInGroup(c *models.ReqContext, namespace *models.Folder, ruleGroupConfig apimodels.PostableRuleGroupConfig, rules []*ngmodels.AlertRule) response.Response {
 	// TODO add create rules authz logic
 
 	var changes *RuleChanges = nil
-	err = srv.store.InTransaction(c.Req.Context(), func(tranCtx context.Context) error {
+	err := srv.store.InTransaction(c.Req.Context(), func(tranCtx context.Context) error {
+		var err error
 		changes, err = calculateChanges(tranCtx, srv.store, c.SignedInUser.OrgId, namespace, ruleGroupConfig.Name, rules)
 		if err != nil {
 			return err
 		}
 
 		// TODO add update/delete authz logic
-		err := srv.store.UpsertAlertRules(tranCtx, changes.Upsert)
+		err = srv.store.UpsertAlertRules(tranCtx, changes.Upsert)
 		if err != nil {
 			return fmt.Errorf("failed to add or update rules: %w", err)
 		}
