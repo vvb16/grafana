@@ -14,7 +14,7 @@ import (
 
 func validateRuleNode(
 	ruleGroupConfig *apimodels.PostableRuleGroupConfig,
-	ruleNode apimodels.PostableExtendedRuleNode,
+	ruleNode *apimodels.PostableExtendedRuleNode,
 	orgId int64,
 	namespace *models.Folder,
 	conditionValidator func(ngmodels.Condition) error,
@@ -23,32 +23,12 @@ func validateRuleNode(
 		return nil, fmt.Errorf("not Grafana managed alert rule")
 	}
 
-	if len(ruleNode.GrafanaManagedAlert.Data) == 0 {
-		return nil, fmt.Errorf("%w: no queries or expressions are found", ngmodels.ErrAlertRuleFailedValidation)
-	}
-
-	cond := ngmodels.Condition{
-		Condition: ruleNode.GrafanaManagedAlert.Condition,
-		OrgID:     orgId,
-		Data:      ruleNode.GrafanaManagedAlert.Data,
-	}
-	if err := conditionValidator(cond); err != nil {
-		return nil, fmt.Errorf("failed to validate condition of alert rule %s: %w", ruleNode.GrafanaManagedAlert.Title, err)
-	}
-
 	if ruleNode.GrafanaManagedAlert.Title == "" {
 		return nil, errors.New("alert rule title cannot be empty")
 	}
 
 	if len(ruleNode.GrafanaManagedAlert.Title) > store.AlertRuleMaxTitleLength {
 		return nil, fmt.Errorf("alert rule title is too long. Max length is %d", store.AlertRuleMaxTitleLength)
-	}
-
-	dashUID := ruleNode.ApiRuleNode.Annotations[ngmodels.DashboardUIDAnnotation]
-	panelID := ruleNode.ApiRuleNode.Annotations[ngmodels.PanelIDAnnotation]
-
-	if dashUID != "" && panelID == "" || dashUID == "" && panelID != "" {
-		return nil, fmt.Errorf("both annotations %s and %s must be specified", ngmodels.DashboardUIDAnnotation, ngmodels.PanelIDAnnotation)
 	}
 
 	noDataState := ngmodels.NoData
@@ -69,6 +49,19 @@ func validateRuleNode(
 		}
 	}
 
+	if len(ruleNode.GrafanaManagedAlert.Data) == 0 {
+		return nil, fmt.Errorf("%w: no queries or expressions are found", ngmodels.ErrAlertRuleFailedValidation)
+	}
+
+	cond := ngmodels.Condition{
+		Condition: ruleNode.GrafanaManagedAlert.Condition,
+		OrgID:     orgId,
+		Data:      ruleNode.GrafanaManagedAlert.Data,
+	}
+	if err := conditionValidator(cond); err != nil {
+		return nil, fmt.Errorf("failed to validate condition of alert rule %s: %w", ruleNode.GrafanaManagedAlert.Title, err)
+	}
+
 	newAlertRule := ngmodels.AlertRule{
 		OrgID:           orgId,
 		Title:           ruleNode.GrafanaManagedAlert.Title,
@@ -86,15 +79,22 @@ func validateRuleNode(
 		newAlertRule.For = time.Duration(ruleNode.ApiRuleNode.For)
 		newAlertRule.Annotations = ruleNode.ApiRuleNode.Annotations
 		newAlertRule.Labels = ruleNode.ApiRuleNode.Labels
-	}
 
-	if dashUID != "" {
-		panelIDValue, err := strconv.ParseInt(panelID, 10, 64)
-		if err != nil {
-			return nil, fmt.Errorf("annotation %s must be a valid integer Panel ID", ngmodels.PanelIDAnnotation)
+		dashUID := ruleNode.ApiRuleNode.Annotations[ngmodels.DashboardUIDAnnotation]
+		panelID := ruleNode.ApiRuleNode.Annotations[ngmodels.PanelIDAnnotation]
+
+		if dashUID != "" && panelID == "" || dashUID == "" && panelID != "" {
+			return nil, fmt.Errorf("both annotations %s and %s must be specified", ngmodels.DashboardUIDAnnotation, ngmodels.PanelIDAnnotation)
 		}
-		newAlertRule.DashboardUID = &dashUID
-		newAlertRule.PanelID = &panelIDValue
+
+		if dashUID != "" {
+			panelIDValue, err := strconv.ParseInt(panelID, 10, 64)
+			if err != nil {
+				return nil, fmt.Errorf("annotation %s must be a valid integer Panel ID", ngmodels.PanelIDAnnotation)
+			}
+			newAlertRule.DashboardUID = &dashUID
+			newAlertRule.PanelID = &panelIDValue
+		}
 	}
 
 	return &newAlertRule, nil
@@ -126,7 +126,7 @@ func validateRuleGroup(
 	result := make([]*ngmodels.AlertRule, 0, len(ruleGroupConfig.Rules))
 	uids := make(map[string]int, cap(result))
 	for idx, ruleNode := range ruleGroupConfig.Rules {
-		rule, err := validateRuleNode(ruleGroupConfig, ruleNode, orgId, namespace, conditionValidator)
+		rule, err := validateRuleNode(ruleGroupConfig, &ruleNode, orgId, namespace, conditionValidator)
 		// TODO do not stop on the first failure but return all failures
 		if err != nil {
 			return nil, fmt.Errorf("invalid rule specification at index [%d]: %w", idx, err)
