@@ -94,9 +94,9 @@ func (ng *AlertNG) init() error {
 
 	baseInterval := ng.Cfg.AlertingBaseInterval
 	if baseInterval <= 0 {
-		baseInterval = defaultBaseIntervalSeconds
+		baseInterval = defaultBaseIntervalSeconds * time.Second
+		ng.Cfg.AlertingBaseInterval = baseInterval
 	}
-	baseInterval *= time.Second
 
 	store := &store.DBstore{
 		BaseInterval:    baseInterval,
