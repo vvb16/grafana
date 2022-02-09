@@ -284,6 +284,10 @@ func (f *fakeRuleStore) UpdateRuleGroup(_ context.Context, cmd store.UpdateRuleG
 	return nil
 }
 
+func (f *fakeRuleStore) InTransaction(ctx context.Context, fn func(c context.Context) error) error {
+	return fn(ctx)
+}
+
 type FakeInstanceStore struct {
 	mtx         sync.Mutex
 	recordedOps []interface{}
