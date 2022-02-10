@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 
 	"github.com/grafana/grafana/pkg/api/response"
-	"github.com/grafana/grafana/pkg/bus"
 	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/featuremgmt"
@@ -47,12 +46,14 @@ func ProvideService(cfg *setting.Cfg, features featuremgmt.FeatureToggles, rende
 	return &thumbService{
 		renderer:      newSimpleCrawler(renderService, gl, thumbnailRepo),
 		thumbnailRepo: thumbnailRepo,
+		sqlStore:      store,
 	}
 }
 
 type thumbService struct {
 	renderer      dashRenderer
 	thumbnailRepo thumbnailRepo
+	sqlStore      sqlstore.Store
 }
 
 func (hs *thumbService) Enabled() bool {
@@ -278,7 +279,7 @@ func (hs *thumbService) getStatus(c *models.ReqContext, uid string, checkSave bo
 func (hs *thumbService) getDashboardId(c *models.ReqContext, uid string) (int64, error) {
 	query := models.GetDashboardQuery{Uid: uid, OrgId: c.OrgId}
 
-	if err := bus.Dispatch(c.Req.Context(), &query); err != nil {
+	if err := hs.sqlStore.GetDashboard(c.Req.Context(), &query); err != nil {
 		return 0, err
 	}
 
