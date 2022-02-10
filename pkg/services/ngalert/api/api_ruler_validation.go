@@ -116,7 +116,7 @@ func validateRuleGroup(
 	}
 
 	if ruleGroupConfig.Interval <= 0 {
-		return nil, fmt.Errorf("rule evaluation interval must be positive value greater than")
+		return nil, fmt.Errorf("rule evaluation interval must be positive and be multiple of the base interval %d seconds", int64(baseInterval.Seconds()))
 	}
 
 	if int64(time.Duration(ruleGroupConfig.Interval).Seconds())%int64(baseInterval.Seconds()) != 0 {
