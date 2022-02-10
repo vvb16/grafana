@@ -280,8 +280,11 @@ func (srv RulerSrv) updateAlertRulesInGroup(c *models.ReqContext, namespace *mod
 			}
 		}
 
-		if len(changes.Upsert) > 0 {
-			limitReached, err := srv.QuotaService.QuotaReached(c, "alert_rule") // alert rule is table name
+		if changes.newRules > 0 {
+			limitReached, err := srv.QuotaService.CheckQuotaReached(tranCtx, "alert_rule", &quota.ScopeParameters{
+				OrgId:  c.OrgId,
+				UserId: c.UserId,
+			}) // alert rule is table name
 			if err != nil {
 				return fmt.Errorf("failed to get alert rules quota: %w", err)
 			}
