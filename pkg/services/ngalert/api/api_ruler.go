@@ -254,16 +254,16 @@ func (srv RulerSrv) RoutePostNameRulesConfig(c *models.ReqContext, ruleGroupConf
 		return ErrResp(http.StatusBadRequest, err, "")
 	}
 
-	return srv.updateAlertRulesInGroup(c, namespace, ruleGroupConfig, rules)
+	return srv.updateAlertRulesInGroup(c, namespace, ruleGroupConfig.Name, rules)
 }
 
-func (srv RulerSrv) updateAlertRulesInGroup(c *models.ReqContext, namespace *models.Folder, ruleGroupConfig apimodels.PostableRuleGroupConfig, rules []*ngmodels.AlertRule) response.Response {
+func (srv RulerSrv) updateAlertRulesInGroup(c *models.ReqContext, namespace *models.Folder, groupName string, rules []*ngmodels.AlertRule) response.Response {
 	// TODO add create rules authz logic
 
 	var changes *RuleChanges = nil
 	err := srv.store.InTransaction(c.Req.Context(), func(tranCtx context.Context) error {
 		var err error
-		changes, err = calculateChanges(tranCtx, srv.store, c.SignedInUser.OrgId, namespace, ruleGroupConfig.Name, rules)
+		changes, err = calculateChanges(tranCtx, srv.store, c.SignedInUser.OrgId, namespace, groupName, rules)
 		if err != nil {
 			return err
 		}
