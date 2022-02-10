@@ -306,14 +306,15 @@ func (srv RulerSrv) updateAlertRulesInGroup(c *models.ReqContext, namespace *mod
 		return ErrResp(http.StatusInternalServerError, err, "failed to update rule group")
 	}
 
-	for _, rule := range changes.Upsert {
-		if rule.Existing != nil {
-			srv.scheduleService.UpdateAlertRule(ngmodels.AlertRuleKey{
-				OrgID: c.SignedInUser.OrgId,
-				UID:   rule.Existing.UID,
-			})
-		}
-	}
+	// TODO uncomment when rules that are not changed will be filter out from the upsert list.
+	// for _, rule := range changes.Upsert {
+	// 	if rule.Existing != nil {
+	// 		srv.scheduleService.UpdateAlertRule(ngmodels.AlertRuleKey{
+	// 			OrgID: c.SignedInUser.OrgId,
+	// 			UID:   rule.Existing.UID,
+	// 		})
+	// 	}
+	// }
 
 	for _, rule := range changes.Delete {
 		srv.scheduleService.DeleteAlertRule(ngmodels.AlertRuleKey{
@@ -368,6 +369,8 @@ type RuleChanges struct {
 	Delete   []*ngmodels.AlertRule
 }
 
+// calculateChanges calculates the difference between rules in the group in the database and the submitted rules. If a submitted rule has UID it tries to find it in the database (in other groups).
+// returns a list of rules that need to be added, updated and deleted. Deleted considered rules in the database that belong to the group but do not exist in the list of submitted rules.
 func calculateChanges(ctx context.Context, ruleStore store.RuleStore, orgId int64, namespace *models.Folder, ruleGroupName string, submittedRules []*ngmodels.AlertRule) (*RuleChanges, error) {
 	q := &ngmodels.ListRuleGroupAlertRulesQuery{
 		OrgID:        orgId,
