@@ -9,6 +9,7 @@ import (
 
 	"github.com/grafana/grafana/pkg/bus"
 	"github.com/grafana/grafana/pkg/models"
+	"github.com/grafana/grafana/pkg/services/sqlstore/mockstore"
 	"github.com/grafana/grafana/pkg/setting"
 
 	"github.com/stretchr/testify/require"
@@ -683,7 +684,7 @@ func (sc *scenarioContext) verifyUpdateChildDashboardPermissionsWithOverrideShou
 func TestGuardianGetHiddenACL(t *testing.T) {
 	t.Run("Get hidden ACL tests", func(t *testing.T) {
 		bus.ClearBusHandlers()
-
+		sqlmock := mockstore.NewSQLStoreMock()
 		bus.AddHandler("test", func(ctx context.Context, query *models.GetDashboardAclInfoListQuery) error {
 			query.Result = []*models.DashboardAclInfoDTO{
 				{Inherited: false, UserId: 1, UserLogin: "user1", Permission: models.PERMISSION_EDIT},
@@ -702,7 +703,7 @@ func TestGuardianGetHiddenACL(t *testing.T) {
 				UserId: 1,
 				Login:  "user1",
 			}
-			g := New(context.Background(), dashboardID, orgID, user)
+			g := New(context.Background(), dashboardID, orgID, user, sqlmock)
 
 			hiddenACL, err := g.GetHiddenACL(cfg)
 			require.NoError(t, err)
@@ -718,7 +719,7 @@ func TestGuardianGetHiddenACL(t *testing.T) {
 				Login:          "user1",
 				IsGrafanaAdmin: true,
 			}
-			g := New(context.Background(), dashboardID, orgID, user)
+			g := New(context.Background(), dashboardID, orgID, user, sqlmock)
 
 			hiddenACL, err := g.GetHiddenACL(cfg)
 			require.NoError(t, err)
@@ -731,7 +732,7 @@ func TestGuardianGetHiddenACL(t *testing.T) {
 func TestGuardianGetAclWithoutDuplicates(t *testing.T) {
 	t.Run("Get hidden ACL tests", func(t *testing.T) {
 		t.Cleanup(bus.ClearBusHandlers)
-
+		sqlmock := mockstore.NewSQLStoreMock()
 		bus.AddHandler("test", func(ctx context.Context, query *models.GetDashboardAclInfoListQuery) error {
 			query.Result = []*models.DashboardAclInfoDTO{
 				{Inherited: true, UserId: 3, UserLogin: "user3", Permission: models.PERMISSION_EDIT},
@@ -752,7 +753,7 @@ func TestGuardianGetAclWithoutDuplicates(t *testing.T) {
 				UserId: 1,
 				Login:  "user1",
 			}
-			g := New(context.Background(), dashboardID, orgID, user)
+			g := New(context.Background(), dashboardID, orgID, user, sqlmock)
 
 			acl, err := g.GetACLWithoutDuplicates()
 			require.NoError(t, err)

@@ -9,6 +9,7 @@ import (
 
 	"github.com/grafana/grafana/pkg/bus"
 	"github.com/grafana/grafana/pkg/models"
+	"github.com/grafana/grafana/pkg/services/sqlstore/mockstore"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -31,12 +32,13 @@ type scenarioFunc func(c *scenarioContext)
 
 func orgRoleScenario(desc string, t *testing.T, role models.RoleType, fn scenarioFunc) {
 	t.Run(desc, func(t *testing.T) {
+		sqlmock := mockstore.NewSQLStoreMock()
 		user := &models.SignedInUser{
 			UserId:  userID,
 			OrgId:   orgID,
 			OrgRole: role,
 		}
-		guard := New(context.Background(), dashboardID, orgID, user)
+		guard := New(context.Background(), dashboardID, orgID, user, sqlmock)
 
 		sc := &scenarioContext{
 			t:                t,
@@ -51,13 +53,14 @@ func orgRoleScenario(desc string, t *testing.T, role models.RoleType, fn scenari
 
 func apiKeyScenario(desc string, t *testing.T, role models.RoleType, fn scenarioFunc) {
 	t.Run(desc, func(t *testing.T) {
+		sqlmock := mockstore.NewSQLStoreMock()
 		user := &models.SignedInUser{
 			UserId:   0,
 			OrgId:    orgID,
 			OrgRole:  role,
 			ApiKeyId: 10,
 		}
-		guard := New(context.Background(), dashboardID, orgID, user)
+		guard := New(context.Background(), dashboardID, orgID, user, sqlmock)
 		sc := &scenarioContext{
 			t:                t,
 			orgRoleScenario:  desc,
@@ -74,7 +77,7 @@ func permissionScenario(desc string, dashboardID int64, sc *scenarioContext,
 	permissions []*models.DashboardAclInfoDTO, fn scenarioFunc) {
 	sc.t.Run(desc, func(t *testing.T) {
 		bus.ClearBusHandlers()
-
+		sqlmock := mockstore.NewSQLStoreMock()
 		bus.AddHandler("test", func(ctx context.Context, query *models.GetDashboardAclInfoListQuery) error {
 			if query.OrgID != sc.givenUser.OrgId {
 				sc.reportFailure("Invalid organization id for GetDashboardAclInfoListQuery", sc.givenUser.OrgId, query.OrgID)
@@ -108,7 +111,7 @@ func permissionScenario(desc string, dashboardID int64, sc *scenarioContext,
 		})
 
 		sc.permissionScenario = desc
-		sc.g = New(context.Background(), dashboardID, sc.givenUser.OrgId, sc.givenUser)
+		sc.g = New(context.Background(), dashboardID, sc.givenUser.OrgId, sc.givenUser, sqlmock)
 		sc.givenDashboardID = dashboardID
 		sc.givenPermissions = permissions
 		sc.givenTeams = teams

@@ -39,22 +39,15 @@ func setUp(confs ...setUpConf) *HTTPServer {
 	store := mockstore.NewSQLStoreMock()
 	hs := &HTTPServer{SQLStore: store, SearchService: &mockSearchService{}}
 	store.ExpectedAlert = singleAlert
-
 	aclMockResp := []*models.DashboardAclInfoDTO{}
+	store.ExpectedDashboardAclInfoList = aclMockResp
+	store.ExpectedTeamsByUser = []*models.TeamDTO{}
+
 	for _, c := range confs {
 		if c.aclMockResp != nil {
 			aclMockResp = c.aclMockResp
 		}
 	}
-	bus.AddHandler("test", func(ctx context.Context, query *models.GetDashboardAclInfoListQuery) error {
-		query.Result = aclMockResp
-		return nil
-	})
-
-	bus.AddHandler("test", func(ctx context.Context, query *models.GetTeamsByUserQuery) error {
-		query.Result = []*models.TeamDTO{}
-		return nil
-	})
 	return hs
 }
 
