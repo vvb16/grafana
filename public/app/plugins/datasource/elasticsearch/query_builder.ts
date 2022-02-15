@@ -1,3 +1,4 @@
+import angular from 'angular';
 import { InternalTimeZones } from '@grafana/data';
 import { gte, lt } from 'semver';
 import {
@@ -152,9 +153,6 @@ export class ElasticQueryBuilder {
       {
         [this.timeField]: { order: 'desc', unmapped_type: 'boolean' },
       },
-      {
-        _doc: { order: 'desc' },
-      },
     ];
 
     // fields field not supported on ES 5.x
@@ -231,15 +229,24 @@ export class ElasticQueryBuilder {
     };
 
     if (target.query && target.query !== '') {
-      query.query.bool.filter = [
-        ...query.query.bool.filter,
-        {
-          query_string: {
-            analyze_wildcard: true,
-            query: target.query,
+      let qfunc = function () {
+        if (target?.query?.charAt(0) === '{') {
+          try {
+            query.query.bool.filter = [...query.query.bool.filter, angular.fromJson(target?.query)];
+            return;
+          } catch (ex) {}
+        }
+        query.query.bool.filter = [
+          ...query.query.bool.filter,
+          {
+            query_string: {
+              analyze_wildcard: true,
+              query: target?.query,
+            },
           },
-        },
-      ];
+        ];
+      };
+      qfunc();
     }
 
     this.addAdhocFilters(query, adhocFilters);
@@ -448,12 +455,21 @@ export class ElasticQueryBuilder {
     };
 
     if (queryDef.query) {
-      query.query.bool.filter.push({
-        query_string: {
-          analyze_wildcard: true,
-          query: queryDef.query,
-        },
-      });
+      let qfunc = function () {
+        if (queryDef?.query?.charAt(0) === '{') {
+          try {
+            query.query.bool.filter.push(angular.fromJson(queryDef?.query));
+            return;
+          } catch (ex) {}
+        }
+        query.query.bool.filter.push({
+          query_string: {
+            analyze_wildcard: true,
+            query: queryDef?.query,
+          },
+        });
+      };
+      qfunc();
     }
 
     let size = 500;
@@ -510,12 +526,21 @@ export class ElasticQueryBuilder {
     this.addAdhocFilters(query, adhocFilters);
 
     if (target.query) {
-      query.query.bool.filter.push({
-        query_string: {
-          analyze_wildcard: true,
-          query: target.query,
-        },
-      });
+      let qfunc = function () {
+        if (target?.query?.charAt(0) === '{') {
+          try {
+            query.query.bool.filter.push(angular.fromJson(target?.query));
+            return;
+          } catch (ex) {}
+        }
+        query.query.bool.filter.push({
+          query_string: {
+            analyze_wildcard: true,
+            query: target?.query,
+          },
+        });
+      };
+      qfunc();
     }
 
     query = this.documentQuery(query, limit);

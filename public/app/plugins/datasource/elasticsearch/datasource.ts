@@ -1,3 +1,4 @@
+import angular from 'angular';
 import { cloneDeep, find, first as _first, isNumber, isObject, isString, map as _map } from 'lodash';
 import { generate, lastValueFrom, Observable, of, throwError } from 'rxjs';
 import { catchError, first, map, mergeMap, skipWhile, throwIfEmpty } from 'rxjs/operators';
@@ -258,11 +259,20 @@ export class ElasticDatasource
     };
 
     if (queryInterpolated) {
-      query.bool.filter.push({
-        query_string: {
-          query: queryInterpolated,
-        },
-      });
+      let qfunc = function () {
+        if (queryInterpolated.charAt(0) === '{') {
+          try {
+            query.bool.filter.push(angular.fromJson(queryInterpolated));
+            return;
+          } catch (ex) {}
+        }
+        query.bool.filter.push({
+          query_string: {
+            query: queryInterpolated,
+          },
+        });
+      };
+      qfunc();
     }
     const data: any = {
       query,
@@ -527,7 +537,7 @@ export class ElasticDatasource
           ],
         },
       },
-      sort: [{ [this.timeField]: sort }, { _doc: sort }],
+      sort: [{ [this.timeField]: sort }],
       search_after: searchAfter,
     });
     const payload = [header, esQuery].join('\n') + '\n';
